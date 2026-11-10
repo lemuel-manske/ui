@@ -1,44 +1,50 @@
-import type { Preview } from "@storybook/react-vite";
+import type { Preview } from '@storybook/react-vite';
 
-import "@lkmliz/design-tokens/styles.css";
+import '@lkmliz/design-tokens/styles.css';
 
-import "./storybook.css";
+import { archiveTheme, libraryTheme } from '@lkmliz/design-tokens';
+
+import { Theme } from '../src/theme/Theme';
+
+import './storybook.css';
 
 const preview: Preview = {
   decorators: [
     (Story, context) => (
-      <div className="storybook-theme" data-ui-theme="archive" data-brand={context.globals.brand}>
-        <Story />
-      </div>
+      <Theme theme={context.globals.brand === 'library' ? libraryTheme : archiveTheme}>
+        <div className="storybook-theme">
+          <Story />
+        </div>
+      </Theme>
     ),
   ],
 
   globalTypes: {
     brand: {
-      description: "Component theme",
+      description: 'Component theme',
 
       toolbar: {
-        icon: "paintbrush",
+        icon: 'paintbrush',
         items: [
-          { value: "archive", title: "OpenArquive" },
-          { value: "library", title: "Library" },
+          { value: 'archive', title: 'OpenArquive' },
+          { value: 'library', title: 'Library' },
         ],
       },
     },
   },
 
   initialGlobals: {
-    brand: "archive",
+    brand: 'archive',
   },
 
   parameters: {
-    layout: "padded",
+    layout: 'padded',
 
     a11y: {
-      test: "error",
+      test: 'error',
 
       options: {
-        runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"],
+        runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'],
       },
     },
   },

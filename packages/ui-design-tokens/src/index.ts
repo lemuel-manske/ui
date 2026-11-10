@@ -1,3 +1,3 @@
 export { Size, Variant, Weight } from './enums';
 
-export { archiveTheme, type DesignTokens } from './tokens';
+export { archiveTheme, libraryTheme, type DesignTokens } from './tokens';

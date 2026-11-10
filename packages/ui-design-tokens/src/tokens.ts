@@ -95,4 +95,22 @@ const archiveTheme = {
   },
 } as const satisfies DesignTokens;
 
-export { archiveTheme, type DesignTokens };
+const libraryTheme = {
+  ...archiveTheme,
+
+  color: {
+    ...archiveTheme.color,
+    background: '#ffffff',
+    'text-primary': '#193a32',
+    'text-secondary': '#405b52',
+    'dark-surface': '#285146',
+    'surface-muted': '#e4eee9',
+  },
+
+  font: {
+    ...archiveTheme.font,
+    body: 'system-ui, sans-serif',
+  },
+} as const satisfies DesignTokens;
+
+export { archiveTheme, libraryTheme, type DesignTokens };

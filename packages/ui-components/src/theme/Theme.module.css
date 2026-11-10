@@ -1,0 +1,9 @@
+.theme {
+  box-sizing: border-box;
+  min-width: 0;
+  background: var(--ui-color-background);
+  color: var(--ui-color-text-primary);
+  font-family: var(--ui-font-body);
+  font-size: var(--ui-text-medium);
+  line-height: 1.5;
+}

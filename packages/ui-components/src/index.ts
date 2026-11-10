@@ -117,3 +117,7 @@ export { useTextarea } from './textarea/useTextarea';
 export type { TextareaProps } from './textarea/types';
 
 export { TextareaSize } from './textarea/options';
+
+export { Theme } from './theme/Theme';
+
+export type { ThemeProps } from './theme/types';

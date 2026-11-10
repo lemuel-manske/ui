@@ -12,6 +12,10 @@ This repository is an npm workspace monorepo for the `@lkmliz` React design syst
 
 Expose public APIs through each package's `src/index.ts`. Build output belongs in ignored `dist/` directories.
 
+## Documentation Guidelines
+
+Do not alter `README.md` to add documentation. Keep the README very short; do not document features or usage there.
+
 ## Build, Test, and Development Commands
 
 Run commands from the repository root:

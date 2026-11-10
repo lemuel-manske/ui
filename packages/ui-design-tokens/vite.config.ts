@@ -4,17 +4,19 @@ import { createLibraryConfig } from '@lkmliz/config-vite';
 
 import { mergeConfig } from 'vite';
 
-import { archiveTheme } from './src/tokens';
+import { archiveTheme, libraryTheme } from './src/tokens';
 
-const declarations = Object.entries(archiveTheme).flatMap(([group, tokens]) =>
-  Object.entries(tokens).map(([name, value]) => `  --ui-${group}-${name}: ${value};`),
-);
+const themes = { archive: archiveTheme, library: libraryTheme };
 
 const themeCss = [
   '/* Generated from tokens.ts. Do not edit. */',
-  ':where([data-ui-theme="archive"]) {',
-  ...declarations,
-  '}',
+  ...Object.entries(themes).flatMap(([name, theme]) => [
+    `:where([data-ui-theme="${name}"]) {`,
+    ...Object.entries(theme).flatMap(([group, tokens]) =>
+      Object.entries(tokens).map(([token, value]) => `  --ui-${group}-${token}: ${value};`),
+    ),
+    '}',
+  ]),
   '',
 ].join('\n');
 

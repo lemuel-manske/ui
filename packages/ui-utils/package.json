@@ -1,10 +1,17 @@
 {
   "name": "@lkmliz/utils",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "description": "Shared frontend utilities.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/ui-utils"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "files": [
     "dist"
   ],

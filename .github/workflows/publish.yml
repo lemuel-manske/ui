@@ -1,0 +1,74 @@
+name: publish
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-packages
+
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml
+
+  publish:
+    needs: checks
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check publishing credentials
+        if: github.repository_owner != 'lkmliz'
+
+        env:
+          PACKAGE_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+
+        run: |
+          if [ -z "$PACKAGE_TOKEN" ]; then
+            echo '::error::Set GH_PACKAGES_TOKEN to a classic PAT with write:packages access to the lkmliz GitHub account or organization.'
+            exit 1
+          fi
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          registry-url: https://npm.pkg.github.com
+          scope: '@lkmliz'
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages in dependency order
+        run: npm run build
+
+      - name: Publish all packages in dependency order
+
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN || github.token }}
+
+        run: |
+          for package in \
+            @lkmliz/config-prettier \
+            @lkmliz/config-eslint \
+            @lkmliz/config-typescript \
+            @lkmliz/config-jest \
+            @lkmliz/config-vite \
+            @lkmliz/config-playwright \
+            @lkmliz/design-tokens \
+            @lkmliz/utils \
+            @lkmliz/components; do
+            npm publish --workspace "$package"
+          done

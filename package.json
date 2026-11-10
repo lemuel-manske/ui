@@ -21,6 +21,8 @@
   },
   "scripts": {
     "prepare": "husky",
+    "build": "npm run build --workspace @lkmliz/config-playwright && npm run build --workspace @lkmliz/design-tokens && npm run build --workspace @lkmliz/utils && npm run build --workspace @lkmliz/components",
+    "check:packages": "node scripts/check-packages.js",
     "commitlint": "commitlint",
     "precommit": "lint-staged",
     "storybook": "npm run storybook --workspace @lkmliz/components",

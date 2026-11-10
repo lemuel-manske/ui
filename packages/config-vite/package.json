@@ -1,7 +1,6 @@
 {
   "name": "@lkmliz/config-vite",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "exports": {
     ".": {
@@ -25,5 +24,18 @@
     "@lkmliz/config-eslint": "file:../config-eslint",
     "@lkmliz/config-prettier": "file:../config-prettier",
     "prettier": "3.6.0"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/config-vite"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ]
 }

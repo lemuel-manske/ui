@@ -1,7 +1,6 @@
 {
   "name": "@lkmliz/config-typescript",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
@@ -20,5 +19,19 @@
     "@lkmliz/config-prettier": "file:../config-prettier",
     "eslint": "9.39.0",
     "prettier": "3.6.0"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/config-typescript"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "base.json",
+    "react.json",
+    "node.json"
+  ]
 }

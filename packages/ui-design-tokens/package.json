@@ -1,10 +1,17 @@
 {
   "name": "@lkmliz/design-tokens",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "description": "Typed design tokens, shared enums, and build-time theme CSS.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/ui-design-tokens"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "files": [
     "dist"
   ],

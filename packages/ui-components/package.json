@@ -1,10 +1,17 @@
 {
   "name": "@lkmliz/components",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "description": "Reusable React components and static styles.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/ui-components"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "files": [
     "dist"
   ],
@@ -32,8 +39,8 @@
     "react": "^19.0.0"
   },
   "dependencies": {
-    "@lkmliz/design-tokens": "file:../ui-design-tokens",
-    "@lkmliz/utils": "file:../ui-utils"
+    "@lkmliz/design-tokens": "^0.1.0",
+    "@lkmliz/utils": "^0.1.0"
   },
   "devDependencies": {
     "@lkmliz/config-eslint": "file:../config-eslint",

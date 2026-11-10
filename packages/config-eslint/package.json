@@ -1,7 +1,6 @@
 {
   "name": "@lkmliz/config-eslint",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "exports": {
     "./node": "./node.js",
@@ -27,5 +26,18 @@
   "devDependencies": {
     "@lkmliz/config-prettier": "file:../config-prettier",
     "prettier": "3.6.0"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/config-eslint"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "node.js",
+    "react.js"
+  ]
 }

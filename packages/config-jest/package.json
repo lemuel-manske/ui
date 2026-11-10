@@ -1,7 +1,6 @@
 {
   "name": "@lkmliz/config-jest",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "exports": {
     ".": "./index.js",
@@ -23,5 +22,19 @@
     "@jest/globals": "30.5.2",
     "@swc/jest": "0.2.39",
     "jest": "30.5.2"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/config-jest"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "index.js",
+    "globals.js",
+    "globals.d.ts"
+  ]
 }

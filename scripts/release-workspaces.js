@@ -73,4 +73,4 @@ function publish(_options, { cwd, env }) {
   childProcess.execFileSync('npm', ['publish', '--workspaces'], { cwd, env, stdio: 'inherit' });
 }
 
-export { prepare, publish, setWorkspaceVersions };
+export { prepare, publish };

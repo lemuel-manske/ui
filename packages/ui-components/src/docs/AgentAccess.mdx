@@ -5,7 +5,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 # Agent access
 
 Use these documents with the same library version installed in the consuming application.
-Keep separate build artifacts for releases and check `docs/version.json` for version metadata.
+Keep separate build artifacts for releases and check `agent/docs/version.json` in the portal
+for version metadata.
 
 ## Live access through MCP
 
@@ -45,17 +46,32 @@ npm run build
 npm run build:docs
 ```
 
-The static output is `packages/ui-components/storybook-static`. It includes:
+The combined static output is `website/dist`. It includes:
 
 - `llms.txt`: an index of the exported Markdown guides and component manifests.
-- `docs/*.md`: Markdown generated from the same MDX used in Storybook.
-- `manifests/components.json`: generated component APIs and story examples.
-- `manifests/docs.json`: generated MDX documentation metadata.
-- `docs/version.json`: package versions and the build commit when available.
+- `agent/docs/**/*.md`: Markdown generated from the same MDX used in Storybook.
+- `agent/manifests/components.json`: generated component APIs and story examples.
+- `agent/manifests/docs.json`: generated MDX documentation metadata.
+- `agent/docs/version.json`: package versions and the build commit when available.
+- `storybook/`: the interactive component explorer.
 
-A static host can serve these files alongside Storybook. Static hosting does not run an MCP
-server. Use the live development endpoint or deploy a separate MCP service if remote tools
-are required. The CI documentation artifact is ready to deploy to your chosen static host.
+The Docusaurus portal is configured for `https://lemuel-manske.github.io/ui/`, with Storybook
+under `/ui/storybook/`. GitHub Pages serves these files; it does not run an MCP server.
+Use the live development endpoint or deploy a separate MCP service if remote tools are required.
+
+## Preview and deployment
+
+Run `npm run serve:docs` after building to preview the complete deployment at
+`http://localhost:3000/ui/`. Run `npm run docs` for the Docusaurus development server;
+it prepares a snapshot of the source guides and APIs when starting. Restart it after changing
+documentation sources to refresh that snapshot. Use the complete build preview for Storybook links.
+
+In the GitHub repository, set **Settings → Pages → Build and deployment → Source** to
+**GitHub Actions**. The documentation workflow builds and deploys changes on `main` and supports
+manual runs. Pull requests build the combined site through the checks workflow.
+
+Keep the configured URL and base path in `scripts/docs-config.js` aligned with the Pages
+address. Generated files stay ignored; edit the original component MDX, source types, and stories.
 
 ## Maintaining the documentation
 
@@ -64,3 +80,5 @@ explain decisions and compositions in MDX. Register compound parts as story subc
 direct component imports. Declare stories with `export const` so manifest extraction can find them.
 Keep examples on the public API. Build documentation in CI to catch broken MDX and extraction
 failures; inspect the artifact when changing component APIs or upgrading Storybook.
+Generated page templates live in `scripts/templates/`; shared paths and artifact names live
+in `scripts/docs-config.js`. Keep document text in templates and file processing in scripts.

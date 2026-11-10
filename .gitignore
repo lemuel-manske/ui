@@ -11,3 +11,6 @@
 **/playwright-report/
 
 **/playwright/.cache/
+
+website/.docusaurus/
+website/.generated/

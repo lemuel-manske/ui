@@ -1,23 +1,36 @@
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { dirname, join, posix } from 'node:path';
 
-const root = fileURLToPath(new URL('..', import.meta.url));
+import * as config from './docs-config.js';
+import { renderDocTemplate } from './render-doc-template.js';
 
-const componentRoot = join(root, 'packages/ui-components');
+const {
+  ROOT_DIRECTORY,
+  COMPONENT_SOURCE_DIRECTORY,
+  STORYBOOK_OUTPUT_DIRECTORY,
+  COMPONENTS_MANIFEST_PATH,
+  DOCS_MANIFEST_PATH,
+  RAW_GUIDES_PATH,
+  VERSION_METADATA_PATH,
+  LLMS_INDEX_FILENAME,
+  REQUIRED_COMPONENTS,
+  VERSIONED_PACKAGES,
+} = config;
 
-const output = join(componentRoot, 'storybook-static');
-
-const docsOutput = join(output, 'docs');
+const docsOutput = join(STORYBOOK_OUTPUT_DIRECTORY, RAW_GUIDES_PATH);
 
 await mkdir(docsOutput, { recursive: true });
 
-const components = JSON.parse(await readFile(join(output, 'manifests/components.json'), 'utf8'));
+const components = JSON.parse(
+  await readFile(join(STORYBOOK_OUTPUT_DIRECTORY, COMPONENTS_MANIFEST_PATH), 'utf8'),
+);
 
-const docs = JSON.parse(await readFile(join(output, 'manifests/docs.json'), 'utf8'));
+const docs = JSON.parse(
+  await readFile(join(STORYBOOK_OUTPUT_DIRECTORY, DOCS_MANIFEST_PATH), 'utf8'),
+);
 
-for (const name of ['Button', 'Field', 'Form']) {
+for (const name of REQUIRED_COMPONENTS) {
   const component = Object.values(components.components).find((entry) => entry.name === name);
 
   if (!component || !Object.keys(component.reactDocgenTypescript?.props ?? {}).length) {
@@ -47,12 +60,12 @@ if (!Object.keys(docs.docs ?? {}).length) {
 
 const links = [];
 
-for (const entry of await readdir(join(componentRoot, 'src'), { recursive: true })) {
+for (const entry of await readdir(COMPONENT_SOURCE_DIRECTORY, { recursive: true })) {
   if (!entry.endsWith('.mdx')) {
     continue;
   }
 
-  const source = await readFile(join(componentRoot, 'src', entry), 'utf8');
+  const source = await readFile(join(COMPONENT_SOURCE_DIRECTORY, entry), 'utf8');
 
   // Guides deliberately use only Markdown plus these two Storybook metadata lines.
   const markdown = source
@@ -72,14 +85,21 @@ for (const entry of await readdir(join(componentRoot, 'src'), { recursive: true 
 
   await writeFile(join(docsOutput, target), `${markdown}\n`);
 
-  links.push(`- [${title}](docs/${target.split('\\').join('/')})`);
+  links.push(
+    (
+      await renderDocTemplate('guide-link', {
+        title,
+        path: posix.join(RAW_GUIDES_PATH, target.split('\\').join('/')),
+      })
+    ).trim(),
+  );
 }
 
 const versions = {};
 
-for (const directory of ['ui-components', 'ui-design-tokens', 'ui-utils']) {
+for (const directory of VERSIONED_PACKAGES) {
   const { name, version } = JSON.parse(
-    await readFile(join(root, 'packages', directory, 'package.json'), 'utf8'),
+    await readFile(join(ROOT_DIRECTORY, 'packages', directory, 'package.json'), 'utf8'),
   );
 
   versions[name] = version;
@@ -89,40 +109,30 @@ let commit = process.env.GITHUB_SHA;
 
 if (!commit) {
   try {
-    commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
+    commit = execFileSync('git', ['rev-parse', 'HEAD'], {
+      cwd: ROOT_DIRECTORY,
+      encoding: 'utf8',
+    }).trim();
   } catch {
     commit = null;
   }
 }
 
 await writeFile(
-  join(docsOutput, 'version.json'),
+  join(STORYBOOK_OUTPUT_DIRECTORY, VERSION_METADATA_PATH),
   `${JSON.stringify({ packages: versions, commit }, null, 2)}\n`,
 );
 
 await writeFile(
-  join(output, 'llms.txt'),
-  [
-    '# @lemuel-manske UI',
-    '',
-    '> React design system: public APIs, accessible compositions, and semantic themes.',
-    '',
-    'Read Getting started before composing UI. Match these docs to the installed package version.',
-    'Use public package imports; verify props against the generated API and examples.',
-    '',
-    '## Guides',
-    '',
-    ...links.sort(),
-    '',
-    '## Generated reference',
-    '',
-    '- [Component APIs and story examples](manifests/components.json)',
-    '- [MDX documentation manifest](manifests/docs.json)',
-    '- [Package versions and source commit](docs/version.json)',
-    '',
-    'MCP is available at /mcp on the running Storybook dev server, not on this static build.',
-    '',
-  ].join('\n'),
+  join(STORYBOOK_OUTPUT_DIRECTORY, LLMS_INDEX_FILENAME),
+  await renderDocTemplate('llms', {
+    guides: links.sort().join('\n'),
+    componentsManifest: COMPONENTS_MANIFEST_PATH,
+    docsManifest: DOCS_MANIFEST_PATH,
+    versionMetadata: VERSION_METADATA_PATH,
+  }),
 );
 
-console.log(`Exported ${links.length} Markdown guides and llms.txt to ${output}`);
+console.log(
+  `Exported ${links.length} Markdown guides and llms.txt to ${STORYBOOK_OUTPUT_DIRECTORY}`,
+);

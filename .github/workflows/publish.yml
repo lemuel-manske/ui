@@ -1,4 +1,4 @@
-name: publish
+name: ui @ publish
 
 on:
   workflow_dispatch:
@@ -41,13 +41,9 @@ jobs:
           scope: '@lemuel-manske'
           package-manager-cache: false
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Version all packages, publish, and create a GitHub Release
-
+      - run: npm run release
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
           GITHUB_TOKEN: ${{ github.token }}
-
-        run: npm run release

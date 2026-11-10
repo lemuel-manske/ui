@@ -20,14 +20,23 @@
     "node": ">=20.19.0 || >=22.12.0"
   },
   "scripts": {
+    "prepare": "husky",
+    "commitlint": "commitlint",
+    "precommit": "lint-staged",
     "storybook": "npm run storybook --workspace @lkmliz/components",
-    "format": "npm run format --workspaces",
-    "format:fix": "npm run format:fix --workspaces",
-    "lint": "npm run lint --workspaces",
-    "lint:fix": "npm run lint:fix --workspaces"
+    "format": "npm run format --workspaces && prettier --check .",
+    "format:fix": "npm run format:fix --workspaces && prettier --write .",
+    "lint": "npm run lint --workspaces && eslint .",
+    "lint:fix": "npm run lint:fix --workspaces && eslint . --fix"
   },
   "devDependencies": {
+    "@commitlint/cli": "20.5.3",
+    "@commitlint/config-conventional": "20.5.3",
     "@lkmliz/config-eslint": "file:packages/config-eslint",
-    "eslint": "9.39.0"
+    "@lkmliz/config-prettier": "file:packages/config-prettier",
+    "eslint": "9.39.0",
+    "husky": "9.1.7",
+    "lint-staged": "16.4.0",
+    "prettier": "3.6.0"
   }
 }

@@ -7,3 +7,9 @@ Design system library for `@lkmliz` projects.
 ```sh
 npm ci
 ```
+
+## Demo
+
+```sh
+npm run storybook
+```

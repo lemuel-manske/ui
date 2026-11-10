@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/config-typescript",
+  "name": "@lemuel-manske/config-typescript",
   "version": "0.1.0",
   "type": "module",
   "exports": {
@@ -15,8 +15,8 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@lkmliz/config-eslint": "file:../config-eslint",
-    "@lkmliz/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
     "eslint": "9.39.0",
     "prettier": "3.6.0"
   },

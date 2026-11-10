@@ -1,4 +1,4 @@
-import { cx } from '@lkmliz/utils';
+import { cx } from '@lemuel-manske/utils';
 
 import type { ListProps, ListItemProps } from './types';
 

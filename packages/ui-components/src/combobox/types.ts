@@ -1,6 +1,6 @@
 import type { ChangeEventHandler, FocusEventHandler, ReactNode, Ref } from 'react';
 
-import type { AccessibilityOptions } from '@lkmliz/utils';
+import type { AccessibilityOptions } from '@lemuel-manske/utils';
 
 import type { ComboboxAppearance, ComboboxSize } from './options';
 

@@ -1,5 +1,5 @@
 {
-  "extends": "@lkmliz/config-typescript/react.json",
+  "extends": "@lemuel-manske/config-typescript/react.json",
   "compilerOptions": {
     "declaration": true,
     "rootDir": "src",

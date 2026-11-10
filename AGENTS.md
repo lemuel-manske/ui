@@ -44,7 +44,7 @@ implement the complete `DesignTokens` contract; avoid component-specific color t
 
 Jest runs `src/**/*.test.ts` unit tests. Playwright runs `src/**/*.test.tsx` component and hook tests in Chromium. Colocate fixtures as `*.test-fixture.tsx` and stories as `*.stories.tsx`.
 
-Test interactions, keyboard behavior, accessible names, and representative integration scenarios. Use the shared `@lkmliz/config-playwright` helpers and `noAccessibilityViolations()` matcher. No numeric coverage threshold is configured. Target components with `npm run test --workspace @lkmliz/components`.
+Test interactions, keyboard behavior, accessible names, and representative integration scenarios. Use the shared `@lemuel-manske/config-playwright` helpers and `noAccessibilityViolations()` matcher. No numeric coverage threshold is configured. Target components with `npm run test --workspace @lemuel-manske/components`.
 
 ## Commit & Pull Request Guidelines
 

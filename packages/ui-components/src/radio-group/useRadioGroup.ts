@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { cx, useAccessibility } from '@lkmliz/utils';
+import { cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { RadioGroupProps, RadioGroupItemProps } from './types';
 

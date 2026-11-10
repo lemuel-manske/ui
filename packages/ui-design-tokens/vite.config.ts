@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url';
 
-import { createLibraryConfig } from '@lkmliz/config-vite';
+import { createLibraryConfig } from '@lemuel-manske/config-vite';
 
 import { mergeConfig } from 'vite';
 

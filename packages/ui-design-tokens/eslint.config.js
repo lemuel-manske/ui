@@ -1,3 +1,3 @@
-import config from '@lkmliz/config-eslint/node';
+import config from '@lemuel-manske/config-eslint/node';
 
 export default config;

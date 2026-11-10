@@ -1,4 +1,4 @@
-import { Size } from '@lkmliz/design-tokens';
+import { Size } from '@lemuel-manske/design-tokens';
 
 const TextSize = {
   SMALL: Size.SMALL,

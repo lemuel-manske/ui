@@ -48,8 +48,11 @@ jobs:
       - name: Run unit and browser tests
         run: npm test
 
+      - name: Test release tooling
+        run: npm run test:release
+
       - name: Build Storybook
-        run: npm run build:storybook --workspace @lkmliz/components
+        run: npm run build:storybook --workspace @lemuel-manske/components
 
       - name: Upload browser test diagnostics
         if: failure()

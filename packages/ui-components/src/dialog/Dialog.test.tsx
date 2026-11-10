@@ -1,4 +1,4 @@
-import { expect, test } from '@lkmliz/config-playwright';
+import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { DialogExample, ConditionalDialogExample } from './Dialog.test-fixture';
 

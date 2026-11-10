@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/design-tokens",
+  "name": "@lemuel-manske/design-tokens",
   "version": "0.1.0",
   "type": "module",
   "description": "Typed design tokens, shared enums, and build-time theme CSS.",
@@ -33,10 +33,10 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@lkmliz/config-eslint": "file:../config-eslint",
-    "@lkmliz/config-prettier": "file:../config-prettier",
-    "@lkmliz/config-typescript": "file:../config-typescript",
-    "@lkmliz/config-vite": "file:../config-vite",
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-typescript": "file:../config-typescript",
+    "@lemuel-manske/config-vite": "file:../config-vite",
     "@types/node": "22.15.0",
     "eslint": "9.39.0",
     "prettier": "3.6.0",

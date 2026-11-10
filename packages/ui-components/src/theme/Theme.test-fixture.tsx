@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { archiveTheme, libraryTheme } from '@lkmliz/design-tokens';
+import { archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
 
 import { Button } from '../button/Button';
 import { ButtonVariant } from '../button/options';

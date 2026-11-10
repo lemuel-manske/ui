@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/utils",
+  "name": "@lemuel-manske/utils",
   "version": "0.1.0",
   "type": "module",
   "description": "Shared frontend utilities.",
@@ -31,12 +31,12 @@
     "test": "tsc --project tsconfig.tests.json && jest && playwright test --tsconfig ../../tsconfig.test.json"
   },
   "devDependencies": {
-    "@lkmliz/config-eslint": "file:../config-eslint",
-    "@lkmliz/config-jest": "file:../config-jest",
-    "@lkmliz/config-playwright": "file:../config-playwright",
-    "@lkmliz/config-prettier": "file:../config-prettier",
-    "@lkmliz/config-typescript": "file:../config-typescript",
-    "@lkmliz/config-vite": "file:../config-vite",
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-jest": "file:../config-jest",
+    "@lemuel-manske/config-playwright": "file:../config-playwright",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-typescript": "file:../config-typescript",
+    "@lemuel-manske/config-vite": "file:../config-vite",
     "@types/node": "22.15.0",
     "@types/react": "19.3.0",
     "eslint": "9.39.0",

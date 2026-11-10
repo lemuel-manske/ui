@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from 'react';
 
 import type { SyntheticEvent } from 'react';
 
-import { cx, useAccessibility } from '@lkmliz/utils';
+import { cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { DialogProps } from './types';
 

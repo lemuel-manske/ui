@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/components",
+  "name": "@lemuel-manske/components",
   "version": "0.1.0",
   "type": "module",
   "description": "Reusable React components and static styles.",
@@ -39,15 +39,15 @@
     "react": "^19.0.0"
   },
   "dependencies": {
-    "@lkmliz/design-tokens": "^0.1.0",
-    "@lkmliz/utils": "^0.1.0"
+    "@lemuel-manske/design-tokens": "^0.1.0",
+    "@lemuel-manske/utils": "^0.1.0"
   },
   "devDependencies": {
-    "@lkmliz/config-eslint": "file:../config-eslint",
-    "@lkmliz/config-playwright": "file:../config-playwright",
-    "@lkmliz/config-prettier": "file:../config-prettier",
-    "@lkmliz/config-typescript": "file:../config-typescript",
-    "@lkmliz/config-vite": "file:../config-vite",
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-playwright": "file:../config-playwright",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-typescript": "file:../config-typescript",
+    "@lemuel-manske/config-vite": "file:../config-vite",
     "@storybook/addon-a11y": "10.6.6",
     "@storybook/addon-docs": "10.6.6",
     "@storybook/react-vite": "10.6.6",

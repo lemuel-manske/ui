@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import type { DesignTokens } from '@lkmliz/design-tokens';
+import type { DesignTokens } from '@lemuel-manske/design-tokens';
 
 interface ThemeProps {
   children: ReactNode;

@@ -1,6 +1,6 @@
 import type { ChangeEventHandler, ReactNode, Ref } from 'react';
 
-import type { AccessibilityOptions } from '@lkmliz/utils';
+import type { AccessibilityOptions } from '@lemuel-manske/utils';
 
 interface CheckboxProps extends AccessibilityOptions {
   children: ReactNode;

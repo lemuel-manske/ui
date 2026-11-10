@@ -1,6 +1,6 @@
 import { cloneElement } from 'react';
 
-import { cx } from '@lkmliz/utils';
+import { cx } from '@lemuel-manske/utils';
 
 import { Label } from '../label/Label';
 

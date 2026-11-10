@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/config-playwright",
+  "name": "@lemuel-manske/config-playwright",
   "version": "0.1.0",
   "type": "module",
   "exports": {
@@ -23,9 +23,9 @@
     "playwright-core": "1.62.0"
   },
   "devDependencies": {
-    "@lkmliz/config-eslint": "file:../config-eslint",
-    "@lkmliz/config-prettier": "file:../config-prettier",
-    "@lkmliz/config-typescript": "file:../config-typescript",
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-typescript": "file:../config-typescript",
     "@types/node": "22.15.0",
     "@types/react": "19.3.0",
     "eslint": "9.39.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/config-eslint",
+  "name": "@lemuel-manske/config-eslint",
   "version": "0.1.0",
   "type": "module",
   "exports": {
@@ -24,7 +24,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@lkmliz/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
     "prettier": "3.6.0"
   },
   "license": "MIT",

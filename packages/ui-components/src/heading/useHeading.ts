@@ -1,4 +1,4 @@
-import { cx } from '@lkmliz/utils';
+import { cx } from '@lemuel-manske/utils';
 
 import { HeadingSize, HeadingWeight } from './options';
 

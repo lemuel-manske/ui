@@ -1,4 +1,4 @@
-import { expect, test } from '@lkmliz/config-playwright';
+import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { LegendHook } from './useLegend.test-fixture';
 

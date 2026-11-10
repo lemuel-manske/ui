@@ -1,5 +1,5 @@
 {
-  "extends": "@lkmliz/config-typescript/base.json",
+  "extends": "@lemuel-manske/config-typescript/base.json",
   "compilerOptions": {
     "declaration": true,
     "rootDir": "src",

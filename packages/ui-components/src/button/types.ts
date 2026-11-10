@@ -1,6 +1,6 @@
 import type { MouseEventHandler, ReactNode, Ref } from 'react';
 
-import type { AccessibilityOptions } from '@lkmliz/utils';
+import type { AccessibilityOptions } from '@lemuel-manske/utils';
 
 import type { ButtonSize, ButtonVariant } from './options';
 

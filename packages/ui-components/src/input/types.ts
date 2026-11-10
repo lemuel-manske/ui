@@ -1,6 +1,6 @@
 import type { ChangeEventHandler, FocusEventHandler, Ref } from 'react';
 
-import type { AccessibilityOptions } from '@lkmliz/utils';
+import type { AccessibilityOptions } from '@lemuel-manske/utils';
 
 import type { InputSize } from './options';
 

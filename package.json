@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/ui",
+  "name": "@lemuel-manske/ui",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
@@ -17,29 +17,33 @@
     "url": "https://github.com/lemuel-manske/ui/issues"
   },
   "engines": {
-    "node": ">=20.19.0 || >=22.12.0"
+    "node": "^22.14.0 || >= 24.10.0"
   },
   "scripts": {
     "prepare": "husky",
-    "build": "npm run build --workspace @lkmliz/config-playwright && npm run build --workspace @lkmliz/design-tokens && npm run build --workspace @lkmliz/utils && npm run build --workspace @lkmliz/components",
+    "build": "npm run build --workspace @lemuel-manske/config-playwright && npm run build --workspace @lemuel-manske/design-tokens && npm run build --workspace @lemuel-manske/utils && npm run build --workspace @lemuel-manske/components",
     "check:packages": "node scripts/check-packages.js",
     "commitlint": "commitlint",
     "precommit": "lint-staged",
-    "storybook": "npm run storybook --workspace @lkmliz/components",
+    "storybook": "npm run storybook --workspace @lemuel-manske/components",
     "test": "npm run test --workspaces --if-present",
     "format": "npm run format --workspaces -- --ignore-path ../../.gitignore && prettier --check . --ignore-path .gitignore",
     "format:fix": "npm run format:fix --workspaces -- --ignore-path ../../.gitignore && prettier --write . --ignore-path .gitignore",
     "lint": "npm run lint --workspaces && eslint .",
-    "lint:fix": "npm run lint:fix --workspaces && eslint . --fix"
+    "lint:fix": "npm run lint:fix --workspaces && eslint . --fix",
+    "release": "semantic-release",
+    "test:release": "node --test scripts/release-workspaces.test.js"
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.3",
     "@commitlint/config-conventional": "20.5.3",
-    "@lkmliz/config-eslint": "file:packages/config-eslint",
-    "@lkmliz/config-prettier": "file:packages/config-prettier",
+    "@lemuel-manske/config-eslint": "file:packages/config-eslint",
+    "@lemuel-manske/config-prettier": "file:packages/config-prettier",
+    "conventional-changelog-conventionalcommits": "8.0.0",
     "eslint": "9.39.0",
     "husky": "9.1.7",
     "lint-staged": "16.4.0",
-    "prettier": "3.6.0"
+    "prettier": "3.6.0",
+    "semantic-release": "25.0.9"
   }
 }

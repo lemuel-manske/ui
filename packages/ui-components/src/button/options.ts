@@ -1,4 +1,4 @@
-import { Size, Variant } from '@lkmliz/design-tokens';
+import { Size, Variant } from '@lemuel-manske/design-tokens';
 
 const ButtonSize = {
   SMALL: Size.SMALL,

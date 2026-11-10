@@ -1,4 +1,4 @@
-import { cx, useAccessibility } from '@lkmliz/utils';
+import { cx, useAccessibility } from '@lemuel-manske/utils';
 
 import { ComboboxAppearance, ComboboxSize } from './options';
 

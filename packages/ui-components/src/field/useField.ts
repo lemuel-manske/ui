@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-import { cx, useAccessibility } from '@lkmliz/utils';
+import { cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { FieldProps } from './types';
 

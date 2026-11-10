@@ -1,3 +1,3 @@
-import { reactConfig as config } from '@lkmliz/config-vite';
+import { reactConfig as config } from '@lemuel-manske/config-vite';
 
 export default config;

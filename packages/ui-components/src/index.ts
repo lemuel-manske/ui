@@ -1,4 +1,4 @@
-import '@lkmliz/design-tokens/styles.css';
+import '@lemuel-manske/design-tokens/styles.css';
 
 export { Alert } from './alert/Alert';
 

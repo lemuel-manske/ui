@@ -1,4 +1,4 @@
-import { cx } from '@lkmliz/utils';
+import { cx } from '@lemuel-manske/utils';
 
 import { TextSize } from './options';
 

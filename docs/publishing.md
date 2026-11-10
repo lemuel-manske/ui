@@ -1,72 +1,81 @@
 # Publishing packages
 
-The `Checks` workflow runs formatting, ESLint, package builds, package export validation, all
-Jest and Chromium tests, and a Storybook build on pushes and pull requests. Package builds run
-in dependency order. `npm run check:packages` checks that each exported file is present in its
-package and that runtime dependencies use publishable version ranges.
+The `checks` workflow runs formatting, ESLint, builds, package export validation, all Jest and
+Chromium tests, release tooling tests, and a Storybook build on pushes and pull requests.
+Package builds run in dependency order. `npm run check:packages` verifies exported files and
+runtime dependency ranges.
 
-## GitHub Packages setup
+## Packages and authentication
 
-All nine workspace packages publish to `https://npm.pkg.github.com`:
+All nine workspace packages publish to GitHub Packages under `@lemuel-manske`:
 
-- `@lkmliz/config-eslint`
-- `@lkmliz/config-jest`
-- `@lkmliz/config-playwright`
-- `@lkmliz/config-prettier`
-- `@lkmliz/config-typescript`
-- `@lkmliz/config-vite`
-- `@lkmliz/design-tokens`
-- `@lkmliz/utils`
-- `@lkmliz/components`
+- `config-eslint`
+- `config-jest`
+- `config-playwright`
+- `config-prettier`
+- `config-typescript`
+- `config-vite`
+- `design-tokens`
+- `utils`
+- `components`
 
-Only the root workspace remains private. Static configuration packages include their exported
-configuration files; Playwright's TypeScript configuration helpers publish compiled JavaScript
-and declarations.
+Only the root workspace remains private. Configuration packages include their exported files;
+Playwright's helpers publish compiled JavaScript and declarations.
 
-GitHub Packages scopes belong to GitHub accounts or organizations. Keeping `@lkmliz` requires
-publishing permission for the GitHub account or organization named `lkmliz`.
+The scope matches the GitHub account that owns `lemuel-manske/ui`. The publishing workflow uses
+the built-in `GITHUB_TOKEN` with `packages: write` and `contents: write` permissions. No personal
+publishing token or `GH_PACKAGES_TOKEN` secret is required.
 
-For this repository (`lemuel-manske/ui`), add an Actions repository secret named
-`GH_PACKAGES_TOKEN` containing a classic personal access token with `write:packages` permission
-for `lkmliz`. Authorize the token for organization SSO if required. Do not commit the token.
-If the repository is moved under `lkmliz`, the workflow can instead use its built-in
-`GITHUB_TOKEN`.
+GitHub Packages initially creates private packages; their owner can change package visibility
+in GitHub's package settings. See [GitHub's npm registry documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry).
 
-See [GitHub's npm registry documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry)
-for scope, authentication, repository association, and package visibility details.
+## Semantic versioning
+
+`semantic-release` calculates one shared version for every package from Conventional Commits
+since the last `v*` release tag:
+
+| Commit                                                | Release                  |
+| ----------------------------------------------------- | ------------------------ |
+| `fix: correct a rendering issue`                      | Patch                    |
+| `feat: add a component`                               | Minor                    |
+| `feat!: remove an API` or a `BREAKING CHANGE:` footer | Major                    |
+| `docs:`, `style:`, `test:`, `ci:`, or `chore:`        | No release by themselves |
+
+The first semantic release is `1.0.0` when there are no previous release tags. Source manifest
+versions are development values. During a release, the tool updates all package versions,
+internal dependency ranges, and the lockfile in the runner; these changes are not committed
+back to the repository. Git tags and the registry track published versions.
 
 ## Publish on demand
 
-1. Update the package versions in their `package.json` files. When releasing dependencies,
-   update the component package's dependency ranges as needed.
-2. Run `npm install --package-lock-only --ignore-scripts`, then commit and push the manifests
-   and lockfile.
-3. Open **Actions → Publish packages → Run workflow** on GitHub.
-4. Choose the branch or tag and run the workflow. There are no package or distribution-tag options.
+1. Commit changes using Conventional Commits and push them to `main`.
+2. Open **Actions → publish → Run workflow** and select `main`.
 
-The workflow reruns all checks before publishing the versions recorded in the selected commit.
-Every run publishes all nine packages: configuration packages, design tokens, utilities, then
-components. npm uses its default `latest` distribution tag. Each package version can be published
-once, so update already-published versions before starting another release or retrying a partially
-completed release.
+There are no publishing inputs. The workflow reruns all checks, calculates the next version,
+builds and validates all nine packages, publishes them to `https://npm.pkg.github.com`, and
+creates a `v<version>` Git tag and GitHub Release with generated release notes. All packages
+publish together. A run without release-worthy commits finishes without publishing.
 
-Publishing never runs automatically on a push. GitHub Packages initially creates private
-packages; their owner can change visibility in the package settings.
+Publishing remains manual. Runs on branches other than `main` skip the publishing job.
+The GitHub Release is created after every package publishes successfully.
+
+`npm run release -- --dry-run` previews the next version and release notes without publishing;
+it still requires Git authentication. See the [semantic-release documentation](https://semantic-release.org/usage/configuration/).
 
 ## Install in another project
 
-Add this scope mapping to that project's `.npmrc`:
+Add this scope mapping to the consuming project's `.npmrc`:
 
 ```ini
-@lkmliz:registry=https://npm.pkg.github.com
+@lemuel-manske:registry=https://npm.pkg.github.com
 ```
 
-Authenticate with GitHub Packages using a classic token with `read:packages` access, then install:
+Authenticate using a classic personal token with `read:packages` permission, then install:
 
 ```sh
-npm login --scope=@lkmliz --auth-type=legacy --registry=https://npm.pkg.github.com
-npm install @lkmliz/components
+npm login --scope=@lemuel-manske --auth-type=legacy --registry=https://npm.pkg.github.com
+npm install @lemuel-manske/components
 ```
 
-Configure authentication in the consuming project's user settings or CI secrets, outside source
-control. GitHub requires authentication to download public packages as well.
+Store authentication in user settings or CI secrets. GitHub requires authentication to download
+public packages as well.

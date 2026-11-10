@@ -1,5 +1,5 @@
 {
-  "name": "@lkmliz/config-vite",
+  "name": "@lemuel-manske/config-vite",
   "version": "0.1.0",
   "type": "module",
   "exports": {
@@ -21,8 +21,8 @@
     "vite": "^7.1.0"
   },
   "devDependencies": {
-    "@lkmliz/config-eslint": "file:../config-eslint",
-    "@lkmliz/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
     "prettier": "3.6.0"
   },
   "license": "MIT",

@@ -1,7 +1,7 @@
-import { expect, test } from '@lkmliz/config-playwright';
+import { expect, test } from '@lemuel-manske/config-playwright';
 
-import { archiveTheme, libraryTheme, Weight } from '@lkmliz/design-tokens';
-import type { DesignTokens } from '@lkmliz/design-tokens';
+import { archiveTheme, libraryTheme, Weight } from '@lemuel-manske/design-tokens';
+import type { DesignTokens } from '@lemuel-manske/design-tokens';
 
 import { Theme } from './Theme';
 

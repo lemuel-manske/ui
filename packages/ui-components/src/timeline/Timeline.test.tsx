@@ -1,6 +1,6 @@
-import { expect, test } from '@lkmliz/config-playwright';
+import { expect, test } from '@lemuel-manske/config-playwright';
 
-import { archiveTheme, libraryTheme } from '@lkmliz/design-tokens';
+import { archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
 
 import { Link } from '../link/Link';
 import { Text } from '../text/Text';

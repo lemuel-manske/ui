@@ -1,5 +1,5 @@
-import { cx, useAccessibility } from '@lkmliz/utils';
-import type { AccessibilityProperties } from '@lkmliz/utils';
+import { cx, useAccessibility } from '@lemuel-manske/utils';
+import type { AccessibilityProperties } from '@lemuel-manske/utils';
 
 import { LabelSize } from './options';
 import type { LabelProps } from './types';

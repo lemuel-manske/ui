@@ -1,4 +1,4 @@
-import { Size, Weight } from '@lkmliz/design-tokens';
+import { Size, Weight } from '@lemuel-manske/design-tokens';
 
 const HeadingSize = {
   SMALL: Size.SMALL,

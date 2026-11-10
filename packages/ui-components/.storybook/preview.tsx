@@ -1,8 +1,8 @@
 import type { Preview } from '@storybook/react-vite';
 
-import '@lkmliz/design-tokens/styles.css';
+import '@lemuel-manske/design-tokens/styles.css';
 
-import { archiveTheme, libraryTheme } from '@lkmliz/design-tokens';
+import { archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
 
 import { Theme } from '../src/theme/Theme';
 

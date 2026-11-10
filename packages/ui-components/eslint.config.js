@@ -1,3 +1,3 @@
-import config from '@lkmliz/config-eslint/react';
+import config from '@lemuel-manske/config-eslint/react';
 
 export default config;

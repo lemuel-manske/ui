@@ -1,4 +1,4 @@
-import { expect, test } from '@lkmliz/config-jest/globals';
+import { expect, test } from '@lemuel-manske/config-jest/globals';
 
 import { cx } from './cx';
 

@@ -1,0 +1,20 @@
+.list {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ui-font-body);
+  font-size: var(--ui-text-medium);
+  line-height: 1.5;
+  color: var(--ui-color-text-primary);
+}
+
+.list:not(.unmarked) {
+  padding-inline-start: var(--ui-space-24);
+}
+
+.unmarked {
+  list-style: none;
+}
+
+.item {
+  overflow-wrap: anywhere;
+}

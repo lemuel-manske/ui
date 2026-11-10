@@ -88,6 +88,12 @@ export { useLink } from './link/useLink';
 
 export type { LinkProps } from './link/types';
 
+export { List, ListItem } from './list/List';
+
+export { useList, useListItem } from './list/useList';
+
+export type { ListProps, ListItemProps } from './list/types';
+
 export { RadioGroup, RadioGroupItem } from './radio-group/RadioGroup';
 
 export { useRadioGroup, useRadioGroupItem } from './radio-group/useRadioGroup';
@@ -117,6 +123,12 @@ export { useTextarea } from './textarea/useTextarea';
 export type { TextareaProps } from './textarea/types';
 
 export { TextareaSize } from './textarea/options';
+
+export { Timeline, TimelineItem } from './timeline/Timeline';
+
+export { useTimeline, useTimelineItem } from './timeline/useTimeline';
+
+export type { TimelineProps, TimelineItemProps } from './timeline/types';
 
 export { Theme } from './theme/Theme';
 

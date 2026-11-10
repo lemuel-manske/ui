@@ -23,13 +23,13 @@
 }
 
 .heading.small {
-  font-size: calc(var(--ui-text-large) * 1.25);
+  font-size: var(--ui-text-heading-small);
 }
 
 .heading.medium {
-  font-size: calc(var(--ui-text-large) * 1.75);
+  font-size: var(--ui-text-heading-medium);
 }
 
 .heading.large {
-  font-size: calc(var(--ui-text-large) * 2.5);
+  font-size: var(--ui-text-heading-large);
 }

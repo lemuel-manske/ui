@@ -14,11 +14,11 @@
   width: 1.25rem;
   height: 1.25rem;
   margin: 0;
-  accent-color: var(--ui-color-text-primary);
+  accent-color: var(--ui-action-primary);
 }
 
 .item input:focus-visible {
-  outline: 2px solid var(--ui-color-text-primary);
+  outline: 2px solid var(--ui-state-focus);
   outline-offset: 3px;
 }
 

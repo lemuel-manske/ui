@@ -14,6 +14,6 @@
 }
 
 .error {
-  color: var(--ui-color-text-primary);
+  color: var(--ui-state-danger);
   font-weight: 500;
 }

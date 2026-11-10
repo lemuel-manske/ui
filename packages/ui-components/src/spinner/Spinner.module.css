@@ -10,8 +10,8 @@
   height: 1em;
   border: 2px solid currentColor;
   border-right-color: transparent;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  border-radius: var(--ui-radius-full);
+  animation: spin calc(var(--ui-motion-duration-normal) * 4) linear infinite;
 }
 
 .small {

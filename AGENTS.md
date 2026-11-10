@@ -36,6 +36,10 @@ Use PascalCase component filenames (`Button.tsx`), camelCase hooks (`useButton.t
 
 Use empty lines to separate logical blocks. When in doubt to separate or not, separate. Always.
 
+Keep design token groups flat and semantic, with CSS variables named `--ui-{group}-{token}`.
+Use action tokens for interactive colors and state tokens for focus and validation. Themes must
+implement the complete `DesignTokens` contract; avoid component-specific color tokens.
+
 ## Testing Guidelines
 
 Jest runs `src/**/*.test.ts` unit tests. Playwright runs `src/**/*.test.tsx` component and hook tests in Chromium. Colocate fixtures as `*.test-fixture.tsx` and stories as `*.stories.tsx`.

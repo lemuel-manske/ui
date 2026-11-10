@@ -22,8 +22,8 @@
   min-width: 0;
   width: 100%;
   min-height: var(--ui-control-medium);
-  border: var(--ui-border-width) solid var(--ui-color-text-secondary);
-  border-radius: var(--ui-border-radius);
+  border: var(--ui-border-width) solid var(--ui-color-border);
+  border-radius: var(--ui-radius-small);
   padding: var(--ui-space-12);
   background: transparent;
   color: var(--ui-color-text-primary);
@@ -31,6 +31,6 @@
 }
 
 .story-field input:focus-visible {
-  outline: 2px solid var(--ui-color-text-primary);
+  outline: 2px solid var(--ui-state-focus);
   outline-offset: 3px;
 }

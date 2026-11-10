@@ -1,18 +1,18 @@
-import { fileURLToPath } from "node:url";
+import { fileURLToPath } from 'node:url';
 
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.tsx"],
+  stories: ['../src/**/*.stories.tsx'],
 
-  addons: ["@storybook/addon-docs", "@storybook/addon-a11y"],
+  addons: ['@storybook/addon-docs', '@storybook/addon-a11y'],
 
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
 
     options: {
       builder: {
-        viteConfigPath: fileURLToPath(new URL("./vite.config.ts", import.meta.url)),
+        viteConfigPath: fileURLToPath(new URL('./vite.config.ts', import.meta.url)),
       },
     },
   },

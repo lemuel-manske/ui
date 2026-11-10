@@ -3,8 +3,8 @@
   width: min(36rem, calc(100% - var(--ui-space-32)));
   max-height: calc(100% - var(--ui-space-32));
   padding: var(--ui-space-24);
-  border: var(--ui-border-width) solid var(--ui-color-text-secondary);
-  border-radius: var(--ui-border-radius);
+  border: var(--ui-border-width) solid var(--ui-color-border);
+  border-radius: var(--ui-radius-small);
   background: var(--ui-color-background);
   color: var(--ui-color-text-primary);
   overflow: auto;

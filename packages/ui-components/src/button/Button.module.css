@@ -8,7 +8,7 @@
   max-width: 100%;
   margin: 0;
   border: var(--ui-border-width) solid transparent;
-  border-radius: var(--ui-border-radius);
+  border-radius: var(--ui-radius-small);
   font-family: var(--ui-font-body);
   font-weight: 500;
   line-height: 1.25;
@@ -36,32 +36,32 @@
 }
 
 .button.primary {
-  background: var(--ui-color-text-primary);
-  color: var(--ui-color-background);
+  background: var(--ui-action-primary);
+  color: var(--ui-action-primary-foreground);
 }
 
 .button.primary:hover:not(:disabled) {
-  background: var(--ui-color-dark-surface);
+  background: var(--ui-action-primary-hover);
 }
 
 .button.secondary {
-  border-color: var(--ui-color-text-secondary);
-  background: transparent;
-  color: var(--ui-color-text-primary);
+  border-color: var(--ui-color-border);
+  background: var(--ui-action-secondary);
+  color: var(--ui-action-secondary-foreground);
 }
 
 .button.tertiary {
-  background: transparent;
-  color: var(--ui-color-text-primary);
+  background: var(--ui-action-secondary);
+  color: var(--ui-action-secondary-foreground);
 }
 
 .button.secondary:hover:not(:disabled),
 .button.tertiary:hover:not(:disabled) {
-  background: var(--ui-color-surface-muted);
+  background: var(--ui-action-secondary-hover);
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--ui-color-text-primary);
+  outline: 2px solid var(--ui-state-focus);
   outline-offset: 3px;
 }
 

@@ -24,8 +24,9 @@
     "commitlint": "commitlint",
     "precommit": "lint-staged",
     "storybook": "npm run storybook --workspace @lkmliz/components",
-    "format": "npm run format --workspaces && prettier --check .",
-    "format:fix": "npm run format:fix --workspaces && prettier --write .",
+    "test": "npm run test --workspaces --if-present",
+    "format": "npm run format --workspaces -- --ignore-path ../../.gitignore && prettier --check . --ignore-path .gitignore",
+    "format:fix": "npm run format:fix --workspaces -- --ignore-path ../../.gitignore && prettier --write . --ignore-path .gitignore",
     "lint": "npm run lint --workspaces && eslint .",
     "lint:fix": "npm run lint:fix --workspaces && eslint . --fix"
   },

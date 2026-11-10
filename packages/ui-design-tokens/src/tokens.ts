@@ -5,11 +5,28 @@ interface DesignTokens {
     background: string;
     surface: string;
     'surface-muted': string;
+    'surface-inverse': string;
     border: string;
     'text-primary': string;
     'text-secondary': string;
     'text-muted': string;
-    'dark-surface': string;
+  };
+
+  action: {
+    primary: string;
+    'primary-hover': string;
+    'primary-foreground': string;
+    secondary: string;
+    'secondary-hover': string;
+    'secondary-foreground': string;
+  };
+
+  state: {
+    focus: string;
+    danger: string;
+    'danger-foreground': string;
+    success: string;
+    'success-foreground': string;
   };
 
   font: {
@@ -22,6 +39,10 @@ interface DesignTokens {
     small: string;
     medium: string;
     large: string;
+    'heading-small': string;
+    'heading-medium': string;
+    'heading-large': string;
+    display: string;
   };
 
   weight: Record<Weight, number>;
@@ -36,7 +57,22 @@ interface DesignTokens {
 
   border: {
     width: string;
-    radius: string;
+  };
+
+  radius: {
+    none: string;
+    small: string;
+    medium: string;
+    large: string;
+    full: string;
+  };
+
+  motion: {
+    'duration-fast': string;
+    'duration-normal': string;
+    'duration-slow': string;
+    'easing-standard': string;
+    'easing-emphasized': string;
   };
 }
 
@@ -45,11 +81,28 @@ const archiveTheme = {
     background: '#F6F3EB',
     surface: '#EEE9DF',
     'surface-muted': '#E7E0D3',
-    border: '#C7BFB2',
+    'surface-inverse': '#34312C',
+    border: '#625C53',
     'text-primary': '#211F1B',
     'text-secondary': '#625C53',
-    'text-muted': '#756D61',
-    'dark-surface': '#34312C',
+    'text-muted': '#6B6358',
+  },
+
+  action: {
+    primary: '#211F1B',
+    'primary-hover': '#34312C',
+    'primary-foreground': '#F6F3EB',
+    secondary: 'transparent',
+    'secondary-hover': '#E7E0D3',
+    'secondary-foreground': '#211F1B',
+  },
+
+  state: {
+    focus: '#211F1B',
+    danger: '#9A3324',
+    'danger-foreground': '#F6F3EB',
+    success: '#2F5D3A',
+    'success-foreground': '#F6F3EB',
   },
 
   font: {
@@ -62,6 +115,10 @@ const archiveTheme = {
     small: '0.875rem',
     medium: '1rem',
     large: '1.125rem',
+    'heading-small': '1.40625rem',
+    'heading-medium': '1.96875rem',
+    'heading-large': '2.8125rem',
+    display: 'clamp(2.8125rem, 2rem + 3vw, 4.5rem)',
   },
 
   weight: {
@@ -91,7 +148,22 @@ const archiveTheme = {
 
   border: {
     width: '1px',
-    radius: '2px',
+  },
+
+  radius: {
+    none: '0',
+    small: '2px',
+    medium: '4px',
+    large: '8px',
+    full: '9999px',
+  },
+
+  motion: {
+    'duration-fast': '120ms',
+    'duration-normal': '200ms',
+    'duration-slow': '350ms',
+    'easing-standard': 'cubic-bezier(0.2, 0, 0, 1)',
+    'easing-emphasized': 'cubic-bezier(0.2, 0.8, 0.2, 1)',
   },
 } as const satisfies DesignTokens;
 
@@ -101,10 +173,27 @@ const libraryTheme = {
   color: {
     ...archiveTheme.color,
     background: '#ffffff',
+    border: '#405b52',
     'text-primary': '#193a32',
     'text-secondary': '#405b52',
-    'dark-surface': '#285146',
+    'surface-inverse': '#285146',
     'surface-muted': '#e4eee9',
+  },
+
+  action: {
+    primary: '#193a32',
+    'primary-hover': '#285146',
+    'primary-foreground': '#ffffff',
+    secondary: 'transparent',
+    'secondary-hover': '#e4eee9',
+    'secondary-foreground': '#193a32',
+  },
+
+  state: {
+    ...archiveTheme.state,
+    focus: '#193a32',
+    'danger-foreground': '#ffffff',
+    'success-foreground': '#ffffff',
   },
 
   font: {

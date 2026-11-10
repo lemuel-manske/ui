@@ -40,10 +40,16 @@
     "@lemuel-manske/config-eslint": "file:packages/config-eslint",
     "@lemuel-manske/config-prettier": "file:packages/config-prettier",
     "conventional-changelog-conventionalcommits": "8.0.0",
-    "eslint": "9.39.0",
+    "eslint": "10.14.0",
     "husky": "9.1.7",
     "lint-staged": "16.4.0",
     "prettier": "3.6.0",
     "semantic-release": "25.0.9"
+  },
+  "allowScripts": {
+    "@swc/core@1.16.22": true,
+    "esbuild@0.28.2": true,
+    "esbuild@0.25.12": true,
+    "@parcel/watcher@2.6.0": true
   }
 }

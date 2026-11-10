@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@lemuel-manske/config-prettier": "file:../config-prettier",
+    "eslint": "10.14.0",
     "prettier": "3.6.0"
   },
   "license": "MIT",

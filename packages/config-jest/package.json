@@ -15,7 +15,7 @@
   "devDependencies": {
     "@lemuel-manske/config-eslint": "file:../config-eslint",
     "@lemuel-manske/config-prettier": "file:../config-prettier",
-    "eslint": "9.39.0",
+    "eslint": "10.14.0",
     "prettier": "3.6.0"
   },
   "dependencies": {

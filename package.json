@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "type": "module",
-  "description": "UI components for lkmliz projects.",
+  "description": "UI components for @Hemuel-manske projects.",
   "license": "MIT",
   "repository": {
     "type": "git",

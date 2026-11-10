@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is an npm workspace monorepo for the `@lkmliz` React design system.
+This repository is an npm workspace monorepo for the `@lemuel-manske` React design system.
 
 - `packages/ui-components/src/`: component folders such as `button/` and `radio-group/`, containing components, hooks, CSS Modules, stories, and colocated tests.
 - `packages/ui-utils/src/`: shared hooks and utilities.

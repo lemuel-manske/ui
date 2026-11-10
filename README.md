@@ -1,6 +1,6 @@
-# @lkmliz/ui
+# @lemuel-manske/ui
 
-Design system library for `@lkmliz` projects.
+Design system library for `@lemuel-manske` projects.
 
 ## Install
 

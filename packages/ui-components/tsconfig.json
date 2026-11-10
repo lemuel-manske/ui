@@ -1,0 +1,10 @@
+{
+  "extends": "@lkmliz/config-typescript/react.json",
+  "compilerOptions": {
+    "declaration": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx", "src/**/*.test-fixture.tsx"]
+}

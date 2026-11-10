@@ -1,0 +1,32 @@
+{
+  "name": "@lkmliz/config-playwright",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "test": "tsc --project tsconfig.json && playwright test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "dependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/experimental-ct-react": "1.62.0",
+    "@playwright/test": "1.62.0",
+    "playwright-core": "1.62.0"
+  },
+  "devDependencies": {
+    "@lkmliz/config-eslint": "file:../config-eslint",
+    "@lkmliz/config-prettier": "file:../config-prettier",
+    "@lkmliz/config-typescript": "file:../config-typescript",
+    "@types/node": "22.15.0",
+    "@types/react": "19.3.0",
+    "eslint": "9.39.0",
+    "prettier": "3.6.0",
+    "typescript": "5.9.3"
+  }
+}

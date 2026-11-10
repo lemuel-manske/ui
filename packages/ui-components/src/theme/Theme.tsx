@@ -4,6 +4,7 @@ import type { ThemeProps } from './types';
 
 import styles from './Theme.module.css';
 
+/** Supplies a complete semantic token theme to its descendants. Wrap application UI in Theme. */
 function Theme({ children, theme }: ThemeProps) {
   const style = Object.fromEntries(
     Object.entries(theme).flatMap(([group, tokens]) =>

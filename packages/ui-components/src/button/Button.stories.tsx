@@ -3,11 +3,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn } from 'storybook/test';
 
 import { Button } from './Button';
+import { ButtonLabel } from './ButtonLabel';
 import { ButtonSize, ButtonVariant } from './options';
 
 const meta = {
   title: 'Components/Button',
   component: Button,
+  subcomponents: { ButtonLabel },
   tags: ['autodocs'],
 
   args: {
@@ -25,7 +27,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Primary: Story = {
+export const Primary: Story = {
   render: ({ children, ...args }) => (
     <Button {...args}>
       <Button.Label>{children}</Button.Label>
@@ -33,15 +35,15 @@ const Primary: Story = {
   ),
 };
 
-const Secondary: Story = {
+export const Secondary: Story = {
   args: { variant: ButtonVariant.SECONDARY },
 };
 
-const Tertiary: Story = {
+export const Tertiary: Story = {
   args: { variant: ButtonVariant.TERTIARY },
 };
 
-const Sizes: Story = {
+export const Sizes: Story = {
   render: (args) => (
     <div className="story-row">
       {Object.values(ButtonSize).map((size) => (
@@ -53,7 +55,7 @@ const Sizes: Story = {
   ),
 };
 
-const Disabled: Story = {
+export const Disabled: Story = {
   args: { disabled: true, onClick: fn() },
 
   play: async ({ canvas, userEvent, args }) => {
@@ -67,7 +69,7 @@ const Disabled: Story = {
   },
 };
 
-const Keyboard: Story = {
+export const Keyboard: Story = {
   args: { onClick: fn() },
 
   play: async ({ canvas, userEvent, args }) => {
@@ -85,17 +87,17 @@ const Keyboard: Story = {
   },
 };
 
-const LongLabel: Story = {
+export const LongLabel: Story = {
   args: {
     children: 'Preserve this website and its historical context in your personal collection',
   },
 };
 
-const Rebranded: Story = {
+export const Rebranded: Story = {
   globals: { brand: 'library' },
 };
 
-const Submit: Story = {
+export const Submit: Story = {
   args: { type: 'submit' },
 
   render: (args) => (
@@ -117,5 +119,3 @@ const Submit: Story = {
 };
 
 export default meta;
-
-export { Primary, Secondary, Tertiary, Sizes, Disabled, Keyboard, LongLabel, Rebranded, Submit };

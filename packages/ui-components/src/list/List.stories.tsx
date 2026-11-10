@@ -17,7 +17,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
+export const Default: Story = {
   render: (args) => (
     <List {...args}>
       <List.Item>Reusable components</List.Item>
@@ -29,22 +29,22 @@ const Default: Story = {
   ),
 };
 
-const Ordered: Story = {
+export const Ordered: Story = {
   ...Default,
   args: { as: 'ol' },
 };
 
-const WithoutMarkers: Story = {
+export const WithoutMarkers: Story = {
   ...Default,
   args: { marker: 'none' },
 };
 
-const Reversed: Story = {
+export const Reversed: Story = {
   ...Default,
   args: { as: 'ol', start: 5, reversed: true },
 };
 
-const Nested: Story = {
+export const Nested: Story = {
   render: (args) => (
     <List {...args}>
       <List.Item>
@@ -71,5 +71,3 @@ const Nested: Story = {
 };
 
 export default meta;
-
-export { Default, Ordered, WithoutMarkers, Reversed, Nested };

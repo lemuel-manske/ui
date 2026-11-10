@@ -51,8 +51,15 @@ jobs:
       - name: Test release tooling
         run: npm run test:release
 
-      - name: Build Storybook
-        run: npm run build:storybook --workspace @lemuel-manske/components
+      - name: Build Storybook and validate agent documentation
+        run: npm run build:docs
+
+      - name: Upload documentation
+        uses: actions/upload-artifact@v7
+        with:
+          name: documentation-${{ github.sha }}
+          path: packages/ui-components/storybook-static/
+          retention-days: 30
 
       - name: Upload browser test diagnostics
         if: failure()

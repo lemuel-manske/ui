@@ -10,18 +10,27 @@ import { FieldContext, useField, useFieldContext, useFieldMessage } from './useF
 
 import styles from './Field.module.css';
 
+/**
+ * Label for the surrounding Field's control. Use as Field.Label.
+ */
 function FieldLabel(props: FieldPartProps) {
   const { id } = useFieldContext();
 
   return <Label {...props} htmlFor={id} />;
 }
 
+/**
+ * Help text associated with the surrounding Field's control. Use as Field.Description.
+ */
 function FieldDescription({ className, ...props }: FieldPartProps) {
   const message = useFieldMessage(false);
 
   return <p {...props} {...message} className={cx(styles.message, className)} />;
 }
 
+/**
+ * Conditional error message that marks the control invalid. Use as Field.Error.
+ */
 function FieldError({ className, ...props }: FieldPartProps) {
   const message = useFieldMessage(true);
 
@@ -35,6 +44,10 @@ function FieldError({ className, ...props }: FieldPartProps) {
   );
 }
 
+/**
+ * Connects one control to the surrounding Field's label, messages, and validation state.
+ * Use as Field.Control.
+ */
 function FieldControl({ children }: FieldControlProps) {
   const field = useFieldContext();
 
@@ -52,6 +65,10 @@ function FieldControl({ children }: FieldControlProps) {
   });
 }
 
+/**
+ * Groups one control with Field.Label, Field.Description, and conditional Field.Error.
+ * Wrap the control in Field.Control to connect accessible names and descriptions.
+ */
 function Field({ children, ...props }: FieldProps) {
   const field = useField({ ...props, children });
 

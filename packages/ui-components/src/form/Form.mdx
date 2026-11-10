@@ -1,0 +1,63 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Form" />
+
+# Form
+
+`Form` renders a native form. It provides styles and compound aliases, while your application
+owns submission, async state, and application validation. Browser constraint validation
+applies unless `noValidate` is set.
+
+```tsx
+import { Form } from '@lemuel-manske/components';
+
+export function WebsiteForm() {
+  return (
+    <Form
+      aria-label="Archive website"
+      onSubmit={(event) => {
+        event.preventDefault();
+
+        const data = new FormData(event.currentTarget);
+
+        console.log(data.get('url'));
+      }}
+    >
+      <Form.Field required>
+        <Form.Field.Label>Website URL (required)</Form.Field.Label>
+        <Form.Field.Control>
+          <Form.Input name="url" type="url" placeholder="https://example.com" />
+        </Form.Field.Control>
+        <Form.Field.Description>Enter a complete URL, including https://.</Form.Field.Description>
+      </Form.Field>
+      <Form.Button type="submit">
+        <Form.Button.Label>Archive website</Form.Button.Label>
+      </Form.Button>
+    </Form>
+  );
+}
+```
+
+This recipe is rendered and exercised by the Components/Form AccessibleFields story.
+
+## Compound aliases
+
+`Form.Input`, `Form.Textarea`, `Form.Combobox`, `Form.Label`, `Form.Button`, `Form.Field`,
+`Form.Checkbox`, `Form.RadioGroup`, and `Form.Fieldset` are the corresponding standalone
+components. They retain their own compound parts, such as `Form.Combobox.Option`,
+`Form.Button.Label`, `Form.RadioGroup.Item`, and `Form.Fieldset.Legend`.
+
+You can mix aliases and standalone components. The aliases do not register values, validate
+data, or create a form-state store. Supply `name` on controls to include them in `FormData`.
+The combobox is a native select; its options use `value` and text children.
+
+## Accessibility and validation
+
+Give the form an accessible name with `aria-label` or `aria-labelledby`.
+Label every control. `Form.Field` handles label and message associations; if you use
+`Form.Label` directly, connect its `htmlFor` to the control's `id` yourself.
+Use an explicit submit button. Call `preventDefault()` for JavaScript submission.
+
+Render conditional `Form.Field.Error` messages for application errors. Do not infer a
+form-level `errors` or `onValuesChange` API. For grouped controls use `Form.Fieldset` with
+`Form.Fieldset.Legend`. See Components/Form for other native form examples.

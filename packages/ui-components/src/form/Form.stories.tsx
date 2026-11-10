@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { expect } from 'storybook/test';
+
 import { Form } from './Form';
 
 const meta = {
@@ -12,7 +14,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
+export const Default: Story = {
   render: (args) => (
     <Form {...args} onSubmit={(event) => event.preventDefault()}>
       <Form.Label htmlFor="website">Website URL</Form.Label>
@@ -38,7 +40,7 @@ const Default: Story = {
   ),
 };
 
-const Invalid: Story = {
+export const Invalid: Story = {
   render: (args) => (
     <Form {...args}>
       <Form.Label htmlFor="invalid-url">Website URL</Form.Label>
@@ -56,7 +58,7 @@ const Invalid: Story = {
   ),
 };
 
-const Disabled: Story = {
+export const Disabled: Story = {
   render: (args) => (
     <Form {...args}>
       <Form.Label htmlFor="disabled-url">Website URL</Form.Label>
@@ -70,6 +72,50 @@ const Disabled: Story = {
   ),
 };
 
-export default meta;
+export const AccessibleFields: Story = {
+  render: (args) => (
+    <Form
+      {...args}
+      onSubmit={(event) => {
+        event.preventDefault();
 
-export { Default, Invalid, Disabled };
+        const data = new FormData(event.currentTarget);
+
+        event.currentTarget.dataset.submittedUrl = String(data.get('url'));
+      }}
+    >
+      <Form.Field required>
+        <Form.Field.Label>Website URL (required)</Form.Field.Label>
+
+        <Form.Field.Control>
+          <Form.Input name="url" type="url" placeholder="https://example.com" />
+        </Form.Field.Control>
+
+        <Form.Field.Description>Enter a complete URL, including https://.</Form.Field.Description>
+      </Form.Field>
+
+      <Form.Button type="submit">
+        <Form.Button.Label>Archive website</Form.Button.Label>
+      </Form.Button>
+    </Form>
+  ),
+
+  play: async ({ canvas, userEvent }) => {
+    const input = canvas.getByRole('textbox', { name: 'Website URL (required)' });
+
+    await expect(input).toBeRequired();
+
+    await expect(input).toHaveAccessibleDescription('Enter a complete URL, including https://.');
+
+    await userEvent.type(input, 'https://example.com');
+
+    await userEvent.click(canvas.getByRole('button', { name: 'Archive website' }));
+
+    await expect(canvas.getByRole('form', { name: 'Archive website' })).toHaveAttribute(
+      'data-submitted-url',
+      'https://example.com',
+    );
+  },
+};
+
+export default meta;

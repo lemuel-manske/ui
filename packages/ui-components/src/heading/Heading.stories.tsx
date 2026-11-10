@@ -20,9 +20,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {};
+export const Default: Story = {};
 
-const Semibold: Story = {
+export const Semibold: Story = {
   args: {
     children: 'A web muda. Suas capturas permanecem.',
     size: HeadingSize.LARGE,
@@ -31,5 +31,3 @@ const Semibold: Story = {
 };
 
 export default meta;
-
-export { Default, Semibold };

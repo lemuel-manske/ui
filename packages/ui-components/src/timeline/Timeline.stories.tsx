@@ -19,7 +19,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
+export const Default: Story = {
   render: (args) => (
     <Timeline {...args}>
       <Timeline.Item label="v2.0.0" current>
@@ -37,12 +37,12 @@ const Default: Story = {
   ),
 };
 
-const Horizontal: Story = {
+export const Horizontal: Story = {
   ...Default,
   args: { orientation: 'horizontal' },
 };
 
-const LabelsOnly: Story = {
+export const LabelsOnly: Story = {
   render: (args) => (
     <Timeline {...args}>
       <Timeline.Item label="v1.0.0" />
@@ -54,7 +54,7 @@ const LabelsOnly: Story = {
   ),
 };
 
-const RichContent: Story = {
+export const RichContent: Story = {
   render: (args) => (
     <Timeline {...args}>
       <Timeline.Item label={<Link href="#v2">v2.0.0 release notes</Link>} current>
@@ -73,5 +73,3 @@ const RichContent: Story = {
 };
 
 export default meta;
-
-export { Default, Horizontal, LabelsOnly, RichContent };

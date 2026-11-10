@@ -20,6 +20,10 @@ import type { FormProps } from './types';
 
 import { useForm } from './useForm';
 
+/**
+ * Native form with design-system styles and aliases for its controls.
+ * Supply submission and application validation logic through onSubmit.
+ */
 function Form(props: FormProps) {
   const formProps = useForm(props);
 

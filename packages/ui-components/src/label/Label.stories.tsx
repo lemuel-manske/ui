@@ -31,17 +31,17 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Medium: Story = {};
+export const Medium: Story = {};
 
-const Small: Story = {
+export const Small: Story = {
   args: { size: LabelSize.SMALL },
 };
 
-const Large: Story = {
+export const Large: Story = {
   args: { size: LabelSize.LARGE },
 };
 
-const AssociatedField: Story = {
+export const AssociatedField: Story = {
   play: async ({ canvas, userEvent }) => {
     const input = canvas.getByRole('textbox', { name: 'Collection name' });
 
@@ -52,5 +52,3 @@ const AssociatedField: Story = {
 };
 
 export default meta;
-
-export { Medium, Small, Large, AssociatedField };

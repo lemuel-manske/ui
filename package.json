@@ -26,6 +26,7 @@
     "commitlint": "commitlint",
     "precommit": "lint-staged",
     "storybook": "npm run storybook --workspace @lemuel-manske/components",
+    "build:docs": "npm run build:storybook --workspace @lemuel-manske/components && node scripts/export-agent-docs.js",
     "test": "npm run test --workspaces --if-present",
     "format": "npm run format --workspaces -- --ignore-path ../../.gitignore && prettier --check . --ignore-path .gitignore",
     "format:fix": "npm run format:fix --workspaces -- --ignore-path ../../.gitignore && prettier --write . --ignore-path .gitignore",

@@ -1,6 +1,7 @@
 import type { ReactNode, Ref } from 'react';
 
 interface ButtonLabelProps {
+  /** Text displayed inside Button.Label. */
   children: ReactNode;
 
   className?: string;

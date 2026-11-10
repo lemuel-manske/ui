@@ -35,12 +35,10 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {};
+export const Default: Story = {};
 
-const Native: Story = { args: { appearance: ComboboxAppearance.NATIVE } };
+export const Native: Story = { args: { appearance: ComboboxAppearance.NATIVE } };
 
-const Disabled: Story = { args: { disabled: true } };
+export const Disabled: Story = { args: { disabled: true } };
 
 export default meta;
-
-export { Default, Native, Disabled };

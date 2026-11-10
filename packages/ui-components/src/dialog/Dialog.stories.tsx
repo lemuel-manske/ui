@@ -37,8 +37,6 @@ function DialogExample() {
   );
 }
 
-const Default: Story = { render: DialogExample };
+export const Default: Story = { render: DialogExample };
 
 export default meta;
-
-export { Default };

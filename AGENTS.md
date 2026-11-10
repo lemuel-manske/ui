@@ -16,6 +16,10 @@ Expose public APIs through each package's `src/index.ts`. Build output belongs i
 
 Do not alter `README.md` to add documentation. Keep the README very short; do not document features or usage there.
 
+Keep `AGENTS.md` instructions short and clear; put detailed guidance in documentation.
+
+For component documentation conventions, see `packages/ui-components/src/docs/AgentAccess.mdx`.
+
 ## Build, Test, and Development Commands
 
 Run commands from the repository root:
@@ -25,6 +29,7 @@ Run commands from the repository root:
 - `npm run test`: runs Jest and Playwright tests in all workspaces.
 - `npm run lint` and `npm run format`: check all workspaces with ESLint and Prettier.
 - `npm run lint:fix` and `npm run format:fix`: apply automated fixes.
+- `npm run build`: build all workspaces.
 
 ## Coding Style & Naming Conventions
 
@@ -51,3 +56,5 @@ Test interactions, keyboard behavior, accessible names, and representative integ
 This project follows the [Conventional Commits](https://www.conventionalcommits.org/) specification.
 
 Also, commit hooks are in place to run linting before commits.
+
+Always add a body to the commit.

@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Field" />
+
+# Field
+
+Use `Field` for one form control with a label, description, and optional validation message.
+Use `Fieldset` and `Fieldset.Legend` to group related controls instead.
+The parts are also exported individually as `FieldLabel`, `FieldControl`, `FieldDescription`,
+and `FieldError`; both forms use the same field context.
+
+```tsx
+import { Field, Input } from '@lemuel-manske/components';
+
+export function EmailField({ error }: { error?: string }) {
+  return (
+    <Field id="email" required>
+      <Field.Label>Email (required)</Field.Label>
+      <Field.Control>
+        <Input name="email" type="email" />
+      </Field.Control>
+      <Field.Description>We use this address to contact you.</Field.Description>
+      {error ? <Field.Error>{error}</Field.Error> : null}
+    </Field>
+  );
+}
+```
+
+## Composition contract
+
+- Keep `Field.Label`, `Field.Control`, `Field.Description`, and `Field.Error` inside `Field`.
+- `Field.Control` accepts exactly one React element. The control must forward the injected
+  `id`, `disabled`, `required`, `aria-invalid`, and `aria-describedby` props.
+- Set `id` on `Field` when you need a stable explicit control ID. Otherwise it is generated.
+  The field supplies the control ID and label association.
+- Descriptions and mounted errors are added to the control's accessible description.
+  An existing `aria-describedby` on the child is preserved.
+- Mount `Field.Error` only when an error exists. Its presence marks the control invalid and
+  announces the message with `role="alert"`. Application code decides when validation runs.
+- `required` and `disabled` propagate to the control; required label text remains explicit.
+
+Do not add an assumed `error` prop to `Field`; render `Field.Error` conditionally instead.
+For several fields, compose them inside `Form`. See Components/Field for default, invalid,
+required, and disabled examples and the generated API reference.

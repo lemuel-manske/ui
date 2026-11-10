@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Agent access" />
+
+# Agent access
+
+Use these documents with the same library version installed in the consuming application.
+Keep separate build artifacts for releases and check `docs/version.json` for version metadata.
+
+## Live access through MCP
+
+From the repository root, build the workspace dependencies, then start Storybook:
+
+```sh
+npm run build
+npm run storybook
+```
+
+Configure your agent's MCP client with the HTTP endpoint `http://localhost:6006/mcp`.
+Storybook must remain running and be reachable from the agent's environment.
+Open that URL in a browser to inspect the available tools and manifest debugger.
+
+Ask the agent to list documented components, retrieve the relevant APIs and examples,
+then compose the UI. For example: "Read the Form, Field, and Button documentation,
+then build an accessible website submission form using @lemuel-manske/components."
+
+Add guidance like this to the consuming project's agent instructions:
+
+```text
+Before using @lemuel-manske/components, read its setup guide and retrieve the relevant
+component APIs and examples through the configured Storybook MCP server or documentation files.
+Use public package imports. Verify props and compound parts before using them.
+Follow the theme, stylesheet, accessibility, and semantic token guidance.
+Check the installed package version against the documentation version.
+Type-check the generated UI and test its important interactions and accessible names.
+```
+
+MCP and manifest APIs are Storybook preview features. Keep addon versions aligned with
+Storybook and inspect the generated manifests after upgrades.
+
+## Access without MCP
+
+```sh
+npm run build
+npm run build:docs
+```
+
+The static output is `packages/ui-components/storybook-static`. It includes:
+
+- `llms.txt`: an index of the exported Markdown guides and component manifests.
+- `docs/*.md`: Markdown generated from the same MDX used in Storybook.
+- `manifests/components.json`: generated component APIs and story examples.
+- `manifests/docs.json`: generated MDX documentation metadata.
+- `docs/version.json`: package versions and the build commit when available.
+
+A static host can serve these files alongside Storybook. Static hosting does not run an MCP
+server. Use the live development endpoint or deploy a separate MCP service if remote tools
+are required. The CI documentation artifact is ready to deploy to your chosen static host.
+
+## Maintaining the documentation
+
+Document behavior and defaults in source JSDoc, show representative states in stories, and
+explain decisions and compositions in MDX. Register compound parts as story subcomponents using
+direct component imports. Declare stories with `export const` so manifest extraction can find them.
+Keep examples on the public API. Build documentation in CI to catch broken MDX and extraction
+failures; inspect the artifact when changing component APIs or upgrading Storybook.

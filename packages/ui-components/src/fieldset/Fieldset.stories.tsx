@@ -14,7 +14,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-const Default: Story = {
+export const Default: Story = {
   render: (args) => (
     <Fieldset {...args}>
       <Fieldset.Legend>Preferences</Fieldset.Legend>
@@ -25,5 +25,3 @@ const Default: Story = {
 };
 
 export default meta;
-
-export { Default };

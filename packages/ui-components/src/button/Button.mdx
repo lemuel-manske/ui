@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Button" />
+
+# Button
+
+Use `Button` to perform an action. Use `Link` when the user navigates to a URL.
+Import `Button`, `ButtonSize`, and `ButtonVariant` from `@lemuel-manske/components`.
+
+```tsx
+import { Button, ButtonSize, ButtonVariant } from '@lemuel-manske/components';
+
+export function SaveButton() {
+  return (
+    <Button size={ButtonSize.MEDIUM} variant={ButtonVariant.PRIMARY}>
+      <Button.Label>Save changes</Button.Label>
+    </Button>
+  );
+}
+```
+
+`Button.Label` wraps text in a span. Plain text children are also supported.
+The public standalone equivalent is `ButtonLabel`.
+
+## Defaults and states
+
+- `size` defaults to `ButtonSize.MEDIUM`; SMALL and LARGE are also available.
+- `variant` defaults to `ButtonVariant.PRIMARY`; SECONDARY and TERTIARY reduce emphasis.
+- `type` defaults to `button`. Use `type="submit"` explicitly for form submission.
+- `disabled` disables native activation. Use visible text to explain a pending action.
+
+Do not assume props such as `loading`, `asChild`, `href`, or `icon` exist.
+Compose supported children and use the documented props. Keep an accessible name on every
+button; visible text is preferred. Native keyboard activation is preserved.
+
+See the Components/Button stories for variants, sizes, disabled and keyboard interactions,
+and submission. Use the generated API reference for the complete prop contract.

@@ -40,7 +40,7 @@ export { useDialog } from './dialog/useDialog';
 
 export type { DialogProps } from './dialog/types';
 
-export { Field } from './field/Field';
+export { Field, FieldLabel, FieldControl, FieldDescription, FieldError } from './field/Field';
 
 export { useField } from './field/useField';
 

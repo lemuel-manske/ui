@@ -10,10 +10,10 @@
     }
   },
   "scripts": {
-    "lint": "eslint . --config ../config-eslint/node.js",
-    "lint:fix": "eslint . --config ../config-eslint/node.js --fix",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "lint": "eslint . --config ../config-eslint/node.js",
+    "lint:fix": "eslint . --config ../config-eslint/node.js --fix"
   },
   "dependencies": {
     "@vitejs/plugin-react": "5.0.0"

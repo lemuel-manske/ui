@@ -8,10 +8,10 @@
     "./react": "./react.js"
   },
   "scripts": {
-    "lint": "eslint . --config node.js",
-    "lint:fix": "eslint . --config node.js --fix",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "lint": "eslint . --config node.js",
+    "lint:fix": "eslint . --config node.js --fix"
   },
   "dependencies": {
     "@eslint/js": "9.39.0",

@@ -17,11 +17,11 @@
   },
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",
-    "lint": "eslint .",
-    "test": "tsc --project tsconfig.tests.json && jest && playwright test --tsconfig ../../tsconfig.test.json",
-    "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "tsc --project tsconfig.tests.json && jest && playwright test --tsconfig ../../tsconfig.test.json"
   },
   "devDependencies": {
     "@lkmliz/config-eslint": "file:../config-eslint",

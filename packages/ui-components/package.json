@@ -20,13 +20,13 @@
   },
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",
-    "lint": "eslint .",
-    "test": "tsc --project tsconfig.storybook.json && playwright test --tsconfig ../../tsconfig.test.json",
-    "storybook": "storybook dev --port 6006 --disable-telemetry --no-open",
     "build:storybook": "storybook build --disable-telemetry",
-    "lint:fix": "eslint . --fix",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "storybook": "storybook dev --port 6006 --disable-telemetry --no-open",
+    "test": "tsc --project tsconfig.storybook.json && playwright test --tsconfig ../../tsconfig.test.json"
   },
   "peerDependencies": {
     "react": "^19.0.0"

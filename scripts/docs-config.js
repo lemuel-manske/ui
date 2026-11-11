@@ -29,6 +29,10 @@ const SITE_BASE_URL = '/ui/';
 const REPOSITORY_URL = 'https://github.com/lemuel-manske/ui';
 const COMPONENT_SOURCE_URL = `${REPOSITORY_URL}/blob/main/packages/ui-components/src/`;
 
+const PACKAGE_GUIDES = {
+  'i18n.md': 'packages/i18n/README.md',
+};
+
 const COMPONENTS_MANIFEST_PATH = 'manifests/components.json';
 const DOCS_MANIFEST_PATH = 'manifests/docs.json';
 
@@ -46,7 +50,7 @@ const NOJEKYLL_FILENAME = '.nojekyll';
 
 const REQUIRED_COMPONENTS = ['Button', 'Field', 'Form'];
 
-const VERSIONED_PACKAGES = ['ui-components', 'ui-design-tokens', 'ui-utils'];
+const VERSIONED_PACKAGES = ['ui-components', 'ui-design-tokens', 'ui-utils', 'i18n'];
 
 const SETUP_GUIDE_TITLE = 'Getting started';
 
@@ -68,6 +72,7 @@ export {
   SITE_BASE_URL,
   REPOSITORY_URL,
   COMPONENT_SOURCE_URL,
+  PACKAGE_GUIDES,
   COMPONENTS_MANIFEST_PATH,
   DOCS_MANIFEST_PATH,
   RAW_GUIDES_PATH,

@@ -4,12 +4,27 @@
 Install it in the app that owns the catalogs. Design system components receive the
 translated text through their existing props.
 
+## Installation
+
+Configure the GitHub Packages registry in your app's `.npmrc` and authenticate
+with GitHub Packages.
+
+```ini
+@lemuel-manske:registry=https://npm.pkg.github.com
+```
+
+```sh
+npm install @lemuel-manske/i18n
+```
+
 ## Catalogs and generated constants
 
 Use UTF-8 JSON objects with flat message IDs in files named for their locale, such as
 `locales/en.json` and `locales/pt-BR.json`. Each ID starts with a lowercase letter
 and uses lowercase letters, digits, underscores, hyphens, and dots. Values are
 plain text or ICU MessageFormat strings.
+
+Create `locales/en.json` with the default messages.
 
 ```json
 {
@@ -18,10 +33,20 @@ plain text or ICU MessageFormat strings.
 }
 ```
 
+Create `locales/pt-BR.json` with the Portuguese translations.
+
+```json
+{
+  "my-app.loading": "Carregando o acervo…",
+  "my-app.capture.count": "{count, plural, one {# item arquivado} other {# itens arquivados}}"
+}
+```
+
 Generate the constants and commit the resulting TypeScript file. Pass the other
 catalogs to validate their ICU syntax, keys, and placeholders.
 
 ```sh
+mkdir -p src/i18n
 npx i18n-message-ids locales/en.json src/i18n/message-ids.ts locales/pt-BR.json
 npx i18n-message-ids --check locales/en.json src/i18n/message-ids.ts locales/pt-BR.json
 ```
@@ -31,6 +56,9 @@ file from formatting tools that would change its output.
 
 ## Translate messages
 
+Enable `resolveJsonModule` in TypeScript to import the catalogs. Create the
+translator in `src/translator.ts`.
+
 ```ts
 import { createTranslator } from '@lemuel-manske/i18n';
 
@@ -38,7 +66,7 @@ import en from '../locales/en.json';
 import ptBR from '../locales/pt-BR.json';
 import { MY_APP_CAPTURE_COUNT, MY_APP_LOADING } from './i18n/message-ids';
 
-const translator = createTranslator({
+export const translator = createTranslator({
   locale: 'pt-BR',
   defaultLocale: 'en',
   defaultMessages: en,
@@ -47,8 +75,8 @@ const translator = createTranslator({
 
 const { t } = translator;
 
-t(MY_APP_LOADING);
-t(MY_APP_CAPTURE_COUNT, { count: 3 });
+t(MY_APP_LOADING); // Carregando o acervo…
+t(MY_APP_CAPTURE_COUNT, { count: 3 }); // 3 itens arquivados
 ```
 
 The translator checks the requested locale, its parents, and then the default
@@ -64,6 +92,7 @@ import { Spinner } from '@lemuel-manske/components';
 import { I18nProvider, useTranslation } from '@lemuel-manske/i18n/react';
 
 import { MY_APP_LOADING } from './i18n/message-ids';
+import { translator } from './translator';
 
 function Loading() {
   const { t } = useTranslation();
@@ -71,10 +100,13 @@ function Loading() {
   return <Spinner label={t(MY_APP_LOADING)} />;
 }
 
-// Render with the translator created for the app's current locale.
-<I18nProvider translator={translator}>
-  <Loading />
-</I18nProvider>;
+export function App() {
+  return (
+    <I18nProvider translator={translator}>
+      <Loading />
+    </I18nProvider>
+  );
+}
 ```
 
 The app decides how to load catalogs, store the selected locale, and set the

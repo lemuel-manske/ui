@@ -14,6 +14,7 @@ const {
   RAW_GUIDES_PATH,
   VERSION_METADATA_PATH,
   LLMS_INDEX_FILENAME,
+  PACKAGE_GUIDES,
   REQUIRED_COMPONENTS,
   VERSIONED_PACKAGES,
 } = config;
@@ -60,6 +61,27 @@ if (!Object.keys(docs.docs ?? {}).length) {
 
 const links = [];
 
+async function exportGuide(target, markdown, sourcePath) {
+  const title = markdown.match(/^# (.+)$/m)?.[1];
+
+  if (!title) {
+    throw new Error(`Expected a titled Markdown guide in ${sourcePath}.`);
+  }
+
+  await mkdir(dirname(join(docsOutput, target)), { recursive: true });
+
+  await writeFile(join(docsOutput, target), `${markdown.trim()}\n`);
+
+  links.push(
+    (
+      await renderDocTemplate('guide-link', {
+        title,
+        path: posix.join(RAW_GUIDES_PATH, target.split('\\').join('/')),
+      })
+    ).trim(),
+  );
+}
+
 for (const entry of await readdir(COMPONENT_SOURCE_DIRECTORY, { recursive: true })) {
   if (!entry.endsWith('.mdx')) {
     continue;
@@ -70,29 +92,19 @@ for (const entry of await readdir(COMPONENT_SOURCE_DIRECTORY, { recursive: true 
   // Guides deliberately use only Markdown plus these two Storybook metadata lines.
   const markdown = source
     .replace(/^import \{ Meta \} from '@storybook\/addon-docs\/blocks';\r?\n/m, '')
-    .replace(/^<Meta title="[^"]+" \/>\r?\n/m, '')
-    .trim();
+    .replace(/^<Meta title="[^"]+" \/>\r?\n/m, '');
 
-  const title = markdown.match(/^# (.+)$/m)?.[1];
-
-  if (!title || !source.includes('<Meta title="')) {
-    throw new Error(`Expected a titled Markdown guide in ${entry}.`);
+  if (!source.includes('<Meta title="')) {
+    throw new Error(`Expected Storybook metadata in ${entry}.`);
   }
 
-  const target = entry.replace(/\.mdx$/, '.md');
+  await exportGuide(entry.replace(/\.mdx$/, '.md'), markdown, entry);
+}
 
-  await mkdir(dirname(join(docsOutput, target)), { recursive: true });
+for (const [target, source] of Object.entries(PACKAGE_GUIDES)) {
+  const markdown = await readFile(join(ROOT_DIRECTORY, source), 'utf8');
 
-  await writeFile(join(docsOutput, target), `${markdown}\n`);
-
-  links.push(
-    (
-      await renderDocTemplate('guide-link', {
-        title,
-        path: posix.join(RAW_GUIDES_PATH, target.split('\\').join('/')),
-      })
-    ).trim(),
-  );
+  await exportGuide(target, markdown, source);
 }
 
 const versions = {};

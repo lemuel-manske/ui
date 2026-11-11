@@ -14,7 +14,9 @@ const {
   GENERATED_DIRECTORY,
   GUIDES_DIRECTORY,
   LLMS_INDEX_FILENAME,
+  PACKAGE_GUIDES,
   RAW_GUIDES_PATH,
+  REPOSITORY_URL,
   SETUP_GUIDE_TITLE,
   SITE_BASE_URL,
   STATIC_DIRECTORY,
@@ -60,7 +62,11 @@ for (const entry of await readdir(join(STORYBOOK_OUTPUT_DIRECTORY, RAW_GUIDES_PA
 
   const slug = isSetup ? '/' : `/guides/${title.toLowerCase().replaceAll(' ', '-')}`;
 
-  const sourcePath = entry.replace(/\.md$/, '.mdx').split('\\').join('/');
+  const relativePath = entry.split('\\').join('/');
+  const packageSource = PACKAGE_GUIDES[relativePath];
+  const editUrl = packageSource
+    ? `${REPOSITORY_URL}/blob/main/${packageSource}`
+    : `${COMPONENT_SOURCE_URL}${relativePath.replace(/\.md$/, '.mdx')}`;
 
   const path = join(GUIDES_DIRECTORY, entry);
 
@@ -72,7 +78,7 @@ for (const entry of await readdir(join(STORYBOOK_OUTPUT_DIRECTORY, RAW_GUIDES_PA
       title: JSON.stringify(title),
       slug,
       position: isSetup ? 1 : title === AGENT_GUIDE_TITLE ? 2 : 3,
-      editUrl: JSON.stringify(`${COMPONENT_SOURCE_URL}${sourcePath}`),
+      editUrl: JSON.stringify(editUrl),
       content: markdown.trim(),
     }),
   );
@@ -81,7 +87,7 @@ for (const entry of await readdir(join(STORYBOOK_OUTPUT_DIRECTORY, RAW_GUIDES_PA
     (
       await renderDocTemplate('guide-link', {
         title,
-        path: posix.join(AGENT_DIRECTORY, RAW_GUIDES_PATH, entry.split('\\').join('/')),
+        path: posix.join(AGENT_DIRECTORY, RAW_GUIDES_PATH, relativePath),
       })
     ).trim(),
   );

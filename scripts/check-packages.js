@@ -1,6 +1,12 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync } from 'node:fs';
 
+/**
+ * Validates that all workspaces in the monorepo are correctly packaged and exported.
+ *
+ * This script is used to ensure that all workspaces are correctly configured before publishing.
+ */
+
 const packagesDirectory = new URL('../packages/', import.meta.url);
 
 const manifests = new Map(

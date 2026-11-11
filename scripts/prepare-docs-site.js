@@ -4,6 +4,12 @@ import { dirname, join, posix } from 'node:path';
 import * as config from './docs-config.js';
 import { renderDocTemplate } from './render-doc-template.js';
 
+/**
+ * Packages the Docusaurus site, Storybook, and agent documentation into a single output directory.
+ *
+ * This script is used to prepare the documentation for deployment.
+ */
+
 const {
   AGENT_DIRECTORY,
   AGENT_GUIDE_TITLE,

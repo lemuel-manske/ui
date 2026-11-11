@@ -4,6 +4,12 @@ import { fileURLToPath } from 'node:url';
 
 const rootDirectory = fileURLToPath(new URL('../', import.meta.url));
 
+/**
+ * Runs Prettier and ESLint on staged files.
+ *
+ * This script is used by lint-staged to ensure that code is formatted and linted before committing.
+ */
+
 const prettier = fileURLToPath(
   new URL('./bin/prettier.cjs', import.meta.resolve('prettier/package.json')),
 );

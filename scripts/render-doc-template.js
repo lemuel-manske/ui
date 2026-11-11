@@ -3,6 +3,14 @@ import { join } from 'node:path';
 
 import * as config from './docs-config.js';
 
+/**
+ * Renders a documentation template with the provided values.
+ *
+ * @param {string} name - The name of the template to render.
+ * @param {Record<string, string>} values - The values to replace in the template.
+ * @returns {Promise<string>} The rendered template.
+ */
+
 const templates = new Map();
 
 async function renderDocTemplate(name, values) {

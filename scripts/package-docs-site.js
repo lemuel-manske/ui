@@ -3,6 +3,12 @@ import { join } from 'node:path';
 
 import * as config from './docs-config.js';
 
+/**
+ * Packages the Docusaurus site, Storybook, and agent documentation into a single output directory.
+ *
+ * This script is used to prepare the documentation for deployment.
+ */
+
 const {
   LLMS_INDEX_FILENAME,
   NOJEKYLL_FILENAME,

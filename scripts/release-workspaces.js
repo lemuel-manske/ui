@@ -2,6 +2,13 @@ import childProcess from 'node:child_process';
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+/**
+ * Sets the version of all workspaces in the monorepo to the specified version.
+ *
+ * @param {string} cwd - The current working directory of the monorepo.
+ * @param {string} version - The version to set for all workspaces.
+ */
+
 function setWorkspaceVersions(cwd, version) {
   if (!/^\d+\.\d+\.\d+$/.test(version)) {
     throw new Error('A stable semantic release version is required.');

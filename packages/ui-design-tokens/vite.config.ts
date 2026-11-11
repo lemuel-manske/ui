@@ -1,6 +1,6 @@
 import { createLibraryConfig } from '@lemuel-manske/config-vite';
 
-import { mergeConfig } from 'vite';
+import { mergeConfig, type Plugin } from 'vite';
 
 import { archiveTheme, libraryTheme } from './src/tokens';
 
@@ -18,26 +18,20 @@ const themeCss = [
   '',
 ].join('\n');
 
-const config = mergeConfig(
-  createLibraryConfig({
-    fileName: 'tokens',
-  }),
+const themeCssPlugin = {
+  name: 'theme-css',
 
-  {
-    plugins: [
-      {
-        name: 'theme-css',
-
-        generateBundle() {
-          this.emitFile({
-            type: 'asset',
-            fileName: 'tokens.css',
-            source: themeCss,
-          });
-        },
-      },
-    ],
+  generateBundle() {
+    this.emitFile({
+      type: 'asset',
+      fileName: 'tokens.css',
+      source: themeCss,
+    });
   },
-);
+} satisfies Plugin;
+
+const config = mergeConfig(createLibraryConfig({ fileName: 'tokens' }), {
+  plugins: [themeCssPlugin],
+});
 
 export default config;

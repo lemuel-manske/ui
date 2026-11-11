@@ -4,6 +4,7 @@ import { useSpinner } from './useSpinner';
 
 import styles from './Spinner.module.css';
 
+/** Loading indicator with a localized status message for assistive technology. */
 function Spinner(props: SpinnerProps) {
   const spinner = useSpinner(props);
 

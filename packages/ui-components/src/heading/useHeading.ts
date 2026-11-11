@@ -1,30 +1,39 @@
-import { cx } from '@lemuel-manske/utils';
+import { Size, Weight } from '@lemuel-manske/design-tokens';
 
-import { HeadingSize, HeadingWeight } from './options';
+import { cx } from '@lemuel-manske/utils';
 
 import type { HeadingProps } from './types';
 
 import styles from './Heading.module.css';
 
+const tagMap = {
+  1: 'h1',
+  2: 'h2',
+  3: 'h3',
+  4: 'h4',
+  5: 'h5',
+  6: 'h6',
+} as const;
+
 function useHeading({
   level = 2,
-  size = HeadingSize.MEDIUM,
-  weight = HeadingWeight.MEDIUM,
+  size = Size.MEDIUM,
+  weight = Weight.MEDIUM,
   className,
   ...props
 }: HeadingProps) {
   return {
-    Tag: ({ 1: 'h1', 2: 'h2', 3: 'h3', 4: 'h4', 5: 'h5', 6: 'h6' } as const)[level],
+    Tag: tagMap[level],
     props: {
       ...props,
       className: cx(styles.heading, className, {
-        [styles.small]: size === HeadingSize.SMALL,
-        [styles.medium]: size === HeadingSize.MEDIUM,
-        [styles.large]: size === HeadingSize.LARGE,
-        [styles.regular]: weight === HeadingWeight.REGULAR,
-        [styles.mediumWeight]: weight === HeadingWeight.MEDIUM,
-        [styles.semibold]: weight === HeadingWeight.SEMIBOLD,
-        [styles.bold]: weight === HeadingWeight.BOLD,
+        [styles.small]: size === Size.SMALL,
+        [styles.medium]: size === Size.MEDIUM,
+        [styles.large]: size === Size.LARGE,
+        [styles.regular]: weight === Weight.REGULAR,
+        [styles.mediumWeight]: weight === Weight.MEDIUM,
+        [styles.semibold]: weight === Weight.SEMIBOLD,
+        [styles.bold]: weight === Weight.BOLD,
       }),
     },
   };

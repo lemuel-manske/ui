@@ -1,18 +1,18 @@
-import { cx } from '@lemuel-manske/utils';
+import { Size } from '@lemuel-manske/design-tokens';
 
-import { SpinnerSize } from './options';
+import { cx } from '@lemuel-manske/utils';
 
 import type { SpinnerProps } from './types';
 
 import styles from './Spinner.module.css';
 
-function useSpinner({ label = 'Loading', size = SpinnerSize.MEDIUM, className }: SpinnerProps) {
+function useSpinner({ label = 'Loading', size = Size.MEDIUM, className }: SpinnerProps) {
   return {
     label,
     className: cx(styles.spinner, className, {
-      [styles.small]: size === SpinnerSize.SMALL,
-      [styles.medium]: size === SpinnerSize.MEDIUM,
-      [styles.large]: size === SpinnerSize.LARGE,
+      [styles.small]: size === Size.SMALL,
+      [styles.medium]: size === Size.MEDIUM,
+      [styles.large]: size === Size.LARGE,
     }),
   };
 }

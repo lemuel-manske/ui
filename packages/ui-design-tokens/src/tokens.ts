@@ -19,6 +19,18 @@ interface DesignTokens {
     secondary: string;
     'secondary-hover': string;
     'secondary-foreground': string;
+    danger: string;
+    'danger-hover': string;
+    'danger-foreground': string;
+    success: string;
+    'success-hover': string;
+    'success-foreground': string;
+    warning: string;
+    'warning-hover': string;
+    'warning-foreground': string;
+    info: string;
+    'info-hover': string;
+    'info-foreground': string;
   };
 
   state: {
@@ -27,6 +39,10 @@ interface DesignTokens {
     'danger-foreground': string;
     success: string;
     'success-foreground': string;
+    warning: string;
+    'warning-foreground': string;
+    info: string;
+    'info-foreground': string;
   };
 
   font: {
@@ -95,6 +111,18 @@ const archiveTheme = {
     secondary: 'transparent',
     'secondary-hover': '#E7E0D3',
     'secondary-foreground': '#211F1B',
+    danger: '#9A3324',
+    'danger-hover': '#7E281C',
+    'danger-foreground': '#FFFFFF',
+    success: '#2F5D3A',
+    'success-hover': '#254A2E',
+    'success-foreground': '#FFFFFF',
+    warning: '#805000',
+    'warning-hover': '#664000',
+    'warning-foreground': '#FFFFFF',
+    info: '#245E83',
+    'info-hover': '#1C4A68',
+    'info-foreground': '#FFFFFF',
   },
 
   state: {
@@ -103,6 +131,10 @@ const archiveTheme = {
     'danger-foreground': '#F6F3EB',
     success: '#2F5D3A',
     'success-foreground': '#F6F3EB',
+    warning: '#805000',
+    'warning-foreground': '#FFFFFF',
+    info: '#245E83',
+    'info-foreground': '#FFFFFF',
   },
 
   font: {
@@ -181,6 +213,7 @@ const libraryTheme = {
   },
 
   action: {
+    ...archiveTheme.action,
     primary: '#193a32',
     'primary-hover': '#285146',
     'primary-foreground': '#ffffff',

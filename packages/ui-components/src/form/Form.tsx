@@ -1,27 +1,9 @@
-import { Button } from '../button/Button';
-
-import { Combobox } from '../combobox/Combobox';
-
-import { Checkbox } from '../checkbox/Checkbox';
-
-import { Field } from '../field/Field';
-
-import { Fieldset } from '../fieldset/Fieldset';
-
-import { Input } from '../input/Input';
-
-import { Label } from '../label/Label';
-
-import { RadioGroup } from '../radio-group/RadioGroup';
-
-import { Textarea } from '../textarea/Textarea';
-
 import type { FormProps } from './types';
 
 import { useForm } from './useForm';
 
 /**
- * Native form with design-system styles and aliases for its controls.
+ * Native form with design-system styles. Compose standalone controls inside it.
  * Supply submission and application validation logic through onSubmit.
  */
 function Form(props: FormProps) {
@@ -29,23 +11,5 @@ function Form(props: FormProps) {
 
   return <form {...formProps} />;
 }
-
-Form.Input = Input;
-
-Form.Textarea = Textarea;
-
-Form.Combobox = Combobox;
-
-Form.Label = Label;
-
-Form.Button = Button;
-
-Form.Field = Field;
-
-Form.Checkbox = Checkbox;
-
-Form.RadioGroup = RadioGroup;
-
-Form.Fieldset = Fieldset;
 
 export { Form };

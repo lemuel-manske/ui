@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Icons" />
+
+# Icons
+
+`Icon` adapts artwork from the application's icon set. Supply an SVG component, an image,
+or a font icon as its child. Sizes are small, medium, and large. Use `tone` for a semantic
+status color or inherit the surrounding text color.
+
+```tsx
+import { Button, Icon, Label } from '@lemuel-manske/components';
+import { Tone } from '@lemuel-manske/design-tokens';
+import { GlobeIcon, CheckIcon, InfoIcon } from './icons';
+
+<Button tone={Tone.SUCCESS}>
+  <Icon>
+    <CheckIcon />
+  </Icon>
+
+  <Button.Label>Save changes</Button.Label>
+</Button>;
+
+<Label htmlFor="language">
+  <Icon>
+    <GlobeIcon />
+  </Icon>
+  Language
+</Label>;
+
+<Icon label="About language settings" onClick={showLanguageHelp}>
+  <InfoIcon />
+</Icon>;
+```
+
+An icon with `onClick` renders a native button and requires a `label`. It supports
+disabled state, keyboard activation, and visible focus. An informative icon with a
+`label` exposes an image role. An icon without a label is decorative.
+
+The shapes shown in Storybook are example artwork. Applications supply their own icons.
+Keep important status information in text as well as color. Labels support the same
+`Tone` values as buttons.

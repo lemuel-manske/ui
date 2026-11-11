@@ -1,20 +1,9 @@
-import { Size, Weight } from '@lemuel-manske/design-tokens';
+import type { Size, Weight } from '@lemuel-manske/design-tokens';
 
-const HeadingSize = {
-  SMALL: Size.SMALL,
-  MEDIUM: Size.MEDIUM,
-  LARGE: Size.LARGE,
-} as const satisfies Pick<typeof Size, 'SMALL' | 'MEDIUM' | 'LARGE'>;
+type HeadingSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
 
-type HeadingSize = (typeof HeadingSize)[keyof typeof HeadingSize];
+type HeadingWeight = Weight.REGULAR | Weight.MEDIUM | Weight.SEMIBOLD | Weight.BOLD;
 
-const HeadingWeight = {
-  REGULAR: Weight.REGULAR,
-  MEDIUM: Weight.MEDIUM,
-  SEMIBOLD: Weight.SEMIBOLD,
-  BOLD: Weight.BOLD,
-} as const satisfies Pick<typeof Weight, 'REGULAR' | 'MEDIUM' | 'SEMIBOLD' | 'BOLD'>;
+type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
-type HeadingWeight = (typeof HeadingWeight)[keyof typeof HeadingWeight];
-
-export { HeadingSize, HeadingWeight };
+export type { HeadingSize, HeadingWeight, HeadingLevel };

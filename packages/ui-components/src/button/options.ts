@@ -1,19 +1,11 @@
-import { Size, Variant } from '@lemuel-manske/design-tokens';
+import type { Size, Variant, Tone } from '@lemuel-manske/design-tokens';
 
-const ButtonSize = {
-  SMALL: Size.SMALL,
-  MEDIUM: Size.MEDIUM,
-  LARGE: Size.LARGE,
-} as const satisfies Pick<typeof Size, 'SMALL' | 'MEDIUM' | 'LARGE'>;
+type ButtonSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
 
-type ButtonSize = (typeof ButtonSize)[keyof typeof ButtonSize];
+type ButtonVariant = Variant.PRIMARY | Variant.SECONDARY | Variant.TERTIARY;
 
-const ButtonVariant = {
-  PRIMARY: Variant.PRIMARY,
-  SECONDARY: Variant.SECONDARY,
-  TERTIARY: Variant.TERTIARY,
-} as const satisfies Pick<typeof Variant, 'PRIMARY' | 'SECONDARY' | 'TERTIARY'>;
+type ButtonTone = Tone.DEFAULT | Tone.DANGER | Tone.SUCCESS | Tone.WARNING | Tone.INFO;
 
-type ButtonVariant = (typeof ButtonVariant)[keyof typeof ButtonVariant];
+type ButtonType = 'button' | 'submit' | 'reset';
 
-export { ButtonSize, ButtonVariant };
+export type { ButtonSize, ButtonVariant, ButtonTone, ButtonType };

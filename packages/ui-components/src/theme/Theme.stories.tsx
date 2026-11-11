@@ -8,11 +8,11 @@ import { Theme } from './Theme';
 
 const meta = {
   title: 'Components/Theme',
-  component: Theme,
   tags: ['autodocs'],
 
+  component: Theme,
+
   args: {
-    theme: archiveTheme,
     children: (
       <Button>
         <Button.Label>Save changes</Button.Label>
@@ -23,7 +23,9 @@ const meta = {
 
 type Story = StoryObj<typeof meta>;
 
-export const Archive: Story = {};
+export const Archive: Story = {
+  args: { theme: archiveTheme },
+};
 
 export const Library: Story = {
   args: { theme: libraryTheme },

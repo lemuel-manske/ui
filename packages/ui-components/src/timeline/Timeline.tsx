@@ -6,6 +6,7 @@ import { useTimeline, useTimelineItem } from './useTimeline';
 
 import styles from './Timeline.module.css';
 
+/** Timeline-specific list item with a label, optional details, and current-state marker. */
 function TimelineItem(props: TimelineItemProps) {
   const item = useTimelineItem(props);
 
@@ -20,6 +21,7 @@ function TimelineItem(props: TimelineItemProps) {
   );
 }
 
+/** Ordered sequence of labeled events with an optional current item. */
 function Timeline(props: TimelineProps) {
   const timeline = useTimeline(props);
 

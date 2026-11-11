@@ -1,20 +1,20 @@
-import { cx } from '@lemuel-manske/utils';
+import { Size } from '@lemuel-manske/design-tokens';
 
-import { TextSize } from './options';
+import { cx } from '@lemuel-manske/utils';
 
 import type { TextProps } from './types';
 
 import styles from './Text.module.css';
 
-function useText({ as = 'p', size = TextSize.MEDIUM, className, ...props }: TextProps) {
+function useText({ as = 'p', size = Size.MEDIUM, className, ...props }: TextProps) {
   return {
     Tag: as,
     props: {
       ...props,
       className: cx(styles.text, className, {
-        [styles.small]: size === TextSize.SMALL,
-        [styles.medium]: size === TextSize.MEDIUM,
-        [styles.large]: size === TextSize.LARGE,
+        [styles.small]: size === Size.SMALL,
+        [styles.medium]: size === Size.MEDIUM,
+        [styles.large]: size === Size.LARGE,
       }),
     },
   };

@@ -1,12 +1,12 @@
+import { Weight } from '@lemuel-manske/design-tokens';
+
 import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { Heading } from './Heading';
 
-import { HeadingWeight } from './options';
-
 test('Heading renders its content', async ({ render, page }) => {
   await render(
-    <Heading level={3} weight={HeadingWeight.SEMIBOLD}>
+    <Heading level={3} weight={Weight.SEMIBOLD}>
       Example
     </Heading>,
   );

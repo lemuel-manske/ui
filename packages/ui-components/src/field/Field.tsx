@@ -4,7 +4,7 @@ import { cx } from '@lemuel-manske/utils';
 
 import { Label } from '../label/Label';
 
-import type { FieldProps, FieldPartProps, FieldControlProps } from './types';
+import type { FieldProps, FieldLabelProps, FieldPartProps, FieldControlProps } from './types';
 
 import { FieldContext, useField, useFieldContext, useFieldMessage } from './useField';
 
@@ -13,7 +13,7 @@ import styles from './Field.module.css';
 /**
  * Label for the surrounding Field's control. Use as Field.Label.
  */
-function FieldLabel(props: FieldPartProps) {
+function FieldLabel(props: FieldLabelProps) {
   const { id } = useFieldContext();
 
   return <Label {...props} htmlFor={id} />;

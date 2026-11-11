@@ -1,3 +1,9 @@
+import { Button } from '../button/Button';
+
+import { Label } from '../label/Label';
+
+import { Input } from '../input/Input';
+
 import { useState } from 'react';
 
 import { Form } from './Form';
@@ -14,13 +20,13 @@ function FormExample() {
         setResult(String(new FormData(event.currentTarget).get('url')));
       }}
     >
-      <Form.Label htmlFor="url">Website URL</Form.Label>
+      <Label htmlFor="url">Website URL</Label>
 
-      <Form.Input id="url" name="url" type="url" required />
+      <Input id="url" name="url" type="url" required />
 
-      <Form.Button type="submit">
-        <Form.Button.Label>Save</Form.Button.Label>
-      </Form.Button>
+      <Button type="submit">
+        <Button.Label>Save</Button.Label>
+      </Button>
 
       <output aria-label="Submitted URL">{result}</output>
     </Form>
@@ -31,7 +37,7 @@ function ControlledInput() {
   const [value, setValue] = useState('');
 
   return (
-    <Form.Input
+    <Input
       aria-label="Title"
       value={value}
       onChange={(event) => setValue(event.currentTarget.value)}

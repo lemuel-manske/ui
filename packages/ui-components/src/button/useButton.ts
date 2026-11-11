@@ -1,16 +1,18 @@
+import { Size, Tone, Variant } from '@lemuel-manske/design-tokens';
+
 import { cx, useAccessibility } from '@lemuel-manske/utils';
 import type { AccessibilityProperties } from '@lemuel-manske/utils';
 
-import { ButtonSize, ButtonVariant } from './options';
 import type { ButtonProps } from './types';
 
 import styles from './Button.module.css';
 
-type ButtonElementProps = Omit<ButtonProps, 'size' | 'variant'> & AccessibilityProperties;
+type ButtonElementProps = Omit<ButtonProps, 'size' | 'variant' | 'tone'> & AccessibilityProperties;
 
 function useButton({
-  size = ButtonSize.MEDIUM,
-  variant = ButtonVariant.PRIMARY,
+  size = Size.MEDIUM,
+  variant = Variant.PRIMARY,
+  tone = Tone.DEFAULT,
   type = 'button',
   className,
   children,
@@ -18,18 +20,22 @@ function useButton({
   ref,
   name,
   value,
+  'aria-expanded': expanded,
+  'aria-controls': controls,
+  'aria-haspopup': hasPopup,
+  'aria-pressed': pressed,
   ...accessibilityOptions
 }: ButtonProps): ButtonElementProps {
   const accessibility = useAccessibility(accessibilityOptions);
 
-  const classes = cx(styles.button, className, {
-    [styles.small]: size === ButtonSize.SMALL,
-    [styles.medium]: size === ButtonSize.MEDIUM,
-    [styles.large]: size === ButtonSize.LARGE,
+  const classes = cx(styles.button, styles[tone], className, {
+    [styles.small]: size === Size.SMALL,
+    [styles.medium]: size === Size.MEDIUM,
+    [styles.large]: size === Size.LARGE,
 
-    [styles.primary]: variant === ButtonVariant.PRIMARY,
-    [styles.secondary]: variant === ButtonVariant.SECONDARY,
-    [styles.tertiary]: variant === ButtonVariant.TERTIARY,
+    [styles.primary]: variant === Variant.PRIMARY,
+    [styles.secondary]: variant === Variant.SECONDARY,
+    [styles.tertiary]: variant === Variant.TERTIARY,
   });
 
   return {
@@ -40,6 +46,10 @@ function useButton({
     ref,
     name,
     value,
+    'aria-expanded': expanded,
+    'aria-controls': controls,
+    'aria-haspopup': hasPopup,
+    'aria-pressed': pressed,
     disabled: accessibilityOptions.disabled ?? false,
     className: classes,
   };

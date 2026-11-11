@@ -1,11 +1,7 @@
-import { Size } from '@lemuel-manske/design-tokens';
+import type { Size, Tone } from '@lemuel-manske/design-tokens';
 
-const LabelSize = {
-  SMALL: Size.SMALL,
-  MEDIUM: Size.MEDIUM,
-  LARGE: Size.LARGE,
-} as const satisfies Pick<typeof Size, 'SMALL' | 'MEDIUM' | 'LARGE'>;
+type LabelSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
 
-type LabelSize = (typeof LabelSize)[keyof typeof LabelSize];
+type LabelTone = Tone.DEFAULT | Tone.DANGER | Tone.SUCCESS | Tone.WARNING | Tone.INFO;
 
-export { LabelSize };
+export type { LabelSize, LabelTone };

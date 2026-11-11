@@ -10,13 +10,13 @@ or `aria-labelledby` so people can distinguish landmarks on the same page.
 
 `Navigation.List` lays items out horizontally and wraps at narrow widths by default.
 Use `orientation="vertical"` to stack items, or supply a `className` to customize spacing
-and layout. `Navigation.Item` is the existing `List.Item` and accepts links or other
-content. A custom layout can also use its own markup directly inside `Navigation`.
+and layout. Compose the list with the standalone `ListItem` component, which accepts
+links or other content. A custom layout can also use its own markup directly inside `Navigation`.
 
 ## Site header
 
 ```tsx
-import { Link, Navigation } from '@lemuel-manske/components';
+import { Link, Navigation, ListItem } from '@lemuel-manske/components';
 
 function SiteHeader() {
   return (
@@ -27,13 +27,13 @@ function SiteHeader() {
 
       <Navigation aria-label="Navegação principal" className={styles.navigation}>
         <Navigation.List>
-          <Navigation.Item>
+          <ListItem>
             <Link href="#collection">Coleção</Link>
-          </Navigation.Item>
+          </ListItem>
 
-          <Navigation.Item>
+          <ListItem>
             <Link href="#new-capture">Arquivar</Link>
-          </Navigation.Item>
+          </ListItem>
         </Navigation.List>
       </Navigation>
     </header>
@@ -46,7 +46,7 @@ to position the header and choose how it adapts to smaller screens.
 
 ## Routing and the current destination
 
-Place a router link directly inside `Navigation.Item`. For example, a Next.js `Link`
+Place a router link directly inside `ListItem`. For example, a Next.js `Link`
 can replace the library `Link` in the header example. When the application or router knows
 the current destination, set `aria-current="page"` for a page or `aria-current="location"`
 for the current section. The list emphasizes direct links with an active `aria-current` value.
@@ -54,3 +54,11 @@ for the current section. The list emphasizes direct links with an active `aria-c
 Native links participate in the usual Tab order. For collapsible navigation, use a button
 to show and hide the links. Set `aria-expanded` to reflect their visibility and use
 `aria-controls` to reference the element the button controls.
+
+## Native attributes
+
+Navigation forwards the standard React attributes and event handlers for a native nav.
+Use `style` or `className` for layout, `ref` to access the landmark, and the native
+`lang` and `dir` attributes for language and direction. Optional native attributes and
+event handlers use browser defaults when omitted. Navigation.List uses the documented
+list props and supplies an unmarked unordered list.

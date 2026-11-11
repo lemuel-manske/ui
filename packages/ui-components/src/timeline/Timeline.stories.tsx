@@ -3,11 +3,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Link } from '../link/Link';
 import { Text } from '../text/Text';
 
-import { Timeline } from './Timeline';
+import { Timeline, TimelineItem } from './Timeline';
 
 const meta = {
   title: 'Components/Timeline',
   component: Timeline,
+  subcomponents: { TimelineItem },
   tags: ['autodocs'],
 
   args: { 'aria-label': 'Version history', children: null },

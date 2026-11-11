@@ -1,12 +1,17 @@
+import { Size } from '@lemuel-manske/design-tokens';
+
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Combobox } from './Combobox';
 
-import { ComboboxAppearance, ComboboxSize } from './options';
+import { ComboboxOption } from './ComboboxOption';
+
+import { ComboboxAppearance } from './options';
 
 const meta = {
   title: 'Components/Combobox',
   component: Combobox,
+  subcomponents: { ComboboxOption },
   tags: ['autodocs'],
 
   args: {
@@ -25,7 +30,7 @@ const meta = {
   },
 
   argTypes: {
-    size: { control: 'select', options: Object.values(ComboboxSize) },
+    size: { control: 'select', options: Object.values(Size) },
 
     appearance: { control: 'select', options: Object.values(ComboboxAppearance) },
 

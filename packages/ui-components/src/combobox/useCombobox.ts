@@ -1,13 +1,15 @@
+import { Size } from '@lemuel-manske/design-tokens';
+
 import { cx, useAccessibility } from '@lemuel-manske/utils';
 
-import { ComboboxAppearance, ComboboxSize } from './options';
+import { ComboboxAppearance } from './options';
 
 import type { ComboboxProps } from './types';
 
 import styles from './Combobox.module.css';
 
 function useCombobox({
-  size = ComboboxSize.MEDIUM,
+  size = Size.MEDIUM,
   appearance = ComboboxAppearance.CUSTOM,
   className,
   id,
@@ -30,9 +32,9 @@ function useCombobox({
     ...accessibility,
     disabled,
     className: cx(styles.combobox, className, {
-      [styles.small]: size === ComboboxSize.SMALL,
-      [styles.medium]: size === ComboboxSize.MEDIUM,
-      [styles.large]: size === ComboboxSize.LARGE,
+      [styles.small]: size === Size.SMALL,
+      [styles.medium]: size === Size.MEDIUM,
+      [styles.large]: size === Size.LARGE,
       [styles.custom]: appearance === ComboboxAppearance.CUSTOM,
     }),
   };

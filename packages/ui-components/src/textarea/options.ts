@@ -1,11 +1,5 @@
-import { Size } from '@lemuel-manske/design-tokens';
+import type { Size } from '@lemuel-manske/design-tokens';
 
-const TextareaSize = {
-  SMALL: Size.SMALL,
-  MEDIUM: Size.MEDIUM,
-  LARGE: Size.LARGE,
-} as const satisfies Pick<typeof Size, 'SMALL' | 'MEDIUM' | 'LARGE'>;
+type TextareaSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
 
-type TextareaSize = (typeof TextareaSize)[keyof typeof TextareaSize];
-
-export { TextareaSize };
+export type { TextareaSize };

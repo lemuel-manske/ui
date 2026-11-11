@@ -17,4 +17,12 @@ enum Weight {
   BOLD = 'bold',
 }
 
-export { Size, Variant, Weight };
+enum Tone {
+  DEFAULT = 'default',
+  DANGER = 'danger',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  INFO = 'info',
+}
+
+export { Size, Variant, Weight, Tone };

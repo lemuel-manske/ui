@@ -1,13 +1,13 @@
-import { cx, useAccessibility } from '@lemuel-manske/utils';
+import { Size } from '@lemuel-manske/design-tokens';
 
-import { InputSize } from './options';
+import { cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { InputProps } from './types';
 
 import styles from './Input.module.css';
 
 function useInput({
-  size = InputSize.MEDIUM,
+  size = Size.MEDIUM,
   className,
   id,
   disabled = false,
@@ -29,9 +29,9 @@ function useInput({
     ...accessibility,
     disabled,
     className: cx(styles.input, className, {
-      [styles.small]: size === InputSize.SMALL,
-      [styles.medium]: size === InputSize.MEDIUM,
-      [styles.large]: size === InputSize.LARGE,
+      [styles.small]: size === Size.SMALL,
+      [styles.medium]: size === Size.MEDIUM,
+      [styles.large]: size === Size.LARGE,
     }),
   };
 }

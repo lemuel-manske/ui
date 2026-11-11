@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Fieldset } from './Fieldset';
+import { Fieldset, Legend } from './Fieldset';
 
 import { Checkbox } from '../checkbox/Checkbox';
 
 const meta = {
   title: 'Components/Fieldset',
   component: Fieldset,
+  subcomponents: { Legend },
   tags: ['autodocs'],
 
   args: { children: null },

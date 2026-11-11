@@ -8,7 +8,7 @@ import { Navigation, NavigationList } from './Navigation';
 const meta = {
   title: 'Components/Navigation',
   component: Navigation,
-  subcomponents: { NavigationList, ListItem },
+  subcomponents: { NavigationList },
   tags: ['autodocs'],
 
   args: { 'aria-label': 'Navegação principal' },
@@ -33,13 +33,13 @@ export const SiteHeader: Story = {
 
       <Navigation {...args}>
         <Navigation.List>
-          <Navigation.Item>
+          <ListItem>
             <Link href="#collection">Coleção</Link>
-          </Navigation.Item>
+          </ListItem>
 
-          <Navigation.Item>
+          <ListItem>
             <Link href="#new-capture">Arquivar</Link>
-          </Navigation.Item>
+          </ListItem>
         </Navigation.List>
       </Navigation>
     </header>
@@ -52,19 +52,19 @@ export const Sidebar: Story = {
   render: (args) => (
     <Navigation {...args}>
       <Navigation.List orientation="vertical">
-        <Navigation.Item>
+        <ListItem>
           <Link href="#overview" aria-current="location">
             Overview
           </Link>
-        </Navigation.Item>
+        </ListItem>
 
-        <Navigation.Item>
+        <ListItem>
           <Link href="#components">Components</Link>
-        </Navigation.Item>
+        </ListItem>
 
-        <Navigation.Item>
+        <ListItem>
           <Link href="#design-tokens">Design tokens</Link>
-        </Navigation.Item>
+        </ListItem>
       </Navigation.List>
     </Navigation>
   ),

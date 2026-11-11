@@ -1,14 +1,39 @@
 import { useId } from 'react';
 
 interface AccessibilityOptions {
+  /**
+   * Control ID used for label and description relationships. React generates a stable ID when omitted.
+   * @remarks Type `string`.
+   * @default Generated with React.useId()
+   */
   id?: string;
 
+  /**
+   * Disables native interaction, keyboard focus, and inclusion in form submission.
+   * @remarks Type `boolean`.
+   * @default false
+   */
   disabled?: boolean;
 
+  /**
+   * Accessible name supplied as text. Prefer a visible label when one is available.
+   * @remarks Type `string`.
+   * @default undefined
+   */
   'aria-label'?: string;
 
+  /**
+   * Space-separated IDs of elements that supply the accessible name.
+   * @remarks Type `string`.
+   * @default undefined
+   */
   'aria-labelledby'?: string;
 
+  /**
+   * Space-separated IDs of elements that describe the component.
+   * @remarks Type `string`.
+   * @default undefined
+   */
   'aria-describedby'?: string;
 }
 

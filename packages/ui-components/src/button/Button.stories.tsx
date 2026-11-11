@@ -1,52 +1,50 @@
+import { Size, Tone, Variant } from '@lemuel-manske/design-tokens';
+
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { expect, fn } from 'storybook/test';
 
 import { Button } from './Button';
 import { ButtonLabel } from './ButtonLabel';
-import { ButtonSize, ButtonVariant } from './options';
+import { Icon } from '../icon/Icon';
+import { CheckIcon, InfoIcon } from '../icon/ExampleIcons.test-fixture';
 
 const meta = {
   title: 'Components/Button',
   component: Button,
-  subcomponents: { ButtonLabel },
+  subcomponents: { ButtonLabel, Icon },
   tags: ['autodocs'],
 
   args: {
     children: 'Archive website',
-    size: ButtonSize.MEDIUM,
-    variant: ButtonVariant.PRIMARY,
+    size: Size.MEDIUM,
+    variant: Variant.PRIMARY,
     onClick: fn(),
   },
 
   argTypes: {
-    size: { control: 'select', options: Object.values(ButtonSize) },
-    variant: { control: 'select', options: Object.values(ButtonVariant) },
+    size: { control: 'select', options: Object.values(Size) },
+    variant: { control: 'select', options: Object.values(Variant) },
+    tone: { control: 'select', options: Object.values(Tone) },
   },
 } satisfies Meta<typeof Button>;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  render: ({ children, ...args }) => (
-    <Button {...args}>
-      <Button.Label>{children}</Button.Label>
-    </Button>
-  ),
-};
+export const Primary: Story = {};
 
 export const Secondary: Story = {
-  args: { variant: ButtonVariant.SECONDARY },
+  args: { variant: Variant.SECONDARY },
 };
 
 export const Tertiary: Story = {
-  args: { variant: ButtonVariant.TERTIARY },
+  args: { variant: Variant.TERTIARY },
 };
 
 export const Sizes: Story = {
   render: (args) => (
     <div className="story-row">
-      {Object.values(ButtonSize).map((size) => (
+      {Object.values(Size).map((size) => (
         <Button {...args} key={size} size={size}>
           {size}
         </Button>
@@ -97,6 +95,45 @@ export const Rebranded: Story = {
   globals: { brand: 'library' },
 };
 
+export const WithIcon: Story = {
+  render: (args) => (
+    <Button {...args}>
+      <Icon>
+        <CheckIcon />
+      </Icon>
+
+      <Button.Label>Save changes</Button.Label>
+    </Button>
+  ),
+};
+
+export const IconOnly: Story = {
+  args: { 'aria-label': 'Show details', variant: Variant.TERTIARY },
+  render: (args) => (
+    <Button {...args}>
+      <Icon>
+        <InfoIcon />
+      </Icon>
+    </Button>
+  ),
+};
+
+export const StatusColors: Story = {
+  render: (args) => (
+    <div className="story-row">
+      {Object.values(Tone).map((tone) => (
+        <Button {...args} key={tone} tone={tone}>
+          <Icon>
+            <CheckIcon />
+          </Icon>
+
+          <Button.Label>{tone}</Button.Label>
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
 export const Submit: Story = {
   args: { type: 'submit' },
 
@@ -112,7 +149,7 @@ export const Submit: Story = {
       <div className="story-row">
         <Button {...args} />
 
-        <Button variant={ButtonVariant.TERTIARY}>Cancel</Button>
+        <Button variant={Variant.TERTIARY}>Cancel</Button>
       </div>
     </form>
   ),

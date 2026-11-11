@@ -1,3 +1,13 @@
+import { Button } from '../button/Button';
+
+import { Label } from '../label/Label';
+
+import { Combobox } from '../combobox/Combobox';
+
+import { Textarea } from '../textarea/Textarea';
+
+import { Input } from '../input/Input';
+
 import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { Form } from './Form';
@@ -32,7 +42,7 @@ test('Form label focuses its input', async ({ render }) => {
   await expect(form.getByRole('textbox')).toBeFocused();
 });
 
-test('Form.Input supports controlled values', async ({ render }) => {
+test('Input supports controlled values', async ({ render }) => {
   const input = await render(<ControlledInput />);
 
   await input.fill('Archive');
@@ -40,10 +50,10 @@ test('Form.Input supports controlled values', async ({ render }) => {
   await expect(input).toHaveValue('Archive');
 });
 
-test('Form.Input exposes validation feedback', async ({ render }) => {
+test('Input exposes validation feedback', async ({ render }) => {
   const form = await render(
     <Form>
-      <Form.Input aria-label="URL" aria-invalid aria-describedby="error" />
+      <Input aria-label="URL" aria-invalid aria-describedby="error" />
 
       <p id="error">Enter a valid URL.</p>
     </Form>,
@@ -54,14 +64,14 @@ test('Form.Input exposes validation feedback', async ({ render }) => {
   await expect(form.getByRole('textbox')).toHaveAccessibleDescription('Enter a valid URL.');
 });
 
-test('Form.Input supports read-only values', async ({ render }) => {
-  const input = await render(<Form.Input aria-label="Title" readOnly value="Archive" />);
+test('Input supports read-only values', async ({ render }) => {
+  const input = await render(<Input aria-label="Title" readOnly value="Archive" />);
 
   await expect(input).not.toBeEditable();
 });
 
-test('Form.Textarea accepts multiline text', async ({ render }) => {
-  const input = await render(<Form.Textarea aria-label="Notes" />);
+test('Textarea accepts multiline text', async ({ render }) => {
+  const input = await render(<Textarea aria-label="Notes" />);
 
   await input.fill('First line\nSecond line');
 
@@ -71,23 +81,23 @@ test('Form.Textarea accepts multiline text', async ({ render }) => {
 test('form controls have no accessibility violations', async ({ render, page }) => {
   await render(
     <Form aria-label="Capture">
-      <Form.Label htmlFor="url">URL</Form.Label>
+      <Label htmlFor="url">URL</Label>
 
-      <Form.Input id="url" required />
+      <Input id="url" required />
 
-      <Form.Label htmlFor="notes">Notes</Form.Label>
+      <Label htmlFor="notes">Notes</Label>
 
-      <Form.Textarea id="notes" />
+      <Textarea id="notes" />
 
-      <Form.Label htmlFor="collection">Collection</Form.Label>
+      <Label htmlFor="collection">Collection</Label>
 
-      <Form.Combobox id="collection">
-        <Form.Combobox.Option value="reading">Reading</Form.Combobox.Option>
-      </Form.Combobox>
+      <Combobox id="collection">
+        <Combobox.Option value="reading">Reading</Combobox.Option>
+      </Combobox>
 
-      <Form.Button type="submit">
-        <Form.Button.Label>Save</Form.Button.Label>
-      </Form.Button>
+      <Button type="submit">
+        <Button.Label>Save</Button.Label>
+      </Button>
     </Form>,
   );
 

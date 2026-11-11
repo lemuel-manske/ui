@@ -6,6 +6,7 @@ import { RadioGroupContext, useRadioGroup, useRadioGroupItem } from './useRadioG
 
 import styles from './RadioGroup.module.css';
 
+/** Native radio option bound to its enclosing RadioGroup selection and disabled state. */
 function RadioGroupItem(props: RadioGroupItemProps) {
   const item = useRadioGroupItem(props);
 
@@ -18,6 +19,7 @@ function RadioGroupItem(props: RadioGroupItemProps) {
   );
 }
 
+/** Groups mutually exclusive radio options with a visible legend. */
 function RadioGroup(props: RadioGroupProps) {
   const group = useRadioGroup(props);
 

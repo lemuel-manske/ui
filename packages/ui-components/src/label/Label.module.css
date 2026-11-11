@@ -1,9 +1,25 @@
 .label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-space-8);
   font-family: var(--ui-font-body);
   font-weight: 500;
   line-height: 1.5;
   color: var(--ui-color-text-primary);
   overflow-wrap: anywhere;
+}
+
+.label.danger {
+  color: var(--ui-state-danger);
+}
+.label.success {
+  color: var(--ui-state-success);
+}
+.label.warning {
+  color: var(--ui-state-warning);
+}
+.label.info {
+  color: var(--ui-state-info);
 }
 
 .label.small {

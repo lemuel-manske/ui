@@ -1,16 +1,11 @@
-import { Size } from '@lemuel-manske/design-tokens';
+import type { Size } from '@lemuel-manske/design-tokens';
 
-const ComboboxSize = {
-  SMALL: Size.SMALL,
-  MEDIUM: Size.MEDIUM,
-  LARGE: Size.LARGE,
-} as const satisfies Pick<typeof Size, 'SMALL' | 'MEDIUM' | 'LARGE'>;
-
-type ComboboxSize = (typeof ComboboxSize)[keyof typeof ComboboxSize];
+type ComboboxSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
 
 enum ComboboxAppearance {
   CUSTOM = 'custom',
   NATIVE = 'native',
 }
 
-export { ComboboxSize, ComboboxAppearance };
+export type { ComboboxSize };
+export { ComboboxAppearance };

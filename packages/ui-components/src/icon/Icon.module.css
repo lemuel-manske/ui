@@ -1,0 +1,81 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  vertical-align: middle;
+  color: inherit;
+}
+
+.small {
+  font-size: 1em;
+}
+.medium {
+  font-size: 1.25em;
+}
+.large {
+  font-size: 1.5em;
+}
+
+.artwork {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1em;
+  block-size: 1em;
+  pointer-events: none;
+}
+
+.artwork > :where(svg, img) {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.danger {
+  color: var(--ui-state-danger);
+}
+.success {
+  color: var(--ui-state-success);
+}
+.warning {
+  color: var(--ui-state-warning);
+}
+.info {
+  color: var(--ui-state-info);
+}
+
+.action {
+  box-sizing: border-box;
+  min-inline-size: var(--ui-control-small);
+  min-block-size: var(--ui-control-small);
+  padding: var(--ui-space-8);
+  border: var(--ui-border-width) solid transparent;
+  border-radius: var(--ui-radius-full);
+  background: transparent;
+  cursor: pointer;
+}
+
+.action:hover:not(:disabled) {
+  background: var(--ui-color-surface-muted);
+}
+
+.action:focus-visible {
+  outline: 2px solid var(--ui-state-focus);
+  outline-offset: 3px;
+}
+
+.action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+  .action {
+    border-color: ButtonText;
+  }
+  .action:disabled {
+    color: GrayText;
+    opacity: 1;
+  }
+}

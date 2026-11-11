@@ -1,11 +1,16 @@
-import { Size } from '@lemuel-manske/design-tokens';
+import type { Size } from '@lemuel-manske/design-tokens';
 
-const InputSize = {
-  SMALL: Size.SMALL,
-  MEDIUM: Size.MEDIUM,
-  LARGE: Size.LARGE,
-} as const satisfies Pick<typeof Size, 'SMALL' | 'MEDIUM' | 'LARGE'>;
+type InputSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
 
-type InputSize = (typeof InputSize)[keyof typeof InputSize];
+type InputType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'url'
+  | 'search'
+  | 'tel'
+  | 'number'
+  | 'date'
+  | 'time';
 
-export { InputSize };
+export type { InputSize, InputType };

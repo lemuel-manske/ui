@@ -61,10 +61,9 @@ Use the live development endpoint or deploy a separate MCP service if remote too
 
 ## Preview and deployment
 
-Run `npm run serve:docs` after building to preview the complete deployment at
-`http://localhost:3000/ui/`. Run `npm run docs` for the Docusaurus development server;
-it prepares a snapshot of the source guides and APIs when starting. Restart it after changing
-documentation sources to refresh that snapshot. Use the complete build preview for Storybook links.
+Run `npm run docs` for the Docusaurus development server; it prepares a snapshot of the
+source guides and APIs when starting. Restart it after changing documentation sources to
+refresh that snapshot. Use the complete build preview for Storybook links.
 
 In the GitHub repository, set **Settings → Pages → Build and deployment → Source** to
 **GitHub Actions**. The documentation workflow builds and deploys changes on `main` and supports
@@ -75,9 +74,14 @@ address. Generated files stay ignored; edit the original component MDX, source t
 
 ## Maintaining the documentation
 
-Document behavior and defaults in source JSDoc, show representative states in stories, and
-explain decisions and compositions in MDX. Register compound parts as story subcomponents using
-direct component imports. Declare stories with `export const` so manifest extraction can find them.
+Document each public prop's purpose, type, and default in source JSDoc. Use `@remarks` for
+the type description so the generated API retains TypeScript's inferred unions, and use
+`@default` for defaults. Describe inherited accessibility props at their shared declaration.
+Show representative states in stories and explain compositions in MDX.
+
+Register component-specific parts as story subcomponents using direct component imports.
+Compose standalone components directly when a compound alias adds no behavior.
+Declare stories with `export const` so manifest extraction can find them.
 Keep examples on the public API. Build documentation in CI to catch broken MDX and extraction
 failures; inspect the artifact when changing component APIs or upgrading Storybook.
 Generated page templates live in `scripts/templates/`; shared paths and artifact names live

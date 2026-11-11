@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { List } from './List';
+import { List, ListItem } from './List';
 
 const meta = {
   title: 'Components/List',
   component: List,
+  subcomponents: { ListItem },
   tags: ['autodocs'],
 
   args: { children: null },

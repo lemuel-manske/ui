@@ -2,6 +2,7 @@ import type { CheckboxProps } from './types';
 
 import { useCheckbox } from './useCheckbox';
 
+/** Native checkbox with a visible label and shared accessible control attributes. */
 function Checkbox(props: CheckboxProps) {
   const checkbox = useCheckbox(props);
 

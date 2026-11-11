@@ -60,6 +60,90 @@
   background: var(--ui-action-secondary-hover);
 }
 
+.button.danger {
+  color: var(--ui-state-danger);
+}
+
+.button.secondary.danger {
+  border-color: var(--ui-state-danger);
+}
+
+.button.danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ui-action-danger) 12%, var(--ui-color-background));
+}
+
+.button.primary.danger {
+  background: var(--ui-action-danger);
+  color: var(--ui-action-danger-foreground);
+}
+
+.button.primary.danger:hover:not(:disabled) {
+  background: var(--ui-action-danger-hover);
+}
+
+.button.success {
+  color: var(--ui-state-success);
+}
+
+.button.secondary.success {
+  border-color: var(--ui-state-success);
+}
+
+.button.success:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ui-action-success) 12%, var(--ui-color-background));
+}
+
+.button.primary.success {
+  background: var(--ui-action-success);
+  color: var(--ui-action-success-foreground);
+}
+
+.button.primary.success:hover:not(:disabled) {
+  background: var(--ui-action-success-hover);
+}
+
+.button.warning {
+  color: var(--ui-state-warning);
+}
+
+.button.secondary.warning {
+  border-color: var(--ui-state-warning);
+}
+
+.button.warning:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ui-action-warning) 12%, var(--ui-color-background));
+}
+
+.button.primary.warning {
+  background: var(--ui-action-warning);
+  color: var(--ui-action-warning-foreground);
+}
+
+.button.primary.warning:hover:not(:disabled) {
+  background: var(--ui-action-warning-hover);
+}
+
+.button.info {
+  color: var(--ui-state-info);
+}
+
+.button.secondary.info {
+  border-color: var(--ui-state-info);
+}
+
+.button.info:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ui-action-info) 12%, var(--ui-color-background));
+}
+
+.button.primary.info {
+  background: var(--ui-action-info);
+  color: var(--ui-action-info-foreground);
+}
+
+.button.primary.info:hover:not(:disabled) {
+  background: var(--ui-action-info-hover);
+}
+
 .button:focus-visible {
   outline: 2px solid var(--ui-state-focus);
   outline-offset: 3px;

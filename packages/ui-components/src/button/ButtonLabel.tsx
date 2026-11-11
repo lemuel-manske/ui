@@ -1,18 +1,10 @@
-import type { ReactNode, Ref } from 'react';
+import type { ButtonLabelProps } from './types';
 
-interface ButtonLabelProps {
-  /** Text displayed inside Button.Label. */
-  children: ReactNode;
-
-  className?: string;
-
-  ref?: Ref<HTMLSpanElement>;
-}
-
+/** Renders button text in a span without introducing form-label behavior. */
 function ButtonLabel(props: ButtonLabelProps) {
   return <span {...props} />;
 }
 
 export { ButtonLabel };
 
-export type { ButtonLabelProps };
+export type { ButtonLabelProps } from './types';

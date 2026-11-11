@@ -1,11 +1,7 @@
-import { Size } from '@lemuel-manske/design-tokens';
+import type { Size } from '@lemuel-manske/design-tokens';
 
-const TextSize = {
-  SMALL: Size.SMALL,
-  MEDIUM: Size.MEDIUM,
-  LARGE: Size.LARGE,
-} as const satisfies Pick<typeof Size, 'SMALL' | 'MEDIUM' | 'LARGE'>;
+type TextSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
 
-type TextSize = (typeof TextSize)[keyof typeof TextSize];
+type TextRole = 'p' | 'span';
 
-export { TextSize };
+export type { TextSize, TextRole };

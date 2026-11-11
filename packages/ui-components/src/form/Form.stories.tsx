@@ -1,3 +1,15 @@
+import { Field } from '../field/Field';
+
+import { Button } from '../button/Button';
+
+import { Label } from '../label/Label';
+
+import { Combobox } from '../combobox/Combobox';
+
+import { Textarea } from '../textarea/Textarea';
+
+import { Input } from '../input/Input';
+
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { expect } from 'storybook/test';
@@ -17,25 +29,25 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => (
     <Form {...args} onSubmit={(event) => event.preventDefault()}>
-      <Form.Label htmlFor="website">Website URL</Form.Label>
+      <Label htmlFor="website">Website URL</Label>
 
-      <Form.Input id="website" name="url" type="url" required placeholder="https://example.com" />
+      <Input id="website" name="url" type="url" required placeholder="https://example.com" />
 
-      <Form.Label htmlFor="notes">Notes</Form.Label>
+      <Label htmlFor="notes">Notes</Label>
 
-      <Form.Textarea id="notes" name="notes" />
+      <Textarea id="notes" name="notes" />
 
-      <Form.Label htmlFor="collection">Collection</Form.Label>
+      <Label htmlFor="collection">Collection</Label>
 
-      <Form.Combobox id="collection" name="collection" defaultValue="reading">
-        <Form.Combobox.Option value="reading">Reading</Form.Combobox.Option>
+      <Combobox id="collection" name="collection" defaultValue="reading">
+        <Combobox.Option value="reading">Reading</Combobox.Option>
 
-        <Form.Combobox.Option value="research">Research</Form.Combobox.Option>
-      </Form.Combobox>
+        <Combobox.Option value="research">Research</Combobox.Option>
+      </Combobox>
 
-      <Form.Button type="submit">
-        <Form.Button.Label>Archive website</Form.Button.Label>
-      </Form.Button>
+      <Button type="submit">
+        <Button.Label>Archive website</Button.Label>
+      </Button>
     </Form>
   ),
 };
@@ -43,9 +55,9 @@ export const Default: Story = {
 export const Invalid: Story = {
   render: (args) => (
     <Form {...args}>
-      <Form.Label htmlFor="invalid-url">Website URL</Form.Label>
+      <Label htmlFor="invalid-url">Website URL</Label>
 
-      <Form.Input
+      <Input
         id="invalid-url"
         type="url"
         defaultValue="example"
@@ -61,13 +73,13 @@ export const Invalid: Story = {
 export const Disabled: Story = {
   render: (args) => (
     <Form {...args}>
-      <Form.Label htmlFor="disabled-url">Website URL</Form.Label>
+      <Label htmlFor="disabled-url">Website URL</Label>
 
-      <Form.Input id="disabled-url" disabled defaultValue="https://example.com" />
+      <Input id="disabled-url" disabled defaultValue="https://example.com" />
 
-      <Form.Button disabled>
-        <Form.Button.Label>Archiving…</Form.Button.Label>
-      </Form.Button>
+      <Button disabled>
+        <Button.Label>Archiving…</Button.Label>
+      </Button>
     </Form>
   ),
 };
@@ -84,19 +96,19 @@ export const AccessibleFields: Story = {
         event.currentTarget.dataset.submittedUrl = String(data.get('url'));
       }}
     >
-      <Form.Field required>
-        <Form.Field.Label>Website URL (required)</Form.Field.Label>
+      <Field required>
+        <Field.Label>Website URL (required)</Field.Label>
 
-        <Form.Field.Control>
-          <Form.Input name="url" type="url" placeholder="https://example.com" />
-        </Form.Field.Control>
+        <Field.Control>
+          <Input name="url" type="url" placeholder="https://example.com" />
+        </Field.Control>
 
-        <Form.Field.Description>Enter a complete URL, including https://.</Form.Field.Description>
-      </Form.Field>
+        <Field.Description>Enter a complete URL, including https://.</Field.Description>
+      </Field>
 
-      <Form.Button type="submit">
-        <Form.Button.Label>Archive website</Form.Button.Label>
-      </Form.Button>
+      <Button type="submit">
+        <Button.Label>Archive website</Button.Label>
+      </Button>
     </Form>
   ),
 

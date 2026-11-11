@@ -1,5 +1,3 @@
-import { fileURLToPath } from 'node:url';
-
 import { createLibraryConfig } from '@lemuel-manske/config-vite';
 
 import { mergeConfig } from 'vite';
@@ -22,9 +20,9 @@ const themeCss = [
 
 const config = mergeConfig(
   createLibraryConfig({
-    entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
     fileName: 'tokens',
   }),
+
   {
     plugins: [
       {

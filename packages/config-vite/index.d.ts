@@ -1,7 +1,7 @@
 import type { UserConfig } from 'vite';
 
 interface LibraryOptions {
-  entry: string;
+  entry?: string;
 
   fileName: string;
 

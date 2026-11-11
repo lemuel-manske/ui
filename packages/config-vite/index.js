@@ -1,14 +1,21 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
 
 const reactConfig = defineConfig({
   plugins: [react()],
 });
 
+const INDEX = 'index.ts';
+
 /**
- * @param {{ entry: string, fileName: string, external?: string[] }} options
+ * @param {{
+ *   entry?: string,
+ *   fileName: string,
+ *   external?: string[]
+ * }} options
  */
-function createLibraryConfig({ entry, fileName, external = [] }) {
+function createLibraryConfig({ entry = resolve(process.cwd(), INDEX), fileName, external = [] }) {
   return defineConfig({
     build: {
       lib: {
@@ -17,7 +24,6 @@ function createLibraryConfig({ entry, fileName, external = [] }) {
         fileName,
         cssFileName: fileName,
       },
-
       rollupOptions: {
         external,
       },

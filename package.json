@@ -21,7 +21,7 @@
   },
   "scripts": {
     "prepare": "husky",
-    "build": "npm run build --workspace @lemuel-manske/config-playwright && npm run build --workspace @lemuel-manske/design-tokens && npm run build --workspace @lemuel-manske/utils && npm run build --workspace @lemuel-manske/components",
+    "build": "npm run build --workspace @lemuel-manske/config-playwright && npm run build --workspace @lemuel-manske/design-tokens && npm run build --workspace @lemuel-manske/utils && npm run build --workspace @lemuel-manske/components && npm run build --workspace @lemuel-manske/i18n",
     "check:packages": "node scripts/check-packages.js",
     "commitlint": "commitlint",
     "precommit": "lint-staged",

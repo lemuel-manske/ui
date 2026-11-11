@@ -1,0 +1,5 @@
+{
+  "my-app.title": "OpenArquive",
+  "my-app.loading": "Loading the archive…",
+  "my-app.capture.count": "{count, plural, one {# item archived} other {# items archived}}"
+}

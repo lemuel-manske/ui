@@ -1,0 +1,9 @@
+{
+  "extends": "@lemuel-manske/config-typescript/react.json",
+  "compilerOptions": {
+    "declaration": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

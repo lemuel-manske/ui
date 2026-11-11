@@ -1,0 +1,78 @@
+{
+  "name": "@lemuel-manske/i18n",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Typed, framework-independent localization for applications.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/i18n"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./eslint": {
+      "types": "./dist/eslint.d.ts",
+      "import": "./dist/eslint.js"
+    }
+  },
+  "bin": {
+    "i18n-message-ids": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "tsc --noEmit -p tsconfig.tests.json && node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@formatjs/icu-messageformat-parser": "^3.5.23",
+    "intl-messageformat": "^12.1.5"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/utils": "^8.72.2",
+    "react": "^19.0.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependenciesMeta": {
+    "@typescript-eslint/utils": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "typescript": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-typescript": "file:../config-typescript",
+    "@types/node": "22.15.0",
+    "@types/react": "19.3.0",
+    "@typescript-eslint/utils": "8.72.2",
+    "eslint": "10.14.0",
+    "prettier": "3.6.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.2"
+  }
+}

@@ -1,4 +1,4 @@
-import { cx, useAccessibility } from '@lemuel-manske/utils';
+import { pickProps, cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { CheckboxProps } from './types';
 
@@ -6,7 +6,6 @@ import styles from './Checkbox.module.css';
 
 function useCheckbox({
   children,
-  className,
   id,
   disabled = false,
   'aria-label': label,
@@ -24,8 +23,22 @@ function useCheckbox({
 
   return {
     children,
-    className: cx(styles.checkbox, className),
-    input: { ...props, ...accessibility, disabled, type: 'checkbox' as const },
+    className: cx(styles.checkbox),
+    input: {
+      ...pickProps(props, [
+        'name',
+        'value',
+        'checked',
+        'defaultChecked',
+        'required',
+        'aria-invalid',
+        'onChange',
+        'ref',
+      ]),
+      ...accessibility,
+      disabled,
+      type: 'checkbox' as const,
+    },
   };
 }
 

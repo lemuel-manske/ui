@@ -30,10 +30,12 @@
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "tsc --project tsconfig.tests.json && jest"
   },
   "devDependencies": {
     "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-jest": "file:../config-jest",
     "@lemuel-manske/config-prettier": "file:../config-prettier",
     "@lemuel-manske/config-typescript": "file:../config-typescript",
     "@lemuel-manske/config-vite": "file:../config-vite",

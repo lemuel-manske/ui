@@ -18,13 +18,6 @@ interface AlertProps {
   urgency?: AlertUrgency;
 
   /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * ID applied to the native element for labels, descriptions, and fragment links.
    * @remarks Type `string`.
    * @default undefined

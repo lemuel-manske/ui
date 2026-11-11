@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Variant } from '@lemuel-manske/design-tokens';
 
 import { Icon } from '../icon/Icon';
@@ -78,3 +80,24 @@ function StatusButtons({ theme, tone }: StatusButtonsProps) {
 }
 
 export { StatusButtons };
+
+function DisclosureButton() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <>
+      <Button
+        aria-expanded={expanded}
+        aria-controls="authentication"
+        onClick={() => setExpanded(!expanded)}
+      >
+        Connect
+      </Button>
+      <section id="authentication" aria-label="Authentication" hidden={!expanded}>
+        Account details
+      </section>
+    </>
+  );
+}
+
+export { DisclosureButton };

@@ -1,6 +1,6 @@
 import { Size } from '@lemuel-manske/design-tokens';
 
-import { cx, useAccessibility } from '@lemuel-manske/utils';
+import { pickProps, cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { TextareaProps } from './types';
 
@@ -8,7 +8,6 @@ import styles from './Textarea.module.css';
 
 function useTextarea({
   size = Size.MEDIUM,
-  className,
   id,
   disabled = false,
   'aria-label': label,
@@ -25,10 +24,25 @@ function useTextarea({
   });
 
   return {
-    ...props,
+    ...pickProps(props, [
+      'name',
+      'value',
+      'defaultValue',
+      'required',
+      'aria-invalid',
+      'autoComplete',
+      'onChange',
+      'onBlur',
+      'ref',
+      'placeholder',
+      'readOnly',
+      'rows',
+      'minLength',
+      'maxLength',
+    ]),
     ...accessibility,
     disabled,
-    className: cx(styles.textarea, className, {
+    className: cx(styles.textarea, {
       [styles.small]: size === Size.SMALL,
       [styles.medium]: size === Size.MEDIUM,
       [styles.large]: size === Size.LARGE,

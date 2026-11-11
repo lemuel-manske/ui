@@ -11,7 +11,7 @@ const meta = {
 
   args: { 'aria-label': 'Name', placeholder: 'Enter your name' },
 
-  argTypes: { size: { control: 'select', options: Object.values(Size) } },
+  argTypes: { size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] } },
 } satisfies Meta<typeof Input>;
 
 type Story = StoryObj<typeof meta>;

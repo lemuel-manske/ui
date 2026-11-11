@@ -35,13 +35,6 @@ interface DialogProps {
    * @default 'Close'
    */
   closeLabel?: string;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 export type { DialogProps };

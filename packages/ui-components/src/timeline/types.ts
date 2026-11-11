@@ -23,13 +23,6 @@ interface TimelineProps {
    * @default 'vertical'
    */
   orientation?: TimelineOrientation;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 interface TimelineItemProps {
@@ -53,13 +46,6 @@ interface TimelineItemProps {
    * @default false
    */
   current?: boolean;
-
-  /**
-   * Additional CSS classes applied to the timeline list item.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 export type { TimelineProps, TimelineItemProps };

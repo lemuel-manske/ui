@@ -1,8 +1,24 @@
+import type { TextTone, TextEmphasis } from './options';
+
 import type { ReactNode } from 'react';
 
 import type { TextSize, TextRole } from './options';
 
 interface TextProps {
+  /**
+   * Semantic text color, independent of size and emphasis.
+   * @remarks Type `TextTone`.
+   * @default 'primary'
+   */
+  tone?: TextTone;
+
+  /**
+   * Visual italic emphasis. Load the real italic font face; use em for semantic emphasis.
+   * @remarks Type `TextEmphasis`.
+   * @default Emphasis.NORMAL
+   */
+  emphasis?: TextEmphasis;
+
   /**
    * Text and inline content rendered in the selected native element.
    * @remarks Type `ReactNode`.
@@ -30,13 +46,6 @@ interface TextProps {
    * @default undefined
    */
   id?: string;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 export type { TextProps };

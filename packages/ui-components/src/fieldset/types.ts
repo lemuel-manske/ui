@@ -1,6 +1,21 @@
+import type {
+  FieldsetAppearance,
+  LegendSize,
+  LegendWeight,
+  LegendTone,
+  LegendEmphasis,
+} from './options';
+
 import type { ReactNode, Ref } from 'react';
 
 interface FieldsetProps {
+  /**
+   * Outlined box, section divider, or unboxed grouping. Spacing uses semantic space tokens.
+   * @remarks Type `FieldsetAppearance`.
+   * @default FieldsetAppearance.OUTLINED
+   */
+  appearance?: FieldsetAppearance;
+
   /**
    * A Legend and the related form controls grouped by this fieldset.
    * @remarks Type `ReactNode`.
@@ -30,13 +45,6 @@ interface FieldsetProps {
   id?: string;
 
   /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * Space-separated IDs of elements that describe the component.
    * @remarks Type `string`.
    * @default undefined
@@ -53,6 +61,34 @@ interface FieldsetProps {
 
 interface LegendProps {
   /**
+   * Visual caption size, preserving the native legend semantics.
+   * @remarks Type `LegendSize`.
+   * @default Size.MEDIUM
+   */
+  size?: LegendSize;
+
+  /**
+   * Visual font weight of the group caption.
+   * @remarks Type `LegendWeight`.
+   * @default Weight.MEDIUM
+   */
+  weight?: LegendWeight;
+
+  /**
+   * Semantic text color, independent of size and emphasis.
+   * @remarks Type `LegendTone`.
+   * @default 'primary'
+   */
+  tone?: LegendTone;
+
+  /**
+   * Visual italic emphasis. Load the real italic font face; use em for semantic emphasis.
+   * @remarks Type `LegendEmphasis`.
+   * @default Emphasis.NORMAL
+   */
+  emphasis?: LegendEmphasis;
+
+  /**
    * Caption that names the enclosing fieldset.
    * @remarks Type `ReactNode`.
    * @default None (required)
@@ -65,13 +101,6 @@ interface LegendProps {
    * @default undefined
    */
   id?: string;
-
-  /**
-   * Additional CSS classes applied to the native legend element.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 
   /**
    * React ref to the native element rendered by this component.

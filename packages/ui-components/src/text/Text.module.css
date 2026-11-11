@@ -1,10 +1,13 @@
 .text {
   margin: 0;
-  font-family: var(--ui-font-body);
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--ui-color-text-primary);
   overflow-wrap: anywhere;
+  font-family: var(--ui-font-body);
+  font-size: var(--ui-text-medium);
+  font-weight: var(--ui-weight-regular);
+  line-height: var(--ui-leading-body);
+  letter-spacing: var(--ui-tracking-body);
+  color: var(--ui-color-text-primary);
+  font-style: normal;
 }
 
 .text.small {
@@ -17,4 +20,33 @@
 
 .text.large {
   font-size: var(--ui-text-large);
+}
+
+.primary {
+  color: var(--ui-color-text-primary);
+}
+
+.secondary {
+  color: var(--ui-color-text-secondary);
+}
+
+.accent {
+  color: var(--ui-action-primary);
+}
+
+.success {
+  color: var(--ui-state-success);
+}
+
+.danger {
+  color: var(--ui-state-danger);
+}
+
+.normal {
+  font-style: normal;
+}
+
+.italic {
+  font-style: italic;
+  font-synthesis: none;
 }

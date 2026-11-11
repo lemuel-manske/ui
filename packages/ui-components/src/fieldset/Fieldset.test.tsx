@@ -1,3 +1,7 @@
+import { Size, Weight } from '@lemuel-manske/design-tokens';
+
+import { FieldsetAppearance } from './options';
+
 import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { Fieldset, Legend } from './Fieldset';
@@ -34,6 +38,57 @@ test('Fieldset has no accessibility violations', async ({ render, page }) => {
       <Legend>Contact details</Legend>
 
       <Input aria-label="Email" />
+    </Fieldset>,
+  );
+
+  await expect(page).noAccessibilityViolations();
+});
+
+test('plain fieldset retains its legend as the group name', async ({ render, page }) => {
+  await render(
+    <Fieldset appearance={FieldsetAppearance.PLAIN}>
+      <Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
+        Authentication
+      </Legend>
+      <Input aria-label="Account" />
+    </Fieldset>,
+  );
+
+  await expect(page.getByRole('group', { name: 'Authentication' })).toBeVisible();
+});
+
+test('divided fieldset retains native disabled behavior', async ({ render, page }) => {
+  await render(
+    <Fieldset appearance={FieldsetAppearance.DIVIDED} disabled>
+      <Legend>Authentication</Legend>
+      <Input aria-label="Account" />
+    </Fieldset>,
+  );
+
+  await expect(page.getByRole('textbox', { name: 'Account' })).toBeDisabled();
+});
+
+test('plain fieldset with title legend has no accessibility violations', async ({
+  render,
+  page,
+}) => {
+  await render(
+    <Fieldset appearance={FieldsetAppearance.PLAIN}>
+      <Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
+        Authentication
+      </Legend>
+      <Input aria-label="Account" />
+    </Fieldset>,
+  );
+
+  await expect(page).noAccessibilityViolations();
+});
+
+test('divided fieldset has no accessibility violations', async ({ render, page }) => {
+  await render(
+    <Fieldset appearance={FieldsetAppearance.DIVIDED}>
+      <Legend size={Size.SMALL}>Preferences</Legend>
+      <Input aria-label="Collection" />
     </Fieldset>,
   );
 

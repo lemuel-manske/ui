@@ -12,7 +12,7 @@ const meta = {
 
   args: { 'aria-label': 'Notes', placeholder: 'Add notes' },
 
-  argTypes: { size: { control: 'select', options: Object.values(Size) } },
+  argTypes: { size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] } },
 } satisfies Meta<typeof Textarea>;
 
 type Story = StoryObj<typeof meta>;

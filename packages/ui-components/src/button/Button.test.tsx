@@ -1,3 +1,5 @@
+import { DisclosureButton } from './Button.test-fixture';
+
 import { Variant, Tone, archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
 
 import { expect, test } from '@lemuel-manske/config-playwright';
@@ -209,6 +211,46 @@ test('library info button compositions have no accessibility violations', async 
   page,
 }) => {
   await render(<StatusButtons theme={libraryTheme} tone={Tone.INFO} />);
+
+  await expect(page).noAccessibilityViolations();
+});
+
+test('Button controls a disclosure with keyboard activation', async ({ render, page }) => {
+  await render(<DisclosureButton />);
+
+  await page.getByRole('button', { name: 'Connect' }).press('Enter');
+
+  await expect(page.getByRole('region', { name: 'Authentication' })).toBeVisible();
+});
+
+test('Button exposes the controlled disclosure state', async ({ render, page }) => {
+  await render(<DisclosureButton />);
+
+  await page.getByRole('button', { name: 'Connect' }).click();
+
+  await expect(page.getByRole('button', { name: 'Connect' })).toHaveAttribute(
+    'aria-expanded',
+    'true',
+  );
+});
+
+test('danger tertiary button preserves native disabled behavior in forced colors', async ({
+  render,
+  page,
+}) => {
+  await page.emulateMedia({ forcedColors: 'active' });
+
+  await render(
+    <Button tone={Tone.DANGER} variant={Variant.TERTIARY} disabled>
+      Remove capture
+    </Button>,
+  );
+
+  await expect(page.getByRole('button', { name: 'Remove capture' })).toBeDisabled();
+});
+
+test('disclosure composition has no accessibility violations', async ({ render, page }) => {
+  await render(<DisclosureButton />);
 
   await expect(page).noAccessibilityViolations();
 });

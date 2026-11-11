@@ -8,9 +8,9 @@ import styles from './Icon.module.css';
 
 /** Displays a client-supplied icon. An onClick and label turn it into a native button. */
 function Icon(props: IconProps) {
-  const { children, label, size = Size.MEDIUM, tone = Tone.DEFAULT, className } = props;
+  const { children, label, size = Size.MEDIUM, tone = Tone.DEFAULT } = props;
 
-  const classes = cx(styles.icon, styles[size], styles[tone], className);
+  const classes = cx(styles.icon, styles[size], styles[tone]);
 
   const artwork = (
     <span className={styles.artwork} aria-hidden="true">

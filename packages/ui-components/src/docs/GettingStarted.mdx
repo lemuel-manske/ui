@@ -52,7 +52,7 @@ The toolbar's brand switch changes the preview theme, not component props.
 - Use `Button` for actions and `Link` for navigation.
 - Use `Field` for one control with its label, help text, and error message.
 - Use `Fieldset` with `Fieldset.Legend` to group related controls.
-- Use `Form` for native submission semantics. Its compound controls alias standalone components.
+- Use `Form` for native submission semantics and compose standalone controls inside it.
 - Use `Combobox` for a native select with `Combobox.Option` children; it is not a searchable input.
 - Use `Heading`, `Text`, and semantic tokens when composing application layouts.
 
@@ -78,3 +78,6 @@ const theme = {
 
 Fonts named by the themes must be loaded by your application if you want them instead of
 the configured fallback fonts. Layout and application data remain the application's responsibility.
+
+See the Branding and theming guide to create brands, configure typography, and compose nested
+themes using the documented token contract.

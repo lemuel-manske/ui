@@ -1,4 +1,4 @@
-import { Size, Weight } from '@lemuel-manske/design-tokens';
+import { Size, Tone, Weight, Emphasis } from '@lemuel-manske/design-tokens';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -15,6 +15,11 @@ const meta = {
     size: { control: 'select', options: Object.values(Size) },
 
     weight: { control: 'select', options: Object.values(Weight) },
+    tone: {
+      control: 'select',
+      options: ['primary', 'secondary', 'accent', Tone.SUCCESS, Tone.DANGER],
+    },
+    emphasis: { control: 'select', options: Object.values(Emphasis) },
   },
 } satisfies Meta<typeof Heading>;
 
@@ -31,3 +36,17 @@ export const Semibold: Story = {
 };
 
 export default meta;
+
+export const XLarge: Story = { args: { size: Size.XLARGE, level: 1 } };
+
+export const SectionTitle: Story = { args: { size: Size.MEDIUM, level: 3 } };
+
+export const XLargeItalic: Story = {
+  args: {
+    level: 1,
+    size: Size.XLARGE,
+    weight: Weight.BOLD,
+    emphasis: Emphasis.ITALIC,
+    children: 'Preserve what matters.',
+  },
+};

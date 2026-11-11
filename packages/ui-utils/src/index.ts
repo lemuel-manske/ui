@@ -5,3 +5,5 @@ export {
   type AccessibilityOptions,
   type AccessibilityProperties,
 } from './useAccessibility';
+
+export { pickProps } from './pickProps';

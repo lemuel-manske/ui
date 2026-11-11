@@ -1,8 +1,22 @@
-import type { LinkTarget } from './options';
+import type { LinkTarget, LinkSize, LinkAppearance } from './options';
 
 import type { MouseEventHandler, ReactNode, Ref } from 'react';
 
 interface LinkProps {
+  /**
+   * Explicit font size; action links also use the matching minimum target height.
+   * @remarks Type `LinkSize`.
+   * @default undefined (inherited inline; medium for action)
+   */
+  size?: LinkSize;
+
+  /**
+   * Inline prose link or action with a padded interaction target.
+   * @remarks Type `LinkAppearance`.
+   * @default LinkAppearance.INLINE
+   */
+  appearance?: LinkAppearance;
+
   /**
    * Link text and inline content supplying its accessible name.
    * @remarks Type `ReactNode`.
@@ -44,13 +58,6 @@ interface LinkProps {
    * @default undefined
    */
   id?: string;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 
   /**
    * Accessible name supplied as text. Prefer a visible label when one is available.

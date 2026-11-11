@@ -2,6 +2,7 @@ enum Size {
   SMALL = 'small',
   MEDIUM = 'medium',
   LARGE = 'large',
+  XLARGE = 'xlarge',
 }
 
 enum Variant {
@@ -17,6 +18,11 @@ enum Weight {
   BOLD = 'bold',
 }
 
+enum Emphasis {
+  NORMAL = 'normal',
+  ITALIC = 'italic',
+}
+
 enum Tone {
   DEFAULT = 'default',
   DANGER = 'danger',
@@ -25,4 +31,4 @@ enum Tone {
   INFO = 'info',
 }
 
-export { Size, Variant, Weight, Tone };
+export { Size, Variant, Weight, Tone, Emphasis };

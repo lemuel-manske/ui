@@ -14,11 +14,9 @@ export { ButtonLabel } from './button/ButtonLabel';
 
 export { useButton } from './button/useButton';
 
-export type { ButtonProps, ButtonContent } from './button/types';
+export type { ButtonProps, ButtonContent, ButtonLabelProps } from './button/types';
 
-export type { ButtonLabelProps } from './button/types';
-
-export type { ButtonSize, ButtonVariant, ButtonTone, ButtonType } from './button/options';
+export type { ButtonType, ButtonSize, ButtonVariant, ButtonTone } from './button/options';
 
 export { Checkbox } from './checkbox/Checkbox';
 
@@ -62,6 +60,10 @@ export { useFieldset, useLegend } from './fieldset/useFieldset';
 
 export type { FieldsetProps, LegendProps } from './fieldset/types';
 
+export type { LegendSize, LegendWeight, LegendTone, LegendEmphasis } from './fieldset/options';
+
+export { FieldsetAppearance } from './fieldset/options';
+
 export { Form } from './form/Form';
 
 export { useForm } from './form/useForm';
@@ -76,7 +78,13 @@ export { useHeading } from './heading/useHeading';
 
 export type { HeadingProps } from './heading/types';
 
-export type { HeadingSize, HeadingWeight, HeadingLevel } from './heading/options';
+export type {
+  HeadingLevel,
+  HeadingSize,
+  HeadingWeight,
+  HeadingTone,
+  HeadingEmphasis,
+} from './heading/options';
 
 export { Icon } from './icon/Icon';
 
@@ -106,7 +114,9 @@ export { useLink } from './link/useLink';
 
 export type { LinkProps } from './link/types';
 
-export type { LinkTarget } from './link/options';
+export type { LinkTarget, LinkSize } from './link/options';
+
+export { LinkAppearance } from './link/options';
 
 export { List, ListItem } from './list/List';
 
@@ -136,13 +146,15 @@ export type { SpinnerProps } from './spinner/types';
 
 export type { SpinnerSize } from './spinner/options';
 
+export { SpinnerLabelVisibility } from './spinner/options';
+
 export { Text } from './text/Text';
 
 export { useText } from './text/useText';
 
 export type { TextProps } from './text/types';
 
-export type { TextSize, TextRole } from './text/options';
+export type { TextRole, TextSize, TextTone, TextEmphasis } from './text/options';
 
 export { Textarea } from './textarea/Textarea';
 

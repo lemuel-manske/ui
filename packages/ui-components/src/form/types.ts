@@ -18,13 +18,6 @@ interface FormProps {
   id?: string;
 
   /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * Accessible name supplied as text. Prefer a visible label when one is available.
    * @remarks Type `string`.
    * @default undefined

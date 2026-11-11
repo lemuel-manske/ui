@@ -7,12 +7,12 @@ import type { LabelProps } from './types';
 
 import styles from './Label.module.css';
 
-type LabelElementProps = Omit<LabelProps, 'size' | 'tone'> & AccessibilityProperties;
+type LabelElementProps = Omit<LabelProps, 'size' | 'tone'> &
+  AccessibilityProperties & { className: string };
 
 function useLabel({
   size = Size.MEDIUM,
   tone = Tone.DEFAULT,
-  className,
   id,
   htmlFor,
   children,
@@ -20,7 +20,7 @@ function useLabel({
 }: LabelProps): LabelElementProps {
   const accessibility = useAccessibility({ id });
 
-  const classes = cx(styles.label, styles[tone], className, {
+  const classes = cx(styles.label, styles[tone], {
     [styles.small]: size === Size.SMALL,
     [styles.medium]: size === Size.MEDIUM,
     [styles.large]: size === Size.LARGE,

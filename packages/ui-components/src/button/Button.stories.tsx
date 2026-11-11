@@ -23,7 +23,7 @@ const meta = {
   },
 
   argTypes: {
-    size: { control: 'select', options: Object.values(Size) },
+    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
     variant: { control: 'select', options: Object.values(Variant) },
     tone: { control: 'select', options: Object.values(Tone) },
   },
@@ -43,8 +43,10 @@ export const Tertiary: Story = {
 
 export const Sizes: Story = {
   render: (args) => (
-    <div className="story-row">
-      {Object.values(Size).map((size) => (
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--ui-space-16)' }}
+    >
+      {([Size.SMALL, Size.MEDIUM, Size.LARGE] as const).map((size) => (
         <Button {...args} key={size} size={size}>
           {size}
         </Button>
@@ -120,7 +122,9 @@ export const IconOnly: Story = {
 
 export const StatusColors: Story = {
   render: (args) => (
-    <div className="story-row">
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--ui-space-16)' }}
+    >
       {Object.values(Tone).map((tone) => (
         <Button {...args} key={tone} tone={tone}>
           <Icon>
@@ -146,7 +150,14 @@ export const Submit: Story = {
         event.currentTarget.dataset.submitted = 'true';
       }}
     >
-      <div className="story-row">
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          gap: 'var(--ui-space-16)',
+        }}
+      >
         <Button {...args} />
 
         <Button variant={Variant.TERTIARY}>Cancel</Button>

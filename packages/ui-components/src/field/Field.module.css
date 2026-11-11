@@ -9,11 +9,11 @@
   margin: 0;
   font-family: var(--ui-font-body);
   font-size: var(--ui-text-small);
-  line-height: 1.5;
+  line-height: var(--ui-leading-body);
   color: var(--ui-color-text-secondary);
 }
 
 .error {
   color: var(--ui-state-danger);
-  font-weight: 500;
+  font-weight: var(--ui-weight-medium);
 }

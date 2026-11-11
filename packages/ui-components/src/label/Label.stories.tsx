@@ -4,6 +4,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { expect } from 'storybook/test';
 
+import { Input } from '../input/Input';
+
 import { Label } from './Label';
 import { Icon } from '../icon/Icon';
 import { InfoIcon } from '../icon/ExampleIcons.test-fixture';
@@ -21,15 +23,15 @@ const meta = {
   },
 
   argTypes: {
-    size: { control: 'select', options: Object.values(Size) },
+    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
     tone: { control: 'select', options: Object.values(Tone) },
   },
 
   render: (args) => (
-    <div className="story-field">
+    <div style={{ display: 'grid', gap: 'var(--ui-space-8)', maxWidth: '25rem' }}>
       <Label {...args} />
 
-      <input id={args.htmlFor} name="collection" type="text" />
+      <Input id={args.htmlFor} name="collection" type="text" />
     </div>
   ),
 } satisfies Meta<typeof Label>;
@@ -48,7 +50,7 @@ export const Large: Story = {
 
 export const WithIcon: Story = {
   render: (args) => (
-    <div className="story-field">
+    <div style={{ display: 'grid', gap: 'var(--ui-space-8)', maxWidth: '25rem' }}>
       <Label {...args}>
         <Icon>
           <InfoIcon />
@@ -56,14 +58,16 @@ export const WithIcon: Story = {
         Collection name
       </Label>
 
-      <input id={args.htmlFor} name="collection" type="text" />
+      <Input id={args.htmlFor} name="collection" type="text" />
     </div>
   ),
 };
 
 export const StatusColors: Story = {
   render: (args) => (
-    <div className="story-row">
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--ui-space-16)' }}
+    >
       {Object.values(Tone).map((tone) => (
         <Label key={tone} {...args} htmlFor={undefined} tone={tone}>
           <Icon>

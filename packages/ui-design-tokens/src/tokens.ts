@@ -3,10 +3,15 @@ import type { Weight } from './enums';
 interface DesignTokens {
   color: {
     background: string;
+    backdrop: string;
     surface: string;
     'surface-muted': string;
     'surface-inverse': string;
     border: string;
+
+    /** Documentary separators, independent of control borders. */
+    divider: string;
+
     'text-primary': string;
     'text-secondary': string;
     'text-muted': string;
@@ -35,6 +40,10 @@ interface DesignTokens {
 
   state: {
     focus: string;
+    'focus-width': string;
+    'focus-offset': string;
+    'invalid-width': string;
+    'disabled-opacity': string;
     danger: string;
     'danger-foreground': string;
     success: string;
@@ -71,6 +80,28 @@ interface DesignTokens {
     large: string;
   };
 
+  /** Foundation line heights shared by default text and controls. */
+  leading: {
+    body: string;
+    control: string;
+    heading: string;
+    display: string;
+  };
+
+  /** Foundation letter spacing for body text and headings. */
+  tracking: {
+    body: string;
+    heading: string;
+    display: string;
+  };
+
+  /** Component decisions that may differ independently from shared foundations. */
+  component: {
+    'button-radius': string;
+    'button-weight': string;
+    'input-radius': string;
+  };
+
   border: {
     width: string;
   };
@@ -95,10 +126,12 @@ interface DesignTokens {
 const archiveTheme = {
   color: {
     background: '#F6F3EB',
+    backdrop: 'rgb(0 0 0 / 45%)',
     surface: '#EEE9DF',
     'surface-muted': '#E7E0D3',
     'surface-inverse': '#34312C',
     border: '#625C53',
+    divider: '#C8C8B9',
     'text-primary': '#211F1B',
     'text-secondary': '#625C53',
     'text-muted': '#6B6358',
@@ -127,6 +160,10 @@ const archiveTheme = {
 
   state: {
     focus: '#211F1B',
+    'focus-width': '2px',
+    'focus-offset': '3px',
+    'invalid-width': '2px',
+    'disabled-opacity': '0.45',
     danger: '#9A3324',
     'danger-foreground': '#F6F3EB',
     success: '#2F5D3A',
@@ -178,6 +215,25 @@ const archiveTheme = {
     large: '3.25rem',
   },
 
+  leading: {
+    body: '1.5',
+    control: '1.25',
+    heading: '1.2',
+    display: '1.1',
+  },
+
+  tracking: {
+    body: 'normal',
+    heading: 'normal',
+    display: '-0.025em',
+  },
+
+  component: {
+    'button-radius': 'var(--ui-radius-small)',
+    'button-weight': 'var(--ui-weight-medium)',
+    'input-radius': 'var(--ui-radius-small)',
+  },
+
   border: {
     width: '1px',
   },
@@ -206,6 +262,7 @@ const libraryTheme = {
     ...archiveTheme.color,
     background: '#ffffff',
     border: '#405b52',
+    divider: '#C8D4CF',
     'text-primary': '#193a32',
     'text-secondary': '#405b52',
     'surface-inverse': '#285146',

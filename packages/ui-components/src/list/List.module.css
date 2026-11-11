@@ -3,7 +3,7 @@
   padding: 0;
   font-family: var(--ui-font-body);
   font-size: var(--ui-text-medium);
-  line-height: 1.5;
+  line-height: var(--ui-leading-body);
   color: var(--ui-color-text-primary);
 }
 

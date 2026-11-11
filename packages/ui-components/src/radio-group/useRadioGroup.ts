@@ -44,7 +44,7 @@ function useRadioGroup({
   };
 }
 
-function useRadioGroupItem({ children, value, disabled, className, ref }: RadioGroupItemProps) {
+function useRadioGroupItem({ children, value, disabled, ref }: RadioGroupItemProps) {
   const group = useContext(RadioGroupContext);
 
   const accessibility = useAccessibility({ disabled: disabled || group?.disabled });
@@ -55,7 +55,7 @@ function useRadioGroupItem({ children, value, disabled, className, ref }: RadioG
 
   return {
     children,
-    className: cx(styles.item, className),
+    className: cx(styles.item),
     input: {
       ...accessibility,
       ref,

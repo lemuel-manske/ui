@@ -1,8 +1,8 @@
 import type { ButtonLabelProps } from './types';
 
 /** Renders button text in a span without introducing form-label behavior. */
-function ButtonLabel(props: ButtonLabelProps) {
-  return <span {...props} />;
+function ButtonLabel({ children, ref }: ButtonLabelProps) {
+  return <span ref={ref}>{children}</span>;
 }
 
 export { ButtonLabel };

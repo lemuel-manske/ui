@@ -45,7 +45,7 @@ Run commands from the repository root:
 
 - ALWAYS extract component options (like variants, sizes, colors, etc. - states) into a separate `options.ts` file under the component folder.
 
-- NEVER use direct enums from design-tokens, ALWAYS create component-specific enums that "extend" the design-tokens ones. Use `as const` to ensure type safety and avoid magic strings. See `Button` for an example. See `Button` for an example. See `Button` for an example. See `Button` for an example.
+- For enum-backed props, define component-specific union types in `options.ts` (for example, `type ButtonTone = Tone.DEFAULT | Tone.DANGER`). Use shared design-token enums as runtime values; do not duplicate them in component-specific constant objects. See `Button` for an example.
 
 - NEVER duplicate components or hooks. If a component or hook is needed, add it to the `@lemuel-manske/components` package.
 

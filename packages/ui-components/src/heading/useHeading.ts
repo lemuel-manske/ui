@@ -1,6 +1,6 @@
 import { Size, Weight } from '@lemuel-manske/design-tokens';
 
-import { cx } from '@lemuel-manske/utils';
+import { pickProps, cx } from '@lemuel-manske/utils';
 
 import type { HeadingProps } from './types';
 
@@ -19,14 +19,16 @@ function useHeading({
   level = 2,
   size = Size.MEDIUM,
   weight = Weight.MEDIUM,
-  className,
+  tone,
+  emphasis,
   ...props
 }: HeadingProps) {
   return {
     Tag: tagMap[level],
     props: {
-      ...props,
-      className: cx(styles.heading, className, {
+      ...pickProps(props, ['children', 'id']),
+      className: cx(styles.heading, tone && styles[tone], emphasis && styles[emphasis], {
+        [styles.xlarge]: size === Size.XLARGE,
         [styles.small]: size === Size.SMALL,
         [styles.medium]: size === Size.MEDIUM,
         [styles.large]: size === Size.LARGE,

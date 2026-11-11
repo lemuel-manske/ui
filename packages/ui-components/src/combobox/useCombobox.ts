@@ -1,6 +1,6 @@
 import { Size } from '@lemuel-manske/design-tokens';
 
-import { cx, useAccessibility } from '@lemuel-manske/utils';
+import { pickProps, cx, useAccessibility } from '@lemuel-manske/utils';
 
 import { ComboboxAppearance } from './options';
 
@@ -11,7 +11,6 @@ import styles from './Combobox.module.css';
 function useCombobox({
   size = Size.MEDIUM,
   appearance = ComboboxAppearance.CUSTOM,
-  className,
   id,
   disabled = false,
   'aria-label': label,
@@ -28,10 +27,21 @@ function useCombobox({
   });
 
   return {
-    ...props,
+    ...pickProps(props, [
+      'children',
+      'name',
+      'value',
+      'defaultValue',
+      'required',
+      'aria-invalid',
+      'autoComplete',
+      'onChange',
+      'onBlur',
+      'ref',
+    ]),
     ...accessibility,
     disabled,
-    className: cx(styles.combobox, className, {
+    className: cx(styles.combobox, {
       [styles.small]: size === Size.SMALL,
       [styles.medium]: size === Size.MEDIUM,
       [styles.large]: size === Size.LARGE,

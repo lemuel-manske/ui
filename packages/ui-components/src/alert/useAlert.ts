@@ -1,15 +1,15 @@
-import { cx } from '@lemuel-manske/utils';
+import { pickProps, cx } from '@lemuel-manske/utils';
 
 import type { AlertProps } from './types';
 
 import styles from './Alert.module.css';
 
-function useAlert({ urgency = 'polite', className, ...props }: AlertProps) {
+function useAlert({ urgency = 'polite', ...props }: AlertProps) {
   return {
-    ...props,
+    ...pickProps(props, ['children', 'id']),
     role: urgency === 'assertive' ? 'alert' : 'status',
     'aria-atomic': true as const,
-    className: cx(styles.alert, className),
+    className: cx(styles.alert),
   };
 }
 

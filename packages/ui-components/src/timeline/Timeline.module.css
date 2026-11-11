@@ -1,4 +1,5 @@
 .item {
+  --_ui-timeline-midline: calc(var(--ui-leading-body) * 0.5em);
   position: relative;
   display: grid;
   grid-template-columns: var(--ui-space-12) minmax(0, 1fr);
@@ -8,8 +9,8 @@
 
 .item::before {
   position: absolute;
-  inset-block-start: 0.75em;
-  inset-block-end: -0.75em;
+  inset-block-start: var(--_ui-timeline-midline);
+  inset-block-end: calc(-1 * var(--_ui-timeline-midline));
   inset-inline-start: calc((var(--ui-space-12) - var(--ui-border-width)) / 2);
   inline-size: var(--ui-border-width);
   background: var(--ui-color-border);
@@ -31,7 +32,7 @@
   box-sizing: border-box;
   inline-size: var(--ui-space-12);
   block-size: var(--ui-space-12);
-  margin-block-start: calc(0.75em - var(--ui-space-12) / 2);
+  margin-block-start: calc(var(--_ui-timeline-midline) - var(--ui-space-12) / 2);
   border: var(--ui-border-width) solid var(--ui-color-border);
   border-radius: var(--ui-radius-full);
   background: var(--ui-color-background);
@@ -69,7 +70,7 @@
 .timeline[data-orientation='horizontal'] > .item {
   flex: 1;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: 1.5em auto 1fr;
+  grid-template-rows: calc(var(--ui-leading-body) * 1em) auto 1fr;
   min-inline-size: 12rem;
   padding-block-end: 0;
   padding-inline-end: var(--ui-space-24);

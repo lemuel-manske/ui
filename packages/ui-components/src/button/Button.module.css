@@ -8,10 +8,10 @@
   max-width: 100%;
   margin: 0;
   border: var(--ui-border-width) solid transparent;
-  border-radius: var(--ui-radius-small);
+  border-radius: var(--ui-component-button-radius);
   font-family: var(--ui-font-body);
-  font-weight: 500;
-  line-height: 1.25;
+  font-weight: var(--ui-component-button-weight);
+  line-height: var(--ui-leading-control);
   text-align: center;
   overflow-wrap: anywhere;
   cursor: pointer;
@@ -61,11 +61,11 @@
 }
 
 .button.danger {
-  color: var(--ui-state-danger);
+  color: var(--ui-action-danger);
 }
 
 .button.secondary.danger {
-  border-color: var(--ui-state-danger);
+  border-color: var(--ui-action-danger);
 }
 
 .button.danger:hover:not(:disabled) {
@@ -82,11 +82,11 @@
 }
 
 .button.success {
-  color: var(--ui-state-success);
+  color: var(--ui-action-success);
 }
 
 .button.secondary.success {
-  border-color: var(--ui-state-success);
+  border-color: var(--ui-action-success);
 }
 
 .button.success:hover:not(:disabled) {
@@ -103,11 +103,11 @@
 }
 
 .button.warning {
-  color: var(--ui-state-warning);
+  color: var(--ui-action-warning);
 }
 
 .button.secondary.warning {
-  border-color: var(--ui-state-warning);
+  border-color: var(--ui-action-warning);
 }
 
 .button.warning:hover:not(:disabled) {
@@ -124,11 +124,11 @@
 }
 
 .button.info {
-  color: var(--ui-state-info);
+  color: var(--ui-action-info);
 }
 
 .button.secondary.info {
-  border-color: var(--ui-state-info);
+  border-color: var(--ui-action-info);
 }
 
 .button.info:hover:not(:disabled) {
@@ -145,12 +145,12 @@
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--ui-state-focus);
-  outline-offset: 3px;
+  outline: var(--ui-state-focus-width) solid var(--ui-state-focus);
+  outline-offset: var(--ui-state-focus-offset);
 }
 
 .button:disabled {
-  opacity: 0.45;
+  opacity: var(--ui-state-disabled-opacity);
   cursor: not-allowed;
 }
 

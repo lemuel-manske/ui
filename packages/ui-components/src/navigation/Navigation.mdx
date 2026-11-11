@@ -9,8 +9,7 @@ sidebar, or footer. Give each navigation landmark a descriptive name using `aria
 or `aria-labelledby` so people can distinguish landmarks on the same page.
 
 `Navigation.List` lays items out horizontally and wraps at narrow widths by default.
-Use `orientation="vertical"` to stack items, or supply a `className` to customize spacing
-and layout. Compose the list with the standalone `ListItem` component, which accepts
+Use `orientation="vertical"` to stack items. Shared spacing tokens configure the list gap. Compose the list with the standalone `ListItem` component, which accepts
 links or other content. A custom layout can also use its own markup directly inside `Navigation`.
 
 ## Site header
@@ -20,12 +19,12 @@ import { Link, Navigation, ListItem } from '@lemuel-manske/components';
 
 function SiteHeader() {
   return (
-    <header className={styles.header}>
-      <Link href="/" className={styles.brand} aria-label="OpenArquive — início">
+    <header>
+      <Link href="/" aria-label="OpenArquive — início">
         OpenArquive
       </Link>
 
-      <Navigation aria-label="Navegação principal" className={styles.navigation}>
+      <Navigation aria-label="Navegação principal">
         <Navigation.List>
           <ListItem>
             <Link href="#collection">Coleção</Link>
@@ -55,10 +54,10 @@ Native links participate in the usual Tab order. For collapsible navigation, use
 to show and hide the links. Set `aria-expanded` to reflect their visibility and use
 `aria-controls` to reference the element the button controls.
 
-## Native attributes
+## Supported attributes
 
-Navigation forwards the standard React attributes and event handlers for a native nav.
-Use `style` or `className` for layout, `ref` to access the landmark, and the native
-`lang` and `dir` attributes for language and direction. Optional native attributes and
-event handlers use browser defaults when omitted. Navigation.List uses the documented
-list props and supplies an unmarked unordered list.
+Navigation accepts explicit landmark naming, id, ref, lang, dir, hidden, and keyboard focus properties. Explicit onKeyDown, onFocus,
+onBlur, and onClick handlers support application interactions.
+Use a complete Theme to configure brand tokens and the documented orientation prop to
+choose the list direction. Navigation.List supplies an unmarked unordered list. Page header
+placement and responsive composition remain application responsibilities.

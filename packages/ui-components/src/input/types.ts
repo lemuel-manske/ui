@@ -13,13 +13,6 @@ interface InputProps extends AccessibilityOptions {
   size?: InputSize;
 
   /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * Name used when the control contributes a value to native form submission.
    * @remarks Type `string`.
    * @default undefined

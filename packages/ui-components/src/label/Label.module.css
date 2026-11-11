@@ -3,8 +3,8 @@
   align-items: center;
   gap: var(--ui-space-8);
   font-family: var(--ui-font-body);
-  font-weight: 500;
-  line-height: 1.5;
+  font-weight: var(--ui-weight-medium);
+  line-height: var(--ui-leading-body);
   color: var(--ui-color-text-primary);
   overflow-wrap: anywhere;
 }

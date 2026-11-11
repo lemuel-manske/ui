@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 
 import type { LabelProps } from '../label/types';
 
-type FieldLabelProps = Pick<LabelProps, 'children' | 'className'>;
+type FieldLabelProps = Pick<LabelProps, 'children'>;
 
 interface FieldProps {
   /**
@@ -32,13 +32,6 @@ interface FieldProps {
    * @default false
    */
   required?: boolean;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 interface FieldPartProps {
@@ -48,13 +41,6 @@ interface FieldPartProps {
    * @default None (required)
    */
   children: ReactNode;
-
-  /**
-   * Additional CSS classes applied to the description or error paragraph.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 interface FieldControlAttributes {

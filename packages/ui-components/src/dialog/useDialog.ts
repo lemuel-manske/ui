@@ -8,7 +8,7 @@ import type { DialogProps } from './types';
 
 import styles from './Dialog.module.css';
 
-function useDialog({ open, onOpenChange, className }: DialogProps) {
+function useDialog({ open, onOpenChange }: DialogProps) {
   const ref = useRef<HTMLDialogElement>(null);
 
   const { id } = useAccessibility();
@@ -43,7 +43,7 @@ function useDialog({ open, onOpenChange, className }: DialogProps) {
     props: {
       ref,
       'aria-labelledby': id,
-      className: cx(styles.dialog, className),
+      className: cx(styles.dialog),
       onCancel: (event: SyntheticEvent<HTMLDialogElement>) => {
         event.preventDefault();
 

@@ -13,34 +13,35 @@ import styles from './Field.module.css';
 /**
  * Label for the surrounding Field's control. Use as Field.Label.
  */
-function FieldLabel(props: FieldLabelProps) {
+function FieldLabel({ children }: FieldLabelProps) {
   const { id } = useFieldContext();
 
-  return <Label {...props} htmlFor={id} />;
+  return <Label htmlFor={id}>{children}</Label>;
 }
 
 /**
  * Help text associated with the surrounding Field's control. Use as Field.Description.
  */
-function FieldDescription({ className, ...props }: FieldPartProps) {
+function FieldDescription({ children }: FieldPartProps) {
   const message = useFieldMessage(false);
 
-  return <p {...props} {...message} className={cx(styles.message, className)} />;
+  return (
+    <p {...message} className={cx(styles.message)}>
+      {children}
+    </p>
+  );
 }
 
 /**
  * Conditional error message that marks the control invalid. Use as Field.Error.
  */
-function FieldError({ className, ...props }: FieldPartProps) {
+function FieldError({ children }: FieldPartProps) {
   const message = useFieldMessage(true);
 
   return (
-    <p
-      {...props}
-      {...message}
-      role="alert"
-      className={cx(styles.message, styles.error, className)}
-    />
+    <p {...message} role="alert" className={cx(styles.message, styles.error)}>
+      {children}
+    </p>
   );
 }
 

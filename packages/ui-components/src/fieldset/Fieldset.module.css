@@ -6,9 +6,88 @@
 }
 
 .legend {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   padding: 0 var(--ui-space-8);
   font-family: var(--ui-font-body);
   font-size: var(--ui-text-medium);
-  font-weight: 500;
+  font-weight: var(--ui-weight-medium);
+  line-height: var(--ui-leading-body);
+  letter-spacing: var(--ui-tracking-body);
   color: var(--ui-color-text-primary);
+  font-style: normal;
+}
+
+.fieldset.divided {
+  border: 0;
+  border-block-start: var(--ui-border-width) solid var(--ui-color-divider);
+  padding: var(--ui-space-16) 0;
+}
+
+.fieldset.plain {
+  border: 0;
+  padding: 0;
+}
+
+.divided > .legend,
+.plain > .legend {
+  padding: 0;
+}
+
+.legend.small {
+  font-size: var(--ui-text-small);
+}
+
+.legend.medium {
+  font-size: var(--ui-text-medium);
+}
+
+.legend.large {
+  font-size: var(--ui-text-large);
+}
+
+.legend.regular {
+  font-weight: var(--ui-weight-regular);
+}
+
+.legend.mediumWeight {
+  font-weight: var(--ui-weight-medium);
+}
+
+.legend.semibold {
+  font-weight: var(--ui-weight-semibold);
+}
+
+.legend.bold {
+  font-weight: var(--ui-weight-bold);
+}
+
+.primary {
+  color: var(--ui-color-text-primary);
+}
+
+.secondary {
+  color: var(--ui-color-text-secondary);
+}
+
+.accent {
+  color: var(--ui-action-primary);
+}
+
+.success {
+  color: var(--ui-state-success);
+}
+
+.danger {
+  color: var(--ui-state-danger);
+}
+
+.normal {
+  font-style: normal;
+}
+
+.italic {
+  font-style: italic;
+  font-synthesis: none;
 }

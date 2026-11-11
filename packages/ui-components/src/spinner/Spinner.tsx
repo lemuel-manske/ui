@@ -12,7 +12,7 @@ function Spinner(props: SpinnerProps) {
     <span role="status" className={spinner.className}>
       <span className={styles.ring} aria-hidden="true" />
 
-      <span className={styles.label}>{spinner.label}</span>
+      <span className={spinner.labelClassName}>{spinner.label}</span>
     </span>
   );
 }

@@ -22,7 +22,7 @@ interface FieldContextValue {
 
 const FieldContext = createContext<FieldContextValue | null>(null);
 
-function useField({ id, disabled, required, className }: FieldProps) {
+function useField({ id, disabled, required }: FieldProps) {
   const accessibility = useAccessibility({ id });
 
   const [descriptions, setDescriptions] = useState<string[]>([]);
@@ -39,7 +39,7 @@ function useField({ id, disabled, required, className }: FieldProps) {
 
   return {
     context: { id: accessibility.id, disabled, required, descriptions, errors, register },
-    className: cx(styles.field, className),
+    className: cx(styles.field),
   };
 }
 

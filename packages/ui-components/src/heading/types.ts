@@ -1,8 +1,24 @@
+import type { HeadingTone, HeadingEmphasis } from './options';
+
 import type { ReactNode } from 'react';
 
 import type { HeadingLevel, HeadingSize, HeadingWeight } from './options';
 
 interface HeadingProps {
+  /**
+   * Semantic text color, independent of size and emphasis.
+   * @remarks Type `HeadingTone`.
+   * @default 'primary'
+   */
+  tone?: HeadingTone;
+
+  /**
+   * Visual italic emphasis. Load the real italic font face; use em for semantic emphasis.
+   * @remarks Type `HeadingEmphasis`.
+   * @default Emphasis.NORMAL
+   */
+  emphasis?: HeadingEmphasis;
+
   /**
    * Heading text and inline content. The heading supplies its native semantic level.
    * @remarks Type `ReactNode`.
@@ -37,13 +53,6 @@ interface HeadingProps {
    * @default undefined
    */
   id?: string;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 export type { HeadingProps };

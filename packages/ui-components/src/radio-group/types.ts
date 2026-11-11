@@ -51,13 +51,6 @@ interface RadioGroupProps {
   required?: boolean;
 
   /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * Space-separated IDs of elements that describe the component.
    * @remarks Type `string`.
    * @default undefined
@@ -93,13 +86,6 @@ interface RadioGroupItemProps {
    * @default false
    */
   disabled?: boolean;
-
-  /**
-   * Additional CSS classes applied to the wrapping label.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 
   /**
    * React ref to the native radio input.

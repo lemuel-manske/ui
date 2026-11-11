@@ -15,13 +15,6 @@ interface ButtonLabelProps {
   children: string;
 
   /**
-   * Additional CSS classes applied to the label span.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * React ref to the native element rendered by this component.
    * @remarks Type `Ref<HTMLSpanElement>`.
    * @default undefined
@@ -96,13 +89,6 @@ interface ButtonProps extends AccessibilityOptions {
    * @default 'button'
    */
   type?: ButtonType;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 
   /**
    * Name used when the control contributes a value to native form submission.

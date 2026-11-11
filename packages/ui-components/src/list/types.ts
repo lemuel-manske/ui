@@ -46,13 +46,6 @@ interface ListBaseProps {
   id?: string;
 
   /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * Accessible name supplied as text. Prefer a visible label when one is available.
    * @remarks Type `string`.
    * @default undefined
@@ -97,13 +90,6 @@ interface ListItemProps {
    * @default undefined
    */
   id?: string;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 
   /**
    * Identifies the current page, location, or item within a related set.

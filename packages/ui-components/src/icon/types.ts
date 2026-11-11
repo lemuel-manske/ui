@@ -23,13 +23,6 @@ interface IconVisualProps {
    * @default Tone.DEFAULT
    */
   tone?: IconTone;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 interface IconActionProps {

@@ -25,11 +25,7 @@ function RadioGroup(props: RadioGroupProps) {
 
   return (
     <RadioGroupContext value={group}>
-      <Fieldset
-        disabled={props.disabled}
-        className={props.className}
-        aria-describedby={props['aria-describedby']}
-      >
+      <Fieldset disabled={props.disabled} aria-describedby={props['aria-describedby']}>
         <Legend>{props.label}</Legend>
 
         <div className={styles.items}>{props.children}</div>

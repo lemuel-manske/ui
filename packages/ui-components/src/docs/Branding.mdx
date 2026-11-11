@@ -1,0 +1,164 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Branding and theming" />
+
+# Branding and theming
+
+Branding belongs to themes. Component props select documented appearance and behavior;
+CSS Modules remain private implementation details. Consumers configure brands with tokens
+and compose public components. Import the component stylesheet once during setup; applying
+another brand requires only a Theme with a complete token object.
+
+## Create a brand
+
+```tsx
+import { createTheme, libraryTheme, Size, Weight, Emphasis } from '@lemuel-manske/design-tokens';
+import { Theme, Heading, Button } from '@lemuel-manske/components';
+
+const brand = createTheme(libraryTheme, {
+  color: { background: '#FFFFFF', 'text-primary': '#172554' },
+  action: {
+    primary: '#1D4ED8',
+    'primary-hover': '#1E40AF',
+    'primary-foreground': '#FFFFFF',
+  },
+  font: { display: 'Inter, sans-serif' },
+  text: { display: 'clamp(2.5rem, 1.5rem + 4vw, 5rem)' },
+  leading: { display: '1.1' },
+  tracking: { display: '-0.025em' },
+});
+
+export function Introduction() {
+  return (
+    <Theme theme={brand}>
+      <Heading level={1} size={Size.XLARGE} weight={Weight.BOLD} emphasis={Emphasis.ITALIC}>
+        Preserve what matters.
+      </Heading>
+      <Button>Continue</Button>
+    </Theme>
+  );
+}
+```
+
+Use archiveTheme as the base for an editorial identity or libraryTheme for the system font
+identity. createTheme accepts an explicit complete base and ThemeOverrides, merges individual
+properties within groups, and returns complete DesignTokens. Neither input is mutated; the
+result owns its token groups. Unspecified values retain the base values. Unknown token names
+and invalid value types are rejected by TypeScript. No preset is selected implicitly.
+
+## Token responsibilities
+
+| Kind                | Groups and decisions                                                                                                                                                   |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Foundations         | font families; numeric weight values; text scales; leading and tracking values; space; radius; control target sizes; border width; motion                              |
+| Semantics           | color backgrounds, surfaces, text, border, divider, and backdrop; action colors and hover/foreground pairs; state focus, validation, status, and disabled presentation |
+| Component decisions | component.button-radius, component.button-weight, component.input-radius                                                                                               |
+
+Component decisions allow brands to use rounded buttons alongside square inputs, or a button
+weight independent of ordinary labels. They reference shared foundations by default. Input
+radius also applies to Textarea and Combobox. Other component decisions use shared tokens.
+
+Variables use `--ui-{group}-{token}`, for example `--ui-font-display` and `--ui-text-display`.
+Presets reference other public variables where appropriate, such as button-radius referencing
+radius-small. Theme supplies the complete set inside its region, so foundation changes also
+affect components that reference them.
+
+```tsx
+const editorial = createTheme(archiveTheme, {
+  font: { display: 'Georgia, serif', body: 'system-ui, sans-serif' },
+  color: { divider: '#C8C8B9' },
+  component: { 'button-radius': '9999px', 'input-radius': '2px' },
+  leading: { body: '1.6' },
+  tracking: { heading: '-0.01em' },
+});
+```
+
+The application loads brand font files, including real italic faces. The library does not
+download fonts or require synthetic italics. Validate contrast for foreground/background
+pairs, including hover and destructive states. Preserve readable focus indicators and
+interaction target sizes when configuring state and control tokens. Browser states, forced
+color system colors, and intrinsic icon/ring geometry remain implementation choices.
+
+## Typography through component props
+
+Heading exposes level, size, weight, tone, and emphasis. Level selects the native heading
+level independently of visual size. Sizes are Size.SMALL, Size.MEDIUM, Size.LARGE, and Size.XLARGE.
+The extra-large size consumes text.display, leading.display, and tracking.display. Other sizes use heading
+text scales with leading.heading and tracking.heading. Font family comes from font.display.
+Weight and emphasis remain explicit, independent choices at every size.
+
+Text provides body text with size, tone, and emphasis, rendered as p or span. It uses font.body,
+text.small/medium/large, leading.body, and tracking.body. Legend supports size, weight, tone,
+and emphasis while preserving its native role as a fieldset caption.
+
+Enum-backed component options are exported as narrowed union types. Use Size, Weight, and
+Tone from the design-tokens package for runtime values. Emphasis is also a shared enum. Component-only appearances retain their documented
+component constants.
+
+Text tones accept "primary", "secondary", "accent", Tone.SUCCESS, and Tone.DANGER. Status tones
+use dedicated state colors and should accompany meaningful text.
+Emphasis.ITALIC requests visual emphasis; native em and strong children express semantic emphasis.
+
+```tsx
+<Heading level={3} size={Size.LARGE} weight={Weight.SEMIBOLD}>
+  Saved documents
+</Heading>
+<Text as="span" size={Size.SMALL} tone="secondary">
+  capture-2026-11-11
+</Text>
+<Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
+  Authentication
+</Legend>
+```
+
+Compose an application's hero with Heading, Text, actions, and local layout. A hero composition
+remains an application responsibility until a repeated pattern justifies another public
+component. These typography primitives do not select bundled font/style recipes.
+
+## Other semantic props
+
+Button variant sets visual hierarchy, while Tone.DANGER independently expresses a
+destructive action. Button and useButton accept explicit disclosure attributes, with state
+owned by the application. FieldsetAppearance.OUTLINED, DIVIDED, and PLAIN select grouping
+appearance while preserving native legend and disabled behavior. LinkAppearance.ACTION and
+LinkSize control action presentation without replacing native navigation or download.
+SpinnerLabelVisibility.VISIBLE shows the single localized status message beside the ring;
+HIDDEN remains the default, including reduced-motion support.
+
+Compose ButtonLabel, Legend, and FieldDescription directly when their named roles are useful.
+Form contains standalone controls and does not own their identity. Page layout and artwork
+remain application responsibilities outside the component styling contract.
+
+## Different and nested brands
+
+```tsx
+<Theme theme={archiveTheme}>
+  <Heading>Archive workspace</Heading>
+  <Button>Archive action</Button>
+
+  <Theme theme={brand}>
+    <Heading>Partner workspace</Heading>
+    <Button>Partner action</Button>
+  </Theme>
+
+  <Button>Archive action again</Button>
+</Theme>
+```
+
+Every Theme receives complete DesignTokens and supplies its own CSS custom properties.
+Nested regions use their own tokens; siblings keep the outer brand. Theme serializes supplied
+tokens and never merges them with a preset. Use createTheme before rendering to construct
+each complete brand explicitly. Components/Theme shows archive, library, custom, and nested brands.
+
+## Breaking migration
+
+Generic visual extension props and unrestricted native-attribute forwarding are removed.
+Move brand decisions into createTheme. Use component props for sizes, weights, tones, emphasis,
+and documented appearances. Navigation explicitly supports landmark naming, language, direction,
+ref, hidden behavior, keyboard focus, and interaction handlers.
+
+Typography variant props and the TypographyRecipe/typography token group are removed. Select
+`size={Size.XLARGE}` for large headings and configure font, text, weight, leading, and tracking
+foundations directly. Use Text size and tone for supporting body text and Legend size and weight
+for group captions. Themes implement the complete current DesignTokens contract; extend a current
+preset or supply all groups explicitly. These prop and token changes require a breaking release.

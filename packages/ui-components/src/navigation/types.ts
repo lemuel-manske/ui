@@ -1,65 +1,108 @@
 import type { NavigationOrientation } from './options';
 
-import type { ComponentPropsWithRef } from 'react';
+import type {
+  ComponentPropsWithRef,
+  FocusEventHandler,
+  KeyboardEventHandler,
+  MouseEventHandler,
+} from 'react';
 
 import type { ListProps } from '../list/types';
 
-/**
- * Native nav attributes and event handlers, with the navigation landmark supplied by the element.
- * Native attributes use React's types and browser defaults. The role is fixed by the native nav.
- */
-interface NavigationProps extends Omit<ComponentPropsWithRef<'nav'>, 'role'> {
+interface NavigationProps {
   /**
-   * Links, Navigation.List, or custom navigation markup. Native nav attributes and event handlers are forwarded.
+   * Links, Navigation.List, and custom navigation content.
    * @remarks Type `ComponentPropsWithRef<'nav'>['children']`.
    * @default undefined
    */
   children?: ComponentPropsWithRef<'nav'>['children'];
 
   /**
-   * ID applied to the native element for labels, descriptions, and fragment links.
+   * ID used for descriptions and disclosure relationships.
    * @remarks Type `string`.
    * @default undefined
    */
   id?: string;
 
   /**
-   * Additional CSS classes applied to the native nav landmark.
+   * Language of the navigation content.
    * @remarks Type `string`.
-   * @default undefined
+   * @default Inherited from the document
    */
-  className?: string;
+  lang?: string;
 
   /**
-   * Inline styles applied to the native navigation element.
-   * @remarks Type `ComponentPropsWithRef<'nav'>['style']`.
-   * @default undefined
+   * Reading direction of the navigation content.
+   * @remarks Type `'ltr' | 'rtl' | 'auto'`.
+   * @default Inherited from the document
    */
-  style?: ComponentPropsWithRef<'nav'>['style'];
+  dir?: 'ltr' | 'rtl' | 'auto';
 
   /**
-   * React ref to the native nav element.
+   * Hides a collapsed navigation region using native hidden behavior.
+   * @remarks Type `boolean`.
+   * @default false
+   */
+  hidden?: boolean;
+
+  /**
+   * Keyboard focus order; use -1 for a programmatically focused landmark.
+   * @remarks Type `number`.
+   * @default undefined (native navigation behavior)
+   */
+  tabIndex?: number;
+
+  /**
+   * Keyboard handler for navigation-specific interactions.
+   * @remarks Type `KeyboardEventHandler<HTMLElement>`.
+   * @default undefined
+   */
+  onKeyDown?: KeyboardEventHandler<HTMLElement>;
+
+  /**
+   * Handler for focus entering the landmark or its descendants.
+   * @remarks Type `FocusEventHandler<HTMLElement>`.
+   * @default undefined
+   */
+  onFocus?: FocusEventHandler<HTMLElement>;
+
+  /**
+   * Handler for focus leaving the landmark or its descendants.
+   * @remarks Type `FocusEventHandler<HTMLElement>`.
+   * @default undefined
+   */
+  onBlur?: FocusEventHandler<HTMLElement>;
+
+  /**
+   * Native click handler for delegated navigation interactions.
+   * @remarks Type `MouseEventHandler<HTMLElement>`.
+   * @default undefined
+   */
+  onClick?: MouseEventHandler<HTMLElement>;
+
+  /**
+   * Ref to the native navigation landmark.
    * @remarks Type `ComponentPropsWithRef<'nav'>['ref']`.
    * @default undefined
    */
   ref?: ComponentPropsWithRef<'nav'>['ref'];
 
   /**
-   * Accessible name supplied as text. Prefer a visible label when one is available.
+   * Accessible landmark name.
    * @remarks Type `string`.
    * @default undefined
    */
   'aria-label'?: string;
 
   /**
-   * Space-separated IDs of elements that supply the accessible name.
+   * IDs of elements naming this landmark.
    * @remarks Type `string`.
    * @default undefined
    */
   'aria-labelledby'?: string;
 
   /**
-   * Space-separated IDs of elements that describe the component.
+   * IDs of elements describing this landmark.
    * @remarks Type `string`.
    * @default undefined
    */

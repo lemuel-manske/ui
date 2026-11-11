@@ -30,7 +30,7 @@ const meta = {
   },
 
   argTypes: {
-    size: { control: 'select', options: Object.values(Size) },
+    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
 
     appearance: { control: 'select', options: Object.values(ComboboxAppearance) },
 

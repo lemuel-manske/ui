@@ -1,6 +1,13 @@
-import type { SpinnerSize } from './options';
+import type { SpinnerSize, SpinnerLabelVisibility } from './options';
 
 interface SpinnerProps {
+  /**
+   * Shows the single status message beside the ring or hides it visually.
+   * @remarks Type `SpinnerLabelVisibility`.
+   * @default SpinnerLabelVisibility.HIDDEN
+   */
+  labelVisibility?: SpinnerLabelVisibility;
+
   /**
    * Status text announced to assistive technology. Supply a localized message describing the pending work.
    * @remarks Type `string`.
@@ -14,13 +21,6 @@ interface SpinnerProps {
    * @default Size.MEDIUM
    */
   size?: SpinnerSize;
-
-  /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
 }
 
 export type { SpinnerProps };

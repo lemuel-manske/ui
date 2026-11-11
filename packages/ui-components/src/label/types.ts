@@ -42,13 +42,6 @@ interface LabelProps {
   htmlFor?: string;
 
   /**
-   * Additional CSS classes applied to the component root.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * React ref to the native element rendered by this component.
    * @remarks Type `Ref<HTMLLabelElement>`.
    * @default undefined

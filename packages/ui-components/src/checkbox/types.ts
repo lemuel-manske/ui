@@ -53,13 +53,6 @@ interface CheckboxProps extends AccessibilityOptions {
   'aria-invalid'?: boolean;
 
   /**
-   * Additional CSS classes applied to the wrapping label.
-   * @remarks Type `string`.
-   * @default undefined
-   */
-  className?: string;
-
-  /**
    * Native change handler called when the user edits or selects a value.
    * @remarks Type `ChangeEventHandler<HTMLInputElement>`.
    * @default undefined

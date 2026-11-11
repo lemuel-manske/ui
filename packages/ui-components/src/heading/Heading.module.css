@@ -1,9 +1,13 @@
 .heading {
   margin: 0;
-  font-family: var(--ui-font-display);
-  line-height: 1.2;
-  color: var(--ui-color-text-primary);
   overflow-wrap: anywhere;
+  font-family: var(--ui-font-display);
+  font-size: var(--ui-text-heading-medium);
+  font-weight: var(--ui-weight-medium);
+  line-height: var(--ui-leading-heading);
+  letter-spacing: var(--ui-tracking-heading);
+  color: var(--ui-color-text-primary);
+  font-style: normal;
 }
 
 .heading.regular {
@@ -32,4 +36,39 @@
 
 .heading.large {
   font-size: var(--ui-text-heading-large);
+}
+
+.heading.xlarge {
+  font-size: var(--ui-text-display);
+  line-height: var(--ui-leading-display);
+  letter-spacing: var(--ui-tracking-display);
+}
+
+.primary {
+  color: var(--ui-color-text-primary);
+}
+
+.secondary {
+  color: var(--ui-color-text-secondary);
+}
+
+.accent {
+  color: var(--ui-action-primary);
+}
+
+.success {
+  color: var(--ui-state-success);
+}
+
+.danger {
+  color: var(--ui-state-danger);
+}
+
+.normal {
+  font-style: normal;
+}
+
+.italic {
+  font-style: italic;
+  font-synthesis: none;
 }

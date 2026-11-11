@@ -11,12 +11,46 @@
 }
 
 .link:focus-visible {
-  outline: 2px solid var(--ui-state-focus);
-  outline-offset: 3px;
+  outline: var(--ui-state-focus-width) solid var(--ui-state-focus);
+  outline-offset: var(--ui-state-focus-offset);
 }
 
 @media (forced-colors: active) {
   .link:focus-visible {
     outline-color: Highlight;
   }
+}
+
+.small {
+  font-size: var(--ui-text-small);
+}
+
+.medium {
+  font-size: var(--ui-text-medium);
+}
+
+.large {
+  font-size: var(--ui-text-large);
+}
+
+.action {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--ui-control-medium);
+  min-width: var(--ui-control-medium);
+  max-width: 100%;
+  padding: var(--ui-space-8) var(--ui-space-12);
+  line-height: var(--ui-leading-body);
+}
+
+.action.small {
+  min-height: var(--ui-control-small);
+  min-width: var(--ui-control-small);
+}
+
+.action.large {
+  min-height: var(--ui-control-large);
+  min-width: var(--ui-control-large);
 }

@@ -20,22 +20,21 @@
     "node": "^22.14.0 || >= 24.10.0"
   },
   "scripts": {
-    "prepare": "husky",
-    "build": "npm run build --workspace @lemuel-manske/config-playwright && npm run build --workspace @lemuel-manske/design-tokens && npm run build --workspace @lemuel-manske/utils && npm run build --workspace @lemuel-manske/components && npm run build --workspace @lemuel-manske/i18n",
+    "build": "npm run build --workspaces",
+    "build:docs": "npm run build:reference && node scripts/prepare-docs-site.js && docusaurus build website --out-dir dist && node scripts/package-docs-site.js",
+    "build:reference": "npm run build:storybook --workspace @lemuel-manske/components && node scripts/export-agent-docs.js",
     "check:packages": "node scripts/check-packages.js",
     "commitlint": "commitlint",
-    "precommit": "lint-staged",
-    "storybook": "npm run storybook --workspace @lemuel-manske/components",
-    "build:reference": "npm run build:storybook --workspace @lemuel-manske/components && node scripts/export-agent-docs.js",
-    "build:docs": "npm run build:reference && node scripts/prepare-docs-site.js && docusaurus build website --out-dir dist && node scripts/package-docs-site.js",
     "docs": "npm run build:reference && node scripts/prepare-docs-site.js && docusaurus start website --port 3000 --no-open",
-    "serve:docs": "node scripts/serve-docs-site.js",
-    "test": "npm run test --workspaces --if-present",
-    "format": "npm run format --workspaces -- --ignore-path ../../.gitignore && prettier --check . --ignore-path .gitignore",
-    "format:fix": "npm run format:fix --workspaces -- --ignore-path ../../.gitignore && prettier --write . --ignore-path .gitignore",
+    "format": "npm run format --workspaces -- --ignore-path ../../.prettierignore && prettier --check .",
+    "format:fix": "npm run format:fix --workspaces -- --ignore-path ../../.prettierignore && prettier --write .",
     "lint": "npm run lint --workspaces && eslint .",
     "lint:fix": "npm run lint:fix --workspaces && eslint . --fix",
-    "release": "semantic-release"
+    "precommit": "lint-staged",
+    "prepare": "husky",
+    "release": "semantic-release",
+    "storybook": "npm run storybook --workspace @lemuel-manske/components",
+    "test": "npm run test --workspaces --if-present"
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.3",

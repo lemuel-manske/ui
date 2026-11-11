@@ -33,23 +33,41 @@ Run commands from the repository root:
 
 ## Coding Style & Naming Conventions
 
-Use strict TypeScript, ES modules, and React function components.
+- Use strict TypeScript, ES modules, and React function components.
 
-Follow existing two-space indentation, semicolons, single quotes, trailing commas, and Prettier's 100-column width.
+- Follow existing two-space indentation, semicolons, single quotes, trailing commas, and Prettier's 100-column width.
 
-Use PascalCase component filenames (`Button.tsx`), camelCase hooks (`useButton.ts`), and lowercase, hyphenated component directories. Keep styles in `Component.module.css`, prop types in `types.ts`, and variant definitions in `options.ts` where appropriate.
+- Use PascalCase component filenames (`Button.tsx`), camelCase hooks (`useButton.ts`), and lowercase, hyphenated component directories. Keep styles in `Component.module.css`, prop types in `types.ts`, and variant definitions in `options.ts` where appropriate.
 
-Use empty lines to separate logical blocks. When in doubt to separate or not, separate. Always.
+- MUST Use empty lines to separate logical blocks. When in doubt to separate or not, separate. Always.
 
-Keep design token groups flat and semantic, with CSS variables named `--ui-{group}-{token}`.
-Use action tokens for interactive colors and state tokens for focus and validation. Themes must
-implement the complete `DesignTokens` contract; avoid component-specific color tokens.
+- Keep design token groups flat and semantic, with CSS variables named `--ui-{group}-{token}`. Use action tokens for interactive colors and state tokens for focus and validation. Themes must implement the complete `DesignTokens` contract; avoid component-specific color tokens.
+
+- ALWAYS extract component options (like variants, sizes, colors, etc. - states) into a separate `options.ts` file under the component folder.
+
+- NEVER use direct enums from design-tokens, ALWAYS create component-specific enums that "extend" the design-tokens ones. Use `as const` to ensure type safety and avoid magic strings. See `Button` for an example. See `Button` for an example. See `Button` for an example. See `Button` for an example.
+
+- NEVER duplicate components or hooks. If a component or hook is needed, add it to the `@lemuel-manske/components` package.
+
+- When declaring component children (via props) be explicit about the expected type. Enforce composability with `*Props` types. For example, `Label`: `type LabelContent = string | [React.ReactElement<IconProps>, string] | React.ReactElement<IconProps>`. See `Label` for an example. `ReactNode` usage is strongly discouraged.
+
+- ALWAYS document public facing props with JSDoc comments. Use `/** */` style, not `//`. Include a description, type, and default value.
 
 ## Testing Guidelines
 
 Jest runs `src/**/*.test.ts` unit tests. Playwright runs `src/**/*.test.tsx` component and hook tests in Chromium. Colocate fixtures as `*.test-fixture.tsx` and stories as `*.stories.tsx`.
 
 Test interactions, keyboard behavior, accessible names, and representative integration scenarios. Use the shared `@lemuel-manske/config-playwright` helpers and `noAccessibilityViolations()` matcher. No numeric coverage threshold is configured. Target components with `npm run test --workspace @lemuel-manske/components`.
+
+Add plenty of playwright tests for acessibility. Tests with a single assertion and creative composabilities to ensure no violations.
+
+Rules:
+
+- NEVER couple the tests to implementation details. That means do not use matchers like `toHaveClass` or `toHaveStyle`. Instead, use semantic matchers like `toBeVisible`, `toBeEnabled`, and `toHaveAccessibleName`. Tests should MUST focus on behaviors and user interactions, not implementation details. Drop visual testing for now.
+
+- ALWAYS start the test file with behavioral tests.
+
+- NEVER use for loops to create parameterized tests. ALWAYS write every single test case explicitly.
 
 ## Commit & Pull Request Guidelines
 

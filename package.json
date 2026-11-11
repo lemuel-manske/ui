@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/config-*",
+    "packages/i18n",
+    "packages/ui-design-tokens",
+    "packages/ui-utils",
+    "packages/ui-components"
   ],
   "type": "module",
   "description": "UI components for @Hemuel-manske projects.",
@@ -20,7 +24,7 @@
     "node": "^22.14.0 || >= 24.10.0"
   },
   "scripts": {
-    "build": "npm run build --workspaces",
+    "build": "npm run build --workspaces --if-present",
     "build:docs": "npm run build:reference && node scripts/prepare-docs-site.js && docusaurus build website --out-dir dist && node scripts/package-docs-site.js",
     "build:reference": "npm run build:storybook --workspace @lemuel-manske/components && node scripts/export-agent-docs.js",
     "check:packages": "node scripts/check-packages.js",

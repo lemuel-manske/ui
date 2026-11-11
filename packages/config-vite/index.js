@@ -6,6 +6,7 @@ const reactConfig = defineConfig({
   plugins: [react()],
 });
 
+const SRC = 'src';
 const INDEX = 'index.ts';
 
 /**
@@ -15,7 +16,11 @@ const INDEX = 'index.ts';
  *   external?: string[]
  * }} options
  */
-function createLibraryConfig({ entry = resolve(process.cwd(), INDEX), fileName, external = [] }) {
+function createLibraryConfig({
+  entry = resolve(process.cwd(), SRC, INDEX),
+  fileName,
+  external = [],
+}) {
   return defineConfig({
     build: {
       lib: {

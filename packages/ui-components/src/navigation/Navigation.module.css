@@ -1,0 +1,18 @@
+.list {
+  display: flex;
+  gap: var(--ui-space-16);
+}
+
+.horizontal {
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+
+.vertical {
+  flex-direction: column;
+  gap: var(--ui-space-8);
+}
+
+:where(.list > li > a[aria-current]:not([aria-current='false'], [aria-current=''])) {
+  font-weight: var(--ui-weight-semibold);
+}

@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Navigation" />
+
+# Navigation
+
+Use `Navigation` for a group of links to pages or sections. Place it in a site header,
+sidebar, or footer. Give each navigation landmark a descriptive name using `aria-label`
+or `aria-labelledby` so people can distinguish landmarks on the same page.
+
+`Navigation.List` lays items out horizontally and wraps at narrow widths by default.
+Use `orientation="vertical"` to stack items, or supply a `className` to customize spacing
+and layout. `Navigation.Item` is the existing `List.Item` and accepts links or other
+content. A custom layout can also use its own markup directly inside `Navigation`.
+
+## Site header
+
+```tsx
+import { Link, Navigation } from '@lemuel-manske/components';
+
+function SiteHeader() {
+  return (
+    <header className={styles.header}>
+      <Link href="/" className={styles.brand} aria-label="OpenArquive — início">
+        OpenArquive
+      </Link>
+
+      <Navigation aria-label="Navegação principal" className={styles.navigation}>
+        <Navigation.List>
+          <Navigation.Item>
+            <Link href="#collection">Coleção</Link>
+          </Navigation.Item>
+
+          <Navigation.Item>
+            <Link href="#new-capture">Arquivar</Link>
+          </Navigation.Item>
+        </Navigation.List>
+      </Navigation>
+    </header>
+  );
+}
+```
+
+Keep site-specific branding, search, and account actions in the header. Use the site's CSS
+to position the header and choose how it adapts to smaller screens.
+
+## Routing and the current destination
+
+Place a router link directly inside `Navigation.Item`. For example, a Next.js `Link`
+can replace the library `Link` in the header example. When the application or router knows
+the current destination, set `aria-current="page"` for a page or `aria-current="location"`
+for the current section. The list emphasizes direct links with an active `aria-current` value.
+
+Native links participate in the usual Tab order. For collapsible navigation, use a button
+to show and hide the links. Set `aria-expanded` to reflect their visibility and use
+`aria-controls` to reference the element the button controls.

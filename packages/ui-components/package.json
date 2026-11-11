@@ -36,7 +36,7 @@
     "test": "tsc --project tsconfig.storybook.json && playwright test --tsconfig ../../tsconfig.test.json"
   },
   "peerDependencies": {
-    "react": "^19.0.0"
+    "react": "^19.3.0"
   },
   "dependencies": {
     "@lemuel-manske/design-tokens": "^0.1.0",

@@ -2,6 +2,18 @@
   "name": "@lemuel-manske/config-playwright",
   "version": "0.1.0",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/config-playwright"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -31,17 +43,5 @@
     "eslint": "10.14.0",
     "prettier": "3.6.0",
     "typescript": "5.9.3"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lemuel-manske/ui.git",
-    "directory": "packages/config-playwright"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }

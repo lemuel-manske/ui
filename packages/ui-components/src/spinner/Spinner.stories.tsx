@@ -1,15 +1,14 @@
 import { Size } from '@lemuel-manske/design-tokens';
 
-import { SpinnerLabelVisibility } from './options';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Spinner } from './Spinner';
 
 const meta = {
   title: 'Components/Spinner',
-  component: Spinner,
   tags: ['autodocs'],
+
+  component: Spinner,
 
   args: { label: 'Loading results' },
 
@@ -23,5 +22,5 @@ export const Default: Story = {};
 export default meta;
 
 export const VisibleLabel: Story = {
-  args: { labelVisibility: SpinnerLabelVisibility.VISIBLE, label: 'Capturing archive' },
+  args: { labelHidden: false, label: 'Capturing archive' },
 };

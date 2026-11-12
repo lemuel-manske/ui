@@ -6,8 +6,6 @@ import { Combobox } from './Combobox';
 
 import { ComboboxOption } from './ComboboxOption';
 
-import { ComboboxAppearance } from './options';
-
 const meta = {
   title: 'Components/Combobox',
   component: Combobox,
@@ -32,8 +30,6 @@ const meta = {
   argTypes: {
     size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
 
-    appearance: { control: 'select', options: Object.values(ComboboxAppearance) },
-
     children: { control: false },
   },
 } satisfies Meta<typeof Combobox>;
@@ -41,8 +37,6 @@ const meta = {
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
-export const Native: Story = { args: { appearance: ComboboxAppearance.NATIVE } };
 
 export const Disabled: Story = { args: { disabled: true } };
 

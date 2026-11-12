@@ -8,6 +8,7 @@ import styles from './Textarea.module.css';
 
 function useTextarea({
   size = Size.MEDIUM,
+  rows = 4,
   id,
   disabled = false,
   'aria-label': label,
@@ -36,11 +37,11 @@ function useTextarea({
       'ref',
       'placeholder',
       'readOnly',
-      'rows',
       'minLength',
       'maxLength',
     ]),
     ...accessibility,
+    rows,
     disabled,
     className: cx(styles.textarea, {
       [styles.small]: size === Size.SMALL,

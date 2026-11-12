@@ -67,7 +67,11 @@ interface ListBaseProps {
   'aria-describedby'?: string;
 }
 
-type ListProps = ListBaseProps & ({ as?: 'ul'; start?: never; reversed?: never } | { as: 'ol' });
+type OrderedProps = { as: 'ol'; start?: number; reversed?: boolean };
+
+type UnorderedProps = { as?: 'ul'; start?: never; reversed?: never };
+
+type ListProps = ListBaseProps & (OrderedProps | UnorderedProps);
 
 interface ListItemProps {
   /**

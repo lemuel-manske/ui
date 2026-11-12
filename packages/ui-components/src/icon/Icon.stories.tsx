@@ -8,8 +8,9 @@ import { GlobeIcon } from './ExampleIcons.test-fixture';
 
 const meta = {
   title: 'Components/Icon',
-  component: Icon,
   tags: ['autodocs'],
+
+  component: Icon,
 
   args: { children: <GlobeIcon /> },
 

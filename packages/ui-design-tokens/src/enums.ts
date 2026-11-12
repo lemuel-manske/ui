@@ -31,4 +31,9 @@ enum Tone {
   INFO = 'info',
 }
 
-export { Size, Variant, Weight, Tone, Emphasis };
+enum Visibility {
+  VISIBLE = 'visible',
+  HIDDEN = 'hidden',
+}
+
+export { Size, Variant, Weight, Tone, Emphasis, Visibility };

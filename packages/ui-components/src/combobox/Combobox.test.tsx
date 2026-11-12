@@ -2,8 +2,6 @@ import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { Combobox } from './Combobox';
 
-import { ComboboxAppearance } from './options';
-
 test('Combobox supports selecting an option', async ({ render }) => {
   const select = await render(
     <Combobox aria-label="Collection">
@@ -48,20 +46,6 @@ test('Combobox supports keyboard selection', async ({ render, page }) => {
   await page.keyboard.press('End');
 
   await page.keyboard.press('Enter');
-
-  await expect(select).toHaveValue('research');
-});
-
-test('Combobox supports the native appearance', async ({ render }) => {
-  const select = await render(
-    <Combobox aria-label="Collection" appearance={ComboboxAppearance.NATIVE}>
-      <Combobox.Option value="reading">Reading</Combobox.Option>
-
-      <Combobox.Option value="research">Research</Combobox.Option>
-    </Combobox>,
-  );
-
-  await select.selectOption('research');
 
   await expect(select).toHaveValue('research');
 });

@@ -7,9 +7,10 @@ import { Timeline, TimelineItem } from './Timeline';
 
 const meta = {
   title: 'Components/Timeline',
+  tags: ['autodocs'],
+
   component: Timeline,
   subcomponents: { TimelineItem },
-  tags: ['autodocs'],
 
   args: { 'aria-label': 'Version history', children: null },
 

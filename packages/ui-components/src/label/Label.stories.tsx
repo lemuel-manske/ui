@@ -12,9 +12,10 @@ import { InfoIcon } from '../icon/ExampleIcons.test-fixture';
 
 const meta = {
   title: 'Components/Label',
+  tags: ['autodocs'],
+
   component: Label,
   subcomponents: { Icon },
-  tags: ['autodocs'],
 
   args: {
     children: 'Collection name',

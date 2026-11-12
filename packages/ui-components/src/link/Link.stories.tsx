@@ -8,8 +8,9 @@ import { Link } from './Link';
 
 const meta = {
   title: 'Components/Link',
-  component: Link,
   tags: ['autodocs'],
+
+  component: Link,
 
   args: { children: 'Read more', href: '#details' },
 } satisfies Meta<typeof Link>;

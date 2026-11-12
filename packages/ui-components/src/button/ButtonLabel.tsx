@@ -6,5 +6,3 @@ function ButtonLabel({ children, ref }: ButtonLabelProps) {
 }
 
 export { ButtonLabel };
-
-export type { ButtonLabelProps } from './types';

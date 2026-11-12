@@ -6,8 +6,9 @@ import { Text } from './Text';
 
 const meta = {
   title: 'Components/Text',
-  component: Text,
   tags: ['autodocs'],
+
+  component: Text,
 
   args: { children: 'A paragraph of supporting information.' },
 

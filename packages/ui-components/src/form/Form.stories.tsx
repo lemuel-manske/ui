@@ -18,8 +18,9 @@ import { Form } from './Form';
 
 const meta = {
   title: 'Components/Form',
-  component: Form,
   tags: ['autodocs'],
+
+  component: Form,
 
   args: { 'aria-label': 'Archive website', children: null },
 } satisfies Meta<typeof Form>;

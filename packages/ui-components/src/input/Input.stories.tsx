@@ -6,8 +6,9 @@ import { Input } from './Input';
 
 const meta = {
   title: 'Components/Input',
-  component: Input,
   tags: ['autodocs'],
+
+  component: Input,
 
   args: { 'aria-label': 'Name', placeholder: 'Enter your name' },
 

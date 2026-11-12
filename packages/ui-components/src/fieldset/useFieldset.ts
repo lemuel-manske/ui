@@ -2,13 +2,13 @@ import { Size, Weight } from '@lemuel-manske/design-tokens';
 
 import { pickProps, cx } from '@lemuel-manske/utils';
 
-import { FieldsetAppearance } from './options';
+import { FieldsetAppearanceEnum } from './options';
 
 import type { FieldsetProps, LegendProps } from './types';
 
 import styles from './Fieldset.module.css';
 
-function useFieldset({ appearance = FieldsetAppearance.OUTLINED, ...props }: FieldsetProps) {
+function useFieldset({ appearance = FieldsetAppearanceEnum.OUTLINED, ...props }: FieldsetProps) {
   return {
     ...pickProps(props, ['children', 'disabled', 'name', 'id', 'aria-describedby', 'ref']),
     className: cx(styles.fieldset, styles[appearance]),

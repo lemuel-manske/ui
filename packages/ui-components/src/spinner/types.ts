@@ -1,12 +1,12 @@
-import type { SpinnerSize, SpinnerLabelVisibility } from './options';
+import type { SpinnerSize } from './options';
 
 interface SpinnerProps {
   /**
-   * Shows the single status message beside the ring or hides it visually.
-   * @remarks Type `SpinnerLabelVisibility`.
-   * @default SpinnerLabelVisibility.HIDDEN
+   * Whether the status text is visually hidden. When true, the label is visually hidden but still available to assistive technology.
+   * @remarks Type `boolean`.
+   * @default false
    */
-  labelVisibility?: SpinnerLabelVisibility;
+  labelHidden?: boolean;
 
   /**
    * Status text announced to assistive technology. Supply a localized message describing the pending work.

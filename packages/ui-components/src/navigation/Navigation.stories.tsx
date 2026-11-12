@@ -7,9 +7,10 @@ import { Navigation, NavigationList } from './Navigation';
 
 const meta = {
   title: 'Components/Navigation',
+  tags: ['autodocs'],
+
   component: Navigation,
   subcomponents: { NavigationList },
-  tags: ['autodocs'],
 
   args: { 'aria-label': 'Navegação principal' },
 } satisfies Meta<typeof Navigation>;

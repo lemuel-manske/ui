@@ -6,8 +6,9 @@ import { Heading } from './Heading';
 
 const meta = {
   title: 'Components/Heading',
-  component: Heading,
   tags: ['autodocs'],
+
+  component: Heading,
 
   args: { children: 'Section heading', level: 2 },
 
@@ -29,7 +30,7 @@ export const Default: Story = {};
 
 export const Semibold: Story = {
   args: {
-    children: 'A web muda. Suas capturas permanecem.',
+    children: 'Section heading',
     size: Size.LARGE,
     weight: Weight.SEMIBOLD,
   },
@@ -47,6 +48,6 @@ export const XLargeItalic: Story = {
     size: Size.XLARGE,
     weight: Weight.BOLD,
     emphasis: Emphasis.ITALIC,
-    children: 'Preserve what matters.',
+    children: 'Section heading',
   },
 };

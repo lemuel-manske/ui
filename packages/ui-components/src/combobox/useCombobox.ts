@@ -2,15 +2,12 @@ import { Size } from '@lemuel-manske/design-tokens';
 
 import { pickProps, cx, useAccessibility } from '@lemuel-manske/utils';
 
-import { ComboboxAppearance } from './options';
-
 import type { ComboboxProps } from './types';
 
 import styles from './Combobox.module.css';
 
 function useCombobox({
   size = Size.MEDIUM,
-  appearance = ComboboxAppearance.CUSTOM,
   id,
   disabled = false,
   'aria-label': label,
@@ -45,7 +42,6 @@ function useCombobox({
       [styles.small]: size === Size.SMALL,
       [styles.medium]: size === Size.MEDIUM,
       [styles.large]: size === Size.LARGE,
-      [styles.custom]: appearance === ComboboxAppearance.CUSTOM,
     }),
   };
 }

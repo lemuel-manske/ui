@@ -29,7 +29,7 @@
   font-size: var(--ui-text-large);
 }
 
-.combobox.custom {
+.combobox {
   appearance: none;
   padding-inline-end: var(--ui-space-48);
   background-image:
@@ -44,22 +44,22 @@
 }
 
 @supports (appearance: base-select) {
-  .combobox.custom,
-  .combobox.custom::picker(select) {
+  .combobox,
+  .combobox::picker(select) {
     appearance: base-select;
   }
 
-  .combobox.custom {
+  .combobox {
     align-items: center;
     padding-inline-end: var(--ui-space-16);
     background-image: none;
   }
 
-  .combobox.custom::picker-icon {
+  .combobox::picker-icon {
     color: inherit;
   }
 
-  .combobox.custom::picker(select) {
+  .combobox::picker(select) {
     margin-block: var(--ui-space-4);
     padding: var(--ui-space-4);
     border: var(--ui-border-width) solid var(--ui-color-border);
@@ -71,18 +71,18 @@
     box-shadow: none;
   }
 
-  .combobox.custom option {
+  .combobox option {
     padding: var(--ui-space-8) var(--ui-space-12);
     gap: var(--ui-space-12);
     overflow-wrap: anywhere;
   }
 
-  .combobox.custom option:checked {
+  .combobox option:checked {
     background: var(--ui-color-surface);
   }
 
-  .combobox.custom option:hover,
-  .combobox.custom option:focus-visible {
+  .combobox option:hover,
+  .combobox option:focus-visible {
     outline: none;
     background: var(--ui-action-primary-hover);
     color: var(--ui-action-primary-foreground);
@@ -105,12 +105,12 @@
 }
 
 @media (forced-colors: active) {
-  .combobox.custom,
-  .combobox.custom::picker(select) {
+  .combobox,
+  .combobox::picker(select) {
     appearance: auto;
   }
 
-  .combobox.custom {
+  .combobox {
     background-image: none;
   }
 

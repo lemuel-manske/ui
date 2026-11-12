@@ -2,7 +2,7 @@ import type { ChangeEventHandler, FocusEventHandler, ReactNode, Ref } from 'reac
 
 import type { AccessibilityOptions } from '@lemuel-manske/utils';
 
-import type { ComboboxAppearance, ComboboxSize } from './options';
+import type { ComboboxSize } from './options';
 
 interface ComboboxProps extends AccessibilityOptions {
   /**
@@ -18,13 +18,6 @@ interface ComboboxProps extends AccessibilityOptions {
    * @default Size.MEDIUM
    */
   size?: ComboboxSize;
-
-  /**
-   * CUSTOM applies the design-system picker styling. NATIVE retains the browser picker appearance.
-   * @remarks Type `ComboboxAppearance`.
-   * @default ComboboxAppearance.CUSTOM
-   */
-  appearance?: ComboboxAppearance;
 
   /**
    * Name used when the control contributes a value to native form submission.

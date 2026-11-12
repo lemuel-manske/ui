@@ -39,7 +39,7 @@ function useDialog({ open, onOpenChange }: DialogProps) {
 
   return {
     titleId: id,
-    close: () => onOpenChange(false),
+    close: () => onOpenChange?.(false),
     props: {
       ref,
       'aria-labelledby': id,
@@ -47,11 +47,11 @@ function useDialog({ open, onOpenChange }: DialogProps) {
       onCancel: (event: SyntheticEvent<HTMLDialogElement>) => {
         event.preventDefault();
 
-        onOpenChange(false);
+        onOpenChange?.(false);
       },
       onClose: () => {
         if (open && ref.current && !ref.current.open) {
-          onOpenChange(false);
+          onOpenChange?.(false);
         }
       },
     },

@@ -4,9 +4,10 @@ import { RadioGroup, RadioGroupItem } from './RadioGroup';
 
 const meta = {
   title: 'Components/RadioGroup',
+  tags: ['autodocs'],
+
   component: RadioGroup,
   subcomponents: { RadioGroupItem },
-  tags: ['autodocs'],
 
   args: { label: 'Contact method', children: null, defaultValue: 'email' },
 } satisfies Meta<typeof RadioGroup>;

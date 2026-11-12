@@ -27,7 +27,7 @@ interface DialogProps {
    * @remarks Type `(open: boolean) => void`.
    * @default None (required)
    */
-  onOpenChange: (open: boolean) => void;
+  onOpenChange?: (open: boolean) => void;
 
   /**
    * Text and accessible name of the dialog close button. Supply a localized value.

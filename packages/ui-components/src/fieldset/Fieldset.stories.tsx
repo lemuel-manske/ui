@@ -10,9 +10,10 @@ import { Checkbox } from '../checkbox/Checkbox';
 
 const meta = {
   title: 'Components/Fieldset',
+  tags: ['autodocs'],
+
   component: Fieldset,
   subcomponents: { Legend },
-  tags: ['autodocs'],
 
   args: { children: null },
 } satisfies Meta<typeof Fieldset>;

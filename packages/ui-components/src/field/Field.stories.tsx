@@ -8,6 +8,8 @@ import { Input } from '../input/Input';
 
 const meta = {
   title: 'Components/Field',
+  tags: ['autodocs'],
+
   component: Field,
   subcomponents: {
     FieldLabel,
@@ -15,7 +17,6 @@ const meta = {
     FieldDescription,
     FieldError,
   },
-  tags: ['autodocs'],
 
   args: { children: null },
 } satisfies Meta<typeof Field>;

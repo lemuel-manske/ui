@@ -1,10 +1,12 @@
 import type { Size, Variant, Tone } from '@lemuel-manske/design-tokens';
 
-type ButtonSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
 
-type ButtonVariant = Variant.PRIMARY | Variant.SECONDARY | Variant.TERTIARY;
+type ButtonSize = Subset<Size, 'small' | 'medium' | 'large'>;
 
-type ButtonTone = Tone.DEFAULT | Tone.DANGER | Tone.SUCCESS | Tone.WARNING | Tone.INFO;
+type ButtonVariant = Subset<Variant, 'primary' | 'secondary' | 'tertiary'>;
+
+type ButtonTone = Subset<Tone, 'default' | 'danger' | 'success' | 'warning' | 'info'>;
 
 type ButtonType = 'button' | 'submit' | 'reset';
 

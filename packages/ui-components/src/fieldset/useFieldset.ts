@@ -1,5 +1,3 @@
-import { Size, Weight } from '@lemuel-manske/design-tokens';
-
 import { pickProps, cx } from '@lemuel-manske/utils';
 
 import type { FieldsetProps, LegendProps } from './types';
@@ -13,23 +11,17 @@ function useFieldset({ appearance = 'outlined', ...props }: FieldsetProps) {
   };
 }
 
-function useLegend({
-  size = Size.MEDIUM,
-  weight = Weight.MEDIUM,
-  tone,
-  emphasis,
-  ...props
-}: LegendProps) {
+function useLegend({ size = 'medium', weight = 'medium', tone, emphasis, ...props }: LegendProps) {
   return {
     ...pickProps(props, ['children', 'id', 'ref']),
     className: cx(styles.legend, tone && styles[tone], emphasis && styles[emphasis], {
-      [styles.small]: size === Size.SMALL,
-      [styles.medium]: size === Size.MEDIUM,
-      [styles.large]: size === Size.LARGE,
-      [styles.regular]: weight === Weight.REGULAR,
-      [styles.mediumWeight]: weight === Weight.MEDIUM,
-      [styles.semibold]: weight === Weight.SEMIBOLD,
-      [styles.bold]: weight === Weight.BOLD,
+      [styles.small]: size === 'small',
+      [styles.medium]: size === 'medium',
+      [styles.large]: size === 'large',
+      [styles.regular]: weight === 'regular',
+      [styles.mediumWeight]: weight === 'medium',
+      [styles.semibold]: weight === 'semibold',
+      [styles.bold]: weight === 'bold',
     }),
   };
 }

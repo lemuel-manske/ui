@@ -1,5 +1,3 @@
-import { Size } from '@lemuel-manske/design-tokens';
-
 import { pickProps, cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { TextareaProps } from './types';
@@ -7,7 +5,7 @@ import type { TextareaProps } from './types';
 import styles from './Textarea.module.css';
 
 function useTextarea({
-  size = Size.MEDIUM,
+  size = 'medium',
   rows = 4,
   id,
   disabled = false,
@@ -44,9 +42,9 @@ function useTextarea({
     rows,
     disabled,
     className: cx(styles.textarea, {
-      [styles.small]: size === Size.SMALL,
-      [styles.medium]: size === Size.MEDIUM,
-      [styles.large]: size === Size.LARGE,
+      [styles.small]: size === 'small',
+      [styles.medium]: size === 'medium',
+      [styles.large]: size === 'large',
     }),
   };
 }

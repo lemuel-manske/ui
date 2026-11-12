@@ -15,7 +15,7 @@ interface ComboboxProps extends AccessibilityOptions {
   /**
    * Visual control size. The component always renders a single-selection native select.
    * @remarks Type `ComboboxSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: ComboboxSize;
 

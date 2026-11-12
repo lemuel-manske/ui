@@ -1,5 +1,3 @@
-import { Size, Tone, Variant } from '@lemuel-manske/design-tokens';
-
 import { cx, useAccessibility } from '@lemuel-manske/utils';
 import type { AccessibilityProperties } from '@lemuel-manske/utils';
 
@@ -11,9 +9,9 @@ type ButtonElementProps = Omit<ButtonProps, 'size' | 'variant' | 'tone'> &
   AccessibilityProperties & { className: string };
 
 function useButton({
-  size = Size.MEDIUM,
-  variant = Variant.PRIMARY,
-  tone = Tone.DEFAULT,
+  size = 'medium',
+  variant = 'primary',
+  tone = 'default',
   type = 'button',
   children,
   onClick,
@@ -29,13 +27,13 @@ function useButton({
   const accessibility = useAccessibility(accessibilityOptions);
 
   const classes = cx(styles.button, styles[tone], {
-    [styles.small]: size === Size.SMALL,
-    [styles.medium]: size === Size.MEDIUM,
-    [styles.large]: size === Size.LARGE,
+    [styles.small]: size === 'small',
+    [styles.medium]: size === 'medium',
+    [styles.large]: size === 'large',
 
-    [styles.primary]: variant === Variant.PRIMARY,
-    [styles.secondary]: variant === Variant.SECONDARY,
-    [styles.tertiary]: variant === Variant.TERTIARY,
+    [styles.primary]: variant === 'primary',
+    [styles.secondary]: variant === 'secondary',
+    [styles.tertiary]: variant === 'tertiary',
   });
 
   return {

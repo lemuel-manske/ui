@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import { Variant } from '@lemuel-manske/design-tokens';
-
 import { Icon } from '../icon/Icon';
 import { CheckIcon, InfoIcon } from '../icon/ExampleIcons.test-fixture';
 import { Input } from '../input/Input';
@@ -52,7 +50,7 @@ function StatusButtons({ theme, tone }: StatusButtonsProps) {
 
       <Input id="collection" />
 
-      <Button tone={tone} variant={Variant.PRIMARY}>
+      <Button tone={tone} variant="primary">
         <Icon>
           <CheckIcon />
         </Icon>
@@ -60,7 +58,7 @@ function StatusButtons({ theme, tone }: StatusButtonsProps) {
         <Button.Label>Save changes</Button.Label>
       </Button>
 
-      <Button tone={tone} variant={Variant.SECONDARY}>
+      <Button tone={tone} variant="secondary">
         <Icon>
           <CheckIcon />
         </Icon>
@@ -68,7 +66,7 @@ function StatusButtons({ theme, tone }: StatusButtonsProps) {
         <Button.Label>Save changes</Button.Label>
       </Button>
 
-      <Button tone={tone} variant={Variant.TERTIARY}>
+      <Button tone={tone} variant="tertiary">
         <Icon>
           <CheckIcon />
         </Icon>

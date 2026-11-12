@@ -1,4 +1,4 @@
-import { archiveTheme, libraryTheme, Size, Tone, Emphasis } from '@lemuel-manske/design-tokens';
+import { archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
 
 import { TextExample } from './Text.test-fixture';
 
@@ -20,7 +20,7 @@ test('Text has no accessibility violations', async ({ render, page }) => {
 
 test('small text preserves inline content', async ({ render, page }) => {
   await render(
-    <Text as="span" size={Size.SMALL}>
+    <Text as="span" size="small">
       2026-11-11
     </Text>,
   );
@@ -30,7 +30,7 @@ test('small text preserves inline content', async ({ render, page }) => {
 
 test('success text has no accessibility violations', async ({ render, page }) => {
   await render(
-    <Text size={Size.SMALL} tone={Tone.SUCCESS}>
+    <Text size="small" tone="success">
       Capture complete
     </Text>,
   );
@@ -40,7 +40,7 @@ test('success text has no accessibility violations', async ({ render, page }) =>
 
 test('danger text has no accessibility violations', async ({ render, page }) => {
   await render(
-    <Text size={Size.SMALL} tone={Tone.DANGER}>
+    <Text size="small" tone="danger">
       Capture failed
     </Text>,
   );
@@ -49,7 +49,7 @@ test('danger text has no accessibility violations', async ({ render, page }) => 
 });
 
 test('italic body text has no accessibility violations', async ({ render, page }) => {
-  await render(<Text emphasis={Emphasis.ITALIC}>Editorial note</Text>);
+  await render(<Text emphasis="italic">Editorial note</Text>);
 
   await expect(page).noAccessibilityViolations();
 });

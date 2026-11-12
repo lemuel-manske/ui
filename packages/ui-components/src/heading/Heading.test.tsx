@@ -1,12 +1,10 @@
-import { Size, Weight, Emphasis } from '@lemuel-manske/design-tokens';
-
 import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { Heading } from './Heading';
 
 test('Heading renders its content', async ({ render, page }) => {
   await render(
-    <Heading level={3} weight={Weight.SEMIBOLD}>
+    <Heading level={3} weight="semibold">
       Example
     </Heading>,
   );
@@ -22,7 +20,7 @@ test('Heading has no accessibility violations', async ({ render, page }) => {
 
 test('extra-large size preserves heading hierarchy', async ({ render, page }) => {
   await render(
-    <Heading level={3} size={Size.XLARGE} weight={Weight.BOLD} emphasis={Emphasis.ITALIC}>
+    <Heading level={3} size="xlarge" weight="bold" emphasis="italic">
       Archive record
     </Heading>,
   );
@@ -33,7 +31,7 @@ test('extra-large size preserves heading hierarchy', async ({ render, page }) =>
 test('extra-large heading reflows at narrow widths', async ({ render, page }) => {
   await page.setViewportSize({ width: 320, height: 640 });
 
-  await render(<Heading size={Size.XLARGE}>A collection of preserved documents</Heading>);
+  await render(<Heading size="xlarge">A collection of preserved documents</Heading>);
 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true,
@@ -42,7 +40,7 @@ test('extra-large heading reflows at narrow widths', async ({ render, page }) =>
 
 test('secondary heading has no accessibility violations', async ({ render, page }) => {
   await render(
-    <Heading size={Size.MEDIUM} tone="secondary">
+    <Heading size="medium" tone="secondary">
       Saved documents
     </Heading>,
   );

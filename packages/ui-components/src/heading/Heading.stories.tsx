@@ -1,5 +1,3 @@
-import { Size, Tone, Weight, Emphasis } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Heading } from './Heading';
@@ -13,14 +11,14 @@ const meta = {
   args: { children: 'Section heading', level: 2 },
 
   argTypes: {
-    size: { control: 'select', options: Object.values(Size) },
+    size: { control: 'select', options: ['small', 'medium', 'large', 'xlarge'] },
 
-    weight: { control: 'select', options: Object.values(Weight) },
+    weight: { control: 'select', options: ['regular', 'medium', 'semibold', 'bold'] },
     tone: {
       control: 'select',
-      options: ['primary', 'secondary', 'accent', Tone.SUCCESS, Tone.DANGER],
+      options: ['primary', 'secondary', 'accent', 'success', 'danger'],
     },
-    emphasis: { control: 'select', options: Object.values(Emphasis) },
+    emphasis: { control: 'select', options: ['normal', 'italic'] },
   },
 } satisfies Meta<typeof Heading>;
 
@@ -31,23 +29,23 @@ export const Default: Story = {};
 export const Semibold: Story = {
   args: {
     children: 'Section heading',
-    size: Size.LARGE,
-    weight: Weight.SEMIBOLD,
+    size: 'large',
+    weight: 'semibold',
   },
 };
 
 export default meta;
 
-export const XLarge: Story = { args: { size: Size.XLARGE, level: 1 } };
+export const XLarge: Story = { args: { size: 'xlarge', level: 1 } };
 
-export const SectionTitle: Story = { args: { size: Size.MEDIUM, level: 3 } };
+export const SectionTitle: Story = { args: { size: 'medium', level: 3 } };
 
 export const XLargeItalic: Story = {
   args: {
     level: 1,
-    size: Size.XLARGE,
-    weight: Weight.BOLD,
-    emphasis: Emphasis.ITALIC,
+    size: 'xlarge',
+    weight: 'bold',
+    emphasis: 'italic',
     children: 'Section heading',
   },
 };

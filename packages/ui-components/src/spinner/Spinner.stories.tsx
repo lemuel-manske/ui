@@ -1,5 +1,3 @@
-import { Size } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Spinner } from './Spinner';
@@ -12,7 +10,7 @@ const meta = {
 
   args: { label: 'Loading results' },
 
-  argTypes: { size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] } },
+  argTypes: { size: { control: 'select', options: ['small', 'medium', 'large'] } },
 } satisfies Meta<typeof Spinner>;
 
 type Story = StoryObj<typeof meta>;

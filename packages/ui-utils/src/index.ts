@@ -6,4 +6,6 @@ export {
   type AccessibilityProperties,
 } from './useAccessibility';
 
+export type { Subset } from './types';
+
 export { pickProps } from './pickProps';

@@ -1,15 +1,11 @@
-import { Size } from '@lemuel-manske/design-tokens';
-
 import { pickProps, cx } from '@lemuel-manske/utils';
-
-import { LinkAppearance } from './options';
 
 import type { LinkProps } from './types';
 
 import styles from './Link.module.css';
 
-function useLink({ target, rel, size, appearance = LinkAppearance.INLINE, ...props }: LinkProps) {
-  const resolvedSize = size ?? (appearance === LinkAppearance.ACTION ? Size.MEDIUM : undefined);
+function useLink({ target, rel, size, appearance = 'inline', ...props }: LinkProps) {
+  const resolvedSize = size ?? (appearance === 'action' ? 'medium' : undefined);
 
   return {
     ...pickProps(props, [

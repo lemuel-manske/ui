@@ -6,4 +6,4 @@ export type { LinkProps } from './types';
 
 export type { LinkTarget, LinkSize } from './options';
 
-export { LinkAppearance } from './options';
+export type { LinkAppearance } from './options';

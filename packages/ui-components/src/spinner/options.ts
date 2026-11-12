@@ -1,5 +1,7 @@
 import type { Size } from '@lemuel-manske/design-tokens';
 
-type SpinnerSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
+
+type SpinnerSize = Subset<Size, 'small' | 'medium' | 'large'>;
 
 export type { SpinnerSize };

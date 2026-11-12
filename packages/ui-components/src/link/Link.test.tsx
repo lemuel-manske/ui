@@ -1,7 +1,3 @@
-import { Size } from '@lemuel-manske/design-tokens';
-
-import { LinkAppearance } from './options';
-
 import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { Link } from './Link';
@@ -28,12 +24,7 @@ test('Link has no accessibility violations', async ({ render, page }) => {
 
 test('small action link preserves download semantics', async ({ render, page }) => {
   await render(
-    <Link
-      href="/archive.wacz"
-      download="capture.wacz"
-      size={Size.SMALL}
-      appearance={LinkAppearance.ACTION}
-    >
+    <Link href="/archive.wacz" download="capture.wacz" size="small" appearance="action">
       Download capture
     </Link>,
   );
@@ -46,7 +37,7 @@ test('small action link preserves download semantics', async ({ render, page }) 
 
 test('action link remains keyboard navigable', async ({ render, page }) => {
   await render(
-    <Link href="#details" appearance={LinkAppearance.ACTION}>
+    <Link href="#details" appearance="action">
       Details
     </Link>,
   );
@@ -59,7 +50,7 @@ test('action link remains keyboard navigable', async ({ render, page }) => {
 
 test('small action link has no accessibility violations', async ({ render, page }) => {
   await render(
-    <Link href="/archive.wacz" download size={Size.SMALL} appearance={LinkAppearance.ACTION}>
+    <Link href="/archive.wacz" download size="small" appearance="action">
       Download capture
     </Link>,
   );

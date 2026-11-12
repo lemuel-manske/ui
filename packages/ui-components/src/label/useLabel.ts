@@ -1,5 +1,3 @@
-import { Size, Tone } from '@lemuel-manske/design-tokens';
-
 import { cx, useAccessibility } from '@lemuel-manske/utils';
 import type { AccessibilityProperties } from '@lemuel-manske/utils';
 
@@ -11,8 +9,8 @@ type LabelElementProps = Omit<LabelProps, 'size' | 'tone'> &
   AccessibilityProperties & { className: string };
 
 function useLabel({
-  size = Size.MEDIUM,
-  tone = Tone.DEFAULT,
+  size = 'medium',
+  tone = 'default',
   id,
   htmlFor,
   children,
@@ -21,9 +19,9 @@ function useLabel({
   const accessibility = useAccessibility({ id });
 
   const classes = cx(styles.label, styles[tone], {
-    [styles.small]: size === Size.SMALL,
-    [styles.medium]: size === Size.MEDIUM,
-    [styles.large]: size === Size.LARGE,
+    [styles.small]: size === 'small',
+    [styles.medium]: size === 'medium',
+    [styles.large]: size === 'large',
   });
 
   return { ...accessibility, htmlFor, children, ref, className: classes };

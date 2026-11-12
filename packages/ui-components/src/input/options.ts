@@ -1,6 +1,8 @@
 import type { Size } from '@lemuel-manske/design-tokens';
 
-type InputSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
+
+type InputSize = Subset<Size, 'small' | 'medium' | 'large'>;
 
 type InputType =
   | 'text'

@@ -1,4 +1,4 @@
-import type { Weight } from './enums';
+import type { Weight } from './types';
 
 interface DesignTokens {
   color: {

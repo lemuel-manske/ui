@@ -1,7 +1,9 @@
 import type { Size, Tone } from '@lemuel-manske/design-tokens';
 
-type LabelSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
 
-type LabelTone = Tone.DEFAULT | Tone.DANGER | Tone.SUCCESS | Tone.WARNING | Tone.INFO;
+type LabelSize = Subset<Size, 'small' | 'medium' | 'large'>;
+
+type LabelTone = Subset<Tone, 'default' | 'danger' | 'success' | 'warning' | 'info'>;
 
 export type { LabelSize, LabelTone };

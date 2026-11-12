@@ -37,21 +37,21 @@ interface ButtonProps extends AccessibilityOptions {
   /**
    * Visual size of the component. This does not change its semantic role.
    * @remarks Type `ButtonSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: ButtonSize;
 
   /**
-   * Visual emphasis. PRIMARY is filled, SECONDARY is outlined, and TERTIARY has reduced emphasis.
+   * Visual emphasis. Primary is filled, secondary is outlined, and tertiary has reduced emphasis.
    * @remarks Type `ButtonVariant`.
-   * @default Variant.PRIMARY
+   * @default 'primary'
    */
   variant?: ButtonVariant;
 
   /**
    * Semantic status color, independent of the component size or emphasis.
    * @remarks Type `ButtonTone`.
-   * @default Tone.DEFAULT
+   * @default 'default'
    */
   tone?: ButtonTone;
 

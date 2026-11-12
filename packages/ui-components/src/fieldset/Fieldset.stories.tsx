@@ -1,5 +1,3 @@
-import { Size, Weight } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Fieldset, Legend } from './Fieldset';
@@ -34,7 +32,7 @@ export const Divided: Story = {
   args: { appearance: 'divided' },
   render: (args) => (
     <Fieldset {...args}>
-      <Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
+      <Legend size="large" weight="semibold">
         Authentication
       </Legend>
       <Checkbox>Remember this account</Checkbox>
@@ -46,7 +44,7 @@ export const Plain: Story = {
   args: { appearance: 'plain' },
   render: (args) => (
     <Fieldset {...args}>
-      <Legend size={Size.SMALL}>Preferences</Legend>
+      <Legend size="small">Preferences</Legend>
       <Checkbox>Receive updates</Checkbox>
     </Fieldset>
   ),

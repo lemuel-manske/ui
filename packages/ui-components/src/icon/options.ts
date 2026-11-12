@@ -1,7 +1,9 @@
 import type { Size, Tone } from '@lemuel-manske/design-tokens';
 
-type IconSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
 
-type IconTone = Tone.DEFAULT | Tone.DANGER | Tone.SUCCESS | Tone.WARNING | Tone.INFO;
+type IconSize = Subset<Size, 'small' | 'medium' | 'large'>;
+
+type IconTone = Subset<Tone, 'default' | 'danger' | 'success' | 'warning' | 'info'>;
 
 export type { IconSize, IconTone };

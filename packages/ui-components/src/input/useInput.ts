@@ -1,5 +1,3 @@
-import { Size } from '@lemuel-manske/design-tokens';
-
 import { pickProps, cx, useAccessibility } from '@lemuel-manske/utils';
 
 import type { InputProps } from './types';
@@ -7,7 +5,7 @@ import type { InputProps } from './types';
 import styles from './Input.module.css';
 
 function useInput({
-  size = Size.MEDIUM,
+  size = 'medium',
   id,
   disabled = false,
   'aria-label': label,
@@ -47,9 +45,9 @@ function useInput({
     ...accessibility,
     disabled,
     className: cx(styles.input, {
-      [styles.small]: size === Size.SMALL,
-      [styles.medium]: size === Size.MEDIUM,
-      [styles.large]: size === Size.LARGE,
+      [styles.small]: size === 'small',
+      [styles.medium]: size === 'medium',
+      [styles.large]: size === 'large',
     }),
   };
 }

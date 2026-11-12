@@ -18,7 +18,7 @@ interface SpinnerProps {
   /**
    * Visual size of the component. This does not change its semantic role.
    * @remarks Type `SpinnerSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: SpinnerSize;
 }

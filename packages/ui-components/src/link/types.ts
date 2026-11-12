@@ -13,7 +13,7 @@ interface LinkProps {
   /**
    * Inline prose link or action with a padded interaction target.
    * @remarks Type `LinkAppearance`.
-   * @default LinkAppearance.INLINE
+   * @default 'inline'
    */
   appearance?: LinkAppearance;
 

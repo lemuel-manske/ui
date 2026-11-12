@@ -15,7 +15,7 @@ interface HeadingProps {
   /**
    * Visual italic emphasis. Load the real italic font face; use em for semantic emphasis.
    * @remarks Type `HeadingEmphasis`.
-   * @default Emphasis.NORMAL
+   * @default 'normal'
    */
   emphasis?: HeadingEmphasis;
 
@@ -36,14 +36,14 @@ interface HeadingProps {
   /**
    * Visual size of the component. This does not change its semantic role.
    * @remarks Type `HeadingSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: HeadingSize;
 
   /**
    * Visual font weight of the heading.
    * @remarks Type `HeadingWeight`.
-   * @default Weight.MEDIUM
+   * @default 'medium'
    */
   weight?: HeadingWeight;
 

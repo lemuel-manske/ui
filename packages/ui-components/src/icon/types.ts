@@ -13,14 +13,14 @@ interface IconVisualProps {
   /**
    * Visual size of the component. This does not change its semantic role.
    * @remarks Type `IconSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: IconSize;
 
   /**
    * Semantic status color, independent of the component size or emphasis.
    * @remarks Type `IconTone`.
-   * @default Tone.DEFAULT
+   * @default 'default'
    */
   tone?: IconTone;
 }

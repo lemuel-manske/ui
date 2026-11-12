@@ -1,8 +1,6 @@
-import type { TextTone, TextEmphasis } from './options';
+import type { TextTone, TextEmphasis, TextSize, TextRole } from './options';
 
 import type { ReactNode } from 'react';
-
-import type { TextSize, TextRole } from './options';
 
 interface TextProps {
   /**
@@ -15,7 +13,7 @@ interface TextProps {
   /**
    * Visual italic emphasis. Load the real italic font face; use em for semantic emphasis.
    * @remarks Type `TextEmphasis`.
-   * @default Emphasis.NORMAL
+   * @default 'normal'
    */
   emphasis?: TextEmphasis;
 
@@ -36,7 +34,7 @@ interface TextProps {
   /**
    * Visual size of the component. This does not change its semantic role.
    * @remarks Type `TextSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: TextSize;
 

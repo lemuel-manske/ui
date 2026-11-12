@@ -1,5 +1,3 @@
-import { Size, Tone, Emphasis } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Text } from './Text';
@@ -13,12 +11,12 @@ const meta = {
   args: { children: 'A paragraph of supporting information.' },
 
   argTypes: {
-    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
+    size: { control: 'select', options: ['small', 'medium', 'large'] },
     tone: {
       control: 'select',
-      options: ['primary', 'secondary', 'accent', Tone.SUCCESS, Tone.DANGER],
+      options: ['primary', 'secondary', 'accent', 'success', 'danger'],
     },
-    emphasis: { control: 'select', options: Object.values(Emphasis) },
+    emphasis: { control: 'select', options: ['normal', 'italic'] },
   },
 } satisfies Meta<typeof Text>;
 
@@ -29,21 +27,21 @@ export const Default: Story = {};
 export default meta;
 
 export const SmallSecondary: Story = {
-  args: { size: Size.SMALL, tone: 'secondary', children: 'capture-2026-11-11' },
+  args: { size: 'small', tone: 'secondary', children: 'capture-2026-11-11' },
 };
 
 export const Small: Story = {
-  args: { size: Size.SMALL, children: 'Preserved collection' },
+  args: { size: 'small', children: 'Preserved collection' },
 };
 
 export const Success: Story = {
-  args: { tone: Tone.SUCCESS, children: 'Capture complete' },
+  args: { tone: 'success', children: 'Capture complete' },
 };
 
 export const Danger: Story = {
-  args: { tone: Tone.DANGER, children: 'Capture failed' },
+  args: { tone: 'danger', children: 'Capture failed' },
 };
 
 export const Italic: Story = {
-  args: { emphasis: Emphasis.ITALIC, children: 'Editorial note' },
+  args: { emphasis: 'italic', children: 'Editorial note' },
 };

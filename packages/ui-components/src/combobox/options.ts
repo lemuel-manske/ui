@@ -1,5 +1,7 @@
 import type { Size } from '@lemuel-manske/design-tokens';
 
-type ComboboxSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
+
+type ComboboxSize = Subset<Size, 'small' | 'medium' | 'large'>;
 
 export type { ComboboxSize };

@@ -16,14 +16,14 @@ interface LabelProps {
   /**
    * Visual size of the component. This does not change its semantic role.
    * @remarks Type `LabelSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: LabelSize;
 
   /**
    * Semantic status color, independent of the component size or emphasis.
    * @remarks Type `LabelTone`.
-   * @default Tone.DEFAULT
+   * @default 'default'
    */
   tone?: LabelTone;
 

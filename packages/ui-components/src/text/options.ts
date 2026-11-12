@@ -1,10 +1,12 @@
 import type { Size, Tone, Emphasis } from '@lemuel-manske/design-tokens';
 
-type TextSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
 
-type TextTone = 'primary' | 'secondary' | 'accent' | Tone.SUCCESS | Tone.DANGER;
+type TextSize = Subset<Size, 'small' | 'medium' | 'large'>;
 
-type TextEmphasis = Emphasis.NORMAL | Emphasis.ITALIC;
+type TextTone = Subset<Tone, 'success' | 'danger'> | 'primary' | 'secondary' | 'accent';
+
+type TextEmphasis = Subset<Emphasis, 'normal' | 'italic'>;
 
 type TextRole = 'p' | 'span';
 

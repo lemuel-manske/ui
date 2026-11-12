@@ -1,13 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import {
-  archiveTheme,
-  libraryTheme,
-  createTheme,
-  Size,
-  Weight,
-  Emphasis,
-} from '@lemuel-manske/design-tokens';
+import { archiveTheme, libraryTheme, createTheme } from '@lemuel-manske/design-tokens';
 
 import { Heading } from '../heading/Heading';
 
@@ -55,10 +48,10 @@ export const CustomBrand: Story = {
   args: { theme: brand },
   render: (args) => (
     <Theme {...args}>
-      <Heading level={2} size={Size.XLARGE} weight={Weight.BOLD} emphasis={Emphasis.ITALIC}>
+      <Heading level={2} size="xlarge" weight="bold" emphasis="italic">
         Dashboard
       </Heading>
-      <Text size={Size.SMALL}>capture-2026-11-11</Text>
+      <Text size="small">capture-2026-11-11</Text>
       <Button>Continue</Button>
     </Theme>
   ),

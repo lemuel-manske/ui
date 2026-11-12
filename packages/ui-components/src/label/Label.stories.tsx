@@ -1,5 +1,3 @@
-import { Size, Tone } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { expect } from 'storybook/test';
@@ -20,12 +18,12 @@ const meta = {
   args: {
     children: 'Collection name',
     htmlFor: 'collection-name',
-    size: Size.MEDIUM,
+    size: 'medium',
   },
 
   argTypes: {
-    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
-    tone: { control: 'select', options: Object.values(Tone) },
+    size: { control: 'select', options: ['small', 'medium', 'large'] },
+    tone: { control: 'select', options: ['default', 'danger', 'success', 'warning', 'info'] },
   },
 
   render: (args) => (
@@ -42,11 +40,11 @@ type Story = StoryObj<typeof meta>;
 export const Medium: Story = {};
 
 export const Small: Story = {
-  args: { size: Size.SMALL },
+  args: { size: 'small' },
 };
 
 export const Large: Story = {
-  args: { size: Size.LARGE },
+  args: { size: 'large' },
 };
 
 export const WithIcon: Story = {
@@ -69,7 +67,7 @@ export const StatusColors: Story = {
     <div
       style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--ui-space-16)' }}
     >
-      {Object.values(Tone).map((tone) => (
+      {(['default', 'danger', 'success', 'warning', 'info'] as const).map((tone) => (
         <Label key={tone} {...args} htmlFor={undefined} tone={tone}>
           <Icon>
             <InfoIcon />

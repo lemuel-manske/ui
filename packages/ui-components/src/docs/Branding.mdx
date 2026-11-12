@@ -12,7 +12,7 @@ another brand requires only a Theme with a complete token object.
 ## Create a brand
 
 ```tsx
-import { createTheme, libraryTheme, Size, Weight, Emphasis } from '@lemuel-manske/design-tokens';
+import { createTheme, libraryTheme } from '@lemuel-manske/design-tokens';
 import { Theme, Heading, Button } from '@lemuel-manske/components';
 
 const brand = createTheme(libraryTheme, {
@@ -31,7 +31,7 @@ const brand = createTheme(libraryTheme, {
 export function Introduction() {
   return (
     <Theme theme={brand}>
-      <Heading level={1} size={Size.XLARGE} weight={Weight.BOLD} emphasis={Emphasis.ITALIC}>
+      <Heading level={1} size="xlarge" weight="bold" emphasis="italic">
         Preserve what matters.
       </Heading>
       <Button>Continue</Button>
@@ -82,7 +82,7 @@ color system colors, and intrinsic icon/ring geometry remain implementation choi
 ## Typography through component props
 
 Heading exposes level, size, weight, tone, and emphasis. Level selects the native heading
-level independently of visual size. Sizes are Size.SMALL, Size.MEDIUM, Size.LARGE, and Size.XLARGE.
+level independently of visual size. Sizes are 'small', 'medium', 'large', and 'xlarge'.
 The extra-large size consumes text.display, leading.display, and tracking.display. Other sizes use heading
 text scales with leading.heading and tracking.heading. Font family comes from font.display.
 Weight and emphasis remain explicit, independent choices at every size.
@@ -91,22 +91,22 @@ Text provides body text with size, tone, and emphasis, rendered as p or span. It
 text.small/medium/large, leading.body, and tracking.body. Legend supports size, weight, tone,
 and emphasis while preserving its native role as a fieldset caption.
 
-Enum-backed component options are exported as narrowed union types. Use Size, Weight, and
-Tone from the design-tokens package for runtime values. Emphasis is also a shared enum. Component-only appearances retain their documented
-component constants.
+Component options are exported as string union types. Pass plain strings such as
+`size="large"`, `weight="semibold"`, `tone="danger"`, and `emphasis="italic"`. Shared design-token
+types are narrowed with `Subset` in each component’s `options.ts`.
 
-Text tones accept "primary", "secondary", "accent", Tone.SUCCESS, and Tone.DANGER. Status tones
+Text tones accept "primary", "secondary", "accent", 'success', and 'danger'. Status tones
 use dedicated state colors and should accompany meaningful text.
-Emphasis.ITALIC requests visual emphasis; native em and strong children express semantic emphasis.
+'italic' requests visual emphasis; native em and strong children express semantic emphasis.
 
 ```tsx
-<Heading level={3} size={Size.LARGE} weight={Weight.SEMIBOLD}>
+<Heading level={3} size="large" weight="semibold">
   Saved documents
 </Heading>
-<Text as="span" size={Size.SMALL} tone="secondary">
+<Text as="span" size="small" tone="secondary">
   capture-2026-11-11
 </Text>
-<Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
+<Legend size="large" weight="semibold">
   Authentication
 </Legend>
 ```
@@ -117,13 +117,13 @@ component. These typography primitives do not select bundled font/style recipes.
 
 ## Other semantic props
 
-Button variant sets visual hierarchy, while Tone.DANGER independently expresses a
+Button variant sets visual hierarchy, while `tone="danger"` independently expresses a
 destructive action. Button and useButton accept explicit disclosure attributes, with state
-owned by the application. FieldsetAppearance.OUTLINED, DIVIDED, and PLAIN select grouping
-appearance while preserving native legend and disabled behavior. LinkAppearance.ACTION and
-LinkSize control action presentation without replacing native navigation or download.
-SpinnerLabelVisibility.VISIBLE shows the single localized status message beside the ring;
-HIDDEN remains the default, including reduced-motion support.
+owned by the application. Fieldset appearances "outlined", "divided", and "plain" select grouping
+appearance while preserving native legend and disabled behavior. Link `appearance="action"` and
+`size` control action presentation without replacing native navigation or download.
+Spinner `labelHidden={false}` shows the single localized status message beside the ring;
+`labelHidden` defaults to true, including reduced-motion support.
 
 Compose ButtonLabel, Legend, and FieldDescription directly when their named roles are useful.
 Form contains standalone controls and does not own their identity. Page layout and artwork
@@ -158,7 +158,7 @@ and documented appearances. Navigation explicitly supports landmark naming, lang
 ref, hidden behavior, keyboard focus, and interaction handlers.
 
 Typography variant props and the TypographyRecipe/typography token group are removed. Select
-`size={Size.XLARGE}` for large headings and configure font, text, weight, leading, and tracking
+`size="xlarge"` for large headings and configure font, text, weight, leading, and tracking
 foundations directly. Use Text size and tone for supporting body text and Legend size and weight
 for group captions. Themes implement the complete current DesignTokens contract; extend a current
 preset or supply all groups explicitly. These prop and token changes require a breaking release.

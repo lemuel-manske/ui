@@ -1,5 +1,3 @@
-import { Size, Weight } from '@lemuel-manske/design-tokens';
-
 import { expect, test } from '@lemuel-manske/config-playwright';
 
 import { Fieldset, Legend } from './Fieldset';
@@ -44,8 +42,8 @@ test('Fieldset has no accessibility violations', async ({ render, page }) => {
 
 test('plain fieldset retains its legend as the group name', async ({ render, page }) => {
   await render(
-    <Fieldset appearance={'plain'}>
-      <Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
+    <Fieldset appearance="plain">
+      <Legend size="large" weight="semibold">
         Authentication
       </Legend>
       <Input aria-label="Account" />
@@ -57,7 +55,7 @@ test('plain fieldset retains its legend as the group name', async ({ render, pag
 
 test('divided fieldset retains native disabled behavior', async ({ render, page }) => {
   await render(
-    <Fieldset appearance={'divided'} disabled>
+    <Fieldset appearance="divided" disabled>
       <Legend>Authentication</Legend>
       <Input aria-label="Account" />
     </Fieldset>,
@@ -71,8 +69,8 @@ test('plain fieldset with title legend has no accessibility violations', async (
   page,
 }) => {
   await render(
-    <Fieldset appearance={'plain'}>
-      <Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
+    <Fieldset appearance="plain">
+      <Legend size="large" weight="semibold">
         Authentication
       </Legend>
       <Input aria-label="Account" />
@@ -84,8 +82,8 @@ test('plain fieldset with title legend has no accessibility violations', async (
 
 test('divided fieldset has no accessibility violations', async ({ render, page }) => {
   await render(
-    <Fieldset appearance={'divided'}>
-      <Legend size={Size.SMALL}>Preferences</Legend>
+    <Fieldset appearance="divided">
+      <Legend size="small">Preferences</Legend>
       <Input aria-label="Collection" />
     </Fieldset>,
   );

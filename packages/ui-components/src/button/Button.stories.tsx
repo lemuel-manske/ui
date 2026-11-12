@@ -1,5 +1,3 @@
-import { Size, Tone, Variant } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { expect, fn } from 'storybook/test';
@@ -9,6 +7,10 @@ import { ButtonLabel } from './ButtonLabel';
 import { Icon } from '../icon/Icon';
 import { CheckIcon, InfoIcon } from '../icon/ExampleIcons.test-fixture';
 
+const buttonSizes = ['small', 'medium', 'large'] as const;
+const buttonVariants = ['primary', 'secondary', 'tertiary'] as const;
+const buttonTones = ['default', 'danger', 'success', 'warning', 'info'] as const;
+
 const meta = {
   title: 'Components/Button',
   component: Button,
@@ -17,15 +19,15 @@ const meta = {
 
   args: {
     children: 'Archive website',
-    size: Size.MEDIUM,
-    variant: Variant.PRIMARY,
+    size: 'medium',
+    variant: 'primary',
     onClick: fn(),
   },
 
   argTypes: {
-    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
-    variant: { control: 'select', options: Object.values(Variant) },
-    tone: { control: 'select', options: Object.values(Tone) },
+    size: { control: 'select', options: buttonSizes },
+    variant: { control: 'select', options: buttonVariants },
+    tone: { control: 'select', options: buttonTones },
   },
 } satisfies Meta<typeof Button>;
 
@@ -34,11 +36,11 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {};
 
 export const Secondary: Story = {
-  args: { variant: Variant.SECONDARY },
+  args: { variant: 'secondary' },
 };
 
 export const Tertiary: Story = {
-  args: { variant: Variant.TERTIARY },
+  args: { variant: 'tertiary' },
 };
 
 export const Sizes: Story = {
@@ -46,7 +48,7 @@ export const Sizes: Story = {
     <div
       style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--ui-space-16)' }}
     >
-      {([Size.SMALL, Size.MEDIUM, Size.LARGE] as const).map((size) => (
+      {buttonSizes.map((size) => (
         <Button {...args} key={size} size={size}>
           {size}
         </Button>
@@ -110,7 +112,7 @@ export const WithIcon: Story = {
 };
 
 export const IconOnly: Story = {
-  args: { 'aria-label': 'Show details', variant: Variant.TERTIARY },
+  args: { 'aria-label': 'Show details', variant: 'tertiary' },
   render: (args) => (
     <Button {...args}>
       <Icon>
@@ -125,7 +127,7 @@ export const StatusColors: Story = {
     <div
       style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--ui-space-16)' }}
     >
-      {Object.values(Tone).map((tone) => (
+      {buttonTones.map((tone) => (
         <Button {...args} key={tone} tone={tone}>
           <Icon>
             <CheckIcon />
@@ -160,7 +162,7 @@ export const Submit: Story = {
       >
         <Button {...args} />
 
-        <Button variant={Variant.TERTIARY}>Cancel</Button>
+        <Button variant="tertiary">Cancel</Button>
       </div>
     </form>
   ),

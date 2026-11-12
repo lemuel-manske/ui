@@ -1,12 +1,14 @@
 import type { Size, Weight, Tone, Emphasis } from '@lemuel-manske/design-tokens';
 
-type LegendSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+import type { Subset } from '@lemuel-manske/utils';
 
-type LegendWeight = Weight.REGULAR | Weight.MEDIUM | Weight.SEMIBOLD | Weight.BOLD;
+type LegendSize = Subset<Size, 'small' | 'medium' | 'large'>;
 
-type LegendTone = 'primary' | 'secondary' | 'accent' | Tone.SUCCESS | Tone.DANGER;
+type LegendWeight = Subset<Weight, 'regular' | 'medium' | 'semibold' | 'bold'>;
 
-type LegendEmphasis = Emphasis.NORMAL | Emphasis.ITALIC;
+type LegendTone = Subset<Tone, 'success' | 'danger'> | 'primary' | 'secondary' | 'accent';
+
+type LegendEmphasis = Subset<Emphasis, 'normal' | 'italic'>;
 
 type FieldsetAppearance = 'outlined' | 'divided' | 'plain';
 

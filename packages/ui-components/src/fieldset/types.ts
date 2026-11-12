@@ -12,7 +12,7 @@ interface FieldsetProps {
   /**
    * Outlined box, section divider, or unboxed grouping. Spacing uses semantic space tokens.
    * @remarks Type `FieldsetAppearance`.
-   * @default FieldsetAppearance.OUTLINED
+   * @default 'outlined'
    */
   appearance?: FieldsetAppearance;
 
@@ -63,14 +63,14 @@ interface LegendProps {
   /**
    * Visual caption size, preserving the native legend semantics.
    * @remarks Type `LegendSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: LegendSize;
 
   /**
    * Visual font weight of the group caption.
    * @remarks Type `LegendWeight`.
-   * @default Weight.MEDIUM
+   * @default 'medium'
    */
   weight?: LegendWeight;
 
@@ -84,7 +84,7 @@ interface LegendProps {
   /**
    * Visual italic emphasis. Load the real italic font face; use em for semantic emphasis.
    * @remarks Type `LegendEmphasis`.
-   * @default Emphasis.NORMAL
+   * @default 'normal'
    */
   emphasis?: LegendEmphasis;
 

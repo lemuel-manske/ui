@@ -1,6 +1,6 @@
 import { DisclosureButton } from './Button.test-fixture';
 
-import { Variant, Tone, archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
+import { archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
 
 import { expect, test } from '@lemuel-manske/config-playwright';
 
@@ -114,13 +114,13 @@ test('Button has no accessibility violations', async ({ render, page }) => {
 });
 
 test('secondary Button has no accessibility violations', async ({ render, page }) => {
-  await render(<Button variant={Variant.SECONDARY}>Archive website</Button>);
+  await render(<Button variant="secondary">Archive website</Button>);
 
   await expect(page).noAccessibilityViolations();
 });
 
 test('tertiary Button has no accessibility violations', async ({ render, page }) => {
-  await render(<Button variant={Variant.TERTIARY}>Archive website</Button>);
+  await render(<Button variant="tertiary">Archive website</Button>);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -129,7 +129,7 @@ test('archive default button compositions have no accessibility violations', asy
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={archiveTheme} tone={Tone.DEFAULT} />);
+  await render(<StatusButtons theme={archiveTheme} tone="default" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -138,7 +138,7 @@ test('archive danger button compositions have no accessibility violations', asyn
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={archiveTheme} tone={Tone.DANGER} />);
+  await render(<StatusButtons theme={archiveTheme} tone="danger" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -147,7 +147,7 @@ test('archive success button compositions have no accessibility violations', asy
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={archiveTheme} tone={Tone.SUCCESS} />);
+  await render(<StatusButtons theme={archiveTheme} tone="success" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -156,7 +156,7 @@ test('archive warning button compositions have no accessibility violations', asy
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={archiveTheme} tone={Tone.WARNING} />);
+  await render(<StatusButtons theme={archiveTheme} tone="warning" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -165,7 +165,7 @@ test('archive info button compositions have no accessibility violations', async 
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={archiveTheme} tone={Tone.INFO} />);
+  await render(<StatusButtons theme={archiveTheme} tone="info" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -174,7 +174,7 @@ test('library default button compositions have no accessibility violations', asy
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={libraryTheme} tone={Tone.DEFAULT} />);
+  await render(<StatusButtons theme={libraryTheme} tone="default" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -183,7 +183,7 @@ test('library danger button compositions have no accessibility violations', asyn
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={libraryTheme} tone={Tone.DANGER} />);
+  await render(<StatusButtons theme={libraryTheme} tone="danger" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -192,7 +192,7 @@ test('library success button compositions have no accessibility violations', asy
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={libraryTheme} tone={Tone.SUCCESS} />);
+  await render(<StatusButtons theme={libraryTheme} tone="success" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -201,7 +201,7 @@ test('library warning button compositions have no accessibility violations', asy
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={libraryTheme} tone={Tone.WARNING} />);
+  await render(<StatusButtons theme={libraryTheme} tone="warning" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -210,7 +210,7 @@ test('library info button compositions have no accessibility violations', async 
   render,
   page,
 }) => {
-  await render(<StatusButtons theme={libraryTheme} tone={Tone.INFO} />);
+  await render(<StatusButtons theme={libraryTheme} tone="info" />);
 
   await expect(page).noAccessibilityViolations();
 });
@@ -241,7 +241,7 @@ test('danger tertiary button preserves native disabled behavior in forced colors
   await page.emulateMedia({ forcedColors: 'active' });
 
   await render(
-    <Button tone={Tone.DANGER} variant={Variant.TERTIARY} disabled>
+    <Button tone="danger" variant="tertiary" disabled>
       Remove capture
     </Button>,
   );

@@ -1,5 +1,3 @@
-import { Size, Tone } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
@@ -16,8 +14,8 @@ const meta = {
 
   argTypes: {
     children: { control: false },
-    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
-    tone: { control: 'select', options: Object.values(Tone) },
+    size: { control: 'select', options: ['small', 'medium', 'large'] },
+    tone: { control: 'select', options: ['default', 'danger', 'success', 'warning', 'info'] },
   },
 } satisfies Meta<typeof Icon>;
 

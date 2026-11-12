@@ -1,13 +1,11 @@
 import type { Size } from '@lemuel-manske/design-tokens';
 
+import type { Subset } from '@lemuel-manske/utils';
+
 type LinkTarget = '_self' | '_blank' | '_parent' | '_top';
 
-type LinkSize = Size.SMALL | Size.MEDIUM | Size.LARGE;
+type LinkSize = Subset<Size, 'small' | 'medium' | 'large'>;
 
-const LinkAppearance = { INLINE: 'inline', ACTION: 'action' } as const;
+type LinkAppearance = 'inline' | 'action';
 
-type LinkAppearance = (typeof LinkAppearance)[keyof typeof LinkAppearance];
-
-export type { LinkSize, LinkTarget };
-
-export { LinkAppearance };
+export type { LinkSize, LinkTarget, LinkAppearance };

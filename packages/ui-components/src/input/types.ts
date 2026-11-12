@@ -8,7 +8,7 @@ interface InputProps extends AccessibilityOptions {
   /**
    * Visual size of the component. This does not change its semantic role.
    * @remarks Type `InputSize`.
-   * @default Size.MEDIUM
+   * @default 'medium'
    */
   size?: InputSize;
 

@@ -1,5 +1,3 @@
-import { Size, Tone } from '@lemuel-manske/design-tokens';
-
 import { cx } from '@lemuel-manske/utils';
 
 import type { IconProps } from './types';
@@ -8,7 +6,7 @@ import styles from './Icon.module.css';
 
 /** Displays a client-supplied icon. An onClick and label turn it into a native button. */
 function Icon(props: IconProps) {
-  const { children, label, size = Size.MEDIUM, tone = Tone.DEFAULT } = props;
+  const { children, label, size = 'medium', tone = 'default' } = props;
 
   const classes = cx(styles.icon, styles[size], styles[tone]);
 

@@ -1,5 +1,3 @@
-import { Size } from '@lemuel-manske/design-tokens';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Combobox } from './Combobox';
@@ -28,7 +26,7 @@ const meta = {
   },
 
   argTypes: {
-    size: { control: 'select', options: [Size.SMALL, Size.MEDIUM, Size.LARGE] },
+    size: { control: 'select', options: ['small', 'medium', 'large'] },
 
     children: { control: false },
   },

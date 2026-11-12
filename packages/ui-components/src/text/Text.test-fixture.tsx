@@ -1,11 +1,4 @@
-import {
-  archiveTheme,
-  type DesignTokens,
-  Size,
-  Tone,
-  Weight,
-  Emphasis,
-} from '@lemuel-manske/design-tokens';
+import { archiveTheme, type DesignTokens } from '@lemuel-manske/design-tokens';
 
 import { Heading } from '../heading/Heading';
 
@@ -22,30 +15,30 @@ interface TextExampleProps {
 function TextExample({ theme = archiveTheme }: TextExampleProps) {
   return (
     <Theme theme={theme}>
-      <Heading level={1} size={Size.XLARGE} weight={Weight.BOLD} emphasis={Emphasis.ITALIC}>
+      <Heading level={1} size="xlarge" weight="bold" emphasis="italic">
         A collection of preserved documents
       </Heading>
 
-      <Heading level={2} size={Size.MEDIUM}>
+      <Heading level={2} size="medium">
         Recent captures
       </Heading>
 
       <Text>Browse the preserved collection.</Text>
 
-      <Text size={Size.SMALL} tone="secondary">
+      <Text size="small" tone="secondary">
         capture-2026-11-11-1234567890
       </Text>
 
-      <Text size={Size.SMALL} tone="accent">
+      <Text size="small" tone="accent">
         Preserved collection
       </Text>
 
-      <Text tone={Tone.SUCCESS}>Capture complete</Text>
-      <Text tone={Tone.DANGER}>Capture failed</Text>
-      <Text emphasis={Emphasis.ITALIC}>Editorial note</Text>
+      <Text tone="success">Capture complete</Text>
+      <Text tone="danger">Capture failed</Text>
+      <Text emphasis="italic">Editorial note</Text>
 
       <Fieldset appearance="divided">
-        <Legend size={Size.LARGE}>Authentication</Legend>
+        <Legend size="large">Authentication</Legend>
         <Input aria-label="Account" />
       </Fieldset>
     </Theme>

@@ -1,5 +1,3 @@
-import { Size } from '@lemuel-manske/design-tokens';
-
 import {
   Button,
   Heading,
@@ -62,14 +60,20 @@ function useRejectedVisualOverrides() {
   // @ts-expect-error Legend uses explicit caption size and weight props.
   useLegend({ children: 'Account', variant: 'title' });
 
-  // @ts-expect-error Extra-large headings use the shared Size enum.
+  // @ts-expect-error Heading sizes must use a supported string literal.
   useHeading({ children: 'Title', size: 'display' });
 
   // @ts-expect-error Body text keeps its supported three-size subset.
-  useText({ children: 'Body', size: Size.XLARGE });
+  useText({ children: 'Body', size: 'xlarge' });
 
   // @ts-expect-error Buttons keep their supported three-size subset.
-  useButton({ children: 'Continue', size: Size.XLARGE });
+  useButton({ children: 'Continue', size: 'xlarge' });
+
+  // @ts-expect-error Legends keep their supported three-size subset.
+  useLegend({ children: 'Account', size: 'xlarge' });
+
+  // @ts-expect-error Accent is not a supported button variant.
+  useButton({ children: 'Continue', variant: 'accent' });
 
   void [button, navigation, heading, link];
 }
@@ -87,4 +91,9 @@ export type NoRecipeExports = Assert<
   Extract<'HeadingVariant' | 'TextVariant' | 'LegendVariant', keyof PublicLibrary> extends never
     ? true
     : false
+>;
+
+/** Choice names remain public types without exposing runtime constants. */
+export type NoChoiceConstants = Assert<
+  Extract<'LinkAppearance', keyof PublicLibrary> extends never ? true : false
 >;

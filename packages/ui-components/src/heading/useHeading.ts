@@ -1,5 +1,3 @@
-import { Size, Weight } from '@lemuel-manske/design-tokens';
-
 import { pickProps, cx } from '@lemuel-manske/utils';
 
 import type { HeadingProps } from './types';
@@ -17,8 +15,8 @@ const tagMap = {
 
 function useHeading({
   level = 2,
-  size = Size.MEDIUM,
-  weight = Weight.MEDIUM,
+  size = 'medium',
+  weight = 'medium',
   tone,
   emphasis,
   ...props
@@ -28,14 +26,14 @@ function useHeading({
     props: {
       ...pickProps(props, ['children', 'id']),
       className: cx(styles.heading, tone && styles[tone], emphasis && styles[emphasis], {
-        [styles.xlarge]: size === Size.XLARGE,
-        [styles.small]: size === Size.SMALL,
-        [styles.medium]: size === Size.MEDIUM,
-        [styles.large]: size === Size.LARGE,
-        [styles.regular]: weight === Weight.REGULAR,
-        [styles.mediumWeight]: weight === Weight.MEDIUM,
-        [styles.semibold]: weight === Weight.SEMIBOLD,
-        [styles.bold]: weight === Weight.BOLD,
+        [styles.xlarge]: size === 'xlarge',
+        [styles.small]: size === 'small',
+        [styles.medium]: size === 'medium',
+        [styles.large]: size === 'large',
+        [styles.regular]: weight === 'regular',
+        [styles.mediumWeight]: weight === 'medium',
+        [styles.semibold]: weight === 'semibold',
+        [styles.bold]: weight === 'bold',
       }),
     },
   };

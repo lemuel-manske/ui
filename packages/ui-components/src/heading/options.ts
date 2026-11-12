@@ -1,12 +1,14 @@
 import type { Size, Weight, Tone, Emphasis } from '@lemuel-manske/design-tokens';
 
-type HeadingSize = Size.SMALL | Size.MEDIUM | Size.LARGE | Size.XLARGE;
+import type { Subset } from '@lemuel-manske/utils';
 
-type HeadingWeight = Weight.REGULAR | Weight.MEDIUM | Weight.SEMIBOLD | Weight.BOLD;
+type HeadingSize = Subset<Size, 'small' | 'medium' | 'large' | 'xlarge'>;
 
-type HeadingTone = 'primary' | 'secondary' | 'accent' | Tone.SUCCESS | Tone.DANGER;
+type HeadingWeight = Subset<Weight, 'regular' | 'medium' | 'semibold' | 'bold'>;
 
-type HeadingEmphasis = Emphasis.NORMAL | Emphasis.ITALIC;
+type HeadingTone = Subset<Tone, 'success' | 'danger'> | 'primary' | 'secondary' | 'accent';
+
+type HeadingEmphasis = Subset<Emphasis, 'normal' | 'italic'>;
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 

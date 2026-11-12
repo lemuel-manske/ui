@@ -47,8 +47,8 @@ catalogs to validate their ICU syntax, keys, and placeholders.
 
 ```sh
 mkdir -p src/i18n
-npx i18n-message-ids locales/en.json src/i18n/message-ids.ts locales/pt-BR.json
-npx i18n-message-ids --check locales/en.json src/i18n/message-ids.ts locales/pt-BR.json
+npx i18n locales/en.json src/i18n/message-ids.ts locales/pt-BR.json
+npx i18n --check locales/en.json src/i18n/message-ids.ts locales/pt-BR.json
 ```
 
 Run the second command in CI to detect stale constants. Exclude the generated

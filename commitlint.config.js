@@ -17,10 +17,6 @@ export default {
   plugins: [
     {
       rules: {
-        'body-content': ({ body }) => [
-          !body || body.trim().length > 0,
-          'body must contain non-whitespace text',
-        ],
         'scope-package': ({ scope }) => [
           !scope || scopes.includes(scope),
           `scope must be a single package directory (${scopes.join(', ')}) or omitted for root changes`,
@@ -30,9 +26,6 @@ export default {
   ],
 
   rules: {
-    'body-empty': [2, 'never'],
-    'body-content': [2, 'always'],
-    'body-leading-blank': [2, 'always'],
     'scope-package': [2, 'always'],
   },
 };

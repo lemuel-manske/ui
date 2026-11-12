@@ -14,5 +14,18 @@ export default {
         releasedLabels: false,
       },
     ],
+    [
+      '@semantic-release/changelog',
+      {
+        changelogFile: 'CHANGELOG.md',
+      },
+    ],
+    [
+      '@semantic-release/git',
+      {
+        assets: ['CHANGELOG.md'],
+        message: 'chore: ${nextRelease.version} [skip ci]',
+      },
+    ],
   ],
 };

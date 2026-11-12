@@ -1,7 +1,5 @@
 import { Size, Weight } from '@lemuel-manske/design-tokens';
 
-import { FieldsetAppearance } from './options';
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Fieldset, Legend } from './Fieldset';
@@ -33,7 +31,7 @@ export const Default: Story = {
 export default meta;
 
 export const Divided: Story = {
-  args: { appearance: FieldsetAppearance.DIVIDED },
+  args: { appearance: 'divided' },
   render: (args) => (
     <Fieldset {...args}>
       <Legend size={Size.LARGE} weight={Weight.SEMIBOLD}>
@@ -45,7 +43,7 @@ export const Divided: Story = {
 };
 
 export const Plain: Story = {
-  args: { appearance: FieldsetAppearance.PLAIN },
+  args: { appearance: 'plain' },
   render: (args) => (
     <Fieldset {...args}>
       <Legend size={Size.SMALL}>Preferences</Legend>

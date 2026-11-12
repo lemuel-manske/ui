@@ -5,13 +5,12 @@ import { Meta } from '@storybook/addon-docs/blocks';
 # Getting started
 
 This library provides React 19 components, compound parts, hooks, and semantic design tokens.
-Import public APIs from `@lemuel-manske/components` and `@lemuel-manske/design-tokens`.
-Avoid deep imports into `src` or `dist`.
+
+Import public APIs from `@lemuel-manske/components` and `@lemuel-manske/design-tokens`. Avoid deep imports into `src` or `dist`.
 
 ## Installation
 
-Packages are published to GitHub Packages. Configure the `@lemuel-manske` scope in your
-application's `.npmrc` and authenticate through your normal GitHub Packages workflow:
+Packages are published to GitHub Packages. Configure the `@lemuel-manske` scope in your application's `.npmrc` and authenticate through your normal GitHub Packages workflow:
 
 ```ini
 @lemuel-manske:registry=https://npm.pkg.github.com
@@ -23,9 +22,9 @@ npm install @lemuel-manske/components @lemuel-manske/design-tokens
 
 ## Styles and theme
 
-Import the component CSS once in your application's entry point. The component entry also
-imports the design token stylesheet. Wrap your UI in `Theme` to choose a theme; use
-`archiveTheme` or `libraryTheme` from the tokens package.
+Import the component CSS once in your application's entry point. The component entry also imports the design token stylesheet.
+
+Wrap your UI in `Theme` to choose a theme; use `archiveTheme` or `libraryTheme` from the tokens package.
 
 ```tsx
 import '@lemuel-manske/components/styles.css';
@@ -45,6 +44,7 @@ export function App() {
 ```
 
 Storybook supplies a theme decorator. Application code needs its own theme wrapper.
+
 The toolbar's brand switch changes the preview theme, not component props.
 
 ## Choosing pieces
@@ -56,16 +56,15 @@ The toolbar's brand switch changes the preview theme, not component props.
 - Use `Combobox` for a native select with `Combobox.Option` children; it is not a searchable input.
 - Use `Heading`, `Text`, and semantic tokens when composing application layouts.
 
-Check each component's API before adding props. Supported props differ between components;
-do not assume arbitrary native attributes or props from another library are forwarded.
+Check each component's API before adding props. Supported props differ between components; do not assume arbitrary native attributes or props from another library are forwarded.
 
 ## Design tokens
 
-CSS variables follow `--ui-{group}-{token}`, for example `--ui-space-16`,
-`--ui-color-text-primary`, `--ui-action-primary`, and `--ui-state-danger`.
+CSS variables follow `--ui-{group}-{token}`, for example `--ui-space-16`, `--ui-color-text-primary`, `--ui-action-primary`, and `--ui-state-danger`.
+
 Use action tokens for interactive colors and state tokens for focus and validation.
-Keep token groups flat and semantic. A custom theme must satisfy the complete `DesignTokens`
-contract; start by spreading an existing theme and overriding complete groups as needed.
+
+Keep token groups flat and semantic. A custom theme must satisfy the complete `DesignTokens` contract; start by spreading an existing theme and overriding complete groups as needed.
 
 ```tsx
 import { archiveTheme, type DesignTokens } from '@lemuel-manske/design-tokens';
@@ -76,8 +75,8 @@ const theme = {
 } satisfies DesignTokens;
 ```
 
-Fonts named by the themes must be loaded by your application if you want them instead of
-the configured fallback fonts. Layout and application data remain the application's responsibility.
+Fonts named by the themes must be loaded by your application if you want them instead of the configured fallback fonts.
 
-See the Branding and theming guide to create brands, configure typography, and compose nested
-themes using the documented token contract.
+Layout and application data remain the application's responsibility.
+
+See the Branding and theming guide to create brands, configure typography, and compose nested themes using the documented token contract.

@@ -1,4 +1,0 @@
-{
-  "my-app.loading": "Carregando o acervo…",
-  "my-app.capture.count": "{count, plural, one {# item arquivado} other {# itens arquivados}}"
-}

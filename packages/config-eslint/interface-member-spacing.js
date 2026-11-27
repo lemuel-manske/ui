@@ -12,8 +12,6 @@ const rule = {
   },
 
   create(context) {
-    const sourceCode = context.sourceCode;
-
     return {
       TSInterfaceDeclaration(node) {
         const members = node.body.body;
@@ -27,7 +25,7 @@ const rule = {
               node: current,
               messageId: 'missingBlankLine',
               fix(fixer) {
-                return fixer.insertTextBefore(current, '\n');
+                return fixer.insertTextAfter(previous, '\n');
               },
             });
           }

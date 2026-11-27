@@ -1,3 +1,5 @@
 export { Explorer } from './Explorer';
 
-export type { ExplorerProps, ExplorerItem } from './types';
+export { useExplorer } from './useExplorer';
+
+export type { ExplorerProps, ExplorerItem, ExplorerMessages } from './types';

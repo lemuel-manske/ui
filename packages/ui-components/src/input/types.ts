@@ -1,5 +1,6 @@
 import type {
   AriaAttributes,
+  AriaRole,
   ChangeEventHandler,
   FocusEventHandler,
   KeyboardEventHandler,
@@ -72,7 +73,7 @@ interface InputProps extends AccessibilityOptions {
   pattern?: string;
 
   /** Native input role override for composite controls. @remarks Type `AriaAttributes['role']`. @default undefined */
-  role?: AriaAttributes['role'];
+  role?: AriaRole;
 
   /** Popup suggestion behavior. @remarks Type `AriaAttributes['aria-autocomplete']`. @default undefined */
   'aria-autocomplete'?: AriaAttributes['aria-autocomplete'];

@@ -119,15 +119,17 @@ function Explorer(props: ExplorerProps) {
     setActiveIndex,
   };
 
-  let resultContent = null;
+  const resultContent = (() => {
+    if (loading) {
+      return renderLoadingContent(messages);
+    }
 
-  if (loading) {
-    resultContent = renderLoadingContent(messages);
-  } else if (results.length === 0) {
-    resultContent = renderEmptyContent(messages);
-  } else {
-    resultContent = renderResultsContent(messages, resultState);
-  }
+    if (results.length === 0) {
+      return renderEmptyContent(messages);
+    }
+
+    return renderResultsContent(messages, resultState);
+  })();
 
   return (
     <div className={styles.explorer}>

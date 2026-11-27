@@ -98,9 +98,8 @@
   overflow: auto;
   padding: var(--ui-space-8);
   border: var(--ui-border-width) solid var(--ui-color-border);
-  border-radius: var(--ui-radius-large);
+  border-radius: var(--ui-radius-medium);
   background: var(--ui-color-background);
-  box-shadow: var(--ui-shadow-medium);
 }
 
 .results,

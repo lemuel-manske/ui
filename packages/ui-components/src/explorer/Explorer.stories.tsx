@@ -4,6 +4,15 @@ import { useState } from 'react';
 
 import { Explorer } from './Explorer';
 
+const messages = {
+  searchLabel: 'Search',
+  searchPlaceholder: 'Search…',
+  clearSearchLabel: 'Clear search',
+  resultsLabel: 'Search results',
+  loadingMessage: 'Searching…',
+  emptyMessage: 'No results found.',
+};
+
 const results = [
   {
     id: 'website',
@@ -31,6 +40,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     query: '',
+    messages,
     onQueryChange: () => {},
     results,
   },
@@ -63,6 +73,7 @@ function InteractiveExample() {
     <Explorer
       query={query}
       results={filteredResults}
+      messages={messages}
       onQueryChange={setQuery}
       onSelect={(item) => setQuery(item.label)}
     />

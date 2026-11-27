@@ -83,7 +83,7 @@ function Explorer({
   if (loading) {
     resultContent = <Spinner label="Searching..." />;
   } else if (results.length === 0) {
-    resultContent = <Text className={styles.message} size="small" tone="secondary">{emptyMessage}</Text>;
+    resultContent = <p className={styles.message}><Text size="small" tone="secondary">{emptyMessage}</Text></p>;
   } else {
     let resultIndex = 0;
 
@@ -97,7 +97,7 @@ function Explorer({
             aria-label={group.group ?? 'Results'}
           >
             {group.group != null && (
-              <Text as="p" className={styles.groupLabel} size="small" tone="secondary">
+              <p className={styles.groupLabel}><Text size="small" tone="secondary">
                 {group.group}
               </Text>
             )}
@@ -119,9 +119,9 @@ function Explorer({
                     onMouseMove={() => setActiveIndex(index)}
                     onClick={() => onSelect?.(item)}
                   >
-                    <Text as="span" className={styles.optionLabel}>{item.label}</Text>
+                    <span className={styles.optionLabel}><Text as="span">{item.label}</Text></span>
                     {item.description != null && (
-                      <Text as="span" className={styles.description} size="small" tone="secondary">
+                      <span className={styles.description}><Text as="span" size="small" tone="secondary">
                         {item.description}
                       </Text>
                     )}

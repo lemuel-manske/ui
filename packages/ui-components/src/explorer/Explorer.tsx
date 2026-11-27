@@ -21,9 +21,14 @@ function renderEmptyContent(messages: ExplorerMessages) {
   );
 }
 
+type ExplorerResultState = Pick<
+  ReturnType<typeof useExplorer>,
+  'activeIndex' | 'groupedResults' | 'listboxId' | 'selectItem' | 'setActiveIndex'
+>;
+
 function renderResultsContent(
   messages: ExplorerMessages,
-  explorer: ReturnType<typeof useExplorer>,
+  explorer: ExplorerResultState,
 ) {
   let resultIndex = 0;
 
@@ -105,11 +110,9 @@ function Explorer(props: ExplorerProps) {
     setActiveIndex,
   } = useExplorer(props);
 
-  const explorer = {
+  const resultState = {
     activeIndex,
-    activeItem,
     groupedResults,
-    isOpen,
     listboxId,
     selectItem,
     setActiveIndex,
@@ -122,7 +125,7 @@ function Explorer(props: ExplorerProps) {
   } else if (results.length === 0) {
     resultContent = renderEmptyContent(messages);
   } else {
-    resultContent = renderResultsContent(messages, explorer);
+    resultContent = renderResultsContent(messages, resultState);
   }
 
   return (

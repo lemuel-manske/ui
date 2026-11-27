@@ -1,5 +1,6 @@
 import { Icon } from '../icon';
 import { Input } from '../input';
+import { List } from '../list';
 import { Spinner } from '../spinner';
 import { Text } from '../text';
 
@@ -33,14 +34,15 @@ function renderResultsContent(
   let resultIndex = 0;
 
   return (
-    <ul
+    <List
+      marker="none"
       id={explorer.listboxId}
       className={styles.results}
       role="listbox"
       aria-label={messages.resultsLabel}
     >
       {explorer.groupedResults.map((group, groupIndex) => (
-        <li
+        <List.Item
           key={group.group ?? groupIndex}
           className={styles.group}
           role="group"
@@ -52,19 +54,18 @@ function renderResultsContent(
             </p>
           )}
 
-          <ul className={styles.groupResults} role="presentation">
+          <List marker="none" className={styles.groupResults} role="presentation">
             {group.items.map((item) => {
               const index = resultIndex++;
               const isActive = index === explorer.activeIndex;
 
               return (
-                <li
+                <List.Item
                   key={item.id}
                   id={`${explorer.listboxId}-option-${index}`}
                   role="option"
                   aria-selected={isActive}
                   className={styles.option}
-                  data-active={isActive || undefined}
                   onMouseDown={(event) => event.preventDefault()}
                   onMouseMove={() => explorer.setActiveIndex(index)}
                   onClick={() => explorer.selectItem(item)}
@@ -79,13 +80,13 @@ function renderResultsContent(
                       </Text>
                     </span>
                   )}
-                </li>
+                </List.Item>
               );
             })}
-          </ul>
-        </li>
+          </List>
+        </List.Item>
       ))}
-    </ul>
+    </List>
   );
 }
 

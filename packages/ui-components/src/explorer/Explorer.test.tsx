@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 import { Explorer } from './Explorer';
 
+import type { ExplorerItem } from './types';
+
 const messages = {
   searchLabel: 'Search',
   searchPlaceholder: 'Search…',
@@ -18,7 +20,7 @@ const results = [
   { id: 'second', label: 'Second result', group: 'Pages' },
 ];
 
-function ControlledExplorer({ onSelect }: { onSelect?: (item: (typeof results)[number]) => void }) {
+function ControlledExplorer({ onSelect }: { onSelect?: (item: ExplorerItem) => void }) {
   const [query, setQuery] = useState('');
 
   return (

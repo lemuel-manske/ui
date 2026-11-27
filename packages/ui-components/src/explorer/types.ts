@@ -12,62 +12,44 @@ interface ExplorerItem {
   group?: string;
 }
 
-interface ExplorerProps {
-  /**
-   * Current search query. The component is controlled and reports edits through onQueryChange.
-   * @remarks Type `string`.
-   * @default None (required)
-   */
-  query: string;
+interface ExplorerMessages {
+  /** Localized accessible name for the search input. */
+  searchLabel: string;
 
-  /**
-   * Results supplied by the consuming application for the current query.
-   * @remarks Type `ExplorerItem[]`.
-   * @default []
-   */
-  results?: ExplorerItem[];
+  /** Localized hint shown while the query is empty. */
+  searchPlaceholder: string;
 
-  /**
-   * Accessible name for the persistent search input.
-   * @remarks Type `string`.
-   * @default 'Search'
-   */
-  'aria-label'?: string;
+  /** Localized accessible name for the clear-query action. */
+  clearSearchLabel: string;
 
-  /**
-   * Hint displayed while the query is empty.
-   * @remarks Type `string`.
-   * @default 'Search...'
-   */
-  placeholder?: string;
+  /** Localized accessible name for the results listbox. */
+  resultsLabel: string;
 
-  /**
-   * Reports query edits. Search execution and result retrieval remain application-owned.
-   * @remarks Type `(query: string) => void`.
-   * @default None (required)
-   */
-  onQueryChange: (query: string) => void;
+  /** Localized status announced while results are loading. */
+  loadingMessage: string;
 
-  /**
-   * Called when a result is selected by pointer or keyboard.
-   * @remarks Type `(item: ExplorerItem) => void`.
-   * @default undefined
-   */
-  onSelect?: (item: ExplorerItem) => void;
-
-  /**
-   * Shows a loading message while the application resolves results.
-   * @remarks Type `boolean`.
-   * @default false
-   */
-  loading?: boolean;
-
-  /**
-   * Message shown when a non-empty query has no results.
-   * @remarks Type `string`.
-   * @default 'No results found.'
-   */
-  emptyMessage?: string;
+  /** Localized message shown when a query has no results. */
+  emptyMessage: string;
 }
 
-export type { ExplorerItem, ExplorerProps };
+interface ExplorerProps {
+  /** Current search query. The component is controlled. */
+  query: string;
+
+  /** Results supplied by the consuming application for the current query. */
+  results?: ExplorerItem[];
+
+  /** All user-facing strings, translated by the consuming application. */
+  messages: ExplorerMessages;
+
+  /** Reports query edits. Search execution and result retrieval remain application-owned. */
+  onQueryChange: (query: string) => void;
+
+  /** Called when a result is selected by pointer or keyboard. */
+  onSelect?: (item: ExplorerItem) => void;
+
+  /** Shows the localized loading status while the application resolves results. */
+  loading?: boolean;
+}
+
+export type { ExplorerItem, ExplorerMessages, ExplorerProps };

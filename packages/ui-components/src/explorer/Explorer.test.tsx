@@ -1,8 +1,8 @@
 import { expect, test } from '@lemuel-manske/config-playwright';
 
-import { useState } from 'react';
-
 import { Explorer } from './Explorer';
+
+import { ControlledExplorer } from './ControlledExplorer';
 
 import type { ExplorerItem } from './types';
 
@@ -15,24 +15,10 @@ const messages = {
   emptyMessage: 'No results found.',
 };
 
-const results = [
+const results: ExplorerItem[] = [
   { id: 'first', label: 'First result', description: 'First description', group: 'Pages' },
   { id: 'second', label: 'Second result', group: 'Pages' },
 ];
-
-function ControlledExplorer({ onSelect }: { onSelect?: (item: ExplorerItem) => void }) {
-  const [query, setQuery] = useState('');
-
-  return (
-    <Explorer
-      query={query}
-      results={results}
-      messages={messages}
-      onQueryChange={setQuery}
-      onSelect={onSelect}
-    />
-  );
-}
 
 test('Explorer renders a persistent search input with application-provided messages', async ({
   render,
@@ -139,18 +125,20 @@ test('Explorer clears the query using the localized action label', async ({ rend
   await expect(input).toHaveValue('');
 });
 
-test('Explorer exposes localized loading and empty states', async ({ render }) => {
-  const loading = await render(
+test('Explorer exposes the localized loading state', async ({ render }) => {
+  const explorer = await render(
     <Explorer query="first" loading messages={messages} onQueryChange={() => {}} />,
   );
 
-  await expect(loading.getByRole('status')).toHaveText(messages.loadingMessage);
+  await expect(explorer.getByRole('status')).toHaveText(messages.loadingMessage);
+});
 
-  const empty = await render(
+test('Explorer exposes the localized empty state', async ({ render }) => {
+  const explorer = await render(
     <Explorer query="unknown" results={[]} messages={messages} onQueryChange={() => {}} />,
   );
 
-  await expect(empty.getByText(messages.emptyMessage)).toBeVisible();
+  await expect(explorer.getByText(messages.emptyMessage)).toBeVisible();
 });
 
 test('Explorer has no accessibility violations', async ({ render, page }) => {

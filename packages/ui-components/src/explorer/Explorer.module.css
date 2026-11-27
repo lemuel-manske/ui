@@ -16,26 +16,25 @@
   border: var(--ui-border-width) solid var(--ui-color-border);
   border-radius: var(--ui-radius-medium);
   background: var(--ui-color-background);
-  transition:
-    border-color 160ms ease,
-    background-color 160ms ease;
+  transition: border-color 160ms ease;
 }
 
 .inputContainer:focus-within {
   border-color: var(--ui-action-primary);
 }
 
-.searchIcon {
+.inputContainer > span,
+.inputContainer > button {
   flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: var(--ui-color-text-secondary);
-  stroke-width: 1.7;
-  stroke-linecap: round;
 }
 
-.input {
+.inputContainer > span svg,
+.inputContainer > button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.inputContainer input {
   flex: 1;
   min-width: 0;
   min-height: var(--ui-control-medium);
@@ -48,46 +47,13 @@
   font-size: var(--ui-text-medium);
 }
 
-.input::placeholder {
+.inputContainer input::placeholder {
   color: var(--ui-color-text-secondary);
   opacity: 1;
 }
 
-.input::-webkit-search-cancel-button {
+.inputContainer input::-webkit-search-cancel-button {
   display: none;
-}
-
-.inputContainer input {\n  flex: 1;\n  min-width: 0;\n  min-height: var(--ui-control-medium);\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  font-size: var(--ui-text-medium);\n}\n\n.inputContainer input::placeholder {\n  color: var(--ui-color-text-secondary);\n  opacity: 1;\n}\n\n.inputContainer input::-webkit-search-cancel-button {\n  display: none;\n}\n\n.clear {
-  display: grid;
-  flex: 0 0 auto;
-  place-items: center;
-  width: var(--ui-control-small);
-  height: var(--ui-control-small);
-  padding: 0;
-  border: 0;
-  border-radius: var(--ui-radius-small);
-  background: transparent;
-  color: var(--ui-color-text-secondary);
-  cursor: pointer;
-}
-
-.clear:hover {
-  background: var(--ui-action-secondary-hover);
-  color: var(--ui-color-text-primary);
-}
-
-.clear:focus-visible {
-  outline: var(--ui-state-focus-width) solid var(--ui-state-focus);
-  outline-offset: var(--ui-state-focus-offset);
-}
-
-.clear svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
 }
 
 .popover {
@@ -118,8 +84,6 @@
 .groupLabel {
   margin: 0;
   padding: var(--ui-space-8) var(--ui-space-12);
-  color: var(--ui-color-text-secondary);
-  font-size: var(--ui-text-small);
 }
 
 .option {
@@ -136,22 +100,14 @@
   background: var(--ui-action-secondary-hover);
 }
 
-.optionLabel {
-  font-size: var(--ui-text-medium);
-  overflow-wrap: anywhere;
-}
-
+.optionLabel,
 .description {
-  color: var(--ui-color-text-secondary);
-  font-size: var(--ui-text-small);
   overflow-wrap: anywhere;
 }
 
 .message {
   margin: 0;
   padding: var(--ui-space-12);
-  color: var(--ui-color-text-secondary);
-  font-size: var(--ui-text-small);
 }
 
 @media (prefers-reduced-motion: reduce) {

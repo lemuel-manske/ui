@@ -17,7 +17,8 @@ function useExplorer({
 
   const hasQuery = query.trim().length > 0;
   const isOpen = hasQuery && !dismissed;
-  const activeItem = results[activeIndex];
+  const resolvedActiveIndex = Math.min(activeIndex, Math.max(results.length - 1, 0));
+  const activeItem = results[resolvedActiveIndex];
 
   const groupedResults = useMemo(() => {
     return results.reduce<{ group?: string; items: ExplorerItem[] }[]>((groups, item) => {
@@ -72,7 +73,7 @@ function useExplorer({
   }
 
   return {
-    activeIndex,
+    activeIndex: resolvedActiveIndex,
     activeItem,
     groupedResults,
     isOpen,

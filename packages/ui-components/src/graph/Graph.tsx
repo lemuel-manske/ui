@@ -31,10 +31,16 @@ function Graph({
   const visibleEdges = edges.filter(
     (edge) => visibleIds.has(edge.source) && visibleIds.has(edge.target),
   );
+  const canvasWidth = columns * 220;
+  const canvasHeight = Math.max(1, Math.ceil(visibleNodes.length / columns)) * 150;
 
   return (
     <section aria-label={ariaLabel} className={styles.graph}>
-      <svg aria-hidden="true" className={styles.edges}>
+      <svg
+        aria-hidden="true"
+        className={styles.edges}
+        style={{ width: canvasWidth, height: canvasHeight }}
+      >
         {visibleEdges.map((edge) => {
           const source = positions.get(edge.source);
           const target = positions.get(edge.target);
@@ -56,7 +62,7 @@ function Graph({
         })}
       </svg>
 
-      <div className={styles.nodes}>
+      <div className={styles.nodes} style={{ width: canvasWidth, height: canvasHeight }}>
         {visibleNodes.map((node) => {
           const position = positions.get(node.id);
 

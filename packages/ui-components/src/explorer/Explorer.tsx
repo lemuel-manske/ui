@@ -85,7 +85,12 @@ function Explorer({
     resultContent = (
       <ul id={listboxId} className={styles.results} role="listbox" aria-label="Search results">
         {groupedResults.map((group, groupIndex) => (
-          <li\n            key={group.group ?? groupIndex}\n            className={styles.group}\n            role="group"\n            aria-label={group.group ?? "Results"}\n          >
+          <li
+            key={group.group ?? groupIndex}
+            className={styles.group}
+            role="group"
+            aria-label={group.group ?? 'Results'}
+          >
             {group.group != null && <p className={styles.groupLabel}>{group.group}</p>}
 
             <ul className={styles.groupResults} role="presentation">
@@ -96,7 +101,7 @@ function Explorer({
                 return (
                   <li
                     key={item.id}
-                    id={`${listboxId}-option-${item.id}`}
+                    id={`${listboxId}-option-${index}`}
                     role="option"
                     aria-selected={isActive}
                     className={styles.option}
@@ -141,7 +146,7 @@ function Explorer({
           aria-controls={isOpen && results.length > 0 ? listboxId : undefined}
           aria-activedescendant={
             isOpen && results.length > 0 && activeItem != null
-              ? `${listboxId}-option-${activeItem.id}`
+              ? `${listboxId}-option-${activeIndex}`
               : undefined
           }
           className={styles.input}
@@ -164,11 +169,7 @@ function Explorer({
         )}
       </div>
 
-      {isOpen && (
-        <div className={styles.popover}>
-          {resultContent}
-        </div>
-      )}
+      {isOpen && <div className={styles.popover}>{resultContent}</div>}
     </div>
   );
 }

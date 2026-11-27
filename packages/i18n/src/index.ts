@@ -21,8 +21,11 @@ interface Translator<Key extends string = string> {
 
 interface TranslatorOptions<Key extends string> {
   locale: string;
+
   defaultLocale: string;
+
   defaultMessages: Messages<Key>;
+
   catalogs?: Readonly<Record<string, Partial<Messages<NoInfer<Key>>>>>;
 }
 

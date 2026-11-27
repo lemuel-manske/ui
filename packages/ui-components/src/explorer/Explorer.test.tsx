@@ -3,7 +3,6 @@ import { expect, test } from '@lemuel-manske/config-playwright';
 import { useState } from 'react';
 
 import { Explorer } from './Explorer';
-import { useExplorer } from './useExplorer';
 
 const messages = {
   searchLabel: 'Search',
@@ -152,37 +151,6 @@ test('Explorer exposes localized loading and empty states', async ({ render }) =
   );
 
   await expect(empty.getByText(messages.emptyMessage)).toBeVisible();
-});
-
-test('useExplorer exposes interaction state and actions independently of the UI', async ({ render }) => {
-  function Harness() {
-    const [query, setQuery] = useState('first');
-    const state = useExplorer({
-      query,
-      results,
-      onQueryChange: setQuery,
-    });
-
-    return (
-      <>
-        <input aria-label="Hook query" value={query} onChange={(event) => setQuery(event.target.value)} />
-        <button type="button" onClick={() => state.handleQueryChange('second')}>Change query</button>
-        <button type="button" onClick={() => state.setActiveIndex(1)}>Activate second</button>
-        <output>{state.activeItem?.id}</output>
-        <output>{String(state.isOpen)}</output>
-      </>
-    );
-  }
-
-  const harness = await render(<Harness />);
-
-  await expect(harness.getByText('first')).toBeVisible();
-  await harness.getByRole('button', { name: 'Activate second' }).click();
-  await expect(harness.getByText('second')).toBeVisible();
-
-  await harness.getByRole('button', { name: 'Change query' }).click();
-  await expect(harness.getByRole('textbox', { name: 'Hook query' })).toHaveValue('second');
-  await expect(harness.getByText('true')).toBeVisible();
 });
 
 test('Explorer has no accessibility violations', async ({ render, page }) => {

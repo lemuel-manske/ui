@@ -18,8 +18,6 @@ export * from './form';
 
 export * from './explorer';
 
-export * from './graph';
-
 export * from './heading';
 
 export * from './icon';

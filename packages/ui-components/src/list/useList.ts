@@ -17,18 +17,28 @@ function useList({ as = 'ul', marker = 'default', ...props }: ListProps) {
         'aria-labelledby',
         'aria-describedby',
       ]),
-      role: marker === 'none' ? ('list' as const) : undefined,
+      role: props.role ?? (marker === 'none' ? ('list' as const) : undefined),
       className: cx(styles.list, {
         [styles.unmarked]: marker === 'none',
-      }),
+      }, props.className),
     },
   };
 }
 
 function useListItem(props: ListItemProps) {
   return {
-    ...pickProps(props, ['children', 'value', 'id', 'aria-current']),
-    className: cx(styles.item),
+    ...pickProps(props, [
+      'children',
+      'value',
+      'id',
+      'role',
+      'aria-current',
+      'aria-selected',
+      'onMouseMove',
+      'onClick',
+      'onMouseDown',
+    ]),
+    className: cx(styles.item, props.className),
   };
 }
 

@@ -83,7 +83,11 @@ function Explorer({
   if (loading) {
     resultContent = <Spinner label="Searching..." />;
   } else if (results.length === 0) {
-    resultContent = <p className={styles.message}><Text size="small" tone="secondary">{emptyMessage}</Text></p>;
+    resultContent = (
+      <p className={styles.message}>
+        <Text size="small" tone="secondary">{emptyMessage}</Text>
+      </p>
+    );
   } else {
     let resultIndex = 0;
 
@@ -97,9 +101,9 @@ function Explorer({
             aria-label={group.group ?? 'Results'}
           >
             {group.group != null && (
-              <p className={styles.groupLabel}><Text size="small" tone="secondary">
-                {group.group}
-              </Text>
+              <p className={styles.groupLabel}>
+                <Text size="small" tone="secondary">{group.group}</Text>
+              </p>
             )}
 
             <ul className={styles.groupResults} role="presentation">
@@ -119,11 +123,15 @@ function Explorer({
                     onMouseMove={() => setActiveIndex(index)}
                     onClick={() => onSelect?.(item)}
                   >
-                    <span className={styles.optionLabel}><Text as="span">{item.label}</Text></span>
+                    <span className={styles.optionLabel}>
+                      <Text as="span">{item.label}</Text>
+                    </span>
                     {item.description != null && (
-                      <span className={styles.description}><Text as="span" size="small" tone="secondary">
-                        {item.description}
-                      </Text>
+                      <span className={styles.description}>
+                        <Text as="span" size="small" tone="secondary">
+                          {item.description}
+                        </Text>
+                      </span>
                     )}
                   </li>
                 );
@@ -140,8 +148,21 @@ function Explorer({
       <div className={styles.inputContainer}>
         <Icon size="medium">
           <svg viewBox="0 0 24 24">
-            <circle cx="10.8" cy="10.8" r="6.3" fill="none" stroke="currentColor" strokeWidth="1.7" />
-            <path d="m15.5 15.5 4.2 4.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+            <circle
+              cx="10.8"
+              cy="10.8"
+              r="6.3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+            />
+            <path
+              d="m15.5 15.5 4.2 4.2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+            />
           </svg>
         </Icon>
 
@@ -157,7 +178,6 @@ function Explorer({
               ? `${listboxId}-option-${activeIndex}`
               : undefined
           }
-          className={styles.input}
           value={query}
           placeholder={placeholder}
           onChange={(event) => handleQueryChange(event.currentTarget.value)}
@@ -170,7 +190,13 @@ function Explorer({
             onClick={() => handleQueryChange('')}
           >
             <svg viewBox="0 0 20 20">
-              <path d="m5 5 10 10M15 5 5 15" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              <path
+                d="m5 5 10 10M15 5 5 15"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
             </svg>
           </Icon>
         )}

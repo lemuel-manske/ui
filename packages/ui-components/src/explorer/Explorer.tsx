@@ -2,11 +2,16 @@ import { useId, useState } from 'react';
 
 import type { KeyboardEvent } from 'react';
 
+import { Icon } from '../icon';
+import { Input } from '../input';
+import { Spinner } from '../spinner';
+import { Text } from '../text';
+
 import type { ExplorerProps } from './types';
 
 import styles from './Explorer.module.css';
 
-/** Persistent search surface with application-supplied results and keyboard navigation. */
+/** Persistent search surface composed from shared input, icon, spinner, and text primitives. */
 function Explorer({
   query,
   results = [],
@@ -53,7 +58,7 @@ function Explorer({
       return;
     }
 
-    if (!isOpen || results.length === 0) {
+    if (!isOpen || loading || results.length === 0) {
       return;
     }
 
@@ -76,9 +81,9 @@ function Explorer({
   let resultContent = null;
 
   if (loading) {
-    resultContent = <p className={styles.message} role="status">Searching...</p>;
+    resultContent = <Spinner label="Searching..." />;
   } else if (results.length === 0) {
-    resultContent = <p className={styles.message}>{emptyMessage}</p>;
+    resultContent = <Text className={styles.message} size="small" tone="secondary">{emptyMessage}</Text>;
   } else {
     let resultIndex = 0;
 
@@ -91,7 +96,11 @@ function Explorer({
             role="group"
             aria-label={group.group ?? 'Results'}
           >
-            {group.group != null && <p className={styles.groupLabel}>{group.group}</p>}
+            {group.group != null && (
+              <Text as="p" className={styles.groupLabel} size="small" tone="secondary">
+                {group.group}
+              </Text>
+            )}
 
             <ul className={styles.groupResults} role="presentation">
               {group.items.map((item) => {
@@ -110,9 +119,11 @@ function Explorer({
                     onMouseMove={() => setActiveIndex(index)}
                     onClick={() => onSelect?.(item)}
                   >
-                    <span className={styles.optionLabel}>{item.label}</span>
+                    <Text as="span" className={styles.optionLabel}>{item.label}</Text>
                     {item.description != null && (
-                      <span className={styles.description}>{item.description}</span>
+                      <Text as="span" className={styles.description} size="small" tone="secondary">
+                        {item.description}
+                      </Text>
                     )}
                   </li>
                 );
@@ -127,17 +138,14 @@ function Explorer({
   return (
     <div className={styles.explorer}>
       <div className={styles.inputContainer}>
-        <svg
-          aria-hidden="true"
-          className={styles.searchIcon}
-          viewBox="0 0 24 24"
-          focusable="false"
-        >
-          <circle cx="10.8" cy="10.8" r="6.3" />
-          <path d="m15.5 15.5 4.2 4.2" />
-        </svg>
+        <Icon size="medium">
+          <svg viewBox="0 0 24 24">
+            <circle cx="10.8" cy="10.8" r="6.3" fill="none" stroke="currentColor" strokeWidth="1.7" />
+            <path d="m15.5 15.5 4.2 4.2" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+          </svg>
+        </Icon>
 
-        <input
+        <Input
           type="search"
           role="combobox"
           aria-label={ariaLabel}
@@ -156,16 +164,15 @@ function Explorer({
           onKeyDown={handleKeyDown}
         />
         {query.length > 0 && (
-          <button
-            type="button"
-            className={styles.clear}
-            aria-label="Clear search"
+          <Icon
+            size="medium"
+            label="Clear search"
             onClick={() => handleQueryChange('')}
           >
-            <svg aria-hidden="true" viewBox="0 0 20 20" focusable="false">
-              <path d="m5 5 10 10M15 5 5 15" />
+            <svg viewBox="0 0 20 20">
+              <path d="m5 5 10 10M15 5 5 15" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
-          </button>
+          </Icon>
         )}
       </div>
 

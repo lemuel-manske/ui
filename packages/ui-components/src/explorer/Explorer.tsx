@@ -41,7 +41,7 @@ function renderResultsContent(messages: ExplorerMessages, explorer: ExplorerResu
       aria-label={messages.resultsLabel}
     >
       {explorer.groupedResults.map((group, groupIndex) => (
-        <List.Item
+        <div
           key={group.group ?? groupIndex}
           className={styles.group}
           role="group"
@@ -85,7 +85,7 @@ function renderResultsContent(messages: ExplorerMessages, explorer: ExplorerResu
               );
             })}
           </List>
-        </List.Item>
+        </div>
       ))}
     </List>
   );

@@ -1,7 +1,3 @@
-import { useId, useState } from 'react';
-
-import type { KeyboardEvent } from 'react';
-
 import { Icon } from '../icon';
 import { Input } from '../input';
 import { Spinner } from '../spinner';
@@ -9,96 +5,47 @@ import { Text } from '../text';
 
 import type { ExplorerProps } from './types';
 
+import { useExplorer } from './useExplorer';
+
 import styles from './Explorer.module.css';
 
-/** Persistent search surface composed from shared input, icon, spinner, and text primitives. */
+/** Persistent, localized search surface composed from shared UI primitives. */
 function Explorer({
   query,
   results = [],
-  'aria-label': ariaLabel = 'Search',
-  placeholder = 'Search...',
+  messages,
   onQueryChange,
   onSelect,
   loading = false,
-  emptyMessage = 'No results found.',
 }: ExplorerProps) {
-  const listboxId = useId();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [dismissed, setDismissed] = useState(false);
-
-  const hasQuery = query.trim().length > 0;
-  const isOpen = hasQuery && !dismissed;
-  const activeItem = results[activeIndex];
-  const groupedResults = results.reduce<{ group?: string; items: typeof results }[]>(
-    (groups, item) => {
-      const lastGroup = groups[groups.length - 1];
-
-      if (lastGroup?.group === item.group) {
-        lastGroup.items.push(item);
-      } else {
-        groups.push({ group: item.group, items: [item] });
-      }
-
-      return groups;
-    },
-    [],
-  );
-
-  function handleQueryChange(value: string) {
-    setActiveIndex(0);
-    setDismissed(false);
-    onQueryChange(value);
-  }
-
-  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Escape' && isOpen) {
-      event.preventDefault();
-      setDismissed(true);
-      setActiveIndex(0);
-      return;
-    }
-
-    if (!isOpen || loading || results.length === 0) {
-      return;
-    }
-
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      setActiveIndex((index) => (index + 1) % results.length);
-    }
-
-    if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      setActiveIndex((index) => (index - 1 + results.length) % results.length);
-    }
-
-    if (event.key === 'Enter' && activeItem != null) {
-      event.preventDefault();
-      onSelect?.(activeItem);
-    }
-  }
+  const explorer = useExplorer({ query, results, onQueryChange, onSelect, loading });
 
   let resultContent = null;
 
   if (loading) {
-    resultContent = <Spinner label="Searching..." />;
+    resultContent = <Spinner label={messages.loadingMessage} />;
   } else if (results.length === 0) {
     resultContent = (
       <p className={styles.message}>
-        <Text size="small" tone="secondary">{emptyMessage}</Text>
+        <Text size="small" tone="secondary">{messages.emptyMessage}</Text>
       </p>
     );
   } else {
     let resultIndex = 0;
 
     resultContent = (
-      <ul id={listboxId} className={styles.results} role="listbox" aria-label="Search results">
-        {groupedResults.map((group, groupIndex) => (
+      <ul
+        id={explorer.listboxId}
+        className={styles.results}
+        role="listbox"
+        aria-label={messages.resultsLabel}
+      >
+        {explorer.groupedResults.map((group, groupIndex) => (
           <li
             key={group.group ?? groupIndex}
             className={styles.group}
             role="group"
-            aria-label={group.group ?? 'Results'}
+            aria-label={group.group}
           >
             {group.group != null && (
               <p className={styles.groupLabel}>
@@ -109,19 +56,19 @@ function Explorer({
             <ul className={styles.groupResults} role="presentation">
               {group.items.map((item) => {
                 const index = resultIndex++;
-                const isActive = index === activeIndex;
+                const isActive = index === explorer.activeIndex;
 
                 return (
                   <li
                     key={item.id}
-                    id={`${listboxId}-option-${index}`}
+                    id={`${explorer.listboxId}-option-${index}`}
                     role="option"
                     aria-selected={isActive}
                     className={styles.option}
                     data-active={isActive || undefined}
                     onMouseDown={(event) => event.preventDefault()}
-                    onMouseMove={() => setActiveIndex(index)}
-                    onClick={() => onSelect?.(item)}
+                    onMouseMove={() => explorer.setActiveIndex(index)}
+                    onClick={() => explorer.selectItem(item)}
                   >
                     <span className={styles.optionLabel}>
                       <Text as="span">{item.label}</Text>
@@ -169,25 +116,29 @@ function Explorer({
         <Input
           type="search"
           role="combobox"
-          aria-label={ariaLabel}
+          aria-label={messages.searchLabel}
           aria-autocomplete="list"
-          aria-expanded={isOpen}
-          aria-controls={isOpen && !loading && results.length > 0 ? listboxId : undefined}
+          aria-expanded={explorer.isOpen}
+          aria-controls={
+            explorer.isOpen && !loading && results.length > 0
+              ? explorer.listboxId
+              : undefined
+          }
           aria-activedescendant={
-            isOpen && !loading && results.length > 0 && activeItem != null
-              ? `${listboxId}-option-${activeIndex}`
+            explorer.isOpen && !loading && results.length > 0 && explorer.activeItem != null
+              ? `${explorer.listboxId}-option-${explorer.activeIndex}`
               : undefined
           }
           value={query}
-          placeholder={placeholder}
-          onChange={(event) => handleQueryChange(event.currentTarget.value)}
-          onKeyDown={handleKeyDown}
+          placeholder={messages.searchPlaceholder}
+          onChange={(event) => explorer.handleQueryChange(event.currentTarget.value)}
+          onKeyDown={explorer.handleKeyDown}
         />
         {query.length > 0 && (
           <Icon
             size="medium"
-            label="Clear search"
-            onClick={() => handleQueryChange('')}
+            label={messages.clearSearchLabel}
+            onClick={() => explorer.handleQueryChange('')}
           >
             <svg viewBox="0 0 20 20">
               <path
@@ -202,7 +153,7 @@ function Explorer({
         )}
       </div>
 
-      {isOpen && <div className={styles.popover}>{resultContent}</div>}
+      {explorer.isOpen && <div className={styles.popover}>{resultContent}</div>}
     </div>
   );
 }

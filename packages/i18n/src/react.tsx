@@ -8,6 +8,7 @@ const TranslatorContext = createContext<Translator | null>(null);
 
 interface I18nProviderProps<Key extends string = string> {
   translator: Translator<Key>;
+
   children: ReactNode;
 }
 

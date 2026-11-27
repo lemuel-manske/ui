@@ -17,7 +17,9 @@ function renderLoadingContent(messages: ExplorerMessages) {
 function renderEmptyContent(messages: ExplorerMessages) {
   return (
     <p className={styles.message}>
-      <Text size="small" tone="secondary">{messages.emptyMessage}</Text>
+      <Text size="small" tone="secondary">
+        {messages.emptyMessage}
+      </Text>
     </p>
   );
 }
@@ -27,10 +29,7 @@ type ExplorerResultState = Pick<
   'activeIndex' | 'groupedResults' | 'listboxId' | 'selectItem' | 'setActiveIndex'
 >;
 
-function renderResultsContent(
-  messages: ExplorerMessages,
-  explorer: ExplorerResultState,
-) {
+function renderResultsContent(messages: ExplorerMessages, explorer: ExplorerResultState) {
   let resultIndex = 0;
 
   return (
@@ -50,7 +49,9 @@ function renderResultsContent(
         >
           {group.group != null && (
             <p className={styles.groupLabel}>
-              <Text size="small" tone="secondary">{group.group}</Text>
+              <Text size="small" tone="secondary">
+                {group.group}
+              </Text>
             </p>
           )}
 
@@ -92,12 +93,7 @@ function renderResultsContent(
 
 /** Persistent, localized search surface composed from shared UI primitives. */
 function Explorer(props: ExplorerProps) {
-  const {
-    query,
-    results = [],
-    messages,
-    loading = false,
-  } = props;
+  const { query, results = [], messages, loading = false } = props;
 
   const {
     activeIndex,
@@ -160,11 +156,7 @@ function Explorer(props: ExplorerProps) {
           aria-label={messages.searchLabel}
           aria-autocomplete="list"
           aria-expanded={isOpen}
-          aria-controls={
-            isOpen && !loading && results.length > 0
-              ? listboxId
-              : undefined
-          }
+          aria-controls={isOpen && !loading && results.length > 0 ? listboxId : undefined}
           aria-activedescendant={
             isOpen && !loading && results.length > 0 && activeItem != null
               ? `${listboxId}-option-${activeIndex}`
@@ -175,6 +167,7 @@ function Explorer(props: ExplorerProps) {
           onChange={(event) => handleQueryChange(event.currentTarget.value)}
           onKeyDown={handleKeyDown}
         />
+
         {query.length > 0 && (
           <Icon
             size="medium"

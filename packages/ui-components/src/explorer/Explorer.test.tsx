@@ -18,11 +18,7 @@ const results = [
   { id: 'second', label: 'Second result', group: 'Pages' },
 ];
 
-function ControlledExplorer({
-  onSelect,
-}: {
-  onSelect?: (item: (typeof results)[number]) => void;
-}) {
+function ControlledExplorer({ onSelect }: { onSelect?: (item: (typeof results)[number]) => void }) {
   const [query, setQuery] = useState('');
 
   return (
@@ -36,10 +32,10 @@ function ControlledExplorer({
   );
 }
 
-test('Explorer renders a persistent search input with application-provided messages', async ({ render }) => {
-  const explorer = await render(
-    <Explorer query="" messages={messages} onQueryChange={() => {}} />,
-  );
+test('Explorer renders a persistent search input with application-provided messages', async ({
+  render,
+}) => {
+  const explorer = await render(<Explorer query="" messages={messages} onQueryChange={() => {}} />);
 
   await expect(explorer.getByRole('combobox', { name: messages.searchLabel })).toHaveAttribute(
     'placeholder',
@@ -65,7 +61,9 @@ test('Explorer displays application-supplied results for a query', async ({ rend
   );
 
   await expect(explorer.getByRole('listbox', { name: messages.resultsLabel })).toBeVisible();
-  await expect(explorer.getByRole('option', { name: 'First result First description' })).toBeVisible();
+  await expect(
+    explorer.getByRole('option', { name: 'First result First description' }),
+  ).toBeVisible();
 });
 
 test('Explorer selects a result on pointer activation', async ({ render }) => {
@@ -155,12 +153,7 @@ test('Explorer exposes localized loading and empty states', async ({ render }) =
 
 test('Explorer has no accessibility violations', async ({ render, page }) => {
   await render(
-    <Explorer
-      query="first"
-      results={results}
-      messages={messages}
-      onQueryChange={() => {}}
-    />,
+    <Explorer query="first" results={results} messages={messages} onQueryChange={() => {}} />,
   );
 
   await expect(page).noAccessibilityViolations();

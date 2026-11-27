@@ -12,6 +12,7 @@ function useExplorer({
   loading = false,
 }: Pick<ExplorerProps, 'query' | 'results' | 'onQueryChange' | 'onSelect' | 'loading'>) {
   const listboxId = useId();
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [dismissed, setDismissed] = useState(false);
 

@@ -18,9 +18,13 @@ function useList({ as = 'ul', marker = 'default', ...props }: ListProps) {
         'aria-describedby',
       ]),
       role: props.role ?? (marker === 'none' ? ('list' as const) : undefined),
-      className: cx(styles.list, {
-        [styles.unmarked]: marker === 'none',
-      }, props.className),
+      className: cx(
+        styles.list,
+        {
+          [styles.unmarked]: marker === 'none',
+        },
+        props.className,
+      ),
     },
   };
 }

@@ -85,10 +85,10 @@ function Explorer({
     resultContent = (
       <ul id={listboxId} className={styles.results} role="listbox" aria-label="Search results">
         {groupedResults.map((group, groupIndex) => (
-          <li key={group.group ?? groupIndex} className={styles.group}>
+          <li\n            key={group.group ?? groupIndex}\n            className={styles.group}\n            role="group"\n            aria-label={group.group ?? "Results"}\n          >
             {group.group != null && <p className={styles.groupLabel}>{group.group}</p>}
 
-            <ul className={styles.groupResults}>
+            <ul className={styles.groupResults} role="presentation">
               {group.items.map((item) => {
                 const index = resultIndex++;
                 const isActive = index === activeIndex;

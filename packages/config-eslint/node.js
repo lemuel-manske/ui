@@ -4,7 +4,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-import interfaceMemberSpacing from './interface-member-spacing.js';
+import interfaceMemberSpacing from './rules/interface-member-spacing.js';
 
 const config = defineConfig(
   globalIgnores([

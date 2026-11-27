@@ -1,142 +1,66 @@
-import type { ChangeEventHandler, FocusEventHandler, Ref } from 'react';
+import type {
+  ChangeEventHandler,
+  FocusEventHandler,
+  KeyboardEventHandler,
+  AriaAttributes,
+  Ref,
+} from 'react';
 
 import type { AccessibilityOptions } from '@lemuel-manske/utils';
 
 import type { InputSize, InputType } from './options';
 
 interface InputProps extends AccessibilityOptions {
-  /**
-   * Visual size of the component. This does not change its semantic role.
-   * @remarks Type `InputSize`.
-   * @default 'medium'
-   */
+  /** Visual size of the component. @remarks Type `InputSize`. @default 'medium' */
   size?: InputSize;
-
-  /**
-   * Name used when the control contributes a value to native form submission.
-   * @remarks Type `string`.
-   * @default undefined
-   */
+  /** Name used for native form submission. @remarks Type `string`. @default undefined */
   name?: string;
-
-  /**
-   * Controlled input value. Supply onChange for an editable controlled input.
-   * @remarks Type `string`.
-   * @default undefined
-   */
+  /** Controlled input value. @remarks Type `string`. @default undefined */
   value?: string;
-
-  /**
-   * Initial value for an uncontrolled control. Later updates do not reset user input.
-   * @remarks Type `string`.
-   * @default undefined
-   */
+  /** Initial uncontrolled value. @remarks Type `string`. @default undefined */
   defaultValue?: string;
-
-  /**
-   * Requires a value before native form submission can complete.
-   * @remarks Type `boolean`.
-   * @default false
-   */
+  /** Requires a value for native form submission. @remarks Type `boolean`. @default false */
   required?: boolean;
-
-  /**
-   * Marks the current value as invalid for assistive technology. Supply a description of the error.
-   * @remarks Type `boolean`.
-   * @default undefined
-   */
+  /** Marks the value invalid. @remarks Type `boolean`. @default undefined */
   'aria-invalid'?: boolean;
-
-  /**
-   * Native browser autofill hint for the control.
-   * @remarks Type `string`.
-   * @default undefined
-   */
+  /** Native browser autofill hint. @remarks Type `string`. @default undefined */
   autoComplete?: string;
-
-  /**
-   * Native change handler called when the user edits or selects a value.
-   * @remarks Type `ChangeEventHandler<HTMLInputElement>`.
-   * @default undefined
-   */
+  /** Native change handler. @remarks Type `ChangeEventHandler<HTMLInputElement>`. @default undefined */
   onChange?: ChangeEventHandler<HTMLInputElement>;
-
-  /**
-   * Native focus handler called when focus leaves the control.
-   * @remarks Type `FocusEventHandler<HTMLInputElement>`.
-   * @default undefined
-   */
+  /** Native blur handler. @remarks Type `FocusEventHandler<HTMLInputElement>`. @default undefined */
   onBlur?: FocusEventHandler<HTMLInputElement>;
-
-  /**
-   * React ref to the native element rendered by this component.
-   * @remarks Type `Ref<HTMLInputElement>`.
-   * @default undefined
-   */
+  /** Native keyboard handler. @remarks Type `KeyboardEventHandler<HTMLInputElement>`. @default undefined */
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  /** React ref to the native input. @remarks Type `Ref<HTMLInputElement>`. @default undefined */
   ref?: Ref<HTMLInputElement>;
-
-  /**
-   * Native input type controlling editing, validation, and browser input affordances.
-   * @remarks Type `InputType`.
-   * @default 'text' (native default)
-   */
+  /** Native input type. @remarks Type `InputType`. @default 'text' */
   type?: InputType;
-
-  /**
-   * Short input hint shown while the value is empty. Supply a separate accessible label.
-   * @remarks Type `string`.
-   * @default undefined
-   */
+  /** Hint shown while the value is empty. @remarks Type `string`. @default undefined */
   placeholder?: string;
-
-  /**
-   * Prevents editing while preserving focus and native form submission.
-   * @remarks Type `boolean`.
-   * @default false
-   */
+  /** Prevents editing while preserving focus. @remarks Type `boolean`. @default false */
   readOnly?: boolean;
-
-  /**
-   * Minimum permitted value for compatible native input types.
-   * @remarks Type `string | number`.
-   * @default undefined
-   */
+  /** Minimum permitted value. @remarks Type `string | number`. @default undefined */
   min?: string | number;
-
-  /**
-   * Maximum permitted value for compatible native input types.
-   * @remarks Type `string | number`.
-   * @default undefined
-   */
+  /** Maximum permitted value. @remarks Type `string | number`. @default undefined */
   max?: string | number;
-
-  /**
-   * Allowed increment for compatible numeric, date, and time inputs.
-   * @remarks Type `string | number`.
-   * @default undefined
-   */
+  /** Allowed increment. @remarks Type `string | number`. @default undefined */
   step?: string | number;
-
-  /**
-   * Minimum number of characters accepted by native text validation.
-   * @remarks Type `number`.
-   * @default undefined
-   */
+  /** Minimum text length. @remarks Type `number`. @default undefined */
   minLength?: number;
-
-  /**
-   * Maximum number of characters the user can enter.
-   * @remarks Type `number`.
-   * @default undefined
-   */
+  /** Maximum text length. @remarks Type `number`. @default undefined */
   maxLength?: number;
-
-  /**
-   * Native regular-expression constraint for compatible text input types.
-   * @remarks Type `string`.
-   * @default undefined
-   */
+  /** Native text validation pattern. @remarks Type `string`. @default undefined */
   pattern?: string;
+  /** Native input role override for composite controls. @remarks Type `AriaAttributes['role']`. @default undefined */
+  role?: AriaAttributes['role'];
+  /** Popup suggestion behavior. @remarks Type `AriaAttributes['aria-autocomplete']`. @default undefined */
+  'aria-autocomplete'?: AriaAttributes['aria-autocomplete'];
+  /** Whether the associated popup is expanded. @remarks Type `boolean`. @default undefined */
+  'aria-expanded'?: boolean;
+  /** ID of the popup controlled by this input. @remarks Type `string`. @default undefined */
+  'aria-controls'?: string;
+  /** ID of the currently active popup option. @remarks Type `string`. @default undefined */
+  'aria-activedescendant'?: string;
 }
 
 export type { InputProps };

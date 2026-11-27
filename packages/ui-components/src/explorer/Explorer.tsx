@@ -3,91 +3,126 @@ import { Input } from '../input';
 import { Spinner } from '../spinner';
 import { Text } from '../text';
 
-import type { ExplorerProps } from './types';
+import type { ExplorerMessages, ExplorerProps } from './types';
 
 import { useExplorer } from './useExplorer';
 
 import styles from './Explorer.module.css';
 
+function renderLoadingContent(messages: ExplorerMessages) {
+  return <Spinner label={messages.loadingMessage} />;
+}
+
+function renderEmptyContent(messages: ExplorerMessages) {
+  return (
+    <p className={styles.message}>
+      <Text size="small" tone="secondary">{messages.emptyMessage}</Text>
+    </p>
+  );
+}
+
+function renderResultsContent(
+  messages: ExplorerMessages,
+  explorer: ReturnType<typeof useExplorer>,
+) {
+  let resultIndex = 0;
+
+  return (
+    <ul
+      id={explorer.listboxId}
+      className={styles.results}
+      role="listbox"
+      aria-label={messages.resultsLabel}
+    >
+      {explorer.groupedResults.map((group, groupIndex) => (
+        <li
+          key={group.group ?? groupIndex}
+          className={styles.group}
+          role="group"
+          aria-label={group.group}
+        >
+          {group.group != null && (
+            <p className={styles.groupLabel}>
+              <Text size="small" tone="secondary">{group.group}</Text>
+            </p>
+          )}
+
+          <ul className={styles.groupResults} role="presentation">
+            {group.items.map((item) => {
+              const index = resultIndex++;
+              const isActive = index === explorer.activeIndex;
+
+              return (
+                <li
+                  key={item.id}
+                  id={`${explorer.listboxId}-option-${index}`}
+                  role="option"
+                  aria-selected={isActive}
+                  className={styles.option}
+                  data-active={isActive || undefined}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onMouseMove={() => explorer.setActiveIndex(index)}
+                  onClick={() => explorer.selectItem(item)}
+                >
+                  <span className={styles.optionLabel}>
+                    <Text as="span">{item.label}</Text>
+                  </span>
+                  {item.description != null && (
+                    <span className={styles.description}>
+                      <Text as="span" size="small" tone="secondary">
+                        {item.description}
+                      </Text>
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /** Persistent, localized search surface composed from shared UI primitives. */
-function Explorer({
-  query,
-  results = [],
-  messages,
-  onQueryChange,
-  onSelect,
-  loading = false,
-}: ExplorerProps) {
-  const explorer = useExplorer({ query, results, onQueryChange, onSelect, loading });
+function Explorer(props: ExplorerProps) {
+  const {
+    query,
+    results = [],
+    messages,
+    loading = false,
+  } = props;
+
+  const {
+    activeIndex,
+    activeItem,
+    groupedResults,
+    isOpen,
+    listboxId,
+    handleKeyDown,
+    handleQueryChange,
+    selectItem,
+    setActiveIndex,
+  } = useExplorer(props);
+
+  const explorer = {
+    activeIndex,
+    activeItem,
+    groupedResults,
+    isOpen,
+    listboxId,
+    selectItem,
+    setActiveIndex,
+  };
 
   let resultContent = null;
 
   if (loading) {
-    resultContent = <Spinner label={messages.loadingMessage} />;
+    resultContent = renderLoadingContent(messages);
   } else if (results.length === 0) {
-    resultContent = (
-      <p className={styles.message}>
-        <Text size="small" tone="secondary">{messages.emptyMessage}</Text>
-      </p>
-    );
+    resultContent = renderEmptyContent(messages);
   } else {
-    let resultIndex = 0;
-
-    resultContent = (
-      <ul
-        id={explorer.listboxId}
-        className={styles.results}
-        role="listbox"
-        aria-label={messages.resultsLabel}
-      >
-        {explorer.groupedResults.map((group, groupIndex) => (
-          <li
-            key={group.group ?? groupIndex}
-            className={styles.group}
-            role="group"
-            aria-label={group.group}
-          >
-            {group.group != null && (
-              <p className={styles.groupLabel}>
-                <Text size="small" tone="secondary">{group.group}</Text>
-              </p>
-            )}
-
-            <ul className={styles.groupResults} role="presentation">
-              {group.items.map((item) => {
-                const index = resultIndex++;
-                const isActive = index === explorer.activeIndex;
-
-                return (
-                  <li
-                    key={item.id}
-                    id={`${explorer.listboxId}-option-${index}`}
-                    role="option"
-                    aria-selected={isActive}
-                    className={styles.option}
-                    data-active={isActive || undefined}
-                    onMouseDown={(event) => event.preventDefault()}
-                    onMouseMove={() => explorer.setActiveIndex(index)}
-                    onClick={() => explorer.selectItem(item)}
-                  >
-                    <span className={styles.optionLabel}>
-                      <Text as="span">{item.label}</Text>
-                    </span>
-                    {item.description != null && (
-                      <span className={styles.description}>
-                        <Text as="span" size="small" tone="secondary">
-                          {item.description}
-                        </Text>
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
-        ))}
-      </ul>
-    );
+    resultContent = renderResultsContent(messages, explorer);
   }
 
   return (
@@ -118,27 +153,27 @@ function Explorer({
           role="combobox"
           aria-label={messages.searchLabel}
           aria-autocomplete="list"
-          aria-expanded={explorer.isOpen}
+          aria-expanded={isOpen}
           aria-controls={
-            explorer.isOpen && !loading && results.length > 0
-              ? explorer.listboxId
+            isOpen && !loading && results.length > 0
+              ? listboxId
               : undefined
           }
           aria-activedescendant={
-            explorer.isOpen && !loading && results.length > 0 && explorer.activeItem != null
-              ? `${explorer.listboxId}-option-${explorer.activeIndex}`
+            isOpen && !loading && results.length > 0 && activeItem != null
+              ? `${listboxId}-option-${activeIndex}`
               : undefined
           }
           value={query}
           placeholder={messages.searchPlaceholder}
-          onChange={(event) => explorer.handleQueryChange(event.currentTarget.value)}
-          onKeyDown={explorer.handleKeyDown}
+          onChange={(event) => handleQueryChange(event.currentTarget.value)}
+          onKeyDown={handleKeyDown}
         />
         {query.length > 0 && (
           <Icon
             size="medium"
             label={messages.clearSearchLabel}
-            onClick={() => explorer.handleQueryChange('')}
+            onClick={() => handleQueryChange('')}
           >
             <svg viewBox="0 0 20 20">
               <path
@@ -153,7 +188,7 @@ function Explorer({
         )}
       </div>
 
-      {explorer.isOpen && <div className={styles.popover}>{resultContent}</div>}
+      {isOpen && <div className={styles.popover}>{resultContent}</div>}
     </div>
   );
 }

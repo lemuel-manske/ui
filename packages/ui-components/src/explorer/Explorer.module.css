@@ -57,7 +57,7 @@
   display: none;
 }
 
-.clear {
+.inputContainer input {\n  flex: 1;\n  min-width: 0;\n  min-height: var(--ui-control-medium);\n  padding: 0;\n  border: 0;\n  outline: 0;\n  background: transparent;\n  color: inherit;\n  font: inherit;\n  font-size: var(--ui-text-medium);\n}\n\n.inputContainer input::placeholder {\n  color: var(--ui-color-text-secondary);\n  opacity: 1;\n}\n\n.inputContainer input::-webkit-search-cancel-button {\n  display: none;\n}\n\n.clear {
   display: grid;
   flex: 0 0 auto;
   place-items: center;

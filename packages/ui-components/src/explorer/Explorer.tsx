@@ -143,9 +143,9 @@ function Explorer({
           aria-label={ariaLabel}
           aria-autocomplete="list"
           aria-expanded={isOpen}
-          aria-controls={isOpen && results.length > 0 ? listboxId : undefined}
+          aria-controls={isOpen && !loading && results.length > 0 ? listboxId : undefined}
           aria-activedescendant={
-            isOpen && results.length > 0 && activeItem != null
+            isOpen && !loading && results.length > 0 && activeItem != null
               ? `${listboxId}-option-${activeIndex}`
               : undefined
           }

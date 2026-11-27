@@ -14,7 +14,7 @@
   min-height: var(--ui-control-large);
   padding: var(--ui-space-8) var(--ui-space-16);
   border: var(--ui-border-width) solid var(--ui-color-border);
-  border-radius: var(--ui-radius-large);
+  border-radius: var(--ui-radius-medium);
   background: var(--ui-color-background);
   transition:
     border-color 160ms ease,

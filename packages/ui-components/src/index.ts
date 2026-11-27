@@ -16,6 +16,8 @@ export * from './fieldset';
 
 export * from './form';
 
+export * from './graph';
+
 export * from './heading';
 
 export * from './icon';

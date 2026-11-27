@@ -1,6 +1,6 @@
 import type { ListMarker, ListElement } from './options';
 
-import type { AriaAttributes, ReactNode } from 'react';
+import type { AriaAttributes, AriaRole, MouseEventHandler, ReactNode } from 'react';
 
 interface ListBaseProps {
   /**
@@ -44,6 +44,20 @@ interface ListBaseProps {
    * @default undefined
    */
   id?: string;
+
+  /**
+   * Explicit ARIA role for specialized list patterns such as listboxes.
+   * @remarks Type `AriaRole`.
+   * @default undefined
+   */
+  role?: AriaRole;
+
+  /**
+   * CSS class applied to the native list element.
+   * @remarks Type `string`.
+   * @default undefined
+   */
+  className?: string;
 
   /**
    * Accessible name supplied as text. Prefer a visible label when one is available.
@@ -96,11 +110,41 @@ interface ListItemProps {
   id?: string;
 
   /**
+   * Explicit ARIA role for specialized list patterns such as listbox options.
+   * @remarks Type `AriaRole`.
+   * @default undefined
+   */
+  role?: AriaRole;
+
+  /**
+   * CSS class applied to the native list item.
+   * @remarks Type `string`.
+   * @default undefined
+   */
+  className?: string;
+
+  /**
    * Identifies the current page, location, or item within a related set.
    * @remarks Type `AriaAttributes['aria-current']`.
    * @default undefined
    */
   'aria-current'?: AriaAttributes['aria-current'];
+
+  /**
+   * Indicates whether an interactive option is selected.
+   * @remarks Type `AriaAttributes['aria-selected']`.
+   * @default undefined
+   */
+  'aria-selected'?: AriaAttributes['aria-selected'];
+
+  /** Handles pointer movement over an item. */
+  onMouseMove?: MouseEventHandler<HTMLLIElement>;
+
+  /** Handles pointer activation of an item. */
+  onClick?: MouseEventHandler<HTMLLIElement>;
+
+  /** Handles pointer press before the browser changes focus. */
+  onMouseDown?: MouseEventHandler<HTMLLIElement>;
 }
 
 export type { ListProps, ListItemProps };

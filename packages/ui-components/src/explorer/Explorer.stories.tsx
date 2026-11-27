@@ -38,6 +38,7 @@ const meta = {
   title: 'Components/Explorer',
   component: Explorer,
   tags: ['autodocs'],
+
   args: {
     query: '',
     messages,

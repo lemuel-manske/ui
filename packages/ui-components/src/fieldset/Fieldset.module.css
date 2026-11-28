@@ -2,7 +2,7 @@
   min-width: 0;
   margin: 0;
   padding: var(--ui-space-16);
-  border: var(--ui-border-width) solid var(--ui-color-border);
+  border: var(--ui-border-width) solid var(--ui-color-rail);
 }
 
 .legend {
@@ -21,7 +21,7 @@
 
 .fieldset.divided {
   border: 0;
-  border-block-start: var(--ui-border-width) solid var(--ui-color-divider);
+  border-block-start: var(--ui-border-width) solid var(--ui-color-rail-strong);
   padding: var(--ui-space-16) 0;
 }
 

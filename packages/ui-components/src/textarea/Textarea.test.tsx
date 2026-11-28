@@ -20,6 +20,18 @@ test('Textarea supports native form reset', async ({ render }) => {
   await expect(form.getByRole('textbox')).toHaveValue('Original');
 });
 
+test('Textarea uses two visible rows by default', async ({ render }) => {
+  const input = await render(<Textarea aria-label="Notes" />);
+
+  await expect(input).toHaveJSProperty('rows', 2);
+});
+
+test('Textarea accepts an explicit row count', async ({ render }) => {
+  const input = await render(<Textarea aria-label="Notes" rows={6} />);
+
+  await expect(input).toHaveJSProperty('rows', 6);
+});
+
 test('Textarea has no accessibility violations', async ({ render, page }) => {
   await render(<Textarea aria-label="Name" />);
 

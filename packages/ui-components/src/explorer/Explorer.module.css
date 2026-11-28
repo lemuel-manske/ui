@@ -11,21 +11,33 @@
   align-items: center;
   gap: var(--ui-space-12);
   box-sizing: border-box;
-  min-height: var(--ui-control-large);
-  padding: var(--ui-space-8) var(--ui-space-16);
-  border: var(--ui-border-width) solid var(--ui-color-border);
-  border-radius: var(--ui-radius-medium);
-  background: var(--ui-color-background);
-  transition: border-color 160ms ease;
+  min-height: var(--ui-component-pill-size-large);
+  padding: var(--ui-component-pill-padding-medium);
+  border: var(--ui-border-width) solid var(--ui-color-glass-border);
+  border-radius: var(--ui-component-button-radius);
+  background: var(--ui-color-glass-surface);
+  backdrop-filter: blur(var(--ui-effect-glass-blur));
+  transition: border-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
 }
 
 .inputContainer:focus-within {
-  border-color: var(--ui-action-primary);
+  border-color: var(--ui-color-accent-rail);
+  box-shadow: 0 0 0 var(--ui-effect-ring-width) var(--ui-color-glass-highlight);
 }
 
 .inputContainer > span,
 .inputContainer > button {
+  display: grid;
   flex: 0 0 auto;
+  place-items: center;
+  min-width: var(--ui-control-touch);
+  min-height: var(--ui-control-touch);
+}
+
+.inputContainer > button[aria-label] {
+  min-width: var(--ui-control-touch);
+  min-height: var(--ui-control-touch);
+  padding: 0;
 }
 
 .inputContainer > span svg,
@@ -63,9 +75,10 @@
   max-height: min(24rem, 60vh);
   overflow: auto;
   padding: var(--ui-space-8);
-  border: var(--ui-border-width) solid var(--ui-color-border);
-  border-radius: var(--ui-radius-medium);
-  background: var(--ui-color-background);
+  border: var(--ui-border-width) solid var(--ui-color-glass-border);
+  border-radius: var(--ui-component-surface-radius);
+  background: var(--ui-color-glass-surface);
+  backdrop-filter: blur(var(--ui-effect-glass-blur));
 }
 
 .results,
@@ -78,7 +91,7 @@
 .group + .group {
   margin-block-start: var(--ui-space-8);
   padding-block-start: var(--ui-space-8);
-  border-block-start: var(--ui-border-width) solid var(--ui-color-border);
+  border-block-start: var(--ui-border-width) solid var(--ui-color-rail-strong);
 }
 
 .groupLabel {
@@ -91,7 +104,7 @@
   flex-direction: column;
   gap: var(--ui-space-4);
   padding: var(--ui-space-8) var(--ui-space-12);
-  border-radius: var(--ui-radius-medium);
+  border-radius: var(--ui-radius-small);
   cursor: pointer;
 }
 

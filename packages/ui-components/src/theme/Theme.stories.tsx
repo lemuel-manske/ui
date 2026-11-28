@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { archiveTheme, libraryTheme, createTheme } from '@lemuel-manske/design-tokens';
+import {
+  archiveTheme,
+  castellaniTheme,
+  libraryTheme,
+  createTheme,
+} from '@lemuel-manske/design-tokens';
 
 import { Heading } from '../heading/Heading';
 
@@ -33,6 +38,10 @@ export const Archive: Story = {
 
 export const Library: Story = {
   args: { theme: libraryTheme },
+};
+
+export const Castellani: Story = {
+  args: { theme: castellaniTheme },
 };
 
 export default meta;

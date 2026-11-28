@@ -15,6 +15,21 @@ interface DesignTokens {
     'text-primary': string;
     'text-secondary': string;
     'text-muted': string;
+    'accent-primary': string;
+    'accent-secondary': string;
+    'accent-tertiary': string;
+    'glass-surface': string;
+    'glass-border': string;
+    'glass-highlight': string;
+
+    /** Hairline structure shared by controls and containers. */
+    rail: string;
+
+    /** Emphasized hairline for grouped surfaces and interactive hovers. */
+    'rail-strong': string;
+
+    /** Hover boundary for interactive surfaces. */
+    'accent-rail': string;
   };
 
   action: {
@@ -78,6 +93,8 @@ interface DesignTokens {
     small: string;
     medium: string;
     large: string;
+    touch: string;
+    textarea: string;
   };
 
   /** Foundation line heights shared by default text and controls. */
@@ -100,10 +117,25 @@ interface DesignTokens {
     'button-radius': string;
     'button-weight': string;
     'input-radius': string;
+    'textarea-radius': string;
+    'textarea-leading': string;
+    'surface-radius': string;
+    'pill-gap': string;
+    'pill-padding-small': string;
+    'pill-padding-medium': string;
+    'pill-padding-large': string;
+    'pill-size-small': string;
+    'pill-size-medium': string;
+    'pill-size-large': string;
   };
 
   border: {
     width: string;
+  };
+
+  effect: {
+    'glass-blur': string;
+    'ring-width': string;
   };
 
   radius: {
@@ -135,6 +167,15 @@ const archiveTheme = {
     'text-primary': '#252B27',
     'text-secondary': '#596057',
     'text-muted': '#6B6358',
+    'accent-primary': '#176872',
+    'accent-secondary': '#62612A',
+    'accent-tertiary': '#625690',
+    'glass-surface': 'rgb(255 255 255 / 45%)',
+    'glass-border': 'rgb(37 79 70 / 18%)',
+    'glass-highlight': 'rgb(255 255 255 / 70%)',
+    rail: '#858577',
+    'rail-strong': '#6B6358',
+    'accent-rail': '#176872',
   },
 
   action: {
@@ -213,6 +254,8 @@ const archiveTheme = {
     small: '2.75rem',
     medium: '3rem',
     large: '3.25rem',
+    touch: '2.75rem',
+    textarea: '6rem',
   },
 
   leading: {
@@ -232,10 +275,25 @@ const archiveTheme = {
     'button-radius': 'var(--ui-radius-small)',
     'button-weight': 'var(--ui-weight-medium)',
     'input-radius': 'var(--ui-radius-small)',
+    'textarea-radius': 'var(--ui-radius-small)',
+    'textarea-leading': 'var(--ui-leading-control)',
+    'surface-radius': 'var(--ui-radius-small)',
+    'pill-gap': 'var(--ui-space-8)',
+    'pill-padding-small': 'var(--ui-space-8) var(--ui-space-12)',
+    'pill-padding-medium': 'var(--ui-space-12) var(--ui-space-16)',
+    'pill-padding-large': 'var(--ui-space-12) var(--ui-space-24)',
+    'pill-size-small': 'var(--ui-control-small)',
+    'pill-size-medium': 'var(--ui-control-medium)',
+    'pill-size-large': 'var(--ui-control-large)',
   },
 
   border: {
     width: '1px',
+  },
+
+  effect: {
+    'glass-blur': '12px',
+    'ring-width': '4px',
   },
 
   radius: {
@@ -267,6 +325,15 @@ const libraryTheme = {
     'text-secondary': '#405b52',
     'surface-inverse': '#285146',
     'surface-muted': '#e4eee9',
+    'accent-primary': '#176872',
+    'accent-secondary': '#62612A',
+    'accent-tertiary': '#625690',
+    'glass-surface': 'rgb(255 255 255 / 70%)',
+    'glass-border': 'rgb(25 58 50 / 18%)',
+    'glass-highlight': 'rgb(255 255 255 / 85%)',
+    rail: '#405b52',
+    'rail-strong': '#193a32',
+    'accent-rail': '#193a32',
   },
 
   action: {
@@ -292,4 +359,138 @@ const libraryTheme = {
   },
 } as const satisfies DesignTokens;
 
-export { archiveTheme, libraryTheme, type DesignTokens };
+const castellaniTheme = {
+  ...archiveTheme,
+
+  color: {
+    background: '#08090b',
+    backdrop: 'rgb(8 9 11 / 70%)',
+    surface: '#0d0e10',
+    'surface-muted': '#131316',
+    'surface-inverse': '#ffffff',
+    border: 'rgb(255 255 255 / 9%)',
+    divider: 'rgb(255 255 255 / 17%)',
+    'text-primary': '#f2f3f5',
+    'text-secondary': '#9aa0a8',
+    'text-muted': '#62666d',
+    'accent-primary': '#9AE0EB',
+    'accent-secondary': '#CDC988',
+    'accent-tertiary': '#DACEFF',
+    'glass-surface': 'rgb(255 255 255 / 5%)',
+    'glass-border': 'rgb(255 255 255 / 10%)',
+    'glass-highlight': 'rgb(255 255 255 / 15%)',
+    rail: 'rgb(255 255 255 / 9%)',
+    'rail-strong': 'rgb(255 255 255 / 17%)',
+    'accent-rail': 'rgb(255 255 255 / 32%)',
+  },
+
+  action: {
+    primary: '#ffffff',
+    'primary-hover': '#d4d6da',
+    'primary-foreground': '#08090b',
+    secondary: 'transparent',
+    'secondary-hover': 'rgb(255 255 255 / 5%)',
+    'secondary-foreground': '#f2f3f5',
+    danger: '#ff6961',
+    'danger-hover': '#ff8a84',
+    'danger-foreground': '#08090b',
+    success: '#30d158',
+    'success-hover': '#4ade6b',
+    'success-foreground': '#08090b',
+    warning: '#ffd60a',
+    'warning-hover': '#ffdd3d',
+    'warning-foreground': '#08090b',
+    info: '#64d2ff',
+    'info-hover': '#8cdeff',
+    'info-foreground': '#08090b',
+  },
+
+  state: {
+    ...archiveTheme.state,
+    focus: '#ffffff',
+    danger: '#ff6961',
+    'danger-foreground': '#08090b',
+    success: '#30d158',
+    'success-foreground': '#08090b',
+    warning: '#ffd60a',
+    'warning-foreground': '#08090b',
+    info: '#64d2ff',
+    'info-foreground': '#08090b',
+  },
+
+  font: {
+    body: '"Suisse Intl", system-ui, -apple-system, sans-serif',
+    display: '"Suisse Intl", system-ui, -apple-system, sans-serif',
+    mono: '"Geist Mono", ui-monospace, "SF Mono", Menlo, Monaco, monospace',
+  },
+
+  text: {
+    small: '0.8125rem',
+    medium: '1rem',
+    large: '1.125rem',
+    'heading-small': '1.25rem',
+    'heading-medium': '1.5625rem',
+    'heading-large': '2.25rem',
+    display: 'clamp(2.6rem, 5vw, 4.5rem)',
+  },
+
+  control: {
+    small: '2rem',
+    medium: '2.5rem',
+    large: '3rem',
+    touch: '2.75rem',
+    textarea: '5rem',
+  },
+
+  leading: {
+    body: '1.6',
+    control: '1.375',
+    heading: '1.3',
+    display: '0.92',
+  },
+
+  tracking: {
+    body: '0.01em',
+    heading: '-0.02em',
+    display: '-0.045em',
+  },
+
+  component: {
+    'button-radius': 'var(--ui-radius-full)',
+    'button-weight': 'var(--ui-weight-medium)',
+    'input-radius': 'var(--ui-radius-small)',
+    'textarea-radius': 'var(--ui-radius-small)',
+    'textarea-leading': 'var(--ui-leading-body)',
+    'surface-radius': 'var(--ui-radius-medium)',
+    'pill-gap': 'clamp(0.375rem, 0.25rem + 0.5vw, 0.625rem)',
+    'pill-padding-small': '0.375rem clamp(0.75rem, 0.5rem + 1vw, 1rem)',
+    'pill-padding-medium': '0.625rem clamp(1rem, 0.75rem + 1vw, 1.5rem)',
+    'pill-padding-large': '0.75rem clamp(1.25rem, 1rem + 1.5vw, 2rem)',
+    'pill-size-small': 'clamp(2rem, 1.875rem + 0.625vw, 2.25rem)',
+    'pill-size-medium': 'clamp(2.5rem, 2.25rem + 1vw, 2.75rem)',
+    'pill-size-large': 'clamp(3rem, 2.75rem + 1vw, 3.25rem)',
+  },
+
+  effect: {
+    'glass-blur': '12px',
+    'ring-width': '2px',
+  },
+
+  radius: {
+    none: '0',
+    small: '0.5rem',
+    medium: '1rem',
+    large: '1.25rem',
+    full: '9999px',
+  },
+
+  motion: {
+    'duration-fast': '150ms',
+    'duration-normal': '300ms',
+    'duration-slow': '450ms',
+    'easing-standard': 'cubic-bezier(0.16, 1, 0.3, 1)',
+    'easing-emphasized': 'cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+} as const satisfies DesignTokens;
+
+export { archiveTheme, castellaniTheme, libraryTheme, type DesignTokens };

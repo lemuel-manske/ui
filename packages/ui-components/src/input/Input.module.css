@@ -3,7 +3,7 @@
   width: 100%;
   min-width: 0;
   margin: 0;
-  border: var(--ui-border-width) solid var(--ui-color-border);
+  border: var(--ui-border-width) solid var(--ui-color-rail);
   border-radius: var(--ui-component-input-radius);
   background: var(--ui-color-background);
   color: var(--ui-color-text-primary);

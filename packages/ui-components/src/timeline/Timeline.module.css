@@ -14,7 +14,7 @@
   inset-block-end: calc(-1 * var(--ui-timeline-midline));
   inset-inline-start: calc((var(--ui-space-12) - var(--ui-border-width)) / 2);
   inline-size: var(--ui-border-width);
-  background: var(--ui-color-border);
+  background: var(--ui-color-rail);
   content: '';
 }
 
@@ -34,7 +34,7 @@
   inline-size: var(--ui-space-12);
   block-size: var(--ui-space-12);
   margin-block-start: calc(var(--ui-timeline-midline) - var(--ui-space-12) / 2);
-  border: var(--ui-border-width) solid var(--ui-color-border);
+  border: var(--ui-border-width) solid var(--ui-color-rail-strong);
   border-radius: var(--ui-radius-full);
   background: var(--ui-color-background);
 }
@@ -42,7 +42,7 @@
 .item[aria-current='true'] > .marker {
   border-color: var(--ui-color-text-primary);
   outline: var(--ui-border-width) solid var(--ui-color-text-primary);
-  outline-offset: 2px;
+  outline-offset: var(--ui-state-focus-offset);
   background: var(--ui-color-text-primary);
 }
 

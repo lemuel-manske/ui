@@ -30,7 +30,10 @@
     "format:fix": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "tsc --project tsconfig.tests.json && playwright test --tsconfig ../../tsconfig.test.json"
+    "test": "tsc --project tsconfig.tests.json && playwright test --tsconfig ../../tsconfig.test.json",
+    "test:visual": "docker compose -f ../../docker/playwright/compose.yaml run --rm playwright npm run test:visual:container --workspace @lemuel-manske/organisms",
+    "test:visual:update": "docker compose -f ../../docker/playwright/compose.yaml run --rm playwright npm run test:visual:container --workspace @lemuel-manske/organisms -- --update-snapshots",
+    "test:visual:container": "npm run build --prefix ../config-playwright && playwright test --config visual.config.ts --tsconfig ../../tsconfig.test.json"
   },
   "peerDependencies": {
     "react": "^19.3.0"

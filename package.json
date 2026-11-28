@@ -38,7 +38,6 @@
     "preview:atlas": "npm run preview --workspace @lemuel-manske/organisms",
     "precommit": "lint-staged",
     "prepare": "husky",
-    "pretest:visual": "docker compose -f docker/playwright/compose.yaml run --rm playwright npm run build --workspace @lemuel-manske/design-tokens",
     "release": "semantic-release",
     "storybook": "npm run storybook --workspace @lemuel-manske/components",
     "test": "npm run test --workspaces --if-present",

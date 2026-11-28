@@ -89,15 +89,22 @@ function GraphNode(props: GraphNodeProps) {
       <button
         type="button"
         className={styles.node}
+        aria-label={`${node.title} ${node.type}`}
         aria-current={selected ? true : undefined}
         tabIndex={isTabStop ? 0 : -1}
         onFocus={() => actions.focusNode(node.id)}
         onClick={() => actions.inspectNode(node.id)}
         onKeyDown={handleKeyDown}
       >
+        <span className={styles.nodeMarker} aria-hidden="true">
+          <span />
+        </span>
+      </button>
+
+      <span className={styles.nodeLabel}>
         <span className={styles.nodeTitle}>{node.title}</span>
         <span className={styles.nodeType}>{node.type}</span>
-      </button>
+      </span>
 
       {state === 'unexpanded' || state === 'failed' ? (
         <button
@@ -139,7 +146,7 @@ function GraphNode(props: GraphNodeProps) {
         </button>
       ) : null}
 
-      <span className={styles.nodeStatus}>{statusText}</span>
+      <span className={styles.visuallyHidden}>{statusText}</span>
     </div>
   );
 }

@@ -34,6 +34,7 @@ function GraphCanvas(props: GraphCanvasProps) {
   return (
     <div
       className={styles.canvas}
+      data-atlas-canvas
       role="region"
       aria-label={messages.graphLabel}
       aria-describedby={hintId}
@@ -44,29 +45,37 @@ function GraphCanvas(props: GraphCanvasProps) {
 
       <div
         className={styles.surface}
+        data-atlas-surface
         style={{
           transform: `translate(${-state.camera.center.x}px, ${-state.camera.center.y}px) scale(${state.camera.zoom})`,
         }}
       >
-        {edges.map((edge, index) => {
-          const source = state.positions[edge.sourceId];
-          const target = state.positions[edge.targetId];
+        <svg
+          className={styles.edges}
+          viewBox="-600 -360 1200 720"
+          aria-hidden="true"
+          focusable="false"
+        >
+          {edges.map((edge, index) => {
+            const source = state.positions[edge.sourceId];
+            const target = state.positions[edge.targetId];
 
-          if (source == null || target == null) {
-            return null;
-          }
+            if (source == null || target == null) {
+              return null;
+            }
 
-          return (
-            <GraphEdge
-              key={edge.id}
-              accent={getGraphEdgeAccent(index)}
-              edge={edge}
-              source={source}
-              target={target}
-              showLabel={zoomBand === 'close'}
-            />
-          );
-        })}
+            return (
+              <GraphEdge
+                key={edge.id}
+                accent={getGraphEdgeAccent(index)}
+                edge={edge}
+                source={source}
+                target={target}
+                showLabel={zoomBand === 'close'}
+              />
+            );
+          })}
+        </svg>
 
         {nodeIds.map((nodeId) => {
           const entry = state.nodes[nodeId];

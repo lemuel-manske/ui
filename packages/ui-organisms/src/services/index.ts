@@ -1,2 +1,2 @@
 export * from './cameraController';
-export * from './radialLayout';
+export * from './horizontalLayout';

@@ -38,15 +38,11 @@ function GraphEdge(props: GraphEdgeProps) {
   const { accent, edge, showLabel, source, target } = props;
   const midX = (source.x + target.x) / 2;
   const path =
-    `M ${source.x} ${source.y} C ${midX} ${source.y}, ` +
-    `${midX} ${target.y}, ${target.x} ${target.y}`;
+    `M ${source.x} ${source.y} C ${source.x + (midX - source.x) * 0.55} ${source.y}, ` +
+    `${target.x - (target.x - midX) * 0.55} ${target.y}, ${target.x} ${target.y}`;
 
   return (
-    <svg
-      className={`${styles.edge} ${getAccentClass(accent)}`}
-      aria-hidden="true"
-      focusable="false"
-    >
+    <g className={`${styles.edge} ${getAccentClass(accent)}`}>
       <path d={path} />
 
       {showLabel && (
@@ -59,7 +55,7 @@ function GraphEdge(props: GraphEdgeProps) {
           {edge.relation}
         </text>
       )}
-    </svg>
+    </g>
   );
 }
 

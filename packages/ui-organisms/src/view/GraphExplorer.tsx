@@ -135,10 +135,12 @@ function GraphExplorer(props: GraphExplorerProps) {
   const detailEnabled = detail.mode !== 'disabled';
 
   return (
-    <div className={styles.explorer}>
+    <div className={styles.explorer} data-atlas-explorer>
       <div
         ref={commandRef}
         className={`${styles.command} ${state.rootId == null ? styles.commandCentered : ''}`}
+        data-atlas-command
+        data-atlas-root={state.rootId != null ? 'true' : 'false'}
       >
         <Explorer
           query={state.query}
@@ -151,7 +153,7 @@ function GraphExplorer(props: GraphExplorerProps) {
       </div>
 
       {state.rootId != null && (
-        <div className={styles.toolbar}>
+        <div className={styles.toolbar} data-atlas-toolbar>
           <Button
             variant="secondary"
             aria-pressed={state.view === 'list'}

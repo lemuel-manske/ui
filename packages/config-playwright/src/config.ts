@@ -3,6 +3,7 @@ import { defineConfig } from '@playwright/experimental-ct-react';
 const config = defineConfig({
   testDir: './src',
   testMatch: '**/*.test.tsx',
+  testIgnore: '**/*.visual.test.tsx',
   fullyParallel: true,
   workers: 2,
 

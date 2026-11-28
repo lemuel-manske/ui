@@ -1,0 +1,13 @@
+.surface {
+  box-sizing: border-box;
+  width: 640px;
+  height: 480px;
+  padding: 16px;
+  background: var(--ui-color-background);
+  color: var(--ui-color-text-primary);
+}
+
+.completion {
+  display: block;
+  margin-block-start: 16px;
+}

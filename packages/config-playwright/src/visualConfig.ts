@@ -9,13 +9,23 @@ type VisualConfigOverrides = Pick<
   'use' | 'testDir' | 'testMatch' | 'snapshotPathTemplate'
 >;
 
-function createVisualConfig(overrides: VisualConfigOverrides) {
+type VisualConfigOptions = VisualConfigOverrides & {
+  themes?: readonly string[];
+};
+
+function createVisualConfig({ themes, ...overrides }: VisualConfigOptions) {
   return defineConfig({
     ...config,
 
     ...overrides,
 
     testIgnore: [],
+
+    projects: themes?.map((theme) => ({
+      name: theme,
+
+      use: { theme } as PlaywrightTestConfig['use'],
+    })),
 
     expect: {
       ...config.expect,
@@ -53,4 +63,4 @@ function createVisualConfig(overrides: VisualConfigOverrides) {
 
 export { createVisualConfig };
 
-export type { VisualConfigOverrides };
+export type { VisualConfigOptions, VisualConfigOverrides };

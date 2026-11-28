@@ -118,6 +118,13 @@
   overflow-wrap: anywhere;
 }
 
+.loading {
+  display: grid;
+  place-items: center;
+  min-height: var(--ui-space-96);
+  padding: var(--ui-space-32);
+}
+
 .message {
   margin: 0;
   padding: var(--ui-space-12);

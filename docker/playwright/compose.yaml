@@ -6,6 +6,8 @@ services:
 
     working_dir: /workspace
 
+    user: '${DOCKER_UID:-1000}:${DOCKER_GID:-1000}'
+
     environment:
       CI: 'true'
 

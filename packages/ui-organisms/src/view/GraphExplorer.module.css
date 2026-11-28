@@ -1,0 +1,282 @@
+.explorer {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  color: var(--ui-color-text-primary);
+  font-family: var(--ui-font-body);
+}
+
+.command {
+  position: relative;
+  z-index: 3;
+  width: min(28rem, calc(100% - var(--ui-space-48)));
+  margin-block-start: var(--ui-space-16);
+  margin-inline: auto;
+}
+
+.commandCentered {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
+
+.toolbar {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: var(--ui-space-16);
+  inset-inline-end: var(--ui-space-16);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-component-pill-gap);
+}
+
+.live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.canvas {
+  position: relative;
+  box-sizing: border-box;
+  min-height: max(68vh, 34rem);
+  margin-block-start: 0;
+  overflow: hidden;
+  background: var(--ui-color-background);
+}
+
+.surface {
+  position: absolute;
+  inset: 0;
+  transform-origin: center;
+  transition: transform var(--ui-motion-duration-slow) var(--ui-motion-easing-standard);
+}
+
+.edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.edgePrimary {
+  color: var(--ui-color-accent-primary);
+}
+
+.edgeSecondary {
+  color: var(--ui-color-accent-secondary);
+}
+
+.edgeTertiary {
+  color: var(--ui-color-accent-tertiary);
+}
+
+.edge path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 1.1;
+  opacity: 0.78;
+}
+
+.edgeLabel {
+  fill: var(--ui-color-text-muted);
+  font-family: var(--ui-font-mono);
+  font-size: var(--ui-text-small);
+}
+
+.nodeContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-4);
+  align-items: center;
+  min-width: 9rem;
+  padding: var(--ui-space-4);
+  transform: translate(-50%, -50%);
+}
+
+.node {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--ui-radius-full);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition:
+    border-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard),
+    background-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
+}
+
+.nodeMarker {
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--ui-color-accent-primary);
+  border-radius: var(--ui-radius-full);
+  background: var(--ui-color-background);
+  box-shadow:
+    0 0 0 0.45rem color-mix(in srgb, var(--ui-color-accent-primary) 8%, transparent),
+    0 0 1.5rem color-mix(in srgb, var(--ui-color-accent-primary) 12%, transparent);
+  transition:
+    border-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard),
+    box-shadow var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
+}
+
+.nodeMarker > span {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: var(--ui-radius-full);
+  background: var(--ui-color-text-primary);
+}
+
+.node:hover .nodeMarker,
+.node[aria-current='true'] .nodeMarker {
+  border-color: var(--ui-color-accent-tertiary);
+  box-shadow:
+    0 0 0 0.55rem color-mix(in srgb, var(--ui-color-accent-tertiary) 12%, transparent),
+    0 0 1.75rem color-mix(in srgb, var(--ui-color-accent-tertiary) 18%, transparent);
+}
+
+.node:focus-visible,
+.nodeAction:focus-visible {
+  outline: var(--ui-state-focus-width) solid var(--ui-state-focus);
+  outline-offset: var(--ui-state-focus-offset);
+}
+
+.nodeLabel {
+  position: absolute;
+  inset-block-end: calc(100% + var(--ui-space-4));
+  inset-inline: 0;
+  display: grid;
+  gap: var(--ui-space-4);
+  text-align: center;
+}
+
+.nodeTitle {
+  font-family: var(--ui-font-display);
+  font-size: var(--ui-text-medium);
+  font-weight: var(--ui-weight-semibold);
+  letter-spacing: var(--ui-tracking-heading);
+}
+
+.nodeType,
+.nodeStatus {
+  color: var(--ui-color-text-muted);
+  font-family: var(--ui-font-mono);
+  font-size: var(--ui-text-small);
+  letter-spacing: var(--ui-tracking-body);
+}
+
+.nodeAction {
+  min-height: var(--ui-component-pill-size-small);
+  padding: var(--ui-component-pill-padding-small);
+  border: var(--ui-border-width) solid var(--ui-color-rail);
+  border-radius: var(--ui-radius-full);
+  background: transparent;
+  color: var(--ui-color-text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--ui-text-small);
+  transition:
+    border-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard),
+    color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
+}
+
+.nodeAction:hover:not(:disabled) {
+  border-color: var(--ui-color-accent-rail);
+  color: var(--ui-color-text-primary);
+}
+
+.previewTitle {
+  margin: 0;
+}
+
+.preview,
+.detail {
+  position: absolute;
+  z-index: 4;
+  inset-block-end: var(--ui-space-24);
+  inset-inline-end: var(--ui-space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-8);
+  box-sizing: border-box;
+  width: min(22rem, calc(100% - var(--ui-space-48)));
+  padding: var(--ui-space-16);
+  border: var(--ui-border-width) solid var(--ui-color-glass-border);
+  border-radius: var(--ui-component-surface-radius);
+  background: var(--ui-color-glass-surface);
+  backdrop-filter: blur(var(--ui-effect-glass-blur));
+}
+
+.nodeList {
+  display: grid;
+  gap: var(--ui-space-8);
+  margin: var(--ui-space-16) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nodeListItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-8);
+  align-items: center;
+  padding: var(--ui-space-12);
+  border: var(--ui-border-width) solid var(--ui-color-rail);
+  border-radius: var(--ui-radius-small);
+  background: var(--ui-color-glass-surface);
+  backdrop-filter: blur(var(--ui-effect-glass-blur));
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface,
+  .nodeMarker,
+  .nodeAction {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .canvas,
+  .preview,
+  .detail,
+  .nodeListItem {
+    border-color: CanvasText;
+  }
+
+  .nodeMarker,
+  .nodeAction {
+    border-color: ButtonText;
+    box-shadow: none;
+  }
+
+  .node:focus-visible,
+  .nodeAction:focus-visible {
+    outline-color: Highlight;
+  }
+}

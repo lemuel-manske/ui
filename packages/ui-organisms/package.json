@@ -1,0 +1,60 @@
+{
+  "name": "@lemuel-manske/organisms",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Product-scale React experiences built from the design-system primitives.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemuel-manske/ui.git",
+    "directory": "packages/ui-organisms"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/organisms.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "tsc --project tsconfig.tests.json && playwright test --tsconfig ../../tsconfig.test.json",
+    "test:visual": "npm --prefix ../.. run build --workspaces --if-present && playwright test --config visual.config.ts --tsconfig ../../tsconfig.test.json",
+    "test:visual:update": "npm run test:visual -- --update-snapshots"
+  },
+  "peerDependencies": {
+    "react": "^19.3.0"
+  },
+  "dependencies": {
+    "@lemuel-manske/components": "^0.1.0",
+    "@lemuel-manske/design-tokens": "^0.1.0",
+    "@lemuel-manske/utils": "^0.1.0"
+  },
+  "devDependencies": {
+    "@lemuel-manske/config-eslint": "file:../config-eslint",
+    "@lemuel-manske/config-playwright": "file:../config-playwright",
+    "@lemuel-manske/config-prettier": "file:../config-prettier",
+    "@lemuel-manske/config-typescript": "file:../config-typescript",
+    "@lemuel-manske/config-vite": "file:../config-vite",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "10.14.0",
+    "prettier": "3.6.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "typescript": "5.9.3",
+    "vite": "7.1.0"
+  }
+}

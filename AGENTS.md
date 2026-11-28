@@ -4,11 +4,12 @@
 
 This repository is an npm workspace monorepo for the `@lemuel-manske` React design system.
 
-- `packages/ui-components/src/`: component folders such as `button/` and `radio-group/`, containing components, hooks, CSS Modules, stories, and colocated tests.
-- `packages/ui-utils/src/`: shared hooks and utilities.
-- `packages/ui-design-tokens/src/`: typed tokens and enums; the build generates theme CSS.
 - `packages/config-*`: shared ESLint, Prettier, TypeScript, Vite, Jest, and Playwright configuration.
 - `packages/ui-components/.storybook/`: Storybook configuration and preview styles. Package `playwright/` directories contain browser test harnesses.
+- `packages/ui-components/src/`: component folders such as `button/` and `radio-group/`, containing components, hooks, CSS Modules, stories, and colocated tests.
+- `packages/ui-design-tokens/src/`: typed tokens and enums; the build generates theme CSS.
+- `packages/ui-organisms/src/`: product-scale React experiences larger than individual components; Atlas lives here.
+- `packages/ui-utils/src/`: shared hooks and utilities.
 
 Expose public APIs through each package's `src/index.ts`. Build output belongs in ignored `dist/` directories.
 

@@ -2,9 +2,9 @@ import { createLibraryConfig } from '@lemuel-manske/config-vite';
 
 import { mergeConfig, type Plugin } from 'vite';
 
-import { archiveTheme, libraryTheme } from './src/tokens';
+import { archiveTheme, castellaniTheme, libraryTheme } from './src/tokens';
 
-const themes = { archive: archiveTheme, library: libraryTheme };
+const themes = { archive: archiveTheme, castellani: castellaniTheme, library: libraryTheme };
 
 const themeCss = [
   '/* Generated from tokens.ts. Do not edit. */',

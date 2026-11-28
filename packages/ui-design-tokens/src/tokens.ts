@@ -15,6 +15,11 @@ interface DesignTokens {
     'text-primary': string;
     'text-secondary': string;
     'text-muted': string;
+    'accent-primary': string;
+    'accent-secondary': string;
+    'accent-tertiary': string;
+    'glass-surface': string;
+    'glass-border': string;
   };
 
   action: {
@@ -135,6 +140,11 @@ const archiveTheme = {
     'text-primary': '#252B27',
     'text-secondary': '#596057',
     'text-muted': '#6B6358',
+    'accent-primary': '#176872',
+    'accent-secondary': '#62612A',
+    'accent-tertiary': '#625690',
+    'glass-surface': 'rgb(255 255 255 / 45%)',
+    'glass-border': 'rgb(37 79 70 / 18%)',
   },
 
   action: {
@@ -267,6 +277,11 @@ const libraryTheme = {
     'text-secondary': '#405b52',
     'surface-inverse': '#285146',
     'surface-muted': '#e4eee9',
+    'accent-primary': '#176872',
+    'accent-secondary': '#62612A',
+    'accent-tertiary': '#625690',
+    'glass-surface': 'rgb(255 255 255 / 70%)',
+    'glass-border': 'rgb(25 58 50 / 18%)',
   },
 
   action: {
@@ -292,4 +307,117 @@ const libraryTheme = {
   },
 } as const satisfies DesignTokens;
 
-export { archiveTheme, libraryTheme, type DesignTokens };
+const castellaniTheme = {
+  ...archiveTheme,
+
+  color: {
+    background: '#08090b',
+    backdrop: 'rgb(8 9 11 / 82%)',
+    surface: '#0d0e10',
+    'surface-muted': '#131316',
+    'surface-inverse': '#f2f3f5',
+    border: 'rgb(255 255 255 / 9%)',
+    divider: 'rgb(255 255 255 / 17%)',
+    'text-primary': '#f2f3f5',
+    'text-secondary': '#9aa0a8',
+    'text-muted': '#62666d',
+    'accent-primary': '#9AE0EB',
+    'accent-secondary': '#CDC988',
+    'accent-tertiary': '#DACEFF',
+    'glass-surface': 'rgb(255 255 255 / 5%)',
+    'glass-border': 'rgb(255 255 255 / 10%)',
+  },
+
+  action: {
+    primary: '#ffffff',
+    'primary-hover': '#d4d6da',
+    'primary-foreground': '#08090b',
+    secondary: 'transparent',
+    'secondary-hover': 'rgb(255 255 255 / 5%)',
+    'secondary-foreground': '#f2f3f5',
+    danger: '#ff6961',
+    'danger-hover': '#ff8a84',
+    'danger-foreground': '#08090b',
+    success: '#30d158',
+    'success-hover': '#4ade6b',
+    'success-foreground': '#08090b',
+    warning: '#ffd60a',
+    'warning-hover': '#ffdd3d',
+    'warning-foreground': '#08090b',
+    info: '#64d2ff',
+    'info-hover': '#8cdeff',
+    'info-foreground': '#08090b',
+  },
+
+  state: {
+    ...archiveTheme.state,
+    focus: '#ffffff',
+    danger: '#ff6961',
+    'danger-foreground': '#08090b',
+    success: '#30d158',
+    'success-foreground': '#08090b',
+    warning: '#ffd60a',
+    'warning-foreground': '#08090b',
+    info: '#64d2ff',
+    'info-foreground': '#08090b',
+  },
+
+  font: {
+    body: '"Geist", system-ui, sans-serif',
+    display: '"Mona Sans", "Geist", system-ui, sans-serif',
+    mono: '"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
+  },
+
+  text: {
+    small: 'clamp(0.75rem, 2vw, 0.875rem)',
+    medium: 'clamp(0.875rem, 2.5vw, 1rem)',
+    large: 'clamp(1.125rem, 3.5vw, 1.25rem)',
+    'heading-small': 'clamp(1.25rem, 4vw, 1.5rem)',
+    'heading-medium': 'clamp(1.5rem, 5vw, 2rem)',
+    'heading-large': 'clamp(1.875rem, 6vw, 2.5rem)',
+    display: 'clamp(2.25rem, 8vw, 3.5rem)',
+  },
+
+  control: {
+    small: '2.25rem',
+    medium: '2.75rem',
+    large: '3rem',
+  },
+
+  leading: {
+    body: '1.5',
+    control: '1.375',
+    heading: '1.2',
+    display: '1.1',
+  },
+
+  tracking: {
+    body: '0.02em',
+    heading: '-0.02em',
+    display: '-0.03em',
+  },
+
+  component: {
+    'button-radius': 'var(--ui-radius-full)',
+    'button-weight': 'var(--ui-weight-medium)',
+    'input-radius': 'var(--ui-radius-full)',
+  },
+
+  radius: {
+    none: '0',
+    small: '0.5rem',
+    medium: '1rem',
+    large: '1.25rem',
+    full: '9999px',
+  },
+
+  motion: {
+    'duration-fast': '120ms',
+    'duration-normal': '240ms',
+    'duration-slow': '320ms',
+    'easing-standard': 'cubic-bezier(0.16, 1, 0.3, 1)',
+    'easing-emphasized': 'cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+} as const satisfies DesignTokens;
+
+export { archiveTheme, castellaniTheme, libraryTheme, type DesignTokens };

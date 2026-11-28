@@ -13,19 +13,31 @@
   box-sizing: border-box;
   min-height: var(--ui-control-large);
   padding: var(--ui-space-8) var(--ui-space-16);
-  border: var(--ui-border-width) solid var(--ui-color-border);
+  border: var(--ui-border-width) solid var(--ui-color-glass-border);
   border-radius: var(--ui-radius-medium);
-  background: var(--ui-color-background);
-  transition: border-color 160ms ease;
+  background: var(--ui-color-glass-surface);
+  backdrop-filter: blur(12px);
+  transition: border-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
 }
 
 .inputContainer:focus-within {
   border-color: var(--ui-action-primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ui-action-primary) 12%, transparent);
 }
 
 .inputContainer > span,
 .inputContainer > button {
+  display: grid;
   flex: 0 0 auto;
+  place-items: center;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.inputContainer > button[aria-label] {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
 }
 
 .inputContainer > span svg,
@@ -63,9 +75,10 @@
   max-height: min(24rem, 60vh);
   overflow: auto;
   padding: var(--ui-space-8);
-  border: var(--ui-border-width) solid var(--ui-color-border);
+  border: var(--ui-border-width) solid var(--ui-color-glass-border);
   border-radius: var(--ui-radius-medium);
-  background: var(--ui-color-background);
+  background: var(--ui-color-glass-surface);
+  backdrop-filter: blur(12px);
 }
 
 .results,

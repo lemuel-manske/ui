@@ -11,7 +11,7 @@ interface ThemeProps {
   children: ReactNode;
 
   /**
-   * Complete semantic design token contract applied to descendants. Provided presets include archiveTheme and libraryTheme.
+   * Complete semantic design token contract applied to descendants. Provided presets include archiveTheme, castellaniTheme, and libraryTheme.
    * @remarks Type `DesignTokens`.
    * @default None (required)
    */

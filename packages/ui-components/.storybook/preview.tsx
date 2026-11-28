@@ -2,16 +2,16 @@ import type { Preview } from '@storybook/react-vite';
 
 import '@lemuel-manske/design-tokens/styles.css';
 
-import { archiveTheme, libraryTheme } from '@lemuel-manske/design-tokens';
-
 import { Theme } from '../src/theme/Theme';
+
+import { brandOptions, getBrandTheme } from './options';
 
 import './storybook.css';
 
 const preview: Preview = {
   decorators: [
     (Story, context) => (
-      <Theme theme={context.globals.brand === 'library' ? libraryTheme : archiveTheme}>
+      <Theme theme={getBrandTheme(context.globals.brand)}>
         <div className="storybook-theme">
           <Story />
         </div>
@@ -25,10 +25,7 @@ const preview: Preview = {
 
       toolbar: {
         icon: 'paintbrush',
-        items: [
-          { value: 'archive', title: 'OpenArquive' },
-          { value: 'library', title: 'Library' },
-        ],
+        items: brandOptions,
       },
     },
   },

@@ -127,6 +127,9 @@ function Explorer(props: ExplorerProps) {
     return renderResultsContent(messages, resultState);
   })();
 
+  const isListboxActive = isOpen && !loading && results.length > 0;
+  const hasActiveItem = isListboxActive && activeItem != null;
+
   return (
     <div className={styles.explorer}>
       <div className={styles.inputContainer}>
@@ -156,12 +159,8 @@ function Explorer(props: ExplorerProps) {
           aria-label={messages.searchLabel}
           aria-autocomplete="list"
           aria-expanded={isOpen}
-          aria-controls={isOpen && !loading && results.length > 0 ? listboxId : undefined}
-          aria-activedescendant={
-            isOpen && !loading && results.length > 0 && activeItem != null
-              ? `${listboxId}-option-${activeIndex}`
-              : undefined
-          }
+          aria-controls={isListboxActive ? listboxId : undefined}
+          aria-activedescendant={hasActiveItem ? `${listboxId}-option-${activeIndex}` : undefined}
           value={query}
           placeholder={messages.searchPlaceholder}
           onChange={(event) => handleQueryChange(event.currentTarget.value)}

@@ -25,7 +25,7 @@ import {
   type GraphView,
 } from '../domain';
 import type { GraphExplorerAdapter, GraphExplorerMessages } from '../ports';
-import { createCameraController, radialLayout } from '../services';
+import { createCameraController, horizontalLayout } from '../services';
 
 import type { GraphActions } from './graphActions';
 
@@ -264,7 +264,7 @@ function useGraphExplorer(options: UseGraphExplorerOptions): UseGraphExplorerRes
 
         const beforeLayout = stateRef.current;
         const plan = createExpansionPlan(beforeLayout, nodeId, page);
-        const layout = radialLayout({
+        const layout = horizontalLayout({
           sourceId: nodeId,
           existingPositions: beforeLayout.positions,
           newNodes: plan.newNodes,

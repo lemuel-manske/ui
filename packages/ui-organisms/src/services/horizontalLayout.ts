@@ -13,7 +13,7 @@ function isReserved(point: Point, input: LayoutInput) {
   });
 }
 
-function radialLayout(input: LayoutInput): GraphLayoutResult {
+function horizontalLayout(input: LayoutInput): GraphLayoutResult {
   const revealOrigin = input.existingPositions[input.sourceId] ?? { x: 0, y: 0, pinning: 'layout' };
   const positions: GraphLayoutResult['positions'] = {};
   const count = input.newNodes.length;
@@ -23,19 +23,19 @@ function radialLayout(input: LayoutInput): GraphLayoutResult {
       return;
     }
 
-    const angle = (Math.PI * 2 * index) / Math.max(count, 1) + input.seed * 0.18;
-    let radius = 132 + Math.min(count, input.config.maxExpandedNeighbors) * 8;
+    const centerIndex = (count - 1) / 2;
+    const verticalOffset = (index - centerIndex) * 156;
+    const horizontalOffset = 220 + (index % 2) * 18;
     let point = {
-      x: revealOrigin.x + Math.cos(angle) * radius,
-      y: revealOrigin.y + Math.sin(angle) * radius,
+      x: revealOrigin.x + horizontalOffset,
+      y: revealOrigin.y + verticalOffset + (((input.seed + index) % 3) - 1) * 12,
     };
     let attempts = 0;
 
     while (isReserved(point, input) && attempts < 4) {
-      radius += 48;
       point = {
-        x: revealOrigin.x + Math.cos(angle) * radius,
-        y: revealOrigin.y + Math.sin(angle) * radius,
+        x: point.x + 48,
+        y: point.y,
       };
       attempts += 1;
     }
@@ -46,4 +46,4 @@ function radialLayout(input: LayoutInput): GraphLayoutResult {
   return { positions, revealOrigin: { x: revealOrigin.x, y: revealOrigin.y } };
 }
 
-export { radialLayout };
+export { horizontalLayout };

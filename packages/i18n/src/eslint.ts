@@ -56,10 +56,10 @@ const rule: TSESLint.RuleModule<MessageIds, Options> = {
 
       const importDeclaration = declaration.parent.parent.parent;
       const source = checker.getSymbolAtLocation(importDeclaration.moduleSpecifier);
+      const isGeneratedFile = (target: ts.Declaration) =>
+        ts.isSourceFile(target) && resolve(target.fileName) === generatedFile;
 
-      return source?.declarations?.some(
-        (target) => ts.isSourceFile(target) && resolve(target.fileName) === generatedFile,
-      );
+      return source?.declarations?.some(isGeneratedFile);
     }
 
     return {
@@ -72,18 +72,15 @@ const rule: TSESLint.RuleModule<MessageIds, Options> = {
         }
 
         const parameterType = checker.getTypeOfSymbolAtLocation(parameter, call);
+        const isMessageIdProperty = (declaration: ts.Declaration) =>
+          ts.isPropertySignature(declaration) &&
+          ts.isComputedPropertyName(declaration.name) &&
+          ts.isIdentifier(declaration.name.expression) &&
+          declaration.name.expression.text === 'messageId' &&
+          resolve(declaration.getSourceFile().fileName) === translatorTypes;
         const acceptsMessageId = parameterType
           .getProperties()
-          .some((property) =>
-            property.declarations?.some(
-              (declaration) =>
-                ts.isPropertySignature(declaration) &&
-                ts.isComputedPropertyName(declaration.name) &&
-                ts.isIdentifier(declaration.name.expression) &&
-                declaration.name.expression.text === 'messageId' &&
-                resolve(declaration.getSourceFile().fileName) === translatorTypes,
-            ),
-          );
+          .some((property) => property.declarations?.some(isMessageIdProperty));
 
         if (acceptsMessageId && !isGeneratedImport(call.arguments[0])) {
           context.report({ node: node.arguments[0] ?? node, messageId: 'useGeneratedId' });

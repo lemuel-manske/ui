@@ -123,9 +123,8 @@
 }
 
 .loading {
-  display: grid;
-  place-items: center;
-  min-height: var(--ui-space-96);
+  display: flex;
+  align-items: baseline;
   padding: var(--ui-space-32);
 }
 

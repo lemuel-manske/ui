@@ -38,9 +38,7 @@
     "prepare": "husky",
     "release": "semantic-release",
     "storybook": "npm run storybook --workspace @lemuel-manske/components",
-    "test": "npm run test --workspaces --if-present",
-    "test:visual": "docker run --rm -v \"$PWD:/workspace\" -v /workspace/node_modules -w /workspace -u \"$(id -u):$(id -g)\" ghcr.io/lemuel-manske/ui-visual-tests:latest sh -c \"npm ci && npm run test:visual --workspaces --if-present\"",
-    "test:visual:update": "docker run --rm -v \"$PWD:/workspace\" -v /workspace/node_modules -w /workspace -u \"$(id -u):$(id -g)\" ghcr.io/lemuel-manske/ui-visual-tests:latest sh -c \"npm ci && npm run test:visual:update --workspaces --if-present\""
+    "test": "npm run test --workspaces --if-present"
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.3",

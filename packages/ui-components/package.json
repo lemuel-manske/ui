@@ -33,7 +33,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "storybook": "storybook dev --port 6006 --disable-telemetry --no-open",
-    "test": "tsc --project tsconfig.storybook.json && playwright test --tsconfig ../../tsconfig.test.json"
+    "test": "tsc --project tsconfig.storybook.json && playwright test --tsconfig ../../tsconfig.test.json",
+    "test:visual": "npm --prefix ../.. run build --workspaces --if-present && playwright test --config visual.config.ts --tsconfig ../../tsconfig.test.json",
+    "test:visual:update": "npm run test:visual -- --update-snapshots"
   },
   "peerDependencies": {
     "react": "^19.3.0"

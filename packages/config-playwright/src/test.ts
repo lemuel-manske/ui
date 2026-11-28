@@ -11,4 +11,22 @@ const test = componentTest.extend<Fixtures>({
   },
 });
 
-export { test };
+type VisualFixtures = Fixtures & {
+  theme: string;
+};
+
+const visualTest = componentTest.extend<VisualFixtures>({
+  theme: ['', { option: true }],
+
+  render: async ({ mount, page, theme }, use) => {
+    if (theme !== '') {
+      await page.evaluate((value) => {
+        document.body.dataset.uiTheme = value;
+      }, theme);
+    }
+
+    await use(mount);
+  },
+});
+
+export { test, visualTest };

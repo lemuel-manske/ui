@@ -11,7 +11,11 @@ import { useExplorer } from './useExplorer';
 import styles from './Explorer.module.css';
 
 function renderLoadingContent(messages: ExplorerMessages) {
-  return <Spinner label={messages.loadingMessage} />;
+  return (
+    <div className={styles.loading}>
+      <Spinner label={messages.loadingMessage} />
+    </div>
+  );
 }
 
 function renderEmptyContent(messages: ExplorerMessages) {

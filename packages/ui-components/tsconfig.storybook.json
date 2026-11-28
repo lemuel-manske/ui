@@ -4,6 +4,13 @@
     "rootDir": "..",
     "noEmit": true
   },
-  "include": ["src", ".storybook", "playwright", "vite.config.ts", "playwright.config.ts"],
+  "include": [
+    "src",
+    ".storybook",
+    "playwright",
+    "vite.config.ts",
+    "playwright.config.ts",
+    "visual.config.ts"
+  ],
   "exclude": []
 }

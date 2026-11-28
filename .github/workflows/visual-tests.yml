@@ -1,0 +1,36 @@
+name: ui @ visual tests
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+  packages: read
+
+concurrency:
+  group: visual-tests-${{ github.workflow }}-${{ github.ref }}
+
+  cancel-in-progress: true
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/lemuel-manske/ui-visual-tests:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - shell: bash
+        run: npm ci
+
+      - shell: bash
+        run: npm run test:visual --workspaces --if-present

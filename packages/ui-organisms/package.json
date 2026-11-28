@@ -30,7 +30,6 @@
     "format:fix": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite --config preview/vite.config.ts",
     "test": "tsc --project tsconfig.tests.json && playwright test --tsconfig ../../tsconfig.test.json"
   },
   "peerDependencies": {

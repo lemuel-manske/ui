@@ -38,7 +38,8 @@
     "prepare": "husky",
     "release": "semantic-release",
     "storybook": "npm run storybook --workspace @lemuel-manske/components",
-    "test": "npm run test --workspaces --if-present"
+    "test": "npm run test --workspaces --if-present",
+    "test:visual": "npm run test:visual --workspaces --if-present"
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.3",

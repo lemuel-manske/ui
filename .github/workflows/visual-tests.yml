@@ -18,59 +18,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  discover:
-    name: Discover workspaces
-
-    runs-on: ubuntu-latest
-
-    outputs:
-      workspaces: ${{ steps.workspaces.outputs.workspaces }}
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - id: workspaces
-        shell: bash
-        run: |
-          workspaces="$(npm query --json '.workspace' | node -e '
-            let input = "";
-            process.stdin.on("data", (chunk) => {
-              input += chunk;
-            });
-            process.stdin.on("end", () => {
-              const names = JSON.parse(input)
-                .filter((workspace) => workspace.scripts?.["test:visual"])
-                .map((workspace) => workspace.name);
-              process.stdout.write(JSON.stringify(names));
-            });
-          ')"
-          echo "workspaces=$workspaces" >> "$GITHUB_OUTPUT"
-          echo "Visual test workspaces: $workspaces"
-
   visual:
-    name: Visual (${{ matrix.workspace }})
-
-    needs: discover
-
-    if: ${{ needs.discover.outputs.workspaces != '[]' }}
+    name: Visual tests
 
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        workspace: ${{ fromJSON(needs.discover.outputs.workspaces) }}
-
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
 
       - shell: bash
         run: |
@@ -78,8 +32,4 @@ jobs:
           echo "DOCKER_GID=$(id -g)" >> "$GITHUB_ENV"
 
       - shell: bash
-
-        env:
-          WORKSPACE: ${{ matrix.workspace }}
-
-        run: npm run test:visual --workspace "$WORKSPACE"
+        run: npm run test:visual

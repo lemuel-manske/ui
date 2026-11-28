@@ -3,28 +3,26 @@
   width: 100%;
   min-width: 0;
   margin: 0;
-  border: var(--ui-border-width) solid var(--ui-color-border);
-  border-radius: var(--ui-component-input-radius);
+  min-height: var(--ui-control-textarea);
+  border: var(--ui-border-width) solid var(--ui-color-rail);
+  border-radius: var(--ui-component-textarea-radius);
   background: var(--ui-color-background);
   color: var(--ui-color-text-primary);
   font-family: var(--ui-font-body);
-  line-height: var(--ui-leading-control);
+  line-height: var(--ui-component-textarea-leading);
 }
 
 .textarea.small {
-  min-height: var(--ui-control-small);
   padding: var(--ui-space-8) var(--ui-space-12);
   font-size: var(--ui-text-small);
 }
 
 .textarea.medium {
-  min-height: var(--ui-control-medium);
   padding: var(--ui-space-12) var(--ui-space-16);
   font-size: var(--ui-text-medium);
 }
 
 .textarea.large {
-  min-height: var(--ui-control-large);
   padding: var(--ui-space-12) var(--ui-space-24);
   font-size: var(--ui-text-large);
 }

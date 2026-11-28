@@ -6,7 +6,7 @@ import styles from './Textarea.module.css';
 
 function useTextarea({
   size = 'medium',
-  rows = 4,
+  rows = 2,
   id,
   disabled = false,
   'aria-label': label,

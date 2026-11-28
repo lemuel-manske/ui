@@ -92,7 +92,7 @@ interface TextareaProps extends AccessibilityOptions {
   /**
    * Native number of visible text rows. Additional content can scroll.
    * @remarks Type `number`.
-   * @default 2 (native default)
+   * @default 2
    */
   rows?: number;
 

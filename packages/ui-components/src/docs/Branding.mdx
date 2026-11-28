@@ -45,11 +45,12 @@ export function Introduction() {
 
 ## Token responsibilities
 
-| Kind                | Groups and decisions                                                                                                                                                                           |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Foundations         | font families; numeric weight values; text scales; leading and tracking values; space; radius; control target sizes; border width; motion                                                      |
-| Semantics           | color backgrounds, surfaces, glass, text, border, divider, backdrop, and spatial accents; action colors and hover/foreground pairs; state focus, validation, status, and disabled presentation |
-| Component decisions | component.button-radius, component.button-weight, component.input-radius                                                                                                                       |
+| Kind                | Groups and decisions                                                                                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Foundations         | font families; numeric weight values; text scales; leading and tracking values; space; radius; control target sizes, touch targets, and textarea height; border width; motion                                       |
+| Semantics           | color backgrounds, surfaces, glass, text, border, divider, rails, accent rails, backdrop, and spatial accents; action colors and hover/foreground pairs; state focus, validation, status, and disabled presentation |
+| Component decisions | component.button-radius, component.button-weight, component.input-radius, component.textarea-radius, component.textarea-leading, component.surface-radius, and adaptive pill sizing and padding                     |
+| Effects             | effect.glass-blur and effect.ring-width for glass surfaces and non-focus rings                                                                                                                                      |
 
 Variables use `--ui-{group}-{token}`, for example `--ui-font-display` and `--ui-text-display`.
 
@@ -59,7 +60,12 @@ Presets reference other public variables where appropriate, such as button-radiu
 const editorial = createTheme(archiveTheme, {
   font: { display: 'Georgia, serif', body: 'system-ui, sans-serif' },
   color: { divider: '#C8C8B9' },
-  component: { 'button-radius': '9999px', 'input-radius': '2px' },
+  component: {
+    'button-radius': '9999px',
+    'input-radius': '2px',
+    'textarea-radius': '2px',
+    'pill-size-medium': 'clamp(2.25rem, 2rem + 1vw, 2.75rem)',
+  },
   leading: { body: '1.6' },
   tracking: { heading: '-0.01em' },
 });

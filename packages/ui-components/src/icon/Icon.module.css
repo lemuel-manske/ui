@@ -47,13 +47,16 @@
 
 .action {
   box-sizing: border-box;
-  min-inline-size: var(--ui-control-small);
-  min-block-size: var(--ui-control-small);
+  min-inline-size: var(--ui-control-touch);
+  min-block-size: var(--ui-control-touch);
   padding: var(--ui-space-8);
-  border: var(--ui-border-width) solid transparent;
+  border: var(--ui-border-width) solid var(--ui-color-rail);
   border-radius: var(--ui-radius-full);
   background: transparent;
   cursor: pointer;
+  transition:
+    background-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard),
+    border-color var(--ui-motion-duration-fast) var(--ui-motion-easing-standard);
 }
 
 .action.danger {
@@ -73,7 +76,8 @@
 }
 
 .action:hover:not(:disabled) {
-  background: var(--ui-color-surface-muted);
+  border-color: var(--ui-color-accent-rail);
+  background: var(--ui-color-glass-surface);
 }
 
 .action:focus-visible {
@@ -84,6 +88,12 @@
 .action:disabled {
   opacity: var(--ui-state-disabled-opacity);
   cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action {
+    transition: none;
+  }
 }
 
 @media (forced-colors: active) {

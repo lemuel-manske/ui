@@ -59,6 +59,10 @@
   font-size: var(--ui-text-medium);
 }
 
+.inputContainer input:focus-visible {
+  outline: none;
+}
+
 .inputContainer input::placeholder {
   color: var(--ui-color-text-secondary);
   opacity: 1;
@@ -132,6 +136,11 @@
 @media (forced-colors: active) {
   .inputContainer {
     border-color: ButtonText;
+  }
+
+  .inputContainer:focus-within {
+    outline: var(--ui-effect-ring-width) solid Highlight;
+    outline-offset: var(--ui-state-focus-offset);
   }
 
   .option[data-active='true'] {

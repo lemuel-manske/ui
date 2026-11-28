@@ -7,7 +7,8 @@
     "packages/i18n",
     "packages/ui-design-tokens",
     "packages/ui-utils",
-    "packages/ui-components"
+    "packages/ui-components",
+    "packages/ui-organisms"
   ],
   "type": "module",
   "description": "UI components for @Hemuel-manske projects.",
@@ -34,6 +35,7 @@
     "format:fix": "npm run format:fix --workspaces -- --ignore-path ../../.prettierignore && prettier --write .",
     "lint": "npm run lint --workspaces && eslint .",
     "lint:fix": "npm run lint:fix --workspaces && eslint . --fix",
+    "preview:atlas": "npm run preview --workspace @lemuel-manske/organisms",
     "precommit": "lint-staged",
     "prepare": "husky",
     "release": "semantic-release",

@@ -1,0 +1,8 @@
+import { createLibraryConfig } from '@lemuel-manske/config-vite';
+
+const config = createLibraryConfig({
+  fileName: 'organisms',
+  external: ['react', 'react/jsx-runtime'],
+});
+
+export default config;

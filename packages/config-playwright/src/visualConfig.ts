@@ -15,6 +15,8 @@ function createVisualConfig(overrides: VisualConfigOverrides) {
 
     ...overrides,
 
+    testIgnore: [],
+
     expect: {
       ...config.expect,
 
@@ -39,6 +41,8 @@ function createVisualConfig(overrides: VisualConfigOverrides) {
       locale: 'en-US',
 
       timezoneId: 'UTC',
+
+      viewport: { width: 1280, height: 720 },
     },
 
     fullyParallel: false,

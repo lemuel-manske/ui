@@ -1,0 +1,23 @@
+services:
+  playwright:
+    build:
+      context: ../..
+      dockerfile: docker/playwright/Dockerfile
+
+    working_dir: /workspace
+
+    environment:
+      CI: 'true'
+
+      LANG: C.UTF-8
+
+      LC_ALL: C.UTF-8
+
+      TZ: UTC
+
+    volumes:
+      - ../..:/workspace
+      - playwright_node_modules:/workspace/node_modules
+
+volumes:
+  playwright_node_modules:

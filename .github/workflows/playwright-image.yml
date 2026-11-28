@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'feat/**'
+
     paths:
       - docker/playwright/Dockerfile
       - .github/workflows/playwright-image.yml
@@ -41,6 +41,6 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
-          file: docker/playwright/Dockerfile
           push: true
+          file: docker/playwright/Dockerfile
           tags: ghcr.io/${{ github.repository_owner }}/ui-visual-tests:latest

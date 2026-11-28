@@ -36,7 +36,6 @@
     "lint:fix": "npm run lint:fix --workspaces && eslint . --fix",
     "precommit": "lint-staged",
     "prepare": "husky",
-    "pretest:visual": "docker compose -f docker/playwright/compose.yaml run --rm playwright npm run build --workspace @lemuel-manske/design-tokens",
     "release": "semantic-release",
     "storybook": "npm run storybook --workspace @lemuel-manske/components",
     "test": "npm run test --workspaces --if-present",

@@ -36,7 +36,7 @@
     "test": "tsc --project tsconfig.storybook.json && playwright test --tsconfig ../../tsconfig.test.json",
     "test:visual": "docker compose -f ../../docker/playwright/compose.yaml run --rm playwright npm run test:visual:container --workspace @lemuel-manske/components",
     "test:visual:update": "docker compose -f ../../docker/playwright/compose.yaml run --rm playwright npm run test:visual:container --workspace @lemuel-manske/components -- --update-snapshots",
-    "test:visual:container": "npm run build --prefix ../config-playwright && playwright test --config visual.config.ts --tsconfig ../../tsconfig.test.json"
+    "test:visual:container": "npm --prefix ../.. run build --workspaces --if-present && playwright test --config visual.config.ts --tsconfig ../../tsconfig.test.json"
   },
   "peerDependencies": {
     "react": "^19.3.0"

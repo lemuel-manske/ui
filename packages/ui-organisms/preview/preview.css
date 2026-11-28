@@ -1,0 +1,51 @@
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ui-color-background);
+  color: var(--ui-color-text-primary);
+  font-family: var(--ui-font-body);
+  font-size: var(--ui-text-medium);
+}
+
+.preview {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: var(--ui-space-24);
+}
+
+.preview__chrome {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-12);
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: var(--ui-space-16);
+}
+
+.preview__brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--ui-component-pill-size-medium);
+  margin: 0;
+  padding: var(--ui-component-pill-padding-small);
+  border: var(--ui-border-width) solid var(--ui-color-rail-strong);
+  border-radius: var(--ui-radius-full);
+  background: var(--ui-color-glass-surface);
+  backdrop-filter: blur(var(--ui-effect-glass-blur));
+  font-family: var(--ui-font-display);
+  font-size: var(--ui-text-medium);
+  font-weight: var(--ui-weight-semibold);
+  letter-spacing: var(--ui-tracking-heading);
+}
+
+.preview__hint {
+  margin: 0;
+  color: var(--ui-color-text-muted);
+  font-family: var(--ui-font-mono);
+  font-size: var(--ui-text-small);
+}

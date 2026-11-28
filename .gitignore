@@ -12,5 +12,7 @@
 
 **/playwright/.cache/
 
+specs/
+
 website/.docusaurus/
 website/.generated/

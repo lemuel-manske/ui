@@ -1,4 +1,4 @@
-name: Visual tests
+name: ui @ visual tests
 
 on:
   pull_request:
@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-      - 'feat/**'
 
   workflow_dispatch:
 
@@ -28,16 +27,13 @@ jobs:
       workspaces: ${{ steps.workspaces.outputs.workspaces }}
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Find workspaces with visual tests
-        id: workspaces
+      - id: workspaces
         shell: bash
         run: |
           workspaces="$(npm query --json '.workspace' | node -e '
@@ -70,22 +66,20 @@ jobs:
         workspace: ${{ fromJSON(needs.discover.outputs.workspaces) }}
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Match container user to runner user
-        shell: bash
+      - shell: bash
         run: |
           echo "DOCKER_UID=$(id -u)" >> "$GITHUB_ENV"
           echo "DOCKER_GID=$(id -g)" >> "$GITHUB_ENV"
 
-      - name: Run visual tests
-        shell: bash
+      - shell: bash
+
         env:
           WORKSPACE: ${{ matrix.workspace }}
+
         run: npm run test:visual --workspace "$WORKSPACE"
